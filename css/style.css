@@ -1,0 +1,147 @@
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+    width: 8px;
+}
+
+::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+.dark ::-webkit-scrollbar-track {
+    background: #1a1a1a;
+}
+
+::-webkit-scrollbar-thumb {
+    background: #d7ccc8;
+    border-radius: 20px;
+    border: 2px solid transparent;
+    background-clip: content-box;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background-color: #8d6e63;
+}
+
+/* Base Styles */
+html {
+    scroll-behavior: smooth;
+    -webkit-tap-highlight-color: transparent;
+}
+
+body {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+/* Selection Color */
+::selection {
+    background-color: #8d6e63;
+    /* wood-400 */
+    color: white;
+}
+
+/* Animations */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+        filter: blur(5px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+        filter: blur(0);
+    }
+}
+
+.animate-fade-in {
+    animation: fadeIn 0.8s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+}
+
+/* Nav Link Hover Effect (Sliding Underline) */
+.nav-link {
+    position: relative;
+    padding-bottom: 2px;
+}
+
+.nav-link::after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 2px;
+    bottom: 0;
+    left: 0;
+    background-color: #8D6E63;
+    /* wood-accent */
+    transition: width 0.3s ease-out;
+}
+
+.nav-link:hover::after {
+    width: 100%;
+}
+
+/* Card Hover Effects */
+.project-card,
+.service-card {
+    transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.4s ease;
+}
+
+.project-card:hover,
+.service-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+}
+
+/* Hide/Show logic utilities */
+.hidden {
+    display: none;
+}
+
+/* Mobile Menu Transitions */
+#mobile-menu {
+    transition: opacity 0.3s ease-in-out, transform 0.3s ease-in-out;
+}
+
+/* Responsive Table (Mobile Cards) */
+@media (max-width: 768px) {
+    .responsive-table thead {
+        display: none;
+    }
+
+    .responsive-table tr {
+        display: block;
+        margin-bottom: 1.5rem;
+        background-color: white;
+        /* or dark theme equivalent via utilities */
+        border: 1px solid #e5e7eb;
+        border-radius: 1rem;
+        box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+        overflow: hidden;
+    }
+
+    .dark .responsive-table tr {
+        background-color: #1f2937;
+        border-color: #374151;
+    }
+
+    .responsive-table td {
+        display: block;
+        padding: 1rem 1.5rem;
+        text-align: left;
+        border-bottom: 1px solid #f3f4f6;
+    }
+
+    .dark .responsive-table td {
+        border-color: #374151;
+    }
+
+    .responsive-table td:last-child {
+        border-bottom: none;
+        background-color: #f9fafb;
+    }
+
+    .dark .responsive-table td:last-child {
+        background-color: #111827;
+    }
+}

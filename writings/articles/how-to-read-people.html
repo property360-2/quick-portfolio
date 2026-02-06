@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>How to Read People Like a Book | Jun Alvior</title>
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Material Icons -->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Outlined" rel="stylesheet">
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                    },
+                    colors: {
+                        wood: {
+                            50: '#efebe9',
+                            100: '#d7ccc8',
+                            200: '#bcaaa4',
+                            300: '#a1887f',
+                            400: '#8d6e63',
+                            500: '#795548',
+                            600: '#6d4c41',
+                            700: '#5d4037',
+                            800: '#4e342e',
+                            900: '#3e2723',
+                            accent: '#8D6E63', // Warm wood brown
+                            muted: '#A1887F'   // Muted wood brown
+                        },
+                        grey: {
+                            dark: '#212121',   // Charcoal
+                            light: '#F5F5F5',  // Off-white
+                            slate: '#374151',
+                            soft: '#9CA3AF'
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    
+    <!-- AOS CSS -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="../../css/style.css">
+</head>
+<body class="bg-grey-light text-grey-dark dark:bg-[#1a1a1a] dark:text-gray-200 transition-colors duration-300 antialiased font-sans flex flex-col min-h-screen">
+
+    <!-- ORGANISMS: Navigation -->
+    <nav class="fixed w-full z-50 bg-white/90 dark:bg-[#1a1a1a]/90 backdrop-blur-sm border-b border-gray-200 dark:border-gray-800 transition-colors duration-300">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-20">
+                <!-- ATOMS: Logo -->
+                <div class="flex-shrink-0 flex items-center">
+                    <a href="../../index.html" class="text-2xl font-bold text-gray-900 dark:text-white tracking-tight">
+                        Jun <span class="text-wood-accent">Alvior</span>
+                    </a>
+                </div>
+
+                <!-- MOLECULES: Desktop Menu -->
+                <div class="hidden md:flex items-center space-x-8">
+                    <a href="../../index.html" class="nav-link text-gray-600 dark:text-gray-300 hover:text-wood-accent dark:hover:text-wood-accent font-medium transition-colors">Home</a>
+                    <a href="../../rate.html" class="nav-link text-gray-600 dark:text-gray-300 hover:text-wood-accent dark:hover:text-wood-accent font-medium transition-colors">Rate</a>
+                    <a href="../../portfolio.html" class="nav-link text-gray-600 dark:text-gray-300 hover:text-wood-accent dark:hover:text-wood-accent font-medium transition-colors">Portfolio</a>
+                    <a href="../../writings.html" class="nav-link text-wood-accent dark:text-wood-accent font-medium transition-colors">Writings</a>
+                    <a href="../../about.html" class="nav-link text-gray-600 dark:text-gray-300 hover:text-wood-accent dark:hover:text-wood-accent font-medium transition-colors">About Me</a>
+                    
+                    <!-- ATOMS: Theme Toggle (Desktop) -->
+                    <button id="theme-toggle" class="p-2 rounded-lg bg-gray-100 dark:bg-gray-800 text-gray-600 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-gray-700 focus:outline-none transition-colors" aria-label="Toggle Dark Mode">
+                        <span class="material-icons-outlined text-xl sun-icon hidden">light_mode</span>
+                        <span class="material-icons-outlined text-xl moon-icon">dark_mode</span>
+                    </button>
+                </div>
+
+                <!-- MOLECULES: Mobile Menu Button -->
+                <div class="md:hidden flex items-center space-x-4">
+                    <button id="theme-toggle-mobile" class="p-2 rounded-lg bg-gray-100 dark:bg-gray-800 text-gray-600 dark:text-gray-300 focus:outline-none transition-colors">
+                        <span class="material-icons-outlined text-xl sun-icon hidden">light_mode</span>
+                        <span class="material-icons-outlined text-xl moon-icon">dark_mode</span>
+                    </button>
+                    <button id="mobile-menu-btn" class="text-gray-600 dark:text-gray-300 hover:text-wood-accent focus:outline-none">
+                        <span class="material-icons-outlined text-3xl">menu</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- MOLECULES: Mobile Menu Dropdown -->
+        <div id="mobile-menu" class="hidden md:hidden bg-white dark:bg-[#1a1a1a] border-t border-gray-200 dark:border-gray-800 absolute w-full left-0">
+            <div class="px-4 pt-2 pb-6 space-y-2 shadow-lg">
+                <a href="../../index.html" class="block px-3 py-3 rounded-md text-base font-medium text-gray-700 dark:text-gray-200 hover:text-wood-accent dark:hover:text-wood-accent hover:bg-gray-50 dark:hover:bg-gray-800 transition-colors">Home</a>
+                <a href="../../rate.html" class="block px-3 py-3 rounded-md text-base font-medium text-gray-700 dark:text-gray-200 hover:text-wood-accent dark:hover:text-wood-accent hover:bg-gray-50 dark:hover:bg-gray-800 transition-colors">Rate</a>
+                <a href="../../portfolio.html" class="block px-3 py-3 rounded-md text-base font-medium text-gray-700 dark:text-gray-200 hover:text-wood-accent dark:hover:text-wood-accent hover:bg-gray-50 dark:hover:bg-gray-800 transition-colors">Portfolio</a>
+                <a href="../../writings.html" class="block px-3 py-3 rounded-md text-base font-medium text-wood-accent dark:text-wood-accent bg-gray-50 dark:bg-gray-800 transition-colors">Writings</a>
+                <a href="../../about.html" class="block px-3 py-3 rounded-md text-base font-medium text-gray-700 dark:text-gray-200 hover:text-wood-accent dark:hover:text-wood-accent hover:bg-gray-50 dark:hover:bg-gray-800 transition-colors">About Me</a>
+            </div>
+        </div>
+    </nav>
+    
+    <!-- Spacer for fixed Nav -->
+    <div class="h-20"></div>
+
+    <!-- ORGANISMS: Article Content -->
+    <article class="py-24 bg-white dark:bg-[#1f1f1f] flex-grow">
+        <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
+            <!-- Breadcrumb -->
+            <div class="mb-8 text-sm text-gray-500 dark:text-gray-400">
+                <a href="../../writings.html" class="hover:text-wood-accent transition-colors"><- Back to Writings</a>
+            </div>
+
+            <!-- Header -->
+            <header class="mb-12" data-aos="fade-up">
+                <div class="mb-8 rounded-xl overflow-hidden shadow-lg">
+                    <img src="../../assets/read-people-like-a-book.jpg" alt="How to Read People Like a Book" class="w-full h-auto object-cover max-h-[400px]">
+                </div>
+                <h1 class="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white mb-4">
+                    Book Report: How to Read People Like a Book
+                </h1>
+                <div class="flex items-center text-sm text-gray-500 dark:text-gray-400 space-x-4">
+                    <span>Feb 06, 2026</span>
+                    <span>•</span>
+                    <span>By Jun Alvior</span>
+                    <span>•</span>
+                    <span>Book by J.R. Williams</span>
+                </div>
+            </header>
+
+            <!-- Content -->
+            <div class="prose prose-lg dark:prose-invert prose-wood max-w-none" data-aos="fade-up" data-aos-delay="100">
+                
+                <h2>Introduction</h2>
+                <p>
+                    <em>How to Read People Like a Book</em> emphasizes that most human communication is non-verbal, and spoken words often fail to reflect true thoughts and emotions. As a result, the ability to read people effectively becomes a valuable life skill. The book highlights that accurate interpretation of behavior requires attention to context, cultural background, and personal baselines. Single gestures or expressions rarely provide reliable insight; instead, clusters of behavior must be analyzed together.
+                </p>
+                <p>
+                    Self-awareness is equally important, as personal biases, expectations, and unconscious drives can distort perception. By recognizing one’s own mental filters and observing without immediate judgment, individuals can develop the ability to interpret others more objectively. The book also recommends assessing current proficiency in people-reading, using tests like Simon Baron-Cohen’s social intelligence assessment to gauge how accurately one perceives emotions.
+                </p>
+
+                <hr class="my-8 border-gray-200 dark:border-gray-700">
+
+                <h3>Chapter 1: Motivation as a Behavioral Predictor</h3>
+                <p>
+                    Chapter one focuses on understanding <strong>motivation</strong> as a foundation for predicting behavior. The book begins with the <strong>pleasure principle</strong>, which explains that people are naturally driven to seek pleasure and avoid pain. Recognizing what pleasures or pains influence an individual can clarify why they act in certain ways.
+                </p>
+                <p>
+                    Next, the book introduces <strong>Maslow’s Hierarchy of Needs</strong>, a framework that categorizes motivations into five levels: physiological needs, safety, love and belonging, esteem, and self-actualization. Observing which level a person is focused on helps explain their current behavior and goals.
+                </p>
+                <p>
+                    The chapter also addresses <strong>ego defense mechanisms</strong>, unconscious strategies that protect self-esteem. Examples include denial, rationalization, projection, repression, and displacement. Because these defenses can shape behavior unconsciously, understanding when the ego is involved helps readers interpret actions more accurately.
+                </p>
+
+                <hr class="my-8 border-gray-200 dark:border-gray-700">
+
+                <h3>Chapter 2: The Body, the Face, and Behavior Clusters</h3>
+                <p>
+                    Chapter two shifts to direct observation, examining <strong>facial expressions</strong> and <strong>body language</strong> as key sources of insight. Facial expressions are categorized into <strong>macroexpressions</strong>—slower, more obvious, and often consciously controlled—and <strong>microexpressions</strong>, which are rapid, involuntary, and reveal true emotions. Psychologist Paul Ekman’s research highlights microexpressions for the six basic emotions, as well as signs of nervousness, lying, or discomfort.
+                </p>
+                <p>
+                    Body language provides further context. Relaxed individuals often expand into space, while anxious or insecure individuals contract or exhibit self-soothing gestures. However, interpretation is meaningful only when compared against a baseline of normal behavior for that person.
+                </p>
+                <p>
+                    The book emphasizes analyzing <strong>behavioral clusters</strong>, where multiple cues—facial expressions, gestures, posture, and voice—combine to communicate a unified message. Incongruences among these cues may indicate hidden emotions, but conclusions should be drawn carefully, supported by sufficient observations rather than isolated signs.
+                </p>
+
+                <hr class="my-8 border-gray-200 dark:border-gray-700">
+
+                <h3>Chapter 3: Personality Science and Typology</h3>
+                <p>
+                    Chapter three introduces personality frameworks as tools for understanding individual differences. The <strong>Big Five Personality Traits</strong>—openness, conscientiousness, extroversion, agreeableness, and neuroticism (OCEAN)—measure personality along continuums rather than fixed categories. Observing these traits helps predict behavior, preferences, and social tendencies.
+                </p>
+                <p>
+                    The <strong>Myers-Briggs Type Indicator (MBTI)</strong> is another framework, classifying people into sixteen personality types based on four dimensions: introversion/extroversion, sensing/intuition, thinking/feeling, and judging/perceiving. While the MBTI can provide useful insights, it has limitations such as inconsistency in results and reliance on stereotypes.
+                </p>
+                <p>
+                    The book also covers the <strong>Keirsey Temperament Theory</strong>, which groups personality into four broader temperaments—guardian, artisan, idealist, and rational—emphasizing general behavior patterns over detailed subtypes. The <strong>Enneagram</strong>, with its nine personality types, focuses on motivations, fears, and emotional patterns, offering another lens to understand behavior and interpersonal dynamics. These frameworks allow readers to approach people scientifically while recognizing individual variation.
+                </p>
+
+                <hr class="my-8 border-gray-200 dark:border-gray-700">
+
+                <h3>Chapter 4: Lie Detection 101</h3>
+                <p>
+                    Chapter four explores detecting deception, highlighting that most people overestimate their ability to spot lies. Biases and assumptions often obscure recognition of deceit. Effective lie detection relies on <strong>strategic conversation</strong>, rather than solely observing body language.
+                </p>
+                <p>
+                    Techniques include asking <strong>open-ended questions</strong>, looking for inconsistencies, and presenting unexpected questions to increase <strong>cognitive load</strong>, which can make liars slip. Physiological and behavioral signs of lying may include delayed responses, speech errors, reduced emotional expression, blinking, and pupil dilation. The chapter emphasizes that no single cue proves deception; rather, patterns and context are key.
+                </p>
+
+                <hr class="my-8 border-gray-200 dark:border-gray-700">
+
+                <h3>Chapter 5: Using the Power of Observation</h3>
+                <p>
+                    The final chapter teaches how to efficiently gather insights through observation. <strong>Thin slicing</strong>, or making accurate judgments from limited data, can be surprisingly effective. Readers are encouraged to trust initial impressions while supporting them with careful follow-up observations.
+                </p>
+                <p>
+                    Language in texts and emails reveals personality traits, emotional states, and values. Overly negative or emotionally disproportionate messages may indicate low self-esteem or mental strain. Observation extends to physical spaces and possessions: homes, offices, and personal items reflect habits, sociability, and self-perception. Online behavior can also offer insights, though interpretation requires caution.
+                </p>
+                <p>
+                    Hypothetical questions are suggested as a tool to bypass defenses, eliciting honest information about desires, values, and self-perception. Overall, careful observation, combined with context and baseline knowledge, allows readers to understand others effectively and ethically.
+                </p>
+
+                <hr class="my-8 border-gray-200 dark:border-gray-700">
+
+                <h2>Conclusion</h2>
+                <p>
+                    <em>How to Read People Like a Book</em> provides a practical framework for understanding human behavior through motivation, observation, personality analysis, and communication. By integrating theory with careful observation and self-awareness, readers can improve social intelligence, strengthen interpersonal relationships, and make more informed judgments about others. The book emphasizes ethical, context-sensitive people-reading, showing that accurate understanding requires both skill and patience.
+                </p>
+            </div>
+        </div>
+    </article>
+
+    <!-- ORGANISMS: Footer -->
+    <footer class="bg-white dark:bg-[#1a1a1a] border-t border-gray-200 dark:border-gray-800 mt-auto">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+            <div class="flex flex-col md:flex-row justify-between items-center">
+                <div class="mb-4 md:mb-0">
+                    <span class="text-xl font-bold text-gray-900 dark:text-white tracking-tight">Jun <span class="text-wood-accent">Alvior</span></span>
+                    <p class="text-sm text-gray-500 mt-1">© 2024. All rights reserved.</p>
+                </div>
+                
+                <div class="flex space-x-6">
+                    <a href="mailto:junalvior21@gmail.com" class="text-gray-400 hover:text-wood-accent transition-colors">
+                        <span class="sr-only">Email</span>
+                        <span class="material-icons-outlined">email</span>
+                    </a>
+                    <a href="https://github.com/property360-2" target="_blank" rel="noopener noreferrer" class="text-gray-400 hover:text-wood-accent transition-colors">
+                        <span class="sr-only">GitHub</span>
+                        <svg class="h-6 w-6" fill="currentColor" viewBox="0 0 24 24"><path fill-rule="evenodd" d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z" clip-rule="evenodd"/></svg>
+                    </a>
+                    <a href="https://www.facebook.com/profile.php?id=100078275869468" target="_blank" rel="noopener noreferrer" class="text-gray-400 hover:text-wood-accent transition-colors">
+                        <span class="sr-only">Facebook</span>
+                        <svg class="h-6 w-6" fill="currentColor" viewBox="0 0 24 24"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.791-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Back to Top Button -->
+    <button id="back-to-top" class="fixed bottom-8 right-8 p-3 rounded-full bg-wood-600 text-white shadow-lg hover:bg-wood-700 transition-all transform translate-y-20 opacity-0 z-40 focus:outline-none" aria-label="Back to Top">
+        <span class="material-icons-outlined">arrow_upward</span>
+    </button>
+
+    <!-- Scripts -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script src="../../js/main.js"></script>
+</body>
+</html>
