@@ -1,4 +1,5 @@
 document.addEventListener('DOMContentLoaded', () => {
+    // Portfolio v1.1 - Added Cinematic Animations
 
     // ==========================================
     // 1. Initialization (AOS & GSAP)
