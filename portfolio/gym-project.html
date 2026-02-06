@@ -49,6 +49,17 @@
             }
         }
     </script>
+    <script>
+        // Immediate theme application to prevent flash
+        const savedTheme = localStorage.getItem('theme');
+        const systemPrefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+        
+        if (savedTheme === 'dark' || (!savedTheme && systemPrefersDark)) {
+            document.documentElement.classList.add('dark');
+        } else {
+            document.documentElement.classList.remove('dark');
+        }
+    </script>
     
     <!-- AOS CSS -->
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
@@ -56,7 +67,7 @@
     <!-- Custom CSS -->
     <link rel="stylesheet" href="../css/style.css">
 </head>
-<body class="bg-grey-light text-grey-dark dark:bg-[#1a1a1a] dark:text-gray-200 transition-colors duration-300 antialiased font-sans flex flex-col min-h-screen">
+<body class="bg-grey-light text-grey-dark dark:bg-[#1a1a1a] dark:text-gray-200 transition-colors duration-300 antialiased font-sans flex flex-col min-h-screen preload">
 
     <!-- ORGANISMS: Navigation -->
     <nav class="fixed w-full z-50 bg-white/90 dark:bg-[#1a1a1a]/90 backdrop-blur-sm border-b border-gray-200 dark:border-gray-800 transition-colors duration-300">

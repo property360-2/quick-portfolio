@@ -37,7 +37,23 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     // ==========================================
-    // 2. Theme Toggle Logic
+    // 2. Page Reveal & Cleanup
+    // ==========================================
+    const body = document.body;
+
+    // Reveal content smoothly
+    requestAnimationFrame(() => {
+        body.classList.add('loaded');
+    });
+
+    // Remove preload class to enable transitions after a delay
+    // This prevents the initial color flash during theme switch on load
+    setTimeout(() => {
+        body.classList.remove('preload');
+    }, 500);
+
+    // ==========================================
+    // 3. Theme Toggle Logic
     // ==========================================
     const themeToggleBtn = document.getElementById('theme-toggle');
     const themeToggleMobileBtn = document.getElementById('theme-toggle-mobile');
@@ -45,17 +61,9 @@ document.addEventListener('DOMContentLoaded', () => {
     const sunIcons = document.querySelectorAll('.sun-icon');
     const moonIcons = document.querySelectorAll('.moon-icon');
 
-    // Check LocalStorage
-    const savedTheme = localStorage.getItem('theme');
-    const systemPrefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-
-    if (savedTheme === 'dark' || (!savedTheme && systemPrefersDark)) {
-        html.classList.add('dark');
-        updateIcons(true);
-    } else {
-        html.classList.remove('dark');
-        updateIcons(false);
-    }
+    // Sync icons on load
+    const isDark = html.classList.contains('dark');
+    updateIcons(isDark);
 
     function toggleTheme() {
         html.classList.toggle('dark');

@@ -26,11 +26,29 @@
 html {
     scroll-behavior: smooth;
     -webkit-tap-highlight-color: transparent;
+    background-color: #F5F5F5;
+    /* Matches bg-grey-light */
+}
+
+html.dark {
+    background-color: #1a1a1a;
 }
 
 body {
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
+    opacity: 0;
+    transition: opacity 0.6s ease-out;
+    /* Smooth reveal */
+}
+
+body.loaded {
+    opacity: 1;
+}
+
+/* Prevent transitions on load */
+.preload * {
+    transition: none !important;
 }
 
 /* Selection Color */
