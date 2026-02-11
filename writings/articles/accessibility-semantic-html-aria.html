@@ -56,7 +56,22 @@
     
     <!-- Custom CSS -->
     <link rel="stylesheet" href="../../css/style.css">
+    <script>
+        // Immediate theme application to prevent flash
+        const savedTheme = localStorage.getItem('theme');
+        const systemPrefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+        
+        if (savedTheme === 'dark' || (!savedTheme && systemPrefersDark)) {
+            document.documentElement.classList.add('dark');
+        } else {
+            document.documentElement.classList.remove('dark');
+        }
+    </script>
     <style>
+        /* Critical CSS for immediate theme application */
+        html { background-color: #F5F5F5; transition: none !important; }
+        html.dark { background-color: #1a1a1a; transition: none !important; }
+        
         .prose code {
             font-family: 'Fira Code', monospace;
             background-color: #f3f4f6;
@@ -434,6 +449,5 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script src="../../js/main.js"></script>
-    <script>AOS.init({duration: 1000, once: true});</script>
 </body>
 </html>
