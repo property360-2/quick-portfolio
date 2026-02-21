@@ -1,0 +1,386 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Democratization of Philippine Jurisprudence: Legal Kit ni Juan | Jun Alvior</title>
+    <meta name="description" content="An exhaustive analysis of the democratization of Philippine jurisprudence through Atty. Christian D. Sorongon's seminal work 'Legal Kit ni Juan'.">
+    <meta name="keywords" content="Legal Kit ni Juan, Atty. Christian Sorongon, Philippine Law, Legal Literacy, Jurisprudence, Book Report">
+    <meta name="author" content="Jun Alvior">
+    <link rel="canonical" href="https://property360-2.github.io/quick-portfolio/writings/articles/legal-kit-ni-juan.html">
+
+    <!-- article specific OG tags -->
+    <meta property="og:type" content="article">
+    <meta property="article:published_time" content="2026-02-21">
+    <meta property="article:author" content="Jun Alvior">
+    <meta property="og:image" content="https://property360-2.github.io/quick-portfolio/assets/legal-kit-ni-juan.jpg">
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Fira+Code:wght@400;500&display=swap" rel="stylesheet">
+    
+    <!-- Material Icons -->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Outlined" rel="stylesheet">
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        mono: ['Fira Code', 'monospace'],
+                    },
+                    colors: {
+                        wood: {
+                            50: '#efebe9',
+                            100: '#d7ccc8',
+                            200: '#bcaaa4',
+                            300: '#a1887f',
+                            400: '#8d6e63',
+                            500: '#795548',
+                            600: '#6d4c41',
+                            700: '#5d4037',
+                            800: '#4e342e',
+                            900: '#3e2723',
+                            accent: '#8D6E63',
+                            muted: '#A1887F'
+                        },
+                        grey: {
+                            dark: '#212121',
+                            light: '#F5F5F5',
+                            slate: '#374151',
+                            soft: '#9CA3AF'
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    
+    <!-- AOS CSS -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="../../css/style.css">
+    <script>
+        // Immediate theme application to prevent flash
+        const savedTheme = localStorage.getItem('theme');
+        const systemPrefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+        
+        if (savedTheme === 'dark' || (!savedTheme && systemPrefersDark)) {
+            document.documentElement.classList.add('dark');
+        } else {
+            document.documentElement.classList.remove('dark');
+        }
+    </script>
+    <style>
+        /* Critical CSS for immediate theme application */
+        html { background-color: #F5F5F5; transition: none !important; }
+        html.dark { background-color: #1a1a1a; transition: none !important; }
+        
+        .prose code {
+            font-family: 'Fira Code', monospace;
+            background-color: #f3f4f6;
+            padding: 0.2rem 0.4rem;
+            border-radius: 0.25rem;
+            font-size: 0.875em;
+            color: #8D6E63;
+        }
+        .dark .prose code {
+            background-color: #374151;
+            color: #d7ccc8;
+        }
+        .prose pre code {
+            background-color: transparent;
+            padding: 0;
+            color: #f9fafb;
+        }
+        .prose pre {
+            background-color: #1a1a1a;
+            color: #f9fafb;
+            padding: 1.5rem;
+            border-radius: 0.75rem;
+            overflow-x: auto;
+            border: 1px solid #374151;
+            margin: 1.5rem 0;
+        }
+        .prose table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 2.5rem 0;
+            font-size: 0.95rem;
+        }
+        .prose th {
+            background-color: #f9fafb;
+            text-align: left;
+            padding: 1rem;
+            border-bottom: 2px solid #e5e7eb;
+            color: #111827;
+        }
+        .dark .prose th {
+            background-color: #111827;
+            border-bottom-color: #374151;
+            color: #f9fafb;
+        }
+        .prose td {
+            padding: 1rem;
+            border-bottom: 1px solid #e5e7eb;
+        }
+        .dark .prose td {
+            border-bottom-color: #374151;
+        }
+        .prose h2 {
+            padding-top: 2rem;
+            margin-bottom: 1.5rem;
+            position: relative;
+        }
+        .prose h2::after {
+            content: '';
+            position: absolute;
+            bottom: -0.5rem;
+            left: 0;
+            width: 3rem;
+            height: 4px;
+            background-color: #8D6E63;
+            border-radius: 2px;
+        }
+        .prose hr {
+            margin: 3rem 0;
+            border-color: #e5e7eb;
+        }
+        .dark .prose hr {
+            border-color: #374151;
+        }
+        .prose blockquote {
+            border-left: 4px solid #8D6E63;
+            padding-left: 1rem;
+            font-style: italic;
+            color: #4b5563;
+            margin: 1.5rem 0;
+        }
+        .dark .prose blockquote {
+            color: #9ca3af;
+        }
+    </style>
+</head>
+<body class="bg-grey-light text-grey-dark dark:bg-[#1a1a1a] dark:text-gray-300 transition-colors duration-300 antialiased font-sans flex flex-col min-h-screen">
+
+    <!-- ORGANISMS: Navigation -->
+    <nav class="fixed w-full z-50 bg-white/90 dark:bg-[#1a1a1a]/90 backdrop-blur-sm border-b border-gray-200 dark:border-gray-800 transition-colors duration-300">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-20">
+                <div class="flex-shrink-0 flex items-center">
+                    <a href="../../index.html" class="text-2xl font-bold text-gray-900 dark:text-white tracking-tight">
+                        Jun <span class="text-wood-accent">Alvior</span>
+                    </a>
+                </div>
+                <div class="hidden md:flex items-center space-x-8">
+                    <a href="../../index.html" class="nav-link text-gray-600 dark:text-gray-300 hover:text-wood-accent transition-colors">Home</a>
+                    <a href="../../rate.html" class="nav-link text-gray-600 dark:text-gray-300 hover:text-wood-accent transition-colors">Rate</a>
+                    <a href="../../portfolio.html" class="nav-link text-gray-600 dark:text-gray-300 hover:text-wood-accent transition-colors">Portfolio</a>
+                    <a href="../../writings.html" class="nav-link text-wood-accent font-medium">Writings</a>
+                    <a href="../../about.html" class="nav-link text-gray-600 dark:text-gray-300 hover:text-wood-accent transition-colors">About Me</a>
+                    <button id="theme-toggle" class="p-2 rounded-lg bg-gray-100 dark:bg-gray-800 text-gray-600 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors">
+                        <span class="material-icons-outlined text-xl sun-icon hidden">light_mode</span>
+                        <span class="material-icons-outlined text-xl moon-icon">dark_mode</span>
+                    </button>
+                </div>
+                <div class="md:hidden flex items-center space-x-4">
+                    <button id="theme-toggle-mobile" class="p-2 rounded-lg bg-gray-100 dark:bg-gray-800 text-gray-600 dark:text-gray-300">
+                        <span class="material-icons-outlined text-xl sun-icon hidden">light_mode</span>
+                        <span class="material-icons-outlined text-xl moon-icon">dark_mode</span>
+                    </button>
+                    <button id="mobile-menu-btn" class="text-gray-600 dark:text-gray-300 focus:outline-none">
+                        <span class="material-icons-outlined text-3xl">menu</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+        <div id="mobile-menu" class="hidden md:hidden bg-white dark:bg-[#1a1a1a] border-t border-gray-200 dark:border-gray-800 absolute w-full left-0">
+            <div class="px-4 pt-2 pb-6 space-y-2 shadow-lg">
+                <a href="../../index.html" class="block px-3 py-3 rounded-md text-base font-medium text-gray-700 dark:text-gray-200">Home</a>
+                <a href="../../rate.html" class="block px-3 py-3 rounded-md text-base font-medium text-gray-700 dark:text-gray-200">Rate</a>
+                <a href="../../portfolio.html" class="block px-3 py-3 rounded-md text-base font-medium text-gray-700 dark:text-gray-200">Portfolio</a>
+                <a href="../../writings.html" class="block px-3 py-3 rounded-md text-base font-medium text-wood-accent">Writings</a>
+                <a href="../../about.html" class="block px-3 py-3 rounded-md text-base font-medium text-gray-700 dark:text-gray-200">About Me</a>
+            </div>
+        </div>
+    </nav>
+    <div class="h-20"></div>
+
+    <article class="py-24 bg-white dark:bg-[#1f1f1f] flex-grow">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="mb-8 text-sm text-gray-500 dark:text-gray-400">
+                <a href="../../writings.html" class="hover:text-wood-accent transition-colors flex items-center">
+                    <span class="material-icons-outlined text-sm mr-1">arrow_back</span> Back to Writings
+                </a>
+            </div>
+
+            <header class="mb-16" data-aos="fade-up">
+                <div class="mb-10 rounded-2xl overflow-hidden shadow-2xl ring-1 ring-gray-200 dark:ring-gray-700">
+                    <img src="../../assets/legal-kit-ni-juan.jpg" alt="Legal Kit ni Juan Header" class="w-full h-auto object-cover max-h-[550px]">
+                </div>
+                <h1 class="text-3xl md:text-4xl lg:text-5xl font-extrabold text-gray-900 dark:text-white mb-8 leading-[1.2]">
+                    The Democratization of Philippine Jurisprudence: An Exhaustive Analysis of Legal Kit ni Juan by Atty. Christian D. Sorongon
+                </h1>
+                <div class="flex flex-wrap items-center text-sm font-medium text-gray-500 dark:text-gray-400 gap-6 border-y border-gray-100 dark:border-gray-800 py-6">
+                    <span class="flex items-center"><span class="material-icons-outlined text-base mr-2 text-wood-accent">calendar_today</span>Feb 21, 2026</span>
+                    <span class="flex items-center"><span class="material-icons-outlined text-base mr-2 text-wood-accent">person</span>Jun Alvior</span>
+                    <span class="flex items-center"><span class="material-icons-outlined text-base mr-2 text-wood-accent">article</span>Law & Governance</span>
+                </div>
+            </header>
+
+            <div class="prose prose-lg dark:prose-invert prose-wood max-w-none text-gray-700 dark:text-gray-300 leading-relaxed" data-aos="fade-up">
+                
+                <h2>Introduction: The Systemic Crisis of Legal Illiteracy</h2>
+                <p>The structural integrity of any democratic republic is fundamentally predicated upon the equitable application of the rule of law. However, within the complex socio-political landscape of the Philippines, a profound and pervasive disconnect exists between the law as it is comprehensively codified and the law as it is practically experienced by the common citizen.</p>
+                <p>Addressing this critical societal gap is the groundbreaking publication <strong>Legal Kit ni Juan</strong>, a comprehensive, highly accessible, pocket-sized legal guide meticulously authored by <strong>Atty. Christian D. Sorongon</strong>. Published circa 2025 in a deliberate bilingual format, this text has rapidly transcended its status as a mere legal primer to become a seminal instrument in grassroots legal education.</p>
+                <p>The text functions not merely as a reference manual but as a democratizing instrument, designed with the explicit, human-centric mission to make the complexities of the law <em>"abot-kamay"</em> (within reach) for every Filipino citizen. By meticulously translating esoteric, often intimidating legal doctrines into actionable, everyday guidance, the book dismantles the traditional gatekeeping mechanisms of the legal profession.</p>
+
+                <hr>
+
+                <h2>The Architect of Legal Accessibility: Atty. Christian D. Sorongon</h2>
+                <p>A rigorous examination of Atty. Sorongon’s professional trajectory reveals a unique intersection of local grassroots governance, elite corporate law, and rigorous private legal practice. This diverse background fundamentally shapes the book's worldview, transitioning it from a dry academic text to a vibrant survival guide for the modern Filipino.</p>
+
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Professional Domain</th>
+                            <th>Specific Role & Tenure</th>
+                            <th>Jurisprudential Insight Gained</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr><td><strong>Local Governance</strong></td><td>SK Chairman (Age 16), Councilor (Age 19), Mayor of New Lucena, Iloilo (Age 25; 2016-2019)</td><td>Grassroots exposure to the devastating realities of legal ignorance among the masses.</td></tr>
+                        <tr><td><strong>Data & Privacy Law</strong></td><td>Case Officer, National Privacy Commission (2020)</td><td>Nuanced understanding of digital rights, cyber libel, and the importance of data privacy.</td></tr>
+                        <tr><td><strong>Appellate Judiciary</strong></td><td>Executive Assistant, Court of Appeals (2021-2023)</td><td>High-level exposure to standards of evidence and procedural law required to uphold legal decisions.</td></tr>
+                        <tr><td><strong>Corporate & Land Law</strong></td><td>Corporate & Land Legal Counsel, Solar Philippines (2023-2025)</td><td>Deep expertise in property rights, corporate negotiation, and land acquisition.</td></tr>
+                        <tr><td><strong>Private Practice</strong></td><td>Practicing Attorney handling criminal, civil, labor, and family cases.</td><td>Frontline experience with the emotional and financial devastation of clients who seek help too late.</td></tr>
+                    </tbody>
+                </table>
+
+                <hr>
+
+                <h2>Mission and Philosophy: Preventative Jurisprudence</h2>
+                <p>The core thesis of <em>Legal Kit ni Juan</em> is built upon the author's conviction that true leadership in the legal sphere must involve listening, serving, and educating the populace. Atty. Sorongon observed a recurring pattern: a vast majority of agonizing cases could have been circumvented if the individuals involved had possessed baseline knowledge from the beginning.</p>
+                <p>The prevailing cultural norm in the Philippines dictates that legal intervention is a desperate, final resort—an action taken only when one is already facing imminent termination, foreclosure, or physical harm. At this late stage, individuals have often already unwittingly waived critical rights or destroyed vital evidence. The book seeks to cure this by establishing <strong>preventative jurisprudence</strong>.</p>
+
+                <hr>
+
+                <h2>A Comprehensive Taxonomy of Crucial Rights</h2>
+                <p>The guide meticulously identifies specific spheres of daily life where rights are frequently violated, culturally ignored, or misunderstood by victims.</p>
+
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Domain of Friction</th>
+                            <th>Nature of Right Violated</th>
+                            <th>Cultural Context & Misconception</th>
+                            <th>Legal Matrix Addressed</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr><td><strong>Labor & Workplace</strong></td><td>Unpaid wages, illegal dismissal, denial of benefits.</td><td>Emphasis on <em>utang na loob</em> (gratitude) prohibits workers from demanding compensation.</td><td>Assertion of rights under the Labor Code and combating illegal termination.</td></tr>
+                        <tr><td><strong>Community Relations</strong></td><td>Malicious gossip (<em>tsismis</em>),character assassination.</td><td>Gossip is normalized as benign, ignoring its status as actionable defamation.</td><td>Boundary between social chatter and legal defamation; Safe Spaces Act guidance.</td></tr>
+                        <tr><td><strong>Economic Vulnerability</strong></td><td>Harassment and public humiliation by informal lenders.</td><td>Debtors believe owing money strips them of all civil protections and dignity.</td><td>Distinguishing the right to collect from criminal acts of harassment and coercion.</td></tr>
+                        <tr><td><strong>Digital Ecosystem</strong></td><td>Online libel, cyberbullying, unauthorized data distribution.</td><td>Illusion that the internet operates outside national jurisdiction and provides immunity.</td><td>Defining boundaries of online expression and protection of digital privacy.</td></tr>
+                        <tr><td><strong>Domestic Sphere</strong></td><td>Withholding child support, domestic abuse, custody disputes.</td><td>Domestic turmoil is viewed as a private matter where state intervention is discouraged.</td><td>Codifying family disputes into entitlements regarding support and welfare.</td></tr>
+                        <tr><td><strong>Consumer Retail</strong></td><td>Refusal of legitimate refunds, sale of defective goods.</td><td>Belief in illegal mandates like "No Return, No Exchange" policies.</td><td>Step-by-step methodology for product warranties and combating consumer fraud.</td></tr>
+                    </tbody>
+                </table>
+
+                <hr>
+
+                <h2>Detailed Domain Analysis</h2>
+                
+                <h3>The Domestic and Familial Sphere</h3>
+                <p>In the Philippine context, the sanctity of the family is often manipulated to mask severe rights violations. <em>Legal Kit ni Juan</em> boldly addresses how fundamental rights within one's residence—such as protection against unwarranted intrusion or domestic abuse—are routinely ignored. It unpacks the complex realm of marriage and family law, providing definitive guidance on legal separation, annulment, and spousal support.</p>
+
+                <h3>Communal Interactions and the Safe Spaces Act</h3>
+                <p>Neighborhood dynamics often involve the normalization of <em>tsismis</em>. Atty. Sorongon reclassifies these behaviors as serious civil and criminal violations. Crucially, the text incorporates the <strong>Safe Spaces Act (Bawal Bastos Law)</strong>, combating the toxic culture of street harassment and providing women and marginalized genders with a powerful legal mechanism for self-defense.</p>
+
+                <h3>The Digital Frontier and Social Media</h3>
+                <p>The Philippines' hyper-connectivity is coupled with an ignorance of cyber law. The book serves as a vital manual for the "smart netizen," clearly delineating the legal boundaries of online expression and the severe penalties associated with online libel under the Cybercrime Prevention Act.</p>
+
+                <h3>Economic Battleground and Consumer Rights</h3>
+                <p>Economic vulnerability often leads to systemic abuse by informal lenders. The text meticulously explains the legal methodologies of debt collection, strictly separating legitimate civil claims from the criminal acts of harassment. Similarly, it outfits consumers with the knowledge to aggressively demand refunds and enforce warranties, challenging illegal corporate policies.</p>
+
+                <h3>Labor, Employment, and Education</h3>
+                <p>The book surgically dissects workplace violations, focusing on withheld wages and illegal termination. It also addresses rights within the school system, empowering youth with a legal voice against systemic bullying and disproportionate punishment (<em>maling parusa</em>).</p>
+
+                <h3>Public Infrastructure and Law Enforcement</h3>
+                <p>Navigating travel accidents and encounters with law enforcement is fraught with peril. The text provides a clear protocol for road rights and essential, life-saving tactics for surviving police interrogations. It explicitly teaches citizens how to confidently assert their constitutional right to remain silent.</p>
+
+                <hr>
+
+                <h2>The Mechanics of Redress: How to Act</h2>
+                <p>Understanding rights is merely the first step; enforcement requires a procedural roadmap. The book provides several overarching behavioral protocols:</p>
+                <ol>
+                    <li><strong>Securing Evidence:</strong> Rewiring the instinctive reaction to conflict away from emotional confrontation and toward calculated documentation (police reports, receipts, photos).</li>
+                    <li><strong>Assertion of Boundaries:</strong> Behavior guidelines and literal scripts to halt violations, such as invoking the right to silence or distinguishing civil debt from criminal harassment.</li>
+                    <li><strong>Strategic Escalation:</strong> Guiding users on the precise jurisdictional authority for their disputes, whether it be the Barangay, DOLE, NLRC, or the courts.</li>
+                    <li><strong>Psychological Rejection of Abuse:</strong> The absolute refusal to accept culturally normalized abuse and the cognitive recognition that a right has been breached.</li>
+                </ol>
+
+                <hr>
+
+                <h2>Analytical Opinion and Critical Reception</h2>
+                <p>The impact of <em>Legal Kit ni Juan</em> represents a palpable cultural shift. Its commercial success on platforms like TikTok underscores a desperate societal hunger for accessible legal knowledge. By delivering complex, life-saving concepts in fluent Tagalog and English, Atty. Sorongon has violently dismantled the linguistic barriers that historically served the elite.</p>
+                <p>The text is a staggering achievement in preventative law. While it is disheartening that such a guide is necessary to prevent daily extortion, it stands as a beacon of extreme pragmatism. The upcoming editions for Overseas Filipino Workers (OFWs) further demonstrate a visionary roadmap for nationwide legal empowerment.</p>
+
+                <hr>
+
+                <h2>Conclusion: Reclamation of Justice</h2>
+                <p><em>Legal Kit ni Juan</em> is far more than an instructional handbook; it is a strategic sociological intervention aimed at curing legal illiteracy. It successfully empowers the "everyday Juan" to instantly recognize transgressions, secure evidence, and navigate the complex mechanisms of justice without the immediate financial burden of retaining counsel.</p>
+                <p>In a nation where the architecture of the law has far too often been weaponized by the powerful, this publication undeniably reclaims jurisprudence as an accessible instrument of liberation and self-defense for the masses.</p>
+
+                <hr>
+
+                <section class="text-xs text-gray-500 font-mono mt-16 leading-relaxed bg-gray-50 dark:bg-black/20 p-8 rounded-xl border border-gray-100 dark:border-gray-800">
+                    <h2 class="text-base font-bold mb-6 text-gray-900 dark:text-white uppercase tracking-widest">References</h2>
+                    <ul class="space-y-2">
+                        <li>1. <strong>Official Book and Author Website.</strong> Details regarding the mission of Legal Kit ni Juan and specific rights covered.</li>
+                        <li>2. <strong>Author's Biographical and Professional Data.</strong> Atty. Christian D. Sorongon's professional history documented via Sorongon Law.</li>
+                        <li>3. <strong>Commercial Reception and Reader Reviews.</strong> Performance on TikTok Shop Philippines and verified buyer testimonials.</li>
+                        <li>4. <strong>Broader Human Rights Context.</strong> Contextual information regarding systemic challenges by Amnesty International and HRW.</li>
+                    </ul>
+
+                    <h2 class="text-base font-bold mb-6 mt-8 text-gray-900 dark:text-white uppercase tracking-widest">Works cited</h2>
+                    <ul class="space-y-2">
+                        <li>1. <a href="https://www.legalkitnijuan.com/" class="hover:text-wood-accent">Legal Kit Ni Juan Official Website</a></li>
+                        <li>2. <a href="https://shopee.ph/%E3%80%90Fast-shipping%E3%80%91Legal-Kit-Ni-Juan-Pocket-Full-Text-Edition-i.1667820344.52152746567" class="hover:text-wood-accent">Shopee: Legal Kit Ni Juan Pocket Edition</a></li>
+                        <li>3. <a href="https://www.legalkitnijuan.com/meet-the-author" class="hover:text-wood-accent">Meet the Author | Legal Kit Ni Juan</a></li>
+                        <li>4. <a href="https://www.sorongonlaw.com/awards-and-recognition" class="hover:text-wood-accent">Awards & Recognition - Sorongon Law</a></li>
+                        <li>5. <a href="https://www.hrw.org/report/2017/06/22/just-let-us-be/discrimination-against-lgbt-students-philippines" class="hover:text-wood-accent">"Just Let Us Be" - Human Rights Watch (2017)</a></li>
+                        <li>6. <a href="https://www.amnesty.org/es/wp-content/uploads/2021/05/ASA350021988ENGLISH.pdf" class="hover:text-wood-accent">PHILIPPINES - Amnesty International Report</a></li>
+                        <li>7. <a href="https://www.legalkitnijuan.com/post/know-your-rights-a-quick-guide-to-handling-law-enforcement" class="hover:text-wood-accent">Know Your Rights: Law Enforcement Guide</a></li>
+                    </ul>
+                </section>
+            </div>
+        </div>
+    </article>
+
+    <footer class="bg-white dark:bg-[#1a1a1a] border-t border-gray-200 dark:border-gray-800 mt-auto">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+            <div class="flex flex-col md:flex-row justify-between items-center">
+                <div class="mb-4 md:mb-0">
+                    <span class="text-xl font-bold text-gray-900 dark:text-white tracking-tight">Jun <span class="text-wood-accent">Alvior</span></span>
+                    <p class="text-sm text-gray-500 mt-1">&copy; 2024. All rights reserved.</p>
+                </div>
+                <div class="flex space-x-6">
+                    <a href="mailto:junalvior21@gmail.com" class="text-gray-400 hover:text-wood-accent transition-colors"><span class="material-icons-outlined">email</span></a>
+                    <a href="https://github.com/property360-2" target="_blank" class="text-gray-400 hover:text-wood-accent transition-colors"><svg class="h-6 w-6" fill="currentColor" viewBox="0 0 24 24"><path fill-rule="evenodd" d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z" clip-rule="evenodd"/></svg></a>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <button id="back-to-top" class="fixed bottom-8 right-8 p-3 rounded-full bg-wood-600 text-white shadow-lg hover:bg-wood-700 transition-all transform translate-y-20 opacity-0 z-40"><span class="material-icons-outlined">arrow_upward</span></button>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script src="../../js/main.js"></script>
+</body>
+</html>
