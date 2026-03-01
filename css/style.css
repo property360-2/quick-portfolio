@@ -108,7 +108,12 @@ body.loaded {
 .project-card:hover,
 .service-card:hover {
     transform: translateY(-8px);
-    box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+    box-shadow: 0 20px 25px -5px rgba(141, 110, 99, 0.15), 0 10px 10px -5px rgba(141, 110, 99, 0.05);
+}
+
+.dark .project-card:hover,
+.dark .service-card:hover {
+    box-shadow: 0 20px 25px -5px rgba(141, 110, 99, 0.3), 0 10px 10px -5px rgba(141, 110, 99, 0.15);
 }
 
 /* Hide/Show logic utilities */

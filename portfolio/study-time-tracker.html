@@ -19,7 +19,7 @@
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Outlined" rel="stylesheet">
     
     <!-- Tailwind CSS -->
-    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.tailwindcss.com?plugins=typography"></script>
     <script>
         tailwind.config = {
             darkMode: 'class',
@@ -64,7 +64,7 @@
 <body class="bg-grey-light text-grey-dark dark:bg-[#1a1a1a] dark:text-gray-200 transition-colors duration-300 antialiased font-sans flex flex-col min-h-screen">
 
     <!-- ORGANISMS: Navigation -->
-    <nav class="fixed w-full z-50 bg-white/90 dark:bg-[#1a1a1a]/90 backdrop-blur-sm border-b border-gray-200 dark:border-gray-800 transition-colors duration-300">
+    <nav class="fixed w-full z-50 bg-white/70 dark:bg-[#1a1a1a]/70 backdrop-blur-md border-b border-gray-100 dark:border-gray-800 transition-colors duration-300">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex justify-between items-center h-20">
                 <!-- ATOMS: Logo -->
@@ -83,7 +83,7 @@
                     <a href="../about.html" class="nav-link text-gray-600 dark:text-gray-300 hover:text-wood-accent dark:hover:text-wood-accent font-medium transition-colors">About Me</a>
                     
                     <!-- ATOMS: Theme Toggle (Desktop) -->
-                    <button id="theme-toggle" class="p-2 rounded-lg bg-gray-100 dark:bg-gray-800 text-gray-600 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-gray-700 focus:outline-none transition-colors" aria-label="Toggle Dark Mode">
+                    <button id="theme-toggle" class="p-2 rounded-lg bg-gray-100 dark:bg-gray-800 text-gray-600 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-wood-accent focus:outline-none transition-all duration-300 hover:scale-110 active:scale-95" aria-label="Toggle Dark Mode">
                         <span class="material-icons-outlined text-xl sun-icon hidden">light_mode</span>
                         <span class="material-icons-outlined text-xl moon-icon">dark_mode</span>
                     </button>
@@ -91,7 +91,7 @@
 
                 <!-- MOLECULES: Mobile Menu Button -->
                 <div class="md:hidden flex items-center space-x-4">
-                    <button id="theme-toggle-mobile" class="p-2 rounded-lg bg-gray-100 dark:bg-gray-800 text-gray-600 dark:text-gray-300 focus:outline-none transition-colors">
+                    <button id="theme-toggle-mobile" class="p-2 rounded-lg bg-gray-100 dark:bg-gray-800 text-gray-600 dark:text-gray-300 focus:outline-none focus:ring-2 focus:ring-wood-accent focus:outline-none transition-all duration-300 hover:scale-110 active:scale-95">
                         <span class="material-icons-outlined text-xl sun-icon hidden">light_mode</span>
                         <span class="material-icons-outlined text-xl moon-icon">dark_mode</span>
                     </button>
