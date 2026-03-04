@@ -180,8 +180,8 @@ window.addEventListener("pointerdown", () => SFX.init(), { once: true });
 
 // --- Scene Setup ---
 const scene = new THREE.Scene();
-scene.background = new THREE.Color(0x111827); // Darker night sky
-scene.fog = new THREE.FogExp2(0x111827, 0.015);
+scene.background = new THREE.Color(0x87ceeb); // Bright daytime sky blue
+scene.fog = new THREE.FogExp2(0x87ceeb, 0.005); // Daytime fog (further away and lighter)
 
 const camera = new THREE.PerspectiveCamera(
   50,
@@ -212,18 +212,18 @@ controls.autoRotate = true;
 controls.autoRotateSpeed = 0.5;
 
 // --- Lighting ---
-const ambientLight = new THREE.AmbientLight(0xffffff, 0.2); // Very dark ambient for night vibe
+const ambientLight = new THREE.AmbientLight(0xffffff, 0.6); // Bright daytime ambient
 scene.add(ambientLight);
 
-// Moon/Main light
-const dirLight = new THREE.DirectionalLight(0xa5b4fc, 0.8); // Pale blue moonlight
-dirLight.position.set(30, 60, 20);
+// Sun (Main light)
+const dirLight = new THREE.DirectionalLight(0xffffff, 1.2); // Bright white sunlight
+dirLight.position.set(50, 100, 50);
 dirLight.castShadow = true;
 dirLight.shadow.mapSize.width = 2048;
 dirLight.shadow.mapSize.height = 2048;
 dirLight.shadow.camera.near = 0.5;
 dirLight.shadow.camera.far = 150;
-const d = 40;
+const d = 50;
 dirLight.shadow.camera.left = -d;
 dirLight.shadow.camera.right = d;
 dirLight.shadow.camera.top = d;
@@ -231,8 +231,8 @@ dirLight.shadow.camera.bottom = -d;
 dirLight.shadow.bias = -0.001;
 scene.add(dirLight);
 
-const fillLight = new THREE.DirectionalLight(0xfca5a5, 0.2); // faint red city glow from below
-fillLight.position.set(-30, 5, -30);
+const fillLight = new THREE.DirectionalLight(0xadd8e6, 0.4); // soft sky blue fill
+fillLight.position.set(-50, 20, -50);
 scene.add(fillLight);
 
 // --- State & UI Elements ---
@@ -298,7 +298,7 @@ scene.add(cityGroup);
 const groundGeo = new THREE.PlaneGeometry(200, 200);
 const streetTex = generateStreetTexture();
 const groundMat = new THREE.MeshStandardMaterial({
-  color: 0x333333,
+  color: 0x94a3b8, // Lighter base daytime asphalt
   map: streetTex,
   roughness: 0.9,
   metalness: 0.2,
@@ -315,12 +315,12 @@ function generateStreetTexture() {
   canvas.height = 512;
   const ctx = canvas.getContext("2d");
 
-  // Base asphalt
-  ctx.fillStyle = "#111827";
+  // Base daytime asphalt
+  ctx.fillStyle = "#64748b";
   ctx.fillRect(0, 0, 512, 512);
 
   // Draw Grid (Roads)
-  ctx.strokeStyle = "#374151";
+  ctx.strokeStyle = "#475569";
   ctx.lineWidth = 15;
 
   // The grid spacing should somewhat match our building spacing (which is 4.5 units)
@@ -364,24 +364,20 @@ function generateWindowTexture() {
   canvas.height = 256;
   const ctx = canvas.getContext("2d");
 
-  // Base dark building color
-  ctx.fillStyle = "#1f2937";
+  // Base building color (lighter for daytime)
+  ctx.fillStyle = "#cbd5e1";
   ctx.fillRect(0, 0, 64, 256);
 
   // Draw windows
   for (let y = 10; y < 250; y += 15) {
     for (let x = 8; x < 60; x += 16) {
-      // 30% chance window is on
+      // 30% chance window is reflecting sun
       if (Math.random() > 0.7) {
-        // Randomize light temp (yellow or white)
-        ctx.fillStyle = Math.random() > 0.5 ? "#fef08a" : "#e0f2fe";
-        // Add glow effect trick in 2D
-        ctx.shadowBlur = 4;
-        ctx.shadowColor = ctx.fillStyle;
+        ctx.fillStyle = "#e0f2fe"; // bright reflection
       } else {
-        ctx.fillStyle = "#0f172a"; // dark window
-        ctx.shadowBlur = 0;
+        ctx.fillStyle = "#334155"; // standard dark window glass
       }
+      ctx.shadowBlur = 0; // Remove glow for daytime
       ctx.fillRect(x, y, 6, 8);
     }
   }
@@ -402,7 +398,8 @@ const windowTextures = [
 // --- City Generation ---
 const gridSize = 8;
 const spacing = 4.5;
-const buildingColors = [0x555555, 0x666666, 0x8d6e63]; // less saturation
+// Brighter daytime colors for buildings
+const buildingColors = [0x94a3b8, 0x64748b, 0xa3a3a3, 0xd4d4d8];
 const lineMat = new THREE.LineBasicMaterial({
   color: 0x000000,
   linewidth: 2,
@@ -1529,9 +1526,6 @@ function animate() {
     }
   }
 
-  // Rotate stars slowly for a living sky
-  stars.rotation.y += delta * 0.02;
-
   // Handle Rain
   const rPositions = rain.geometry.attributes.position.array;
   for (let i = 0; i < rainCount; i++) {
@@ -1568,25 +1562,6 @@ function animate() {
 
   renderer.render(scene, camera);
 }
-
-// --- Starfield Sky ---
-const starCount = 500;
-const starGeo = new THREE.BufferGeometry();
-const starPositions = new Float32Array(starCount * 3);
-for (let i = 0; i < starCount; i++) {
-  starPositions[i * 3] = (Math.random() - 0.5) * 200;
-  starPositions[i * 3 + 1] = 80 + Math.random() * 40; // High above city
-  starPositions[i * 3 + 2] = (Math.random() - 0.5) * 200;
-}
-starGeo.setAttribute("position", new THREE.BufferAttribute(starPositions, 3));
-const starMat = new THREE.PointsMaterial({
-  color: 0xffffff,
-  size: 0.3,
-  transparent: true,
-  opacity: 0.7,
-});
-const stars = new THREE.Points(starGeo, starMat);
-scene.add(stars);
 
 // --- Rain System ---
 const rainCount = 2000;
