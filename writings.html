@@ -57,8 +57,8 @@
     <!-- Custom CSS -->
     <link rel="stylesheet" href="css/style.css" />
     <script src="js/theme-check.js"></script>
-    <link rel="icon" href="assets/logo.png" type="image/png">
-</head>
+    <link rel="icon" href="assets/logo.png" type="image/png" />
+  </head>
   <body
     class="bg-grey-light text-grey-dark dark:bg-[#1a1a1a] dark:text-gray-200 transition-colors duration-300 antialiased font-sans flex flex-col min-h-screen preload"
   >
@@ -135,7 +135,9 @@
               >
             </button>
             <button
-              id="mobile-menu-btn" aria-expanded="false" aria-label="Toggle navigation menu"
+              id="mobile-menu-btn"
+              aria-expanded="false"
+              aria-label="Toggle navigation menu"
               class="text-gray-600 dark:text-gray-300 hover:text-wood-accent focus:outline-none"
             >
               <span class="material-icons-outlined text-3xl">menu</span>
@@ -182,173 +184,195 @@
     <!-- Spacer for fixed Nav -->
     <div class="h-20"></div>
     <main id="main-content" class="flex-grow flex flex-col">
+      <!-- ORGANISMS: Writings -->
+      <section id="writings" class="py-24 bg-white dark:bg-[#1f1f1f] flex-grow">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div
+            class="flex flex-col md:flex-row justify-between items-end mb-12 border-b border-gray-200 dark:border-gray-700 pb-4"
+          >
+            <div data-aos="fade-right">
+              <h2
+                class="text-sm font-bold tracking-widest text-wood-accent uppercase"
+              >
+                Writings
+              </h2>
+              <h3
+                class="mt-2 text-3xl leading-8 font-extrabold tracking-tight text-gray-900 dark:text-white sm:text-4xl"
+              >
+                Thoughts & Tutorials
+              </h3>
+            </div>
 
-    <!-- ORGANISMS: Writings -->
-    <section id="writings" class="py-24 bg-white dark:bg-[#1f1f1f] flex-grow">
-      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div
-          class="flex flex-col md:flex-row justify-between items-end mb-12 border-b border-gray-200 dark:border-gray-700 pb-4"
-        >
-          <div data-aos="fade-right">
-            <h2
-              class="text-sm font-bold tracking-widest text-wood-accent uppercase"
-            >
-              Writings
-            </h2>
-            <h3
-              class="mt-2 text-3xl leading-8 font-extrabold tracking-tight text-gray-900 dark:text-white sm:text-4xl"
-            >
-              Thoughts & Tutorials
-            </h3>
+            <!-- MOLECULES: Tabs -->
+            <div class="flex space-x-1 mt-6 md:mt-0" data-aos="fade-left">
+              <button
+                class="tab-btn active px-6 py-2 rounded-t-lg text-sm font-medium transition-colors border-b-2 border-wood-accent text-wood-accent text-wood-accent"
+                data-target="articles"
+              >
+                Articles
+              </button>
+              <button
+                class="tab-btn px-6 py-2 rounded-t-lg text-sm font-medium text-gray-500 dark:text-gray-400 hover:text-gray-700 dark:hover:text-gray-200 transition-colors border-b-2 border-transparent"
+                data-target="blogs"
+              >
+                Blogs
+              </button>
+            </div>
           </div>
 
-          <!-- MOLECULES: Tabs -->
-          <div class="flex space-x-1 mt-6 md:mt-0" data-aos="fade-left">
-            <button
-              class="tab-btn active px-6 py-2 rounded-t-lg text-sm font-medium transition-colors border-b-2 border-wood-accent text-wood-accent text-wood-accent"
-              data-target="articles"
+          <div
+            id="articles"
+            class="tab-content block animate-fade-in space-y-8"
+          >
+            <!-- Article 1 -->
+            <div
+              class="flex flex-col md:flex-row gap-6 items-start"
+              data-aos="fade-up"
             >
-              Articles
-            </button>
-            <button
-              class="tab-btn px-6 py-2 rounded-t-lg text-sm font-medium text-gray-500 dark:text-gray-400 hover:text-gray-700 dark:hover:text-gray-200 transition-colors border-b-2 border-transparent"
-              data-target="blogs"
+              <div class="w-full md:w-1/4">
+                <span class="text-sm text-gray-400 font-mono"
+                  >Feb 21, 2026</span
+                >
+              </div>
+              <div
+                class="w-full md:w-3/4 hover:translate-x-2 transition-transform duration-300"
+              >
+                <h4
+                  class="text-xl font-bold text-gray-900 dark:text-white mb-2"
+                >
+                  <a
+                    href="writings/articles/legal-kit-ni-juan.html"
+                    class="hover:text-wood-accent"
+                    >Book Report: The Democratization of Philippine
+                    Jurisprudence (Legal Kit ni Juan)</a
+                  >
+                </h4>
+                <p class="text-gray-600 dark:text-gray-400 leading-relaxed">
+                  An exhaustive analysis of the democratization of Philippine
+                  jurisprudence through Atty. Christian D. Sorongon's seminal
+                  work.
+                </p>
+              </div>
+            </div>
+            <!-- Article 2 -->
+            <div
+              class="flex flex-col md:flex-row gap-6 items-start"
+              data-aos="fade-up"
+              data-aos-delay="50"
             >
-              Blogs
-            </button>
+              <div class="w-full md:w-1/4">
+                <span class="text-sm text-gray-400 font-mono"
+                  >Feb 06, 2026</span
+                >
+              </div>
+              <div
+                class="w-full md:w-3/4 hover:translate-x-2 transition-transform duration-300"
+              >
+                <h4
+                  class="text-xl font-bold text-gray-900 dark:text-white mb-2"
+                >
+                  <a
+                    href="writings/articles/how-to-read-people.html"
+                    class="hover:text-wood-accent"
+                    >Book Report: How to Read People Like a Book</a
+                  >
+                </h4>
+                <p class="text-gray-600 dark:text-gray-400 leading-relaxed">
+                  A deep dive into understanding human behavior, motivation, and
+                  non-verbal communication.
+                </p>
+              </div>
+            </div>
+            <!-- Article 3 -->
+            <div
+              class="flex flex-col md:flex-row gap-6 items-start"
+              data-aos="fade-up"
+              data-aos-delay="100"
+            >
+              <div class="w-full md:w-1/4">
+                <span class="text-sm text-gray-400 font-mono"
+                  >Feb 11, 2026</span
+                >
+              </div>
+              <div
+                class="w-full md:w-3/4 hover:translate-x-2 transition-transform duration-300"
+              >
+                <h4
+                  class="text-xl font-bold text-gray-900 dark:text-white mb-2"
+                >
+                  <a
+                    href="writings/articles/accessibility-semantic-html-aria.html"
+                    class="hover:text-wood-accent"
+                    >Accessibility First: Semantic HTML and ARIA</a
+                  >
+                </h4>
+                <p class="text-gray-600 dark:text-gray-400 leading-relaxed">
+                  Why semantic HTML is the bedrock of a usable web and how to
+                  implement ARIA roles correctly.
+                </p>
+              </div>
+            </div>
+            <!-- Article 4 -->
+            <div
+              class="flex flex-col md:flex-row gap-6 items-start"
+              data-aos="fade-up"
+              data-aos-delay="200"
+            >
+              <div class="w-full md:w-1/4">
+                <span class="text-sm text-gray-400 font-mono"
+                  >Feb 12, 2026</span
+                >
+              </div>
+              <div
+                class="w-full md:w-3/4 hover:translate-x-2 transition-transform duration-300"
+              >
+                <h4
+                  class="text-xl font-bold text-gray-900 dark:text-white mb-2"
+                >
+                  <a
+                    href="writings/articles/sovereign-imperatives.html"
+                    class="hover:text-wood-accent"
+                    >Sovereign Imperatives: The Kalayaan Island Group & WPS</a
+                  >
+                </h4>
+                <p class="text-gray-600 dark:text-gray-400 leading-relaxed">
+                  A comprehensive analysis of the legal, historical, and
+                  geopolitical foundations establishing Philippine sovereignty
+                  over the Kalayaan Island Group.
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <div id="blogs" class="tab-content hidden animate-fade-in space-y-8">
+            <!-- Blog 1 -->
+            <div class="flex flex-col md:flex-row gap-6 items-start">
+              <div class="w-full md:w-1/4">
+                <span class="text-sm text-gray-400 font-mono"
+                  >Aug 15, 2023</span
+                >
+              </div>
+              <div
+                class="w-full md:w-3/4 hover:translate-x-2 transition-transform duration-300"
+              >
+                <h4
+                  class="text-xl font-bold text-gray-900 dark:text-white mb-2"
+                >
+                  <a href="#" class="hover:text-wood-accent"
+                    >My Journey into Tech</a
+                  >
+                </h4>
+                <p class="text-gray-600 dark:text-gray-400 leading-relaxed">
+                  Reflecting on 5 years of software engineering and lessons
+                  learned along the way.
+                </p>
+              </div>
+            </div>
           </div>
         </div>
+      </section>
 
-        <div id="articles" class="tab-content block animate-fade-in space-y-8">
-          <!-- Article 1 -->
-          <div
-            class="flex flex-col md:flex-row gap-6 items-start"
-            data-aos="fade-up"
-          >
-            <div class="w-full md:w-1/4">
-              <span class="text-sm text-gray-400 font-mono">Feb 21, 2026</span>
-            </div>
-            <div
-              class="w-full md:w-3/4 hover:translate-x-2 transition-transform duration-300"
-            >
-              <h4 class="text-xl font-bold text-gray-900 dark:text-white mb-2">
-                <a
-                  href="writings/articles/legal-kit-ni-juan.html"
-                  class="hover:text-wood-accent"
-                  >Book Report: The Democratization of Philippine Jurisprudence
-                  (Legal Kit ni Juan)</a
-                >
-              </h4>
-              <p class="text-gray-600 dark:text-gray-400 leading-relaxed">
-                An exhaustive analysis of the democratization of Philippine
-                jurisprudence through Atty. Christian D. Sorongon's seminal
-                work.
-              </p>
-            </div>
-          </div>
-          <!-- Article 2 -->
-          <div
-            class="flex flex-col md:flex-row gap-6 items-start"
-            data-aos="fade-up"
-            data-aos-delay="50"
-          >
-            <div class="w-full md:w-1/4">
-              <span class="text-sm text-gray-400 font-mono">Feb 06, 2026</span>
-            </div>
-            <div
-              class="w-full md:w-3/4 hover:translate-x-2 transition-transform duration-300"
-            >
-              <h4 class="text-xl font-bold text-gray-900 dark:text-white mb-2">
-                <a
-                  href="writings/articles/how-to-read-people.html"
-                  class="hover:text-wood-accent"
-                  >Book Report: How to Read People Like a Book</a
-                >
-              </h4>
-              <p class="text-gray-600 dark:text-gray-400 leading-relaxed">
-                A deep dive into understanding human behavior, motivation, and
-                non-verbal communication.
-              </p>
-            </div>
-          </div>
-          <!-- Article 3 -->
-          <div
-            class="flex flex-col md:flex-row gap-6 items-start"
-            data-aos="fade-up"
-            data-aos-delay="100"
-          >
-            <div class="w-full md:w-1/4">
-              <span class="text-sm text-gray-400 font-mono">Feb 11, 2026</span>
-            </div>
-            <div
-              class="w-full md:w-3/4 hover:translate-x-2 transition-transform duration-300"
-            >
-              <h4 class="text-xl font-bold text-gray-900 dark:text-white mb-2">
-                <a
-                  href="writings/articles/accessibility-semantic-html-aria.html"
-                  class="hover:text-wood-accent"
-                  >Accessibility First: Semantic HTML and ARIA</a
-                >
-              </h4>
-              <p class="text-gray-600 dark:text-gray-400 leading-relaxed">
-                Why semantic HTML is the bedrock of a usable web and how to
-                implement ARIA roles correctly.
-              </p>
-            </div>
-          </div>
-          <!-- Article 4 -->
-          <div
-            class="flex flex-col md:flex-row gap-6 items-start"
-            data-aos="fade-up"
-            data-aos-delay="200"
-          >
-            <div class="w-full md:w-1/4">
-              <span class="text-sm text-gray-400 font-mono">Feb 12, 2026</span>
-            </div>
-            <div
-              class="w-full md:w-3/4 hover:translate-x-2 transition-transform duration-300"
-            >
-              <h4 class="text-xl font-bold text-gray-900 dark:text-white mb-2">
-                <a
-                  href="writings/articles/sovereign-imperatives.html"
-                  class="hover:text-wood-accent"
-                  >Sovereign Imperatives: The Kalayaan Island Group & WPS</a
-                >
-              </h4>
-              <p class="text-gray-600 dark:text-gray-400 leading-relaxed">
-                A comprehensive analysis of the legal, historical, and
-                geopolitical foundations establishing Philippine sovereignty
-                over the Kalayaan Island Group.
-              </p>
-            </div>
-          </div>
-        </div>
-
-        <div id="blogs" class="tab-content hidden animate-fade-in space-y-8">
-          <!-- Blog 1 -->
-          <div class="flex flex-col md:flex-row gap-6 items-start">
-            <div class="w-full md:w-1/4">
-              <span class="text-sm text-gray-400 font-mono">Aug 15, 2023</span>
-            </div>
-            <div
-              class="w-full md:w-3/4 hover:translate-x-2 transition-transform duration-300"
-            >
-              <h4 class="text-xl font-bold text-gray-900 dark:text-white mb-2">
-                <a href="#" class="hover:text-wood-accent"
-                  >My Journey into Tech</a
-                >
-              </h4>
-              <p class="text-gray-600 dark:text-gray-400 leading-relaxed">
-                Reflecting on 5 years of software engineering and lessons
-                learned along the way.
-              </p>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- ORGANISMS: Footer -->
+      <!-- ORGANISMS: Footer -->
     </main>
     <footer
       class="bg-white dark:bg-[#1a1a1a] border-t border-gray-200 dark:border-gray-800 mt-auto"

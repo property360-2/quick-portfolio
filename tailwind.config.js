@@ -32,12 +32,12 @@ module.exports = {
       typography: (theme) => ({
         wood: {
           css: {
-            '--tw-prose-links': theme('colors.wood.accent'),
-            '--tw-prose-bold': theme('colors.wood.accent'),
-            '--tw-prose-headings': theme('colors.gray.900'),
-            '--tw-prose-invert-headings': theme('colors.white'),
-            '--tw-prose-invert-links': theme('colors.wood.accent'),
-            '--tw-prose-invert-bold': theme('colors.wood.accent'),
+            "--tw-prose-links": theme("colors.wood.accent"),
+            "--tw-prose-bold": theme("colors.wood.accent"),
+            "--tw-prose-headings": theme("colors.gray.900"),
+            "--tw-prose-invert-headings": theme("colors.white"),
+            "--tw-prose-invert-links": theme("colors.wood.accent"),
+            "--tw-prose-invert-bold": theme("colors.wood.accent"),
           },
         },
       }),
