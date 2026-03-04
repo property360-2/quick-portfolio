@@ -242,6 +242,7 @@ const traffic = []; // Holds moving vehicles
 const activeFires = []; // Stores objects currently burning
 const activeAsteroids = []; // Stores falling asteroids
 const activeMonsters = []; // Stores the AI Kaijus
+const activeGodzillas = []; // Stores the massive Godzilla AI
 const flashLights = []; // Stores temporary explosion lights
 const activeLasers = []; // Temporarily visible laser beams
 const activeShockwaves = []; // Expanding nuke rings
@@ -270,6 +271,7 @@ const stats = {
   kaiju: 0,
   lasers: 0,
   nukes: 0,
+  godzillas: 0, // NEW STAT
 };
 let gameStartTime = Date.now();
 
@@ -589,6 +591,17 @@ function createCity() {
   });
   activeMonsters.length = 0;
 
+  // Clear Godzillas
+  activeGodzillas.forEach((g) => {
+    scene.remove(g.mesh);
+    if (g.beamMesh) scene.remove(g.beamMesh);
+    g.mesh.traverse((child) => {
+      if (child.geometry) child.geometry.dispose();
+      if (child.material) child.material.dispose();
+    });
+  });
+  activeGodzillas.length = 0;
+
   activeFires.length = 0;
   activeAsteroids.length = 0;
 
@@ -659,6 +672,7 @@ function updateUI() {
     document.getElementById("stat-kaiju").textContent = stats.kaiju;
     document.getElementById("stat-lasers").textContent = stats.lasers;
     document.getElementById("stat-nukes").textContent = stats.nukes;
+    document.getElementById("stat-godzillas").textContent = stats.godzillas;
     const elapsed = Math.floor((Date.now() - gameStartTime) / 1000);
     document.getElementById("stat-time").textContent = elapsed + "s";
     winScreenUI.classList.remove("hidden");
@@ -1069,6 +1083,118 @@ function dropAtomicBomb(targetMesh) {
   SFX.playNuke();
 }
 
+// 7. Godzilla - Massive Kaiju with Atomic Breath
+function spawnGodzilla(targetMesh) {
+  const parent = targetMesh.userData.parentGroup;
+  const size = 3;
+
+  // Body - Dark charcoal
+  const bodyGeo = new THREE.BoxGeometry(size * 1.5, size * 2.5, size * 1.5);
+  const bodyMat = new THREE.MeshStandardMaterial({
+    color: 0x1a1a2e,
+    roughness: 0.8,
+  });
+  const body = new THREE.Mesh(bodyGeo, bodyMat);
+  body.castShadow = true;
+  body.position.y = size * 1.25;
+
+  // Head
+  const headGeo = new THREE.BoxGeometry(size * 0.8, size * 0.8, size);
+  const head = new THREE.Mesh(headGeo, bodyMat);
+  head.position.set(0, size * 1.5, size * 0.8);
+  head.castShadow = true;
+  body.add(head);
+
+  // Jaw (lower)
+  const jawGeo = new THREE.BoxGeometry(size * 0.6, size * 0.3, size * 0.8);
+  const jaw = new THREE.Mesh(jawGeo, bodyMat);
+  jaw.position.set(0, -size * 0.3, size * 0.1);
+  head.add(jaw);
+
+  // Arms
+  const armGeo = new THREE.BoxGeometry(size * 0.3, size * 1.0, size * 0.3);
+  const leftArm = new THREE.Mesh(armGeo, bodyMat);
+  leftArm.position.set(-size * 0.9, size * 0.5, 0);
+  body.add(leftArm);
+  const rightArm = new THREE.Mesh(armGeo, bodyMat);
+  rightArm.position.set(size * 0.9, size * 0.5, 0);
+  body.add(rightArm);
+
+  // Tail
+  const tailGeo = new THREE.BoxGeometry(size * 0.4, size * 0.4, size * 2.5);
+  const tail = new THREE.Mesh(tailGeo, bodyMat);
+  tail.position.set(0, -size * 0.5, -size * 1.8);
+  body.add(tail);
+
+  // Legs
+  const legGeo = new THREE.BoxGeometry(size * 0.5, size * 1.2, size * 0.5);
+  const leftLeg = new THREE.Mesh(legGeo, bodyMat);
+  leftLeg.position.set(-size * 0.4, -size * 1.2, 0);
+  body.add(leftLeg);
+  const rightLeg = new THREE.Mesh(legGeo, bodyMat);
+  rightLeg.position.set(size * 0.4, -size * 1.2, 0);
+  body.add(rightLeg);
+
+  // Glowing Cyan Dorsal Spines
+  const spineGeo = new THREE.ConeGeometry(size * 0.3, size, 4);
+  const spineMat = new THREE.MeshBasicMaterial({ color: 0x00ffff });
+
+  const spine1 = new THREE.Mesh(spineGeo, spineMat.clone());
+  spine1.position.set(0, size * 1.2, -size * 0.4);
+  spine1.rotation.x = -Math.PI / 8;
+  body.add(spine1);
+
+  const spine2 = new THREE.Mesh(spineGeo, spineMat.clone());
+  spine2.position.set(0, size * 0.8, -size * 0.8);
+  spine2.rotation.x = -Math.PI / 6;
+  body.add(spine2);
+
+  const spine3 = new THREE.Mesh(spineGeo, spineMat.clone());
+  spine3.position.set(0, size * 0.3, -size * 1.2);
+  spine3.rotation.x = -Math.PI / 4;
+  body.add(spine3);
+
+  // Eyes
+  const eyeGeo = new THREE.BoxGeometry(size * 0.15, size * 0.1, size * 0.1);
+  const eyeMat = new THREE.MeshBasicMaterial({ color: 0xff0000 });
+  const leftEye = new THREE.Mesh(eyeGeo, eyeMat);
+  leftEye.position.set(-size * 0.2, size * 0.15, size * 0.45);
+  head.add(leftEye);
+  const rightEye = new THREE.Mesh(eyeGeo, eyeMat);
+  rightEye.position.set(size * 0.2, size * 0.15, size * 0.45);
+  head.add(rightEye);
+
+  // Spawn exactly at the clicked building's location (like Kaiju)
+  body.position.set(parent.position.x, size * 1.25, parent.position.z);
+
+  scene.add(body);
+
+  // Destroy initial building
+  triggerExplosion(parent.position, parent.userData.maxHeight, true);
+  parent.userData.targetable = false;
+  cityGroup.remove(parent);
+  spawnFloatingText(parent.position, "+1");
+  registerDestruction();
+
+  stats.godzillas++;
+  addScreenShake(2.0);
+  SFX.playFootstep();
+
+  activeGodzillas.push({
+    mesh: body,
+    headMesh: head,
+    spines: [spine1, spine2, spine3],
+    currentTarget: null,
+    state: "walking",
+    timer: 0,
+    walkTimer: 0,
+    speed: 0.8, // Lumbering movement
+    breathCooldown: 5.0, // Fixed 5 seconds for laser frequency
+    smashCooldown: 0, // Pause after physical hit
+    beamMesh: null,
+  });
+}
+
 // --- Interaction / Raycasting ---
 const raycaster = new THREE.Raycaster();
 const mouse = new THREE.Vector2();
@@ -1104,6 +1230,7 @@ window.addEventListener("mousemove", (event) => {
       if (currentWeapon === "monster") glowColor = 0x004400; // Dark green for Kaiju
       if (currentWeapon === "laser") glowColor = 0x003344; // Cyan for Laser
       if (currentWeapon === "nuke") glowColor = 0x334400; // Toxic yellow for Nuke
+      if (currentWeapon === "godzilla") glowColor = 0x002244; // Deep blue for Godzilla
 
       hoveredBuilding.children.forEach((c) => {
         if (c.material && c.material.emissive)
@@ -1189,6 +1316,9 @@ window.addEventListener("pointerup", (event) => {
     } else if (currentWeapon === "nuke") {
       dropAtomicBomb(clickedBlock);
       updateUI();
+    } else if (currentWeapon === "godzilla") {
+      spawnGodzilla(clickedBlock);
+      updateUI();
     }
   }
 });
@@ -1208,6 +1338,9 @@ retryBtn.addEventListener("click", () => {
   stats.asteroids = 0;
   stats.fires = 0;
   stats.kaiju = 0;
+  stats.lasers = 0;
+  stats.nukes = 0;
+  stats.godzillas = 0;
   gameStartTime = Date.now();
   comboCount = 0;
   gameSpeed = 1.0;
@@ -1522,6 +1655,186 @@ function animate() {
         // Reset rotation
         monster.meshGroup.rotation.z = 0;
         monster.meshGroup.scale.y = 1;
+      }
+    }
+  }
+
+  // Handle Godzillas (AI Loop)
+  for (let i = activeGodzillas.length - 1; i >= 0; i--) {
+    const g = activeGodzillas[i];
+    g.timer += delta;
+
+    // Handle Stomp Cooldown (Attack Speed)
+    if (g.smashCooldown > 0) {
+      g.smashCooldown -= delta;
+      // Idle breathing animation
+      g.mesh.scale.y = 1 + Math.sin(g.timer * 3) * 0.05;
+      continue;
+    }
+
+    if (g.state === "walking") {
+      // Glow fades back
+      g.spines.forEach((s) => s.material.color.setHex(0x008888));
+
+      // Target acquisition (Nearest building parent group)
+      if (!g.currentTarget || !g.currentTarget.userData.targetable) {
+        let closest = null;
+        let minDist = Infinity;
+
+        // Get unique alive parent groups
+        const aliveGroups = [
+          ...new Set(
+            buildings
+              .filter((b) => b.userData.parentGroup.userData.targetable)
+              .map((b) => b.userData.parentGroup),
+          ),
+        ];
+
+        aliveGroups.forEach((group) => {
+          const dist = g.mesh.position.distanceTo(group.position);
+          if (dist < minDist) {
+            minDist = dist;
+            closest = group;
+          }
+        });
+        g.currentTarget = closest;
+      }
+
+      // Movement
+      if (g.currentTarget) {
+        const dir = new THREE.Vector3()
+          .subVectors(g.currentTarget.position, g.mesh.position)
+          .normalize();
+
+        // Face target
+        const targetAngle = Math.atan2(dir.x, dir.z);
+        g.mesh.rotation.y = targetAngle;
+
+        // Move
+        g.mesh.position.addScaledVector(dir, g.speed * delta * 60);
+
+        // Smashing while walking (Godzilla is heavy!)
+        const distanceToTarget = g.mesh.position.distanceTo(
+          g.currentTarget.position,
+        );
+        if (distanceToTarget < 2.5) {
+          // Smash it!
+          g.currentTarget.userData.targetable = false;
+          triggerExplosion(
+            g.currentTarget.position,
+            g.currentTarget.userData.maxHeight,
+            true,
+          );
+          spawnCrater(g.currentTarget.position, "monster");
+          spawnFloatingText(g.currentTarget.position, "+1");
+          registerDestruction();
+          cityGroup.remove(g.currentTarget);
+          g.currentTarget = null;
+
+          // Added smash cooldown (Attack Speed control)
+          g.smashCooldown = 2.5; // Wait 2.5s before taking next step/target
+        }
+
+        // Bobbing walk animation
+        g.walkTimer += delta * 4; // Solid rhythmic steps
+        g.mesh.position.y = 3.75 + Math.sin(g.walkTimer) * 0.4;
+
+        // Screen shake on heavy footsteps (sync with bob)
+        if (Math.sin(g.walkTimer) < -0.9) {
+          addScreenShake(0.18); // Solid thud shake
+          SFX.playFootstep();
+        }
+      } else {
+        // No targets left, wander
+        g.mesh.position.z += g.speed * delta * 60;
+        g.mesh.position.y = 3.75 + Math.sin(g.timer * 4) * 0.4;
+      }
+
+      // Check for breath cooldown
+      if (g.timer > g.breathCooldown && buildings.length > 3) {
+        g.state = "charging";
+        g.timer = 0;
+        SFX.playLaser(); // Warning sound
+      }
+    } else if (g.state === "charging") {
+      // Stop moving, spines glow very bright
+      g.spines.forEach((s) => s.material.color.setHex(0x00ffff));
+
+      if (g.timer > 1.0) {
+        g.state = "firing";
+        g.timer = 0;
+
+        SFX.playNuke(); // Massive roar/blast sound
+        SFX.playLaser();
+        addScreenShake(1.5); // Massive screen shake
+
+        // Create Beam Visual
+        const beamGeo = new THREE.CylinderGeometry(0.5, 2, 80, 16);
+        beamGeo.rotateX(Math.PI / 2); // point forward
+        const beamMat = new THREE.MeshBasicMaterial({
+          color: 0x00ffff,
+          transparent: true,
+          opacity: 0.9,
+        });
+        g.beamMesh = new THREE.Mesh(beamGeo, beamMat);
+
+        // Position beam relative to Godzilla's head
+        g.beamMesh.position.copy(g.mesh.position);
+        g.beamMesh.position.y += 3; // head height
+
+        // Forward vector
+        const dir = new THREE.Vector3(0, 0, 1).applyAxisAngle(
+          new THREE.Vector3(0, 1, 0),
+          g.mesh.rotation.y,
+        );
+        g.beamMesh.position.addScaledVector(dir, 40); // center of 80 length beam
+        g.beamMesh.rotation.y = g.mesh.rotation.y;
+        scene.add(g.beamMesh);
+
+        // Find all buildings intersecting the thick beam path using math, not actual ThreeJS raycast
+        // ThreeJS raycaster needs precise meshes, distance check is easier for custom "thick" ray
+        const p1 = new THREE.Vector3(g.mesh.position.x, 0, g.mesh.position.z);
+        const p2 = p1.clone().addScaledVector(dir, 80); // Beam end
+
+        buildings.forEach((b) => {
+          if (b.parent && b.userData.targetable) {
+            // Distance from point to line segment
+            const dist = new THREE.Line3(p1, p2)
+              .closestPointToPoint(b.position, true, new THREE.Vector3())
+              .distanceTo(b.position);
+
+            if (dist < 1.8) {
+              // Narrower beam to hit roughly 1-2 buildings per line vs clearing whole swaths
+              b.userData.targetable = false;
+              setTimeout(() => {
+                if (!b.parent) return; // already destroyed
+                triggerExplosion(b.position, b.userData.maxHeight, true);
+                spawnCrater(b.position, "laser");
+                spawnFloatingText(b.position, "+1");
+                registerDestruction();
+                cityGroup.remove(b);
+              }, Math.random() * 200); // Slight cascade delay
+            }
+          }
+        });
+
+        triggerBulletTime();
+        updateUI();
+      }
+    } else if (g.state === "firing") {
+      // Beam fade out
+      if (g.beamMesh) {
+        g.beamMesh.scale.x -= delta * 3;
+        g.beamMesh.scale.z -= delta * 3;
+        g.beamMesh.material.opacity -= delta * 2;
+      }
+
+      if (g.timer > 0.5) {
+        if (g.beamMesh) scene.remove(g.beamMesh);
+        g.state = "walking";
+        g.timer = 0;
+        // Fixed 5s cooldown for the beam
+        g.breathCooldown = 5.0;
       }
     }
   }

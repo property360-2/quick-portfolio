@@ -187,7 +187,9 @@ canvas {
   transform: translateX(-50%);
   z-index: 15;
   display: flex;
-  gap: 16px;
+  flex-wrap: nowrap;
+  justify-content: center;
+  gap: 10px;
 
   /* Glassmorphism Effect */
   background: rgba(31, 41, 55, 0.6);
@@ -195,7 +197,7 @@ canvas {
   -webkit-backdrop-filter: blur(12px);
   border: 1px solid rgba(255, 255, 255, 0.1);
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
-  padding: 12px 24px;
+  padding: 12px 20px;
   border-radius: 50px;
 
   /* Slide-up entrance on load */
@@ -218,9 +220,9 @@ canvas {
   background: rgba(255, 255, 255, 0.05);
   border: 2px solid transparent;
   border-radius: 16px;
-  width: 60px;
-  height: 64px;
-  font-size: 24px;
+  width: 54px;
+  height: 58px;
+  font-size: 22px;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -229,6 +231,7 @@ canvas {
   cursor: pointer;
   transition: all 0.2s cubic-bezier(0.25, 0.8, 0.25, 1);
   color: white;
+  flex-shrink: 0;
 }
 
 .weapon-label {
@@ -255,6 +258,7 @@ canvas {
 }
 
 @keyframes pulseGlow {
+
   0%,
   100% {
     box-shadow:
@@ -392,9 +396,10 @@ canvas {
 
   #weapon-toolbar {
     bottom: 16px;
-    gap: 10px;
+    gap: 8px;
     padding: 10px 16px;
     border-radius: 40px;
+    width: 90vw;
   }
 
   .weapon-btn {
@@ -458,16 +463,21 @@ canvas {
 
   #weapon-toolbar {
     bottom: 10px;
-    gap: 6px;
-    padding: 8px 12px;
+    gap: 4px;
+    padding: 8px 6px;
     border-radius: 30px;
+    width: 95vw;
   }
 
   .weapon-btn {
-    width: 40px;
-    height: 40px;
-    font-size: 18px;
+    width: 38px;
+    height: 38px;
+    font-size: 16px;
     border-width: 1.5px;
+  }
+
+  .weapon-label {
+    font-size: 8px;
   }
 
   #win-screen h2 {
