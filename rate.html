@@ -15,47 +15,14 @@
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preload" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" as="style">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     
     <!-- Material Icons -->
+    <link rel="preload" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" as="style">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Outlined" rel="stylesheet">
     
     <!-- Tailwind CSS -->
-    <script src="https://cdn.tailwindcss.com?plugins=typography"></script>
-    <script>
-        tailwind.config = {
-            darkMode: 'class',
-            theme: {
-                extend: {
-                    fontFamily: {
-                        sans: ['Inter', 'sans-serif'],
-                    },
-                    colors: {
-                        wood: {
-                            50: '#efebe9',
-                            100: '#d7ccc8',
-                            200: '#bcaaa4',
-                            300: '#a1887f',
-                            400: '#8d6e63',
-                            500: '#795548',
-                            600: '#6d4c41',
-                            700: '#5d4037',
-                            800: '#4e342e',
-                            900: '#3e2723',
-                            accent: '#8D6E63', // Warm wood brown
-                            muted: '#A1887F'   // Muted wood brown
-                        },
-                        grey: {
-                            dark: '#212121',   // Charcoal
-                            light: '#F5F5F5',  // Off-white
-                            slate: '#374151',
-                            soft: '#9CA3AF'
-                        }
-                    }
-                }
-            }
-        }
-    </script>
     <script>
         // Immediate theme application to prevent flash
         const savedTheme = localStorage.getItem('theme');
@@ -78,6 +45,8 @@
     
     <!-- Custom CSS -->
     <link rel="stylesheet" href="css/style.css">
+  <script src="js/theme-check.js"></script>
+    <link rel="icon" href="assets/logo.png" type="image/png">
 </head>
 <body class="bg-grey-light text-grey-dark dark:bg-[#1a1a1a] dark:text-gray-200 transition-colors duration-300 antialiased font-sans flex flex-col min-h-screen preload">
 
@@ -95,7 +64,7 @@
                 <!-- MOLECULES: Desktop Menu -->
                 <div class="hidden md:flex items-center space-x-8">
                     <a href="index.html" class="nav-link text-gray-600 dark:text-gray-300 hover:text-wood-accent dark:hover:text-wood-accent font-medium transition-colors">Home</a>
-                    <a href="rate.html" class="nav-link text-wood-accent dark:text-wood-accent font-medium transition-colors">Rate</a>
+                    <a href="rate.html" class="nav-link text-wood-accent text-wood-accent font-semibold transition-colors">Rate</a>
                     <a href="portfolio.html" class="nav-link text-gray-600 dark:text-gray-300 hover:text-wood-accent dark:hover:text-wood-accent font-medium transition-colors">Portfolio</a>
                     <a href="writings.html" class="nav-link text-gray-600 dark:text-gray-300 hover:text-wood-accent dark:hover:text-wood-accent font-medium transition-colors">Writings</a>
                     <a href="about.html" class="nav-link text-gray-600 dark:text-gray-300 hover:text-wood-accent dark:hover:text-wood-accent font-medium transition-colors">About Me</a>
@@ -113,7 +82,7 @@
                         <span class="material-icons-outlined text-xl sun-icon hidden">light_mode</span>
                         <span class="material-icons-outlined text-xl moon-icon">dark_mode</span>
                     </button>
-                    <button id="mobile-menu-btn" class="text-gray-600 dark:text-gray-300 hover:text-wood-accent focus:outline-none">
+                    <button id="mobile-menu-btn" aria-expanded="false" aria-label="Toggle navigation menu" class="text-gray-600 dark:text-gray-300 hover:text-wood-accent focus:outline-none">
                         <span class="material-icons-outlined text-3xl">menu</span>
                     </button>
                 </div>
@@ -124,7 +93,7 @@
         <div id="mobile-menu" class="hidden md:hidden bg-white dark:bg-[#1a1a1a] border-t border-gray-200 dark:border-gray-800 absolute w-full left-0">
             <div class="px-4 pt-2 pb-6 space-y-2 shadow-lg">
                 <a href="index.html" class="block px-3 py-3 rounded-md text-base font-medium text-gray-700 dark:text-gray-200 hover:text-wood-accent dark:hover:text-wood-accent hover:bg-gray-50 dark:hover:bg-gray-800 transition-colors">Home</a>
-                <a href="rate.html" class="block px-3 py-3 rounded-md text-base font-medium text-wood-accent dark:text-wood-accent bg-gray-50 dark:bg-gray-800 transition-colors">Rate</a>
+                <a href="rate.html" class="block px-3 py-3 rounded-md text-base font-medium text-wood-accent text-wood-accent bg-gray-50 dark:bg-gray-800 transition-colors">Rate</a>
                 <a href="portfolio.html" class="block px-3 py-3 rounded-md text-base font-medium text-gray-700 dark:text-gray-200 hover:text-wood-accent dark:hover:text-wood-accent hover:bg-gray-50 dark:hover:bg-gray-800 transition-colors">Portfolio</a>
                 <a href="writings.html" class="block px-3 py-3 rounded-md text-base font-medium text-gray-700 dark:text-gray-200 hover:text-wood-accent dark:hover:text-wood-accent hover:bg-gray-50 dark:hover:bg-gray-800 transition-colors">Writings</a>
                 <a href="about.html" class="block px-3 py-3 rounded-md text-base font-medium text-gray-700 dark:text-gray-200 hover:text-wood-accent dark:hover:text-wood-accent hover:bg-gray-50 dark:hover:bg-gray-800 transition-colors">About Me</a>
@@ -134,6 +103,7 @@
 
     <!-- Spacer for fixed Nav -->
     <div class="h-20"></div>
+    <main id="main-content" class="flex-grow flex flex-col">
 
     <!-- ORGANISMS: Services / Rate -->
     <section id="rate" class="py-24 bg-white dark:bg-[#1f1f1f] flex-grow">
@@ -176,7 +146,7 @@
                                 <div class="text-sm text-gray-600 dark:text-gray-400">1–3 pages, dark/light toggle, responsive, basic animations</div>
                             </td>
                             <td class="px-6 py-4 whitespace-nowrap text-right">
-                                <div class="text-sm font-bold text-wood-600 dark:text-wood-400 price-cell" data-min="100" data-max="160">
+                                <div class="text-sm font-bold text-wood-accent text-wood-accent price-cell" data-min="100" data-max="160">
                                     $100 – $160
                                 </div>
                             </td>
@@ -190,7 +160,7 @@
                                 <div class="text-sm text-gray-600 dark:text-gray-400">5–7 pages, modular sections, project cards, blog (static markdown), basic UI</div>
                             </td>
                             <td class="px-6 py-4 whitespace-nowrap text-right">
-                                <div class="text-sm font-bold text-wood-600 dark:text-wood-400 price-cell" data-min="160" data-max="260">
+                                <div class="text-sm font-bold text-wood-accent text-wood-accent price-cell" data-min="160" data-max="260">
                                     $160 – $260
                                 </div>
                             </td>
@@ -204,7 +174,7 @@
                                 <div class="text-sm text-gray-600 dark:text-gray-400">5–10 pages, forms (contact), dynamic project cards, dark/light, polished UI</div>
                             </td>
                             <td class="px-6 py-4 whitespace-nowrap text-right">
-                                <div class="text-sm font-bold text-wood-600 dark:text-wood-400 price-cell" data-min="260" data-max="455">
+                                <div class="text-sm font-bold text-wood-accent text-wood-accent price-cell" data-min="260" data-max="455">
                                     $260 – $455
                                 </div>
                             </td>
@@ -218,7 +188,7 @@
                                 <div class="text-sm text-gray-600 dark:text-gray-400">CRUD-ish UI, tables, dashboards, filters, charts (no backend)</div>
                             </td>
                             <td class="px-6 py-4 whitespace-nowrap text-right">
-                                <div class="text-sm font-bold text-wood-600 dark:text-wood-400 price-cell" data-min="325" data-max="585">
+                                <div class="text-sm font-bold text-wood-accent text-wood-accent price-cell" data-min="325" data-max="585">
                                     $325 – $585
                                 </div>
                             </td>
@@ -232,7 +202,7 @@
                                 <div class="text-sm text-gray-600 dark:text-gray-400">Backend integration (Node.js / Django / PHP), AI/automation, dynamic data, real-time interactions</div>
                             </td>
                             <td class="px-6 py-4 whitespace-nowrap text-right">
-                                <div class="text-sm font-bold text-wood-600 dark:text-wood-400 price-cell" data-min="520" data-max="975" data-plus="true">
+                                <div class="text-sm font-bold text-wood-accent text-wood-accent price-cell" data-min="520" data-max="975" data-plus="true">
                                     $520 – $975+
                                 </div>
                             </td>
@@ -303,7 +273,7 @@
                         // Update toggle UI
                         if (isPhp) {
                             toggle.classList.remove('bg-gray-200', 'dark:bg-gray-700');
-                            toggle.classList.add('bg-wood-600');
+                            toggle.classList.add('bg-wood-accent');
                             toggleDot.classList.add('translate-x-5');
                             
                             labelPhp.classList.remove('text-gray-500');
@@ -314,7 +284,7 @@
                             currencyCode.innerText = '(PHP)';
                         } else {
                             toggle.classList.add('bg-gray-200', 'dark:bg-gray-700');
-                            toggle.classList.remove('bg-wood-600');
+                            toggle.classList.remove('bg-wood-accent');
                             toggleDot.classList.remove('translate-x-5');
                             
                             labelUsd.classList.remove('text-gray-500');
@@ -335,6 +305,7 @@
     </section>
 
     <!-- ORGANISMS: Footer -->
+    </main>
     <footer class="bg-white dark:bg-[#1a1a1a] border-t border-gray-200 dark:border-gray-800 mt-auto">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
             <div class="flex flex-col md:flex-row justify-between items-center">
@@ -362,13 +333,13 @@
     </footer>
 
     <!-- Back to Top Button -->
-    <button id="back-to-top" class="fixed bottom-8 right-8 p-3 rounded-full bg-wood-600 text-white shadow-lg hover:bg-wood-700 transition-all transform translate-y-20 opacity-0 z-40 focus:outline-none" aria-label="Back to Top">
+    <button id="back-to-top" class="fixed bottom-8 right-8 p-3 rounded-full bg-wood-accent text-white shadow-lg hover:bg-wood-700 transition-all transform translate-y-20 opacity-0 z-40 focus:outline-none" aria-label="Back to Top">
         <span class="material-icons-outlined">arrow_upward</span>
     </button>
 
     <!-- Scripts -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-    <script src="js/main.js"></script>
+    <script src="js/main.js" defer></script>
 </body>
 </html>

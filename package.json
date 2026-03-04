@@ -1,0 +1,33 @@
+{
+  "name": "quick-portfolio",
+  "version": "1.0.0",
+  "description": "> **\"Faster. Cleaner. Smarter digital experiences.\"**",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "npx tailwindcss -i ./css/input.css -o ./css/style.css --minify",
+    "format": "prettier --write \"**/*.{html,js,css}\"",
+    "dev": "live-server --entry-file=404.html"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/property360-2/quick-portfolio.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/property360-2/quick-portfolio/issues"
+  },
+  "homepage": "https://github.com/property360-2/quick-portfolio#readme",
+  "devDependencies": {
+    "@tailwindcss/typography": "^0.5.19",
+    "prettier": "^3.8.1",
+    "tailwindcss": "^3.4.19"
+  },
+  "dependencies": {
+    "autoprefixer": "^10.4.27",
+    "postcss": "^8.5.8"
+  }
+}
