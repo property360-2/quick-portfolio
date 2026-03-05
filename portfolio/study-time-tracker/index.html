@@ -3,20 +3,20 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Gym Management System Case Study | Jun Alvior</title>
+    <title>Study Time Tracker App | Productivity Tool</title>
     <meta
       name="description"
-      content="A robust Gym Management System built with Django and Tailwind CSS. Features membership tracking, user authentication, and responsive design."
+      content="A productivity web application for students to track study sessions and analyze progress. Built with Django and Tailwind CSS."
     />
     <link
       rel="canonical"
-      href="https://property360-2.github.io/quick-portfolio/portfolio/gym-project.html"
+      href="https://property360-2.github.io/quick-portfolio/portfolio/study-time-tracker.html"
     />
 
     <!-- Open Graph -->
     <meta
       property="og:image"
-      content="https://property360-2.github.io/quick-portfolio/assets/gym-ng-mga-supersaiyan.webp"
+      content="https://property360-2.github.io/quick-portfolio/assets/study-time-tracker.webp"
     />
 
     <!-- Google Fonts -->
@@ -34,39 +34,16 @@
     />
 
     <!-- Tailwind CSS -->
-    <script>
-      // Immediate theme application to prevent flash
-      const savedTheme = localStorage.getItem("theme");
-      const systemPrefersDark = window.matchMedia(
-        "(prefers-color-scheme: dark)",
-      ).matches;
-
-      if (savedTheme === "dark" || (!savedTheme && systemPrefersDark)) {
-        document.documentElement.classList.add("dark");
-      } else {
-        document.documentElement.classList.remove("dark");
-      }
-    </script>
-    <style>
-      /* Critical CSS for immediate theme application */
-      html {
-        background-color: #f5f5f5;
-      }
-      html.dark {
-        background-color: #1a1a1a;
-      }
-    </style>
-
     <!-- AOS CSS -->
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet" />
 
     <!-- Custom CSS -->
-    <link rel="stylesheet" href="../css/style.css" />
-    <script src="../js/theme-check.js"></script>
-    <link rel="icon" href="../assets/logo.png" type="image/png" />
+    <link rel="stylesheet" href="../../css/style.css" />
+    <script src="../../js/theme-check.js"></script>
+    <link rel="icon" href="../../assets/logo.png" type="image/png" />
   </head>
   <body
-    class="bg-grey-light text-grey-dark dark:bg-[#1a1a1a] dark:text-gray-200 transition-colors duration-300 antialiased font-sans flex flex-col min-h-screen preload"
+    class="bg-grey-light text-grey-dark dark:bg-[#1a1a1a] dark:text-gray-200 transition-colors duration-300 antialiased font-sans flex flex-col min-h-screen"
   >
     <!-- ORGANISMS: Navigation -->
     <nav
@@ -77,7 +54,7 @@
           <!-- ATOMS: Logo -->
           <div class="flex-shrink-0 flex items-center">
             <a
-              href="../index.html"
+              href="../../index.html"
               class="text-2xl font-bold text-gray-900 dark:text-white tracking-tight"
             >
               Jun <span class="text-wood-accent">Alvior</span>
@@ -87,27 +64,27 @@
           <!-- MOLECULES: Desktop Menu -->
           <div class="hidden md:flex items-center space-x-8">
             <a
-              href="../index.html"
+              href="../../index.html"
               class="nav-link text-gray-600 dark:text-gray-300 hover:text-wood-accent dark:hover:text-wood-accent font-medium transition-colors"
               >Home</a
             >
             <a
-              href="../rate.html"
+              href="../../rate/"
               class="nav-link text-gray-600 dark:text-gray-300 hover:text-wood-accent dark:hover:text-wood-accent font-medium transition-colors"
               >Rate</a
             >
             <a
-              href="../portfolio.html"
+              href="../../portfolio/"
               class="nav-link text-wood-accent text-wood-accent font-semibold transition-colors"
               >Portfolio</a
             >
             <a
-              href="../writings.html"
+              href="../../writings/"
               class="nav-link text-gray-600 dark:text-gray-300 hover:text-wood-accent dark:hover:text-wood-accent font-medium transition-colors"
               >Writings</a
             >
             <a
-              href="../about.html"
+              href="../../about/"
               class="nav-link text-gray-600 dark:text-gray-300 hover:text-wood-accent dark:hover:text-wood-accent font-medium transition-colors"
               >About Me</a
             >
@@ -159,27 +136,27 @@
       >
         <div class="px-4 pt-2 pb-6 space-y-2 shadow-lg">
           <a
-            href="../index.html"
+            href="../../index.html"
             class="block px-3 py-3 rounded-md text-base font-medium text-gray-700 dark:text-gray-200 hover:text-wood-accent dark:hover:text-wood-accent hover:bg-gray-50 dark:hover:bg-gray-800 transition-colors"
             >Home</a
           >
           <a
-            href="../rate.html"
+            href="../../rate/"
             class="block px-3 py-3 rounded-md text-base font-medium text-gray-700 dark:text-gray-200 hover:text-wood-accent dark:hover:text-wood-accent hover:bg-gray-50 dark:hover:bg-gray-800 transition-colors"
             >Rate</a
           >
           <a
-            href="../portfolio.html"
+            href="../../portfolio/"
             class="block px-3 py-3 rounded-md text-base font-medium text-wood-accent text-wood-accent bg-gray-50 dark:bg-gray-800 transition-colors"
             >Portfolio</a
           >
           <a
-            href="../writings.html"
+            href="../../writings/"
             class="block px-3 py-3 rounded-md text-base font-medium text-gray-700 dark:text-gray-200 hover:text-wood-accent dark:hover:text-wood-accent hover:bg-gray-50 dark:hover:bg-gray-800 transition-colors"
             >Writings</a
           >
           <a
-            href="../about.html"
+            href="../../about/"
             class="block px-3 py-3 rounded-md text-base font-medium text-gray-700 dark:text-gray-200 hover:text-wood-accent dark:hover:text-wood-accent hover:bg-gray-50 dark:hover:bg-gray-800 transition-colors"
             >About Me</a
           >
@@ -196,7 +173,7 @@
           <!-- Breadcrumb -->
           <div class="mb-8 text-sm text-gray-500 dark:text-gray-400">
             <a
-              href="../portfolio.html"
+              href="../../portfolio/"
               class="hover:text-wood-accent transition-colors"
               ><- Back to Portfolio</a
             >
@@ -206,8 +183,8 @@
           <header class="mb-12" data-aos="fade-up">
             <div class="mb-8 rounded-xl overflow-hidden shadow-2xl">
               <img
-                src="../assets/gym-ng-mga-supersaiyan.webp"
-                alt="Gym Project"
+                src="../../assets/study-time-tracker.webp"
+                alt="Study Time Tracker"
                 class="w-full h-auto object-cover max-h-[500px]"
                 loading="lazy"
                 decoding="async"
@@ -216,7 +193,7 @@
             <h1
               class="text-4xl md:text-5xl font-bold text-gray-900 dark:text-white mb-6"
             >
-              Gym Project
+              Study Time Tracker
             </h1>
             <div class="flex flex-wrap gap-4 text-sm">
               <span
@@ -225,11 +202,11 @@
               >
               <span
                 class="px-3 py-1 bg-wood-100 dark:bg-wood-900 text-wood-accent text-wood-accent rounded-full font-medium"
-                >Python</span
+                >Productivity</span
               >
               <span
                 class="px-3 py-1 bg-wood-100 dark:bg-wood-900 text-wood-accent text-wood-accent rounded-full font-medium"
-                >Tailwind CSS</span
+                >Web App</span
               >
             </div>
           </header>
@@ -241,31 +218,31 @@
             data-aos-delay="100"
           >
             <p>
-              This project is a full-featured gym management and membership
-              system. It demonstrates a robust backend built with Django,
-              ensuring secure authentication, data management, and scalability.
+              A simple and effective web application designed to help students
+              and professionals track their study sessions and manage their time
+              more efficiently.
             </p>
 
             <h3>Key Features</h3>
             <ul>
               <li>
-                <strong>User Authentication:</strong> Secure login and
-                registration flows.
+                <strong>Session Tracking:</strong> Log start and end times for
+                study sessions.
               </li>
               <li>
-                <strong>Membership Management:</strong> Track member details and
-                subscription statuses.
+                <strong>Progress Visualization:</strong> View daily and weekly
+                study statistics.
               </li>
               <li>
-                <strong>Responsive Design:</strong> Built with Tailwind CSS for
-                a seamless mobile and desktop experience.
+                <strong>Goal Setting:</strong> Set and track personal study
+                goals.
               </li>
             </ul>
 
             <h3>Project Links</h3>
-            <div class="flex flex-wrap gap-4 not-prose mt-6">
+            <div class="flex gap-4 not-prose mt-6">
               <a
-                href="https://vibe-kbvc.onrender.com/login/?next=/"
+                href="https://simple-study-time-tracker.onrender.com/login/?next=/"
                 target="_blank"
                 class="px-6 py-3 bg-wood-accent hover:bg-wood-700 text-white font-semibold rounded-lg shadow-md transition-all transform hover:-translate-y-0.5 flex items-center"
               >
@@ -273,7 +250,7 @@
                 Live Demo
               </a>
               <a
-                href="https://github.com/property360-2/vibe"
+                href="https://github.com/property360-2/kay-jm"
                 target="_blank"
                 class="px-6 py-3 bg-gray-200 dark:bg-gray-800 hover:bg-gray-300 dark:hover:bg-gray-700 text-gray-900 dark:text-white font-semibold rounded-lg shadow-md transition-all transform hover:-translate-y-0.5 flex items-center"
               >
@@ -355,6 +332,6 @@
     <!-- Scripts -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-    <script src="../js/main.js" defer></script>
+    <script src="../../js/main.js" defer></script>
   </body>
 </html>
