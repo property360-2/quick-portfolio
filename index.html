@@ -6,11 +6,11 @@
     <title>Jun Alvior | Full Stack Developer & Political Science Student</title>
     <meta
       name="description"
-      content="Portfolio of Jun Alvior, a Full Stack Developer specializing in Python, Django, React, and Next.js. Building faster, cleaner, and smarter digital experiences."
+      content="Portfolio of Jun Alvior, a Full Stack Developer specializing in Python, Django, React, Next.js, Supabase, and Firebase. Building faster, cleaner, and smarter digital experiences."
     />
     <meta
       name="keywords"
-      content="Jun Alvior, Full Stack Developer, Python Developer, Django, React, Web Development, Portfolio"
+      content="Jun Alvior, Full Stack Developer, Python Developer, Django, React, Web Development, Portfolio, Supabase, Firebase"
     />
     <meta name="author" content="Jun Alvior" />
     <link
@@ -286,19 +286,14 @@
             </div>
           </div>
 
-          <!-- Hero Image/Visual -->
-          <div class="hero-visual relative hidden lg:block gs-reveal-img">
-            <div
-              class="absolute inset-0 bg-wood-accent/20 rounded-2xl transform rotate-6 scale-95"
-            ></div>
-            <img
-              src="https://images.unsplash.com/photo-1542831371-29b0f74f9713?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80"
-              alt="Generative code art on screen"
-              class="relative rounded-2xl shadow-2xl object-cover h-[500px] w-full grayscale-[20%] hover:grayscale-0 transition-all duration-700"
-              loading="lazy"
-              decoding="async"
-            />
-          </div>
+            <div class="hero-visual relative hidden lg:block gs-reveal-img h-[500px]">
+              <div
+                class="absolute inset-0 bg-wood-accent/10 rounded-2xl transform rotate-6 scale-95 blur-sm"
+              ></div>
+              <div id="cat-canvas-container" class="relative rounded-2xl w-full h-full drop-shadow-2xl flex items-center justify-center">
+                <!-- 3D Cat will render here -->
+              </div>
+            </div>
         </div>
       </div>
     </section>
@@ -371,8 +366,17 @@
     </button>
 
     <!-- Scripts -->
+    <script type="importmap">
+      {
+        "imports": {
+          "three": "https://unpkg.com/three@0.160.0/build/three.module.js",
+          "three/addons/": "https://unpkg.com/three@0.160.0/examples/jsm/"
+        }
+      }
+    </script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script src="js/main.js" defer></script>
+    <script type="module" src="js/3d-scene.js"></script>
   </body>
 </html>
