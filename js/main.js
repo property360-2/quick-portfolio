@@ -242,3 +242,56 @@ window.addEventListener("click", (e) => {
     closeModal();
   }
 });
+
+// ==========================================
+// 8. Portfolio Category Filtering
+// ==========================================
+document.addEventListener("DOMContentLoaded", () => {
+  const filterBtns = document.querySelectorAll('.filter-btn');
+  const projectCards = document.querySelectorAll('.project-card');
+
+  if (filterBtns.length > 0 && projectCards.length > 0) {
+    filterBtns.forEach(btn => {
+      btn.addEventListener('click', () => {
+        // Remove active class from all buttons
+        filterBtns.forEach(b => {
+          b.classList.remove('active', 'bg-wood-accent', 'text-white');
+          b.classList.add('bg-gray-200', 'dark:bg-gray-800', 'text-gray-700', 'dark:text-gray-300');
+        });
+
+        // Add active class to clicked button
+        btn.classList.remove('bg-gray-200', 'dark:bg-gray-800', 'text-gray-700', 'dark:text-gray-300');
+        btn.classList.add('active', 'bg-wood-accent', 'text-white');
+
+        const filterValue = btn.getAttribute('data-filter');
+
+        projectCards.forEach(card => {
+          if (filterValue === 'all') {
+            card.style.display = 'block';
+            setTimeout(() => {
+              card.style.opacity = '1';
+              card.classList.add('aos-animate');
+            }, 50);
+          } else {
+            const categories = card.getAttribute('data-category');
+            if (categories && categories.includes(filterValue)) {
+              card.style.display = 'block';
+              setTimeout(() => {
+                card.style.opacity = '1';
+                card.classList.add('aos-animate');
+              }, 50);
+            } else {
+              card.style.opacity = '0';
+              card.classList.remove('aos-animate');
+              setTimeout(() => card.style.display = 'none', 300);
+            }
+          }
+        });
+
+        setTimeout(() => {
+          if (typeof AOS !== 'undefined') AOS.refresh();
+        }, 350);
+      });
+    });
+  }
+});
