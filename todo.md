@@ -20,7 +20,7 @@ This document outlines the actionable steps to improve the maintainability, perf
 ## 3. Performance & Image Optimization
 - [ ] Add `loading="lazy"` to all images located below the fold (e.g., project screenshots, footer images).
 - [ ] Add `decoding="async"` to all images to prevent them from blocking the main thread.
-- [ ] Convert `.png` and `.jpg` images in the `assets/` folder to WebP format to reduce file size.
+- [x] Convert `.png` and `.jpg` images in the `assets/` folder to WebP format to reduce file size.
 - [ ] Update all `<img src="...">` references to point to the new `.webp` files.
 - [ ] Add `<link rel="preload">` to explicitly fetch critical typography like Google Fonts early.
 - [ ] Move external scripts (`main.js`) to the `<head>` and append the `defer` attribute.
