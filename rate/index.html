@@ -108,21 +108,26 @@
     <!-- ORGANISMS: Services / Rate -->
     <section id="rate" class="py-24 bg-white dark:bg-[#1f1f1f] flex-grow">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="text-center mb-16">
-                <h2 class="text-sm font-bold tracking-widest text-wood-accent uppercase gs-reveal">Services</h2>
-                <h3 class="mt-2 text-3xl leading-8 font-extrabold tracking-tight text-gray-900 dark:text-white sm:text-4xl gs-reveal">
+            <div class="text-center mb-16 relative" data-aos="fade-up">
+                <span class="text-wood-accent font-bold tracking-widest uppercase text-sm mb-4 block">Services</span>
+                <h2 class="text-3xl md:text-5xl font-extrabold text-gray-900 dark:text-white tracking-tight mb-4">
                     What I Offer & Rates
-                </h3>
+                </h2>
+                <div class="w-24 h-1 bg-wood-accent mx-auto rounded-full mt-6"></div>
             </div>
+            <!-- Top Controls: Start Quote + Currency Toggle -->
+            <div class="flex flex-col sm:flex-row justify-end items-center gap-4 mb-8" data-aos="fade-up">
+                <button type="button" id="start-quote-btn" class="px-4 md:px-6 py-3 bg-wood-accent text-white font-bold rounded-xl shadow-lg hover:bg-wood-700 hover:shadow-xl transition-all inline-flex items-center group h-[52px]">
+                    Want to submit a quote?
+                    <span class="material-icons-outlined ml-2 transform group-hover:translate-x-1 transition-transform text-lg text-white">send</span>
+                </button>
 
-            <!-- Currency Toggle -->
-            <div class="flex justify-end mb-6" data-aos="fade-up">
-                <div class="flex items-center space-x-3 bg-gray-50 dark:bg-gray-800 p-3 rounded-lg border border-gray-100 dark:border-gray-700">
-                    <span class="text-sm font-medium text-gray-700 dark:text-gray-300" id="currency-label-usd">USD ($)</span>
-                    <button id="currency-toggle" class="relative inline-flex flex-shrink-0 h-6 w-11 border-2 border-transparent rounded-full cursor-pointer transition-colors ease-in-out duration-200 focus:outline-none bg-gray-200 dark:bg-gray-700" role="switch" aria-checked="false">
-                        <span aria-hidden="true" class="translate-x-0 pointer-events-none inline-block h-5 w-5 rounded-full bg-white shadow transform ring-0 transition ease-in-out duration-200"></span>
+                <div class="flex items-center space-x-3 bg-white dark:bg-black/20 p-3 rounded-xl border border-gray-200 dark:border-gray-700 shadow-sm h-[52px]">
+                    <span class="text-sm font-medium text-gray-500 dark:text-gray-500" id="currency-label-USDT">USDT ($)</span>
+                    <button id="currency-toggle" class="relative inline-flex flex-shrink-0 h-6 w-11 border-2 border-transparent rounded-full cursor-pointer transition-colors ease-in-out duration-200 focus:outline-none bg-wood-accent" role="switch" aria-checked="true">
+                        <span aria-hidden="true" class="translate-x-5 pointer-events-none inline-block h-5 w-5 rounded-full bg-white shadow transform ring-0 transition ease-in-out duration-200"></span>
                     </button>
-                    <span class="text-sm font-medium text-gray-500 dark:text-gray-500" id="currency-label-php">PHP (₱)</span>
+                    <span class="text-sm font-bold text-gray-900 dark:text-white" id="currency-label-php">PHP (₱)</span>
                 </div>
             </div>
 
@@ -133,7 +138,7 @@
                         <tr>
                             <th scope="col" class="px-6 py-4 text-left text-xs font-bold text-wood-accent uppercase tracking-wider w-1/4">Project Type</th>
                             <th scope="col" class="px-6 py-4 text-left text-xs font-bold text-wood-accent uppercase tracking-wider w-1/2">Features</th>
-                            <th scope="col" class="px-6 py-4 text-right text-xs font-bold text-wood-accent uppercase tracking-wider w-1/4">Price <span id="currency-code">(USD)</span></th>
+                            <th scope="col" class="px-6 py-4 text-right text-xs font-bold text-wood-accent uppercase tracking-wider w-1/4">Price <span id="currency-code">(PHP)</span></th>
                         </tr>
                     </thead>
                     <tbody class="divide-y divide-gray-200 dark:divide-gray-700">
@@ -211,94 +216,1172 @@
                 </table>
             </div>
 
+            </div>
+
+            <!-- Quote Maker Modal Overlay -->
+            <div id="quote-modal" class="fixed inset-0 z-[100] hidden overflow-y-auto px-4 py-6 sm:px-0">
+                <!-- Backdrop -->
+                <div id="modal-backdrop" class="fixed inset-0 bg-black/60 backdrop-blur-sm transition-opacity opacity-0"></div>
+
+                <!-- Modal Container -->
+                <div id="modal-container" class="relative w-full sm:w-auto bg-white dark:bg-[#121212] rounded-2xl max-w-6xl mx-auto shadow-2xl transform scale-95 opacity-0 transition-all duration-300 ease-out border border-gray-200 dark:border-gray-800">
+                    <!-- Close Button -->
+                    <button id="close-modal-btn" class="absolute top-6 right-6 p-2 rounded-full bg-gray-100 dark:bg-white/5 text-gray-500 dark:text-gray-400 hover:text-wood-accent transition-colors z-[110]">
+                        <span class="material-icons-outlined">close</span>
+                    </button>
+
+                    <div id="quote-maker" class="p-4 sm:p-10">
+                        <div class="mb-10">
+                            <h3 class="text-2xl font-extrabold text-gray-900 dark:text-white flex items-center">
+                                <span class="material-icons-outlined text-wood-accent mr-3">receipt_long</span>
+                                Interactive Quote Maker
+                            </h3>
+                            <p class="text-gray-500 dark:text-gray-400 mt-2">Customize your project and get an instant estimate.</p>
+                        </div>
+
+                        <div id="quote-form-wrapper">
+                            <form id="quote-form" class="space-y-12">
+
+                        <div class="grid grid-cols-1 xl:grid-cols-3 gap-8 items-start">
+                            
+                            <!-- Left Column: Categories -->
+                            <div class="xl:col-span-2 space-y-10 order-1">
+                                <div class="form-step " data-step="1">
+                                    <div>
+                                        <h4 class="text-xl md:text-2xl font-bold text-gray-900 dark:text-white border-b border-gray-200 dark:border-gray-800 pb-3 mb-6 flex items-center">
+                                            <span class="flex items-center justify-center w-8 h-8 rounded-full bg-wood-accent/10 text-wood-accent text-sm mr-3">1</span> 
+                                            Pages Layouts <span class="text-sm text-gray-500 dark:text-gray-400 font-normal ml-3">(Custom Quantity)</span>
+                                        </h4>
+                                        <div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-4">
+<div class="qty-card hover:z-20 relative h-full flex flex-col p-5 rounded-xl border border-gray-200 dark:border-gray-700 bg-white/40 dark:bg-white/5 backdrop-blur-sm transition-all duration-300 hover:border-wood-accent/50 hover:shadow-md dark:border-gray-700/50">
+                                            <div class="flex justify-between items-start w-full mb-4">
+                                                <span class="material-icons-outlined card-icon text-gray-400 transition-colors text-3xl">web</span>
+                                                <div class="flex items-center space-x-1 border border-gray-200 dark:border-gray-600 rounded-lg p-0.5 bg-white dark:bg-gray-800">
+                                                    <button type="button" class="w-6 h-6 flex items-center justify-center rounded-md bg-gray-100 hover:bg-gray-200 dark:bg-gray-700 dark:hover:bg-gray-600 text-gray-600 dark:text-gray-300 qty-minus">-</button>
+                                                    <input type="number" class="w-8 text-center bg-transparent border-0 outline-none text-sm font-bold text-gray-900 dark:text-white quote-qty-input" value="0" min="0" data-type="onetime" data-price-php="12000" data-price-usdt="214" readonly>
+                                                    <button type="button" class="w-6 h-6 flex items-center justify-center rounded-md bg-gray-100 hover:bg-gray-200 dark:bg-gray-700 dark:hover:bg-gray-600 text-gray-600 dark:text-gray-300 qty-plus">+</button>
+                                                </div>
+                                            </div>
+                                            <div class="flex flex-col mt-auto">
+                                                <div class="flex items-center mb-1">
+                                                    <span class="text-sm font-bold text-gray-900 dark:text-gray-200 item-label">Landing Page</span>
+                                                    <div class="relative group ml-1.5 inline-flex items-center">
+                                                            <span class="material-icons-outlined text-[16px] text-gray-400 hover:text-wood-accent transition-colors cursor-help">info</span>
+                                                            <div class="absolute bottom-full left-1/2 -translate-x-1/2 mb-2 w-48 p-2.5 bg-gray-900 dark:bg-white dark:text-gray-900 text-white text-xs rounded-lg shadow-2xl opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-[100] text-center pointer-events-none font-normal leading-relaxed ring-1 ring-white/10 dark:ring-black/5">
+                                                                Single-page layout designed to convert visitors into leads or customers.
+                                                                <div class="absolute top-full left-1/2 -translate-x-1/2 border-4 border-transparent border-t-gray-900 dark:border-t-white"></div>
+                                                            </div>
+                                                        </div>
+                                                </div>
+                                                <span class="text-sm font-mono font-semibold text-wood-accent price-display" data-base-php="12000" data-base-usdt="214">₱12,000</span>
+                                            </div>
+                                        </div>
+<div class="qty-card hover:z-20 relative h-full flex flex-col p-5 rounded-xl border border-gray-200 dark:border-gray-700 bg-white/40 dark:bg-white/5 backdrop-blur-sm transition-all duration-300 hover:border-wood-accent/50 hover:shadow-md dark:border-gray-700/50">
+                                            <div class="flex justify-between items-start w-full mb-4">
+                                                <span class="material-icons-outlined card-icon text-gray-400 transition-colors text-3xl">description</span>
+                                                <div class="flex items-center space-x-1 border border-gray-200 dark:border-gray-600 rounded-lg p-0.5 bg-white dark:bg-gray-800">
+                                                    <button type="button" class="w-6 h-6 flex items-center justify-center rounded-md bg-gray-100 hover:bg-gray-200 dark:bg-gray-700 dark:hover:bg-gray-600 text-gray-600 dark:text-gray-300 qty-minus">-</button>
+                                                    <input type="number" class="w-8 text-center bg-transparent border-0 outline-none text-sm font-bold text-gray-900 dark:text-white quote-qty-input" value="0" min="0" data-type="onetime" data-price-php="6000" data-price-usdt="107" readonly>
+                                                    <button type="button" class="w-6 h-6 flex items-center justify-center rounded-md bg-gray-100 hover:bg-gray-200 dark:bg-gray-700 dark:hover:bg-gray-600 text-gray-600 dark:text-gray-300 qty-plus">+</button>
+                                                </div>
+                                            </div>
+                                            <div class="flex flex-col mt-auto">
+                                                <div class="flex items-center mb-1">
+                                                    <span class="text-sm font-bold text-gray-900 dark:text-gray-200 item-label">Standard Content Page</span>
+                                                    <div class="relative group ml-1.5 inline-flex items-center">
+                                                            <span class="material-icons-outlined text-[16px] text-gray-400 hover:text-wood-accent transition-colors cursor-help">info</span>
+                                                            <div class="absolute bottom-full left-1/2 -translate-x-1/2 mb-2 w-48 p-2.5 bg-gray-900 dark:bg-white dark:text-gray-900 text-white text-xs rounded-lg shadow-2xl opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-[100] text-center pointer-events-none font-normal leading-relaxed ring-1 ring-white/10 dark:ring-black/5">
+                                                                General purpose page for About, Services, or textual content.
+                                                                <div class="absolute top-full left-1/2 -translate-x-1/2 border-4 border-transparent border-t-gray-900 dark:border-t-white"></div>
+                                                            </div>
+                                                        </div>
+                                                </div>
+                                                <span class="text-sm font-mono font-semibold text-wood-accent price-display" data-base-php="6000" data-base-usdt="107">₱6,000</span>
+                                            </div>
+                                        </div>
+<div class="qty-card hover:z-20 relative h-full flex flex-col p-5 rounded-xl border border-gray-200 dark:border-gray-700 bg-white/40 dark:bg-white/5 backdrop-blur-sm transition-all duration-300 hover:border-wood-accent/50 hover:shadow-md dark:border-gray-700/50">
+                                            <div class="flex justify-between items-start w-full mb-4">
+                                                <span class="material-icons-outlined card-icon text-gray-400 transition-colors text-3xl">contact_page</span>
+                                                <div class="flex items-center space-x-1 border border-gray-200 dark:border-gray-600 rounded-lg p-0.5 bg-white dark:bg-gray-800">
+                                                    <button type="button" class="w-6 h-6 flex items-center justify-center rounded-md bg-gray-100 hover:bg-gray-200 dark:bg-gray-700 dark:hover:bg-gray-600 text-gray-600 dark:text-gray-300 qty-minus">-</button>
+                                                    <input type="number" class="w-8 text-center bg-transparent border-0 outline-none text-sm font-bold text-gray-900 dark:text-white quote-qty-input" value="0" min="0" data-type="onetime" data-price-php="5000" data-price-usdt="89" readonly>
+                                                    <button type="button" class="w-6 h-6 flex items-center justify-center rounded-md bg-gray-100 hover:bg-gray-200 dark:bg-gray-700 dark:hover:bg-gray-600 text-gray-600 dark:text-gray-300 qty-plus">+</button>
+                                                </div>
+                                            </div>
+                                            <div class="flex flex-col mt-auto">
+                                                <div class="flex items-center mb-1">
+                                                    <span class="text-sm font-bold text-gray-900 dark:text-gray-200 item-label">Contact Page</span>
+                                                    <div class="relative group ml-1.5 inline-flex items-center">
+                                                            <span class="material-icons-outlined text-[16px] text-gray-400 hover:text-wood-accent transition-colors cursor-help">info</span>
+                                                            <div class="absolute bottom-full left-1/2 -translate-x-1/2 mb-2 w-48 p-2.5 bg-gray-900 dark:bg-white dark:text-gray-900 text-white text-xs rounded-lg shadow-2xl opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-[100] text-center pointer-events-none font-normal leading-relaxed ring-1 ring-white/10 dark:ring-black/5">
+                                                                Includes contact form, maps, and direct company details.
+                                                                <div class="absolute top-full left-1/2 -translate-x-1/2 border-4 border-transparent border-t-gray-900 dark:border-t-white"></div>
+                                                            </div>
+                                                        </div>
+                                                </div>
+                                                <span class="text-sm font-mono font-semibold text-wood-accent price-display" data-base-php="5000" data-base-usdt="89">₱5,000</span>
+                                            </div>
+                                        </div>
+<div class="qty-card hover:z-20 relative h-full flex flex-col p-5 rounded-xl border border-gray-200 dark:border-gray-700 bg-white/40 dark:bg-white/5 backdrop-blur-sm transition-all duration-300 hover:border-wood-accent/50 hover:shadow-md dark:border-gray-700/50">
+                                            <div class="flex justify-between items-start w-full mb-4">
+                                                <span class="material-icons-outlined card-icon text-gray-400 transition-colors text-3xl">dynamic_form</span>
+                                                <div class="flex items-center space-x-1 border border-gray-200 dark:border-gray-600 rounded-lg p-0.5 bg-white dark:bg-gray-800">
+                                                    <button type="button" class="w-6 h-6 flex items-center justify-center rounded-md bg-gray-100 hover:bg-gray-200 dark:bg-gray-700 dark:hover:bg-gray-600 text-gray-600 dark:text-gray-300 qty-minus">-</button>
+                                                    <input type="number" class="w-8 text-center bg-transparent border-0 outline-none text-sm font-bold text-gray-900 dark:text-white quote-qty-input" value="0" min="0" data-type="onetime" data-price-php="10000" data-price-usdt="179" readonly>
+                                                    <button type="button" class="w-6 h-6 flex items-center justify-center rounded-md bg-gray-100 hover:bg-gray-200 dark:bg-gray-700 dark:hover:bg-gray-600 text-gray-600 dark:text-gray-300 qty-plus">+</button>
+                                                </div>
+                                            </div>
+                                            <div class="flex flex-col mt-auto">
+                                                <div class="flex items-center mb-1">
+                                                    <span class="text-sm font-bold text-gray-900 dark:text-gray-200 item-label">Form Page</span>
+                                                    <div class="relative group ml-1.5 inline-flex items-center">
+                                                            <span class="material-icons-outlined text-[16px] text-gray-400 hover:text-wood-accent transition-colors cursor-help">info</span>
+                                                            <div class="absolute bottom-full left-1/2 -translate-x-1/2 mb-2 w-48 p-2.5 bg-gray-900 dark:bg-white dark:text-gray-900 text-white text-xs rounded-lg shadow-2xl opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-[100] text-center pointer-events-none font-normal leading-relaxed ring-1 ring-white/10 dark:ring-black/5">
+                                                                Custom multi-step or complex data collection form.
+                                                                <div class="absolute top-full left-1/2 -translate-x-1/2 border-4 border-transparent border-t-gray-900 dark:border-t-white"></div>
+                                                            </div>
+                                                        </div>
+                                                </div>
+                                                <span class="text-sm font-mono font-semibold text-wood-accent price-display" data-base-php="10000" data-base-usdt="179">₱10,000</span>
+                                            </div>
+                                        </div>
+<div class="qty-card hover:z-20 relative h-full flex flex-col p-5 rounded-xl border border-gray-200 dark:border-gray-700 bg-white/40 dark:bg-white/5 backdrop-blur-sm transition-all duration-300 hover:border-wood-accent/50 hover:shadow-md dark:border-gray-700/50">
+                                            <div class="flex justify-between items-start w-full mb-4">
+                                                <span class="material-icons-outlined card-icon text-gray-400 transition-colors text-3xl">dashboard</span>
+                                                <div class="flex items-center space-x-1 border border-gray-200 dark:border-gray-600 rounded-lg p-0.5 bg-white dark:bg-gray-800">
+                                                    <button type="button" class="w-6 h-6 flex items-center justify-center rounded-md bg-gray-100 hover:bg-gray-200 dark:bg-gray-700 dark:hover:bg-gray-600 text-gray-600 dark:text-gray-300 qty-minus">-</button>
+                                                    <input type="number" class="w-8 text-center bg-transparent border-0 outline-none text-sm font-bold text-gray-900 dark:text-white quote-qty-input" value="0" min="0" data-type="onetime" data-price-php="18000" data-price-usdt="321" readonly>
+                                                    <button type="button" class="w-6 h-6 flex items-center justify-center rounded-md bg-gray-100 hover:bg-gray-200 dark:bg-gray-700 dark:hover:bg-gray-600 text-gray-600 dark:text-gray-300 qty-plus">+</button>
+                                                </div>
+                                            </div>
+                                            <div class="flex flex-col mt-auto">
+                                                <div class="flex items-center mb-1">
+                                                    <span class="text-sm font-bold text-gray-900 dark:text-gray-200 item-label">Dashboard Page</span>
+                                                    <div class="relative group ml-1.5 inline-flex items-center">
+                                                            <span class="material-icons-outlined text-[16px] text-gray-400 hover:text-wood-accent transition-colors cursor-help">info</span>
+                                                            <div class="absolute bottom-full left-1/2 -translate-x-1/2 mb-2 w-48 p-2.5 bg-gray-900 dark:bg-white dark:text-gray-900 text-white text-xs rounded-lg shadow-2xl opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-[100] text-center pointer-events-none font-normal leading-relaxed ring-1 ring-white/10 dark:ring-black/5">
+                                                                User interface for managing data, settings, or application states.
+                                                                <div class="absolute top-full left-1/2 -translate-x-1/2 border-4 border-transparent border-t-gray-900 dark:border-t-white"></div>
+                                                            </div>
+                                                        </div>
+                                                </div>
+                                                <span class="text-sm font-mono font-semibold text-wood-accent price-display" data-base-php="18000" data-base-usdt="321">₱18,000</span>
+                                            </div>
+                                        </div>
+<div class="qty-card hover:z-20 relative h-full flex flex-col p-5 rounded-xl border border-gray-200 dark:border-gray-700 bg-white/40 dark:bg-white/5 backdrop-blur-sm transition-all duration-300 hover:border-wood-accent/50 hover:shadow-md dark:border-gray-700/50">
+                                            <div class="flex justify-between items-start w-full mb-4">
+                                                <span class="material-icons-outlined card-icon text-gray-400 transition-colors text-3xl">table_chart</span>
+                                                <div class="flex items-center space-x-1 border border-gray-200 dark:border-gray-600 rounded-lg p-0.5 bg-white dark:bg-gray-800">
+                                                    <button type="button" class="w-6 h-6 flex items-center justify-center rounded-md bg-gray-100 hover:bg-gray-200 dark:bg-gray-700 dark:hover:bg-gray-600 text-gray-600 dark:text-gray-300 qty-minus">-</button>
+                                                    <input type="number" class="w-8 text-center bg-transparent border-0 outline-none text-sm font-bold text-gray-900 dark:text-white quote-qty-input" value="0" min="0" data-type="onetime" data-price-php="15000" data-price-usdt="268" readonly>
+                                                    <button type="button" class="w-6 h-6 flex items-center justify-center rounded-md bg-gray-100 hover:bg-gray-200 dark:bg-gray-700 dark:hover:bg-gray-600 text-gray-600 dark:text-gray-300 qty-plus">+</button>
+                                                </div>
+                                            </div>
+                                            <div class="flex flex-col mt-auto">
+                                                <div class="flex items-center mb-1">
+                                                    <span class="text-sm font-bold text-gray-900 dark:text-gray-200 item-label">CRUD Table Page</span>
+                                                    <div class="relative group ml-1.5 inline-flex items-center">
+                                                            <span class="material-icons-outlined text-[16px] text-gray-400 hover:text-wood-accent transition-colors cursor-help">info</span>
+                                                            <div class="absolute bottom-full left-1/2 -translate-x-1/2 mb-2 w-48 p-2.5 bg-gray-900 dark:bg-white dark:text-gray-900 text-white text-xs rounded-lg shadow-2xl opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-[100] text-center pointer-events-none font-normal leading-relaxed ring-1 ring-white/10 dark:ring-black/5">
+                                                                Advanced data table with Create, Read, Update, and Delete capabilities.
+                                                                <div class="absolute top-full left-1/2 -translate-x-1/2 border-4 border-transparent border-t-gray-900 dark:border-t-white"></div>
+                                                            </div>
+                                                        </div>
+                                                </div>
+                                                <span class="text-sm font-mono font-semibold text-wood-accent price-display" data-base-php="15000" data-base-usdt="268">₱15,000</span>
+                                            </div>
+                                        </div>
+<div class="qty-card hover:z-20 relative h-full flex flex-col p-5 rounded-xl border border-gray-200 dark:border-gray-700 bg-white/40 dark:bg-white/5 backdrop-blur-sm transition-all duration-300 hover:border-wood-accent/50 hover:shadow-md dark:border-gray-700/50">
+                                            <div class="flex justify-between items-start w-full mb-4">
+                                                <span class="material-icons-outlined card-icon text-gray-400 transition-colors text-3xl">summarize</span>
+                                                <div class="flex items-center space-x-1 border border-gray-200 dark:border-gray-600 rounded-lg p-0.5 bg-white dark:bg-gray-800">
+                                                    <button type="button" class="w-6 h-6 flex items-center justify-center rounded-md bg-gray-100 hover:bg-gray-200 dark:bg-gray-700 dark:hover:bg-gray-600 text-gray-600 dark:text-gray-300 qty-minus">-</button>
+                                                    <input type="number" class="w-8 text-center bg-transparent border-0 outline-none text-sm font-bold text-gray-900 dark:text-white quote-qty-input" value="0" min="0" data-type="onetime" data-price-php="25000" data-price-usdt="446" readonly>
+                                                    <button type="button" class="w-6 h-6 flex items-center justify-center rounded-md bg-gray-100 hover:bg-gray-200 dark:bg-gray-700 dark:hover:bg-gray-600 text-gray-600 dark:text-gray-300 qty-plus">+</button>
+                                                </div>
+                                            </div>
+                                            <div class="flex flex-col mt-auto">
+                                                <div class="flex items-center mb-1">
+                                                    <span class="text-sm font-bold text-gray-900 dark:text-gray-200 item-label">Reports Page</span>
+                                                    <div class="relative group ml-1.5 inline-flex items-center">
+                                                            <span class="material-icons-outlined text-[16px] text-gray-400 hover:text-wood-accent transition-colors cursor-help">info</span>
+                                                            <div class="absolute bottom-full left-1/2 -translate-x-1/2 mb-2 w-48 p-2.5 bg-gray-900 dark:bg-white dark:text-gray-900 text-white text-xs rounded-lg shadow-2xl opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-[100] text-center pointer-events-none font-normal leading-relaxed ring-1 ring-white/10 dark:ring-black/5">
+                                                                Generated reports view with exportable data formats.
+                                                                <div class="absolute top-full left-1/2 -translate-x-1/2 border-4 border-transparent border-t-gray-900 dark:border-t-white"></div>
+                                                            </div>
+                                                        </div>
+                                                </div>
+                                                <span class="text-sm font-mono font-semibold text-wood-accent price-display" data-base-php="25000" data-base-usdt="446">₱25,000</span>
+                                            </div>
+                                        </div>
+<div class="qty-card hover:z-20 relative h-full flex flex-col p-5 rounded-xl border border-gray-200 dark:border-gray-700 bg-white/40 dark:bg-white/5 backdrop-blur-sm transition-all duration-300 hover:border-wood-accent/50 hover:shadow-md dark:border-gray-700/50">
+                                            <div class="flex justify-between items-start w-full mb-4">
+                                                <span class="material-icons-outlined card-icon text-gray-400 transition-colors text-3xl">analytics</span>
+                                                <div class="flex items-center space-x-1 border border-gray-200 dark:border-gray-600 rounded-lg p-0.5 bg-white dark:bg-gray-800">
+                                                    <button type="button" class="w-6 h-6 flex items-center justify-center rounded-md bg-gray-100 hover:bg-gray-200 dark:bg-gray-700 dark:hover:bg-gray-600 text-gray-600 dark:text-gray-300 qty-minus">-</button>
+                                                    <input type="number" class="w-8 text-center bg-transparent border-0 outline-none text-sm font-bold text-gray-900 dark:text-white quote-qty-input" value="0" min="0" data-type="onetime" data-price-php="22000" data-price-usdt="393" readonly>
+                                                    <button type="button" class="w-6 h-6 flex items-center justify-center rounded-md bg-gray-100 hover:bg-gray-200 dark:bg-gray-700 dark:hover:bg-gray-600 text-gray-600 dark:text-gray-300 qty-plus">+</button>
+                                                </div>
+                                            </div>
+                                            <div class="flex flex-col mt-auto">
+                                                <div class="flex items-center mb-1">
+                                                    <span class="text-sm font-bold text-gray-900 dark:text-gray-200 item-label">Analytics Page</span>
+                                                    <div class="relative group ml-1.5 inline-flex items-center">
+                                                            <span class="material-icons-outlined text-[16px] text-gray-400 hover:text-wood-accent transition-colors cursor-help">info</span>
+                                                            <div class="absolute bottom-full left-1/2 -translate-x-1/2 mb-2 w-48 p-2.5 bg-gray-900 dark:bg-white dark:text-gray-900 text-white text-xs rounded-lg shadow-2xl opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-[100] text-center pointer-events-none font-normal leading-relaxed ring-1 ring-white/10 dark:ring-black/5">
+                                                                Visual analytics boards and metric tracking interface.
+                                                                <div class="absolute top-full left-1/2 -translate-x-1/2 border-4 border-transparent border-t-gray-900 dark:border-t-white"></div>
+                                                            </div>
+                                                        </div>
+                                                </div>
+                                                <span class="text-sm font-mono font-semibold text-wood-accent price-display" data-base-php="22000" data-base-usdt="393">₱22,000</span>
+                                            </div>
+                                        </div>
+<div class="qty-card hover:z-20 relative h-full flex flex-col p-5 rounded-xl border border-gray-200 dark:border-gray-700 bg-white/40 dark:bg-white/5 backdrop-blur-sm transition-all duration-300 hover:border-wood-accent/50 hover:shadow-md dark:border-gray-700/50">
+                                            <div class="flex justify-between items-start w-full mb-4">
+                                                <span class="material-icons-outlined card-icon text-gray-400 transition-colors text-3xl">settings</span>
+                                                <div class="flex items-center space-x-1 border border-gray-200 dark:border-gray-600 rounded-lg p-0.5 bg-white dark:bg-gray-800">
+                                                    <button type="button" class="w-6 h-6 flex items-center justify-center rounded-md bg-gray-100 hover:bg-gray-200 dark:bg-gray-700 dark:hover:bg-gray-600 text-gray-600 dark:text-gray-300 qty-minus">-</button>
+                                                    <input type="number" class="w-8 text-center bg-transparent border-0 outline-none text-sm font-bold text-gray-900 dark:text-white quote-qty-input" value="0" min="0" data-type="onetime" data-price-php="10000" data-price-usdt="179" readonly>
+                                                    <button type="button" class="w-6 h-6 flex items-center justify-center rounded-md bg-gray-100 hover:bg-gray-200 dark:bg-gray-700 dark:hover:bg-gray-600 text-gray-600 dark:text-gray-300 qty-plus">+</button>
+                                                </div>
+                                            </div>
+                                            <div class="flex flex-col mt-auto">
+                                                <div class="flex items-center mb-1">
+                                                    <span class="text-sm font-bold text-gray-900 dark:text-gray-200 item-label">Settings Page</span>
+                                                    <div class="relative group ml-1.5 inline-flex items-center">
+                                                            <span class="material-icons-outlined text-[16px] text-gray-400 hover:text-wood-accent transition-colors cursor-help">info</span>
+                                                            <div class="absolute bottom-full left-1/2 -translate-x-1/2 mb-2 w-48 p-2.5 bg-gray-900 dark:bg-white dark:text-gray-900 text-white text-xs rounded-lg shadow-2xl opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-[100] text-center pointer-events-none font-normal leading-relaxed ring-1 ring-white/10 dark:ring-black/5">
+                                                                User preferences and account configuration panel.
+                                                                <div class="absolute top-full left-1/2 -translate-x-1/2 border-4 border-transparent border-t-gray-900 dark:border-t-white"></div>
+                                                            </div>
+                                                        </div>
+                                                </div>
+                                                <span class="text-sm font-mono font-semibold text-wood-accent price-display" data-base-php="10000" data-base-usdt="179">₱10,000</span>
+                                            </div>
+                                        </div>
+<div class="qty-card hover:z-20 relative h-full flex flex-col p-5 rounded-xl border border-gray-200 dark:border-gray-700 bg-white/40 dark:bg-white/5 backdrop-blur-sm transition-all duration-300 hover:border-wood-accent/50 hover:shadow-md dark:border-gray-700/50">
+                                            <div class="flex justify-between items-start w-full mb-4">
+                                                <span class="material-icons-outlined card-icon text-gray-400 transition-colors text-3xl">account_circle</span>
+                                                <div class="flex items-center space-x-1 border border-gray-200 dark:border-gray-600 rounded-lg p-0.5 bg-white dark:bg-gray-800">
+                                                    <button type="button" class="w-6 h-6 flex items-center justify-center rounded-md bg-gray-100 hover:bg-gray-200 dark:bg-gray-700 dark:hover:bg-gray-600 text-gray-600 dark:text-gray-300 qty-minus">-</button>
+                                                    <input type="number" class="w-8 text-center bg-transparent border-0 outline-none text-sm font-bold text-gray-900 dark:text-white quote-qty-input" value="0" min="0" data-type="onetime" data-price-php="8000" data-price-usdt="143" readonly>
+                                                    <button type="button" class="w-6 h-6 flex items-center justify-center rounded-md bg-gray-100 hover:bg-gray-200 dark:bg-gray-700 dark:hover:bg-gray-600 text-gray-600 dark:text-gray-300 qty-plus">+</button>
+                                                </div>
+                                            </div>
+                                            <div class="flex flex-col mt-auto">
+                                                <div class="flex items-center mb-1">
+                                                    <span class="text-sm font-bold text-gray-900 dark:text-gray-200 item-label">User Profile Page</span>
+                                                    <div class="relative group ml-1.5 inline-flex items-center">
+                                                            <span class="material-icons-outlined text-[16px] text-gray-400 hover:text-wood-accent transition-colors cursor-help">info</span>
+                                                            <div class="absolute bottom-full left-1/2 -translate-x-1/2 mb-2 w-48 p-2.5 bg-gray-900 dark:bg-white dark:text-gray-900 text-white text-xs rounded-lg shadow-2xl opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-[100] text-center pointer-events-none font-normal leading-relaxed ring-1 ring-white/10 dark:ring-black/5">
+                                                                Individual user details and public/private profile view.
+                                                                <div class="absolute top-full left-1/2 -translate-x-1/2 border-4 border-transparent border-t-gray-900 dark:border-t-white"></div>
+                                                            </div>
+                                                        </div>
+                                                </div>
+                                                <span class="text-sm font-mono font-semibold text-wood-accent price-display" data-base-php="8000" data-base-usdt="143">₱8,000</span>
+                                            </div>
+                                        </div>
+<div class="qty-card hover:z-20 relative h-full flex flex-col p-5 rounded-xl border border-gray-200 dark:border-gray-700 bg-white/40 dark:bg-white/5 backdrop-blur-sm transition-all duration-300 hover:border-wood-accent/50 hover:shadow-md dark:border-gray-700/50">
+                                            <div class="flex justify-between items-start w-full mb-4">
+                                                <span class="material-icons-outlined card-icon text-gray-400 transition-colors text-3xl">admin_panel_settings</span>
+                                                <div class="flex items-center space-x-1 border border-gray-200 dark:border-gray-600 rounded-lg p-0.5 bg-white dark:bg-gray-800">
+                                                    <button type="button" class="w-6 h-6 flex items-center justify-center rounded-md bg-gray-100 hover:bg-gray-200 dark:bg-gray-700 dark:hover:bg-gray-600 text-gray-600 dark:text-gray-300 qty-minus">-</button>
+                                                    <input type="number" class="w-8 text-center bg-transparent border-0 outline-none text-sm font-bold text-gray-900 dark:text-white quote-qty-input" value="0" min="0" data-type="onetime" data-price-php="20000" data-price-usdt="357" readonly>
+                                                    <button type="button" class="w-6 h-6 flex items-center justify-center rounded-md bg-gray-100 hover:bg-gray-200 dark:bg-gray-700 dark:hover:bg-gray-600 text-gray-600 dark:text-gray-300 qty-plus">+</button>
+                                                </div>
+                                            </div>
+                                            <div class="flex flex-col mt-auto">
+                                                <div class="flex items-center mb-1">
+                                                    <span class="text-sm font-bold text-gray-900 dark:text-gray-200 item-label">Admin Management Page</span>
+                                                    <div class="relative group ml-1.5 inline-flex items-center">
+                                                            <span class="material-icons-outlined text-[16px] text-gray-400 hover:text-wood-accent transition-colors cursor-help">info</span>
+                                                            <div class="absolute bottom-full left-1/2 -translate-x-1/2 mb-2 w-48 p-2.5 bg-gray-900 dark:bg-white dark:text-gray-900 text-white text-xs rounded-lg shadow-2xl opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-[100] text-center pointer-events-none font-normal leading-relaxed ring-1 ring-white/10 dark:ring-black/5">
+                                                                Administrative control layout for managing users and content.
+                                                                <div class="absolute top-full left-1/2 -translate-x-1/2 border-4 border-transparent border-t-gray-900 dark:border-t-white"></div>
+                                                            </div>
+                                                        </div>
+                                                </div>
+                                                <span class="text-sm font-mono font-semibold text-wood-accent price-display" data-base-php="20000" data-base-usdt="357">₱20,000</span>
+                                            </div>
+                                        </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-step hidden" data-step="2">
+                                    <div>
+                                        <h4 class="text-xl md:text-2xl font-bold text-gray-900 dark:text-white border-b border-gray-200 dark:border-gray-800 pb-3 mb-6 flex items-center">
+                                            <span class="flex items-center justify-center w-8 h-8 rounded-full bg-wood-accent/10 text-wood-accent text-sm mr-3">2</span> 
+                                            Core Features <span class="text-sm text-gray-500 dark:text-gray-400 font-normal ml-3">(One-Time)</span>
+                                        </h4>
+                                        <div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-4">
+<label class="cursor-pointer relative block h-full group/card hover:z-20">
+                                            <input type="checkbox" class="quote-item peer sr-only" data-type="onetime" data-price-php="15000" data-price-usdt="268">
+                                            <div class="h-full flex flex-col p-5 rounded-xl border border-gray-200 dark:border-gray-700 bg-white/40 dark:bg-white/5 backdrop-blur-sm transition-all duration-300 hover:border-wood-accent/50 hover:shadow-md dark:border-gray-700/50 peer-checked:border-wood-accent peer-checked:ring-1 peer-checked:ring-wood-accent peer-checked:bg-wood-accent/5 dark:peer-checked:bg-wood-accent/10 relative">
+                                                <div class="flex justify-between items-start w-full mb-4">
+                                                    <span class="material-icons-outlined text-gray-400 peer-checked:text-wood-accent transition-colors text-3xl">login</span>
+                                                    <div class="w-6 h-6 rounded-full border border-gray-300 dark:border-gray-600 flex items-center justify-center peer-checked:bg-wood-accent peer-checked:border-wood-accent transition-colors">
+                                                         <span class="material-icons-outlined text-white text-sm opacity-0 peer-checked:opacity-100">check</span>
+                                                    </div>
+                                                </div>
+                                                <div class="flex flex-col mt-auto">
+                                                    <div class="flex items-center mb-1">
+                                                        <span class="text-sm font-bold text-gray-900 dark:text-gray-200 item-label">Authentication</span>
+                                                        <div class="relative group ml-1.5 inline-flex items-center">
+                                                            <span class="material-icons-outlined text-[16px] text-gray-400 hover:text-wood-accent transition-colors cursor-help">info</span>
+                                                            <div class="absolute bottom-full left-1/2 -translate-x-1/2 mb-2 w-48 p-2.5 bg-gray-900 dark:bg-white dark:text-gray-900 text-white text-xs rounded-lg shadow-2xl opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-[100] text-center pointer-events-none font-normal leading-relaxed ring-1 ring-white/10 dark:ring-black/5">
+                                                                Secure login and registration system for users.
+                                                                <div class="absolute top-full left-1/2 -translate-x-1/2 border-4 border-transparent border-t-gray-900 dark:border-t-white"></div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <span class="text-sm font-mono font-semibold text-wood-accent price-display" data-base-php="15000" data-base-usdt="268">₱15,000</span>
+                                                </div>
+                                            </div>
+                                        </label>
+<label class="cursor-pointer relative block h-full group/card hover:z-20">
+                                            <input type="checkbox" class="quote-item peer sr-only" data-type="onetime" data-price-php="12000" data-price-usdt="214">
+                                            <div class="h-full flex flex-col p-5 rounded-xl border border-gray-200 dark:border-gray-700 bg-white/40 dark:bg-white/5 backdrop-blur-sm transition-all duration-300 hover:border-wood-accent/50 hover:shadow-md dark:border-gray-700/50 peer-checked:border-wood-accent peer-checked:ring-1 peer-checked:ring-wood-accent peer-checked:bg-wood-accent/5 dark:peer-checked:bg-wood-accent/10 relative">
+                                                <div class="flex justify-between items-start w-full mb-4">
+                                                    <span class="material-icons-outlined text-gray-400 peer-checked:text-wood-accent transition-colors text-3xl">policy</span>
+                                                    <div class="w-6 h-6 rounded-full border border-gray-300 dark:border-gray-600 flex items-center justify-center peer-checked:bg-wood-accent peer-checked:border-wood-accent transition-colors">
+                                                         <span class="material-icons-outlined text-white text-sm opacity-0 peer-checked:opacity-100">check</span>
+                                                    </div>
+                                                </div>
+                                                <div class="flex flex-col mt-auto">
+                                                    <div class="flex items-center mb-1">
+                                                        <span class="text-sm font-bold text-gray-900 dark:text-gray-200 item-label">Role-Based Access</span>
+                                                        <div class="relative group ml-1.5 inline-flex items-center">
+                                                            <span class="material-icons-outlined text-[16px] text-gray-400 hover:text-wood-accent transition-colors cursor-help">info</span>
+                                                            <div class="absolute bottom-full left-1/2 -translate-x-1/2 mb-2 w-48 p-2.5 bg-gray-900 dark:bg-white dark:text-gray-900 text-white text-xs rounded-lg shadow-2xl opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-[100] text-center pointer-events-none font-normal leading-relaxed ring-1 ring-white/10 dark:ring-black/5">
+                                                                Different permission levels (e.g., User, Admin, Editor).
+                                                                <div class="absolute top-full left-1/2 -translate-x-1/2 border-4 border-transparent border-t-gray-900 dark:border-t-white"></div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <span class="text-sm font-mono font-semibold text-wood-accent price-display" data-base-php="12000" data-base-usdt="214">₱12,000</span>
+                                                </div>
+                                            </div>
+                                        </label>
+<label class="cursor-pointer relative block h-full group/card hover:z-20">
+                                            <input type="checkbox" class="quote-item peer sr-only" data-type="onetime" data-price-php="8000" data-price-usdt="143">
+                                            <div class="h-full flex flex-col p-5 rounded-xl border border-gray-200 dark:border-gray-700 bg-white/40 dark:bg-white/5 backdrop-blur-sm transition-all duration-300 hover:border-wood-accent/50 hover:shadow-md dark:border-gray-700/50 peer-checked:border-wood-accent peer-checked:ring-1 peer-checked:ring-wood-accent peer-checked:bg-wood-accent/5 dark:peer-checked:bg-wood-accent/10 relative">
+                                                <div class="flex justify-between items-start w-full mb-4">
+                                                    <span class="material-icons-outlined text-gray-400 peer-checked:text-wood-accent transition-colors text-3xl">group_add</span>
+                                                    <div class="w-6 h-6 rounded-full border border-gray-300 dark:border-gray-600 flex items-center justify-center peer-checked:bg-wood-accent peer-checked:border-wood-accent transition-colors">
+                                                         <span class="material-icons-outlined text-white text-sm opacity-0 peer-checked:opacity-100">check</span>
+                                                    </div>
+                                                </div>
+                                                <div class="flex flex-col mt-auto">
+                                                    <div class="flex items-center mb-1">
+                                                        <span class="text-sm font-bold text-gray-900 dark:text-gray-200 item-label">Social Login</span>
+                                                        <div class="relative group ml-1.5 inline-flex items-center">
+                                                            <span class="material-icons-outlined text-[16px] text-gray-400 hover:text-wood-accent transition-colors cursor-help">info</span>
+                                                            <div class="absolute bottom-full left-1/2 -translate-x-1/2 mb-2 w-48 p-2.5 bg-gray-900 dark:bg-white dark:text-gray-900 text-white text-xs rounded-lg shadow-2xl opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-[100] text-center pointer-events-none font-normal leading-relaxed ring-1 ring-white/10 dark:ring-black/5">
+                                                                Sign in via Google, Facebook, or Apple.
+                                                                <div class="absolute top-full left-1/2 -translate-x-1/2 border-4 border-transparent border-t-gray-900 dark:border-t-white"></div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <span class="text-sm font-mono font-semibold text-wood-accent price-display" data-base-php="8000" data-base-usdt="143">₱8,000</span>
+                                                </div>
+                                            </div>
+                                        </label>
+<label class="cursor-pointer relative block h-full group/card hover:z-20">
+                                            <input type="checkbox" class="quote-item peer sr-only" data-type="onetime" data-price-php="15000" data-price-usdt="268">
+                                            <div class="h-full flex flex-col p-5 rounded-xl border border-gray-200 dark:border-gray-700 bg-white/40 dark:bg-white/5 backdrop-blur-sm transition-all duration-300 hover:border-wood-accent/50 hover:shadow-md dark:border-gray-700/50 peer-checked:border-wood-accent peer-checked:ring-1 peer-checked:ring-wood-accent peer-checked:bg-wood-accent/5 dark:peer-checked:bg-wood-accent/10 relative">
+                                                <div class="flex justify-between items-start w-full mb-4">
+                                                    <span class="material-icons-outlined text-gray-400 peer-checked:text-wood-accent transition-colors text-3xl">manage_accounts</span>
+                                                    <div class="w-6 h-6 rounded-full border border-gray-300 dark:border-gray-600 flex items-center justify-center peer-checked:bg-wood-accent peer-checked:border-wood-accent transition-colors">
+                                                         <span class="material-icons-outlined text-white text-sm opacity-0 peer-checked:opacity-100">check</span>
+                                                    </div>
+                                                </div>
+                                                <div class="flex flex-col mt-auto">
+                                                    <div class="flex items-center mb-1">
+                                                        <span class="text-sm font-bold text-gray-900 dark:text-gray-200 item-label">User Management</span>
+                                                        <div class="relative group ml-1.5 inline-flex items-center">
+                                                            <span class="material-icons-outlined text-[16px] text-gray-400 hover:text-wood-accent transition-colors cursor-help">info</span>
+                                                            <div class="absolute bottom-full left-1/2 -translate-x-1/2 mb-2 w-48 p-2.5 bg-gray-900 dark:bg-white dark:text-gray-900 text-white text-xs rounded-lg shadow-2xl opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-[100] text-center pointer-events-none font-normal leading-relaxed ring-1 ring-white/10 dark:ring-black/5">
+                                                                Interface to ban, approve, or edit user data.
+                                                                <div class="absolute top-full left-1/2 -translate-x-1/2 border-4 border-transparent border-t-gray-900 dark:border-t-white"></div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <span class="text-sm font-mono font-semibold text-wood-accent price-display" data-base-php="15000" data-base-usdt="268">₱15,000</span>
+                                                </div>
+                                            </div>
+                                        </label>
+<label class="cursor-pointer relative block h-full group/card hover:z-20">
+                                            <input type="checkbox" class="quote-item peer sr-only" data-type="onetime" data-price-php="10000" data-price-usdt="179">
+                                            <div class="h-full flex flex-col p-5 rounded-xl border border-gray-200 dark:border-gray-700 bg-white/40 dark:bg-white/5 backdrop-blur-sm transition-all duration-300 hover:border-wood-accent/50 hover:shadow-md dark:border-gray-700/50 peer-checked:border-wood-accent peer-checked:ring-1 peer-checked:ring-wood-accent peer-checked:bg-wood-accent/5 dark:peer-checked:bg-wood-accent/10 relative">
+                                                <div class="flex justify-between items-start w-full mb-4">
+                                                    <span class="material-icons-outlined text-gray-400 peer-checked:text-wood-accent transition-colors text-3xl">storage</span>
+                                                    <div class="w-6 h-6 rounded-full border border-gray-300 dark:border-gray-600 flex items-center justify-center peer-checked:bg-wood-accent peer-checked:border-wood-accent transition-colors">
+                                                         <span class="material-icons-outlined text-white text-sm opacity-0 peer-checked:opacity-100">check</span>
+                                                    </div>
+                                                </div>
+                                                <div class="flex flex-col mt-auto">
+                                                    <div class="flex items-center mb-1">
+                                                        <span class="text-sm font-bold text-gray-900 dark:text-gray-200 item-label">Database Design & Setup</span>
+                                                        <div class="relative group ml-1.5 inline-flex items-center">
+                                                            <span class="material-icons-outlined text-[16px] text-gray-400 hover:text-wood-accent transition-colors cursor-help">info</span>
+                                                            <div class="absolute bottom-full left-1/2 -translate-x-1/2 mb-2 w-48 p-2.5 bg-gray-900 dark:bg-white dark:text-gray-900 text-white text-xs rounded-lg shadow-2xl opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-[100] text-center pointer-events-none font-normal leading-relaxed ring-1 ring-white/10 dark:ring-black/5">
+                                                                Custom structured database tailored to your application.
+                                                                <div class="absolute top-full left-1/2 -translate-x-1/2 border-4 border-transparent border-t-gray-900 dark:border-t-white"></div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <span class="text-sm font-mono font-semibold text-wood-accent price-display" data-base-php="10000" data-base-usdt="179">₱10,000</span>
+                                                </div>
+                                            </div>
+                                        </label>
+<label class="cursor-pointer relative block h-full group/card hover:z-20">
+                                            <input type="checkbox" class="quote-item peer sr-only" data-type="onetime" data-price-php="20000" data-price-usdt="357">
+                                            <div class="h-full flex flex-col p-5 rounded-xl border border-gray-200 dark:border-gray-700 bg-white/40 dark:bg-white/5 backdrop-blur-sm transition-all duration-300 hover:border-wood-accent/50 hover:shadow-md dark:border-gray-700/50 peer-checked:border-wood-accent peer-checked:ring-1 peer-checked:ring-wood-accent peer-checked:bg-wood-accent/5 dark:peer-checked:bg-wood-accent/10 relative">
+                                                <div class="flex justify-between items-start w-full mb-4">
+                                                    <span class="material-icons-outlined text-gray-400 peer-checked:text-wood-accent transition-colors text-3xl">api</span>
+                                                    <div class="w-6 h-6 rounded-full border border-gray-300 dark:border-gray-600 flex items-center justify-center peer-checked:bg-wood-accent peer-checked:border-wood-accent transition-colors">
+                                                         <span class="material-icons-outlined text-white text-sm opacity-0 peer-checked:opacity-100">check</span>
+                                                    </div>
+                                                </div>
+                                                <div class="flex flex-col mt-auto">
+                                                    <div class="flex items-center mb-1">
+                                                        <span class="text-sm font-bold text-gray-900 dark:text-gray-200 item-label">REST API</span>
+                                                        <div class="relative group ml-1.5 inline-flex items-center">
+                                                            <span class="material-icons-outlined text-[16px] text-gray-400 hover:text-wood-accent transition-colors cursor-help">info</span>
+                                                            <div class="absolute bottom-full left-1/2 -translate-x-1/2 mb-2 w-48 p-2.5 bg-gray-900 dark:bg-white dark:text-gray-900 text-white text-xs rounded-lg shadow-2xl opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-[100] text-center pointer-events-none font-normal leading-relaxed ring-1 ring-white/10 dark:ring-black/5">
+                                                                Backend API for external communication and app integrations.
+                                                                <div class="absolute top-full left-1/2 -translate-x-1/2 border-4 border-transparent border-t-gray-900 dark:border-t-white"></div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <span class="text-sm font-mono font-semibold text-wood-accent price-display" data-base-php="20000" data-base-usdt="357">₱20,000</span>
+                                                </div>
+                                            </div>
+                                        </label>
+<label class="cursor-pointer relative block h-full group/card hover:z-20">
+                                            <input type="checkbox" class="quote-item peer sr-only" data-type="onetime" data-price-php="18000" data-price-usdt="321">
+                                            <div class="h-full flex flex-col p-5 rounded-xl border border-gray-200 dark:border-gray-700 bg-white/40 dark:bg-white/5 backdrop-blur-sm transition-all duration-300 hover:border-wood-accent/50 hover:shadow-md dark:border-gray-700/50 peer-checked:border-wood-accent peer-checked:ring-1 peer-checked:ring-wood-accent peer-checked:bg-wood-accent/5 dark:peer-checked:bg-wood-accent/10 relative">
+                                                <div class="flex justify-between items-start w-full mb-4">
+                                                    <span class="material-icons-outlined text-gray-400 peer-checked:text-wood-accent transition-colors text-3xl">security</span>
+                                                    <div class="w-6 h-6 rounded-full border border-gray-300 dark:border-gray-600 flex items-center justify-center peer-checked:bg-wood-accent peer-checked:border-wood-accent transition-colors">
+                                                         <span class="material-icons-outlined text-white text-sm opacity-0 peer-checked:opacity-100">check</span>
+                                                    </div>
+                                                </div>
+                                                <div class="flex flex-col mt-auto">
+                                                    <div class="flex items-center mb-1">
+                                                        <span class="text-sm font-bold text-gray-900 dark:text-gray-200 item-label">Admin Panel</span>
+                                                        <div class="relative group ml-1.5 inline-flex items-center">
+                                                            <span class="material-icons-outlined text-[16px] text-gray-400 hover:text-wood-accent transition-colors cursor-help">info</span>
+                                                            <div class="absolute bottom-full left-1/2 -translate-x-1/2 mb-2 w-48 p-2.5 bg-gray-900 dark:bg-white dark:text-gray-900 text-white text-xs rounded-lg shadow-2xl opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-[100] text-center pointer-events-none font-normal leading-relaxed ring-1 ring-white/10 dark:ring-black/5">
+                                                                Complete backend interface to control the entire system.
+                                                                <div class="absolute top-full left-1/2 -translate-x-1/2 border-4 border-transparent border-t-gray-900 dark:border-t-white"></div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <span class="text-sm font-mono font-semibold text-wood-accent price-display" data-base-php="18000" data-base-usdt="321">₱18,000</span>
+                                                </div>
+                                            </div>
+                                        </label>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-step hidden" data-step="3">
+                                    <div>
+                                        <h4 class="text-xl md:text-2xl font-bold text-gray-900 dark:text-white border-b border-gray-200 dark:border-gray-800 pb-3 mb-6 flex items-center">
+                                            <span class="flex items-center justify-center w-8 h-8 rounded-full bg-wood-accent/10 text-wood-accent text-sm mr-3">3</span> 
+                                            Business Intelligence <span class="text-sm text-gray-500 dark:text-gray-400 font-normal ml-3">(One-Time)</span>
+                                        </h4>
+                                        <div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-4">
+<label class="cursor-pointer relative block h-full group/card hover:z-20">
+                                            <input type="checkbox" class="quote-item peer sr-only" data-type="onetime" data-price-php="25000" data-price-usdt="446">
+                                            <div class="h-full flex flex-col p-5 rounded-xl border border-gray-200 dark:border-gray-700 bg-white/40 dark:bg-white/5 backdrop-blur-sm transition-all duration-300 hover:border-wood-accent/50 hover:shadow-md dark:border-gray-700/50 peer-checked:border-wood-accent peer-checked:ring-1 peer-checked:ring-wood-accent peer-checked:bg-wood-accent/5 dark:peer-checked:bg-wood-accent/10 relative">
+                                                <div class="flex justify-between items-start w-full mb-4">
+                                                    <span class="material-icons-outlined text-gray-400 peer-checked:text-wood-accent transition-colors text-3xl">insert_chart_outlined</span>
+                                                    <div class="w-6 h-6 rounded-full border border-gray-300 dark:border-gray-600 flex items-center justify-center peer-checked:bg-wood-accent peer-checked:border-wood-accent transition-colors">
+                                                         <span class="material-icons-outlined text-white text-sm opacity-0 peer-checked:opacity-100">check</span>
+                                                    </div>
+                                                </div>
+                                                <div class="flex flex-col mt-auto">
+                                                    <div class="flex items-center mb-1">
+                                                        <span class="text-sm font-bold text-gray-900 dark:text-gray-200 item-label">Reports System</span>
+                                                        <div class="relative group ml-1.5 inline-flex items-center">
+                                                            <span class="material-icons-outlined text-[16px] text-gray-400 hover:text-wood-accent transition-colors cursor-help">info</span>
+                                                            <div class="absolute bottom-full left-1/2 -translate-x-1/2 mb-2 w-48 p-2.5 bg-gray-900 dark:bg-white dark:text-gray-900 text-white text-xs rounded-lg shadow-2xl opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-[100] text-center pointer-events-none font-normal leading-relaxed ring-1 ring-white/10 dark:ring-black/5">
+                                                                Automated aggregation of data into readable reports.
+                                                                <div class="absolute top-full left-1/2 -translate-x-1/2 border-4 border-transparent border-t-gray-900 dark:border-t-white"></div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <span class="text-sm font-mono font-semibold text-wood-accent price-display" data-base-php="25000" data-base-usdt="446">₱25,000</span>
+                                                </div>
+                                            </div>
+                                        </label>
+<label class="cursor-pointer relative block h-full group/card hover:z-20">
+                                            <input type="checkbox" class="quote-item peer sr-only" data-type="onetime" data-price-php="15000" data-price-usdt="268">
+                                            <div class="h-full flex flex-col p-5 rounded-xl border border-gray-200 dark:border-gray-700 bg-white/40 dark:bg-white/5 backdrop-blur-sm transition-all duration-300 hover:border-wood-accent/50 hover:shadow-md dark:border-gray-700/50 peer-checked:border-wood-accent peer-checked:ring-1 peer-checked:ring-wood-accent peer-checked:bg-wood-accent/5 dark:peer-checked:bg-wood-accent/10 relative">
+                                                <div class="flex justify-between items-start w-full mb-4">
+                                                    <span class="material-icons-outlined text-gray-400 peer-checked:text-wood-accent transition-colors text-3xl">pie_chart</span>
+                                                    <div class="w-6 h-6 rounded-full border border-gray-300 dark:border-gray-600 flex items-center justify-center peer-checked:bg-wood-accent peer-checked:border-wood-accent transition-colors">
+                                                         <span class="material-icons-outlined text-white text-sm opacity-0 peer-checked:opacity-100">check</span>
+                                                    </div>
+                                                </div>
+                                                <div class="flex flex-col mt-auto">
+                                                    <div class="flex items-center mb-1">
+                                                        <span class="text-sm font-bold text-gray-900 dark:text-gray-200 item-label">Charts / Graphs</span>
+                                                        <div class="relative group ml-1.5 inline-flex items-center">
+                                                            <span class="material-icons-outlined text-[16px] text-gray-400 hover:text-wood-accent transition-colors cursor-help">info</span>
+                                                            <div class="absolute bottom-full left-1/2 -translate-x-1/2 mb-2 w-48 p-2.5 bg-gray-900 dark:bg-white dark:text-gray-900 text-white text-xs rounded-lg shadow-2xl opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-[100] text-center pointer-events-none font-normal leading-relaxed ring-1 ring-white/10 dark:ring-black/5">
+                                                                Visual data representation using modern chart libraries.
+                                                                <div class="absolute top-full left-1/2 -translate-x-1/2 border-4 border-transparent border-t-gray-900 dark:border-t-white"></div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <span class="text-sm font-mono font-semibold text-wood-accent price-display" data-base-php="15000" data-base-usdt="268">₱15,000</span>
+                                                </div>
+                                            </div>
+                                        </label>
+<label class="cursor-pointer relative block h-full group/card hover:z-20">
+                                            <input type="checkbox" class="quote-item peer sr-only" data-type="onetime" data-price-php="35000" data-price-usdt="625">
+                                            <div class="h-full flex flex-col p-5 rounded-xl border border-gray-200 dark:border-gray-700 bg-white/40 dark:bg-white/5 backdrop-blur-sm transition-all duration-300 hover:border-wood-accent/50 hover:shadow-md dark:border-gray-700/50 peer-checked:border-wood-accent peer-checked:ring-1 peer-checked:ring-wood-accent peer-checked:bg-wood-accent/5 dark:peer-checked:bg-wood-accent/10 relative">
+                                                <div class="flex justify-between items-start w-full mb-4">
+                                                    <span class="material-icons-outlined text-gray-400 peer-checked:text-wood-accent transition-colors text-3xl">insights</span>
+                                                    <div class="w-6 h-6 rounded-full border border-gray-300 dark:border-gray-600 flex items-center justify-center peer-checked:bg-wood-accent peer-checked:border-wood-accent transition-colors">
+                                                         <span class="material-icons-outlined text-white text-sm opacity-0 peer-checked:opacity-100">check</span>
+                                                    </div>
+                                                </div>
+                                                <div class="flex flex-col mt-auto">
+                                                    <div class="flex items-center mb-1">
+                                                        <span class="text-sm font-bold text-gray-900 dark:text-gray-200 item-label">Advanced Analytics</span>
+                                                        <div class="relative group ml-1.5 inline-flex items-center">
+                                                            <span class="material-icons-outlined text-[16px] text-gray-400 hover:text-wood-accent transition-colors cursor-help">info</span>
+                                                            <div class="absolute bottom-full left-1/2 -translate-x-1/2 mb-2 w-48 p-2.5 bg-gray-900 dark:bg-white dark:text-gray-900 text-white text-xs rounded-lg shadow-2xl opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-[100] text-center pointer-events-none font-normal leading-relaxed ring-1 ring-white/10 dark:ring-black/5">
+                                                                Deep data insights and complex tracking metrics.
+                                                                <div class="absolute top-full left-1/2 -translate-x-1/2 border-4 border-transparent border-t-gray-900 dark:border-t-white"></div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <span class="text-sm font-mono font-semibold text-wood-accent price-display" data-base-php="35000" data-base-usdt="625">₱35,000</span>
+                                                </div>
+                                            </div>
+                                        </label>
+<label class="cursor-pointer relative block h-full group/card hover:z-20">
+                                            <input type="checkbox" class="quote-item peer sr-only" data-type="onetime" data-price-php="12000" data-price-usdt="214">
+                                            <div class="h-full flex flex-col p-5 rounded-xl border border-gray-200 dark:border-gray-700 bg-white/40 dark:bg-white/5 backdrop-blur-sm transition-all duration-300 hover:border-wood-accent/50 hover:shadow-md dark:border-gray-700/50 peer-checked:border-wood-accent peer-checked:ring-1 peer-checked:ring-wood-accent peer-checked:bg-wood-accent/5 dark:peer-checked:bg-wood-accent/10 relative">
+                                                <div class="flex justify-between items-start w-full mb-4">
+                                                    <span class="material-icons-outlined text-gray-400 peer-checked:text-wood-accent transition-colors text-3xl">file_download</span>
+                                                    <div class="w-6 h-6 rounded-full border border-gray-300 dark:border-gray-600 flex items-center justify-center peer-checked:bg-wood-accent peer-checked:border-wood-accent transition-colors">
+                                                         <span class="material-icons-outlined text-white text-sm opacity-0 peer-checked:opacity-100">check</span>
+                                                    </div>
+                                                </div>
+                                                <div class="flex flex-col mt-auto">
+                                                    <div class="flex items-center mb-1">
+                                                        <span class="text-sm font-bold text-gray-900 dark:text-gray-200 item-label">Export to Excel/PDF</span>
+                                                        <div class="relative group ml-1.5 inline-flex items-center">
+                                                            <span class="material-icons-outlined text-[16px] text-gray-400 hover:text-wood-accent transition-colors cursor-help">info</span>
+                                                            <div class="absolute bottom-full left-1/2 -translate-x-1/2 mb-2 w-48 p-2.5 bg-gray-900 dark:bg-white dark:text-gray-900 text-white text-xs rounded-lg shadow-2xl opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-[100] text-center pointer-events-none font-normal leading-relaxed ring-1 ring-white/10 dark:ring-black/5">
+                                                                Export tables and reports to PDF, CSV, or Excel formats.
+                                                                <div class="absolute top-full left-1/2 -translate-x-1/2 border-4 border-transparent border-t-gray-900 dark:border-t-white"></div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <span class="text-sm font-mono font-semibold text-wood-accent price-display" data-base-php="12000" data-base-usdt="214">₱12,000</span>
+                                                </div>
+                                            </div>
+                                        </label>
+<label class="cursor-pointer relative block h-full group/card hover:z-20">
+                                            <input type="checkbox" class="quote-item peer sr-only" data-type="onetime" data-price-php="10000" data-price-usdt="179">
+                                            <div class="h-full flex flex-col p-5 rounded-xl border border-gray-200 dark:border-gray-700 bg-white/40 dark:bg-white/5 backdrop-blur-sm transition-all duration-300 hover:border-wood-accent/50 hover:shadow-md dark:border-gray-700/50 peer-checked:border-wood-accent peer-checked:ring-1 peer-checked:ring-wood-accent peer-checked:bg-wood-accent/5 dark:peer-checked:bg-wood-accent/10 relative">
+                                                <div class="flex justify-between items-start w-full mb-4">
+                                                    <span class="material-icons-outlined text-gray-400 peer-checked:text-wood-accent transition-colors text-3xl">filter_alt</span>
+                                                    <div class="w-6 h-6 rounded-full border border-gray-300 dark:border-gray-600 flex items-center justify-center peer-checked:bg-wood-accent peer-checked:border-wood-accent transition-colors">
+                                                         <span class="material-icons-outlined text-white text-sm opacity-0 peer-checked:opacity-100">check</span>
+                                                    </div>
+                                                </div>
+                                                <div class="flex flex-col mt-auto">
+                                                    <div class="flex items-center mb-1">
+                                                        <span class="text-sm font-bold text-gray-900 dark:text-gray-200 item-label">Advanced Filters</span>
+                                                        <div class="relative group ml-1.5 inline-flex items-center">
+                                                            <span class="material-icons-outlined text-[16px] text-gray-400 hover:text-wood-accent transition-colors cursor-help">info</span>
+                                                            <div class="absolute bottom-full left-1/2 -translate-x-1/2 mb-2 w-48 p-2.5 bg-gray-900 dark:bg-white dark:text-gray-900 text-white text-xs rounded-lg shadow-2xl opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-[100] text-center pointer-events-none font-normal leading-relaxed ring-1 ring-white/10 dark:ring-black/5">
+                                                                Complex multi-parameter search and filtering tools.
+                                                                <div class="absolute top-full left-1/2 -translate-x-1/2 border-4 border-transparent border-t-gray-900 dark:border-t-white"></div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <span class="text-sm font-mono font-semibold text-wood-accent price-display" data-base-php="10000" data-base-usdt="179">₱10,000</span>
+                                                </div>
+                                            </div>
+                                        </label>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-step hidden" data-step="4">
+                                    <div>
+                                        <h4 class="text-xl md:text-2xl font-bold text-gray-900 dark:text-white border-b border-gray-200 dark:border-gray-800 pb-3 mb-6 flex items-center">
+                                            <span class="flex items-center justify-center w-8 h-8 rounded-full bg-wood-accent/10 text-wood-accent text-sm mr-3">4</span> 
+                                            Integrations & Advanced <span class="text-sm text-gray-500 dark:text-gray-400 font-normal ml-3">(One-Time)</span>
+                                        </h4>
+                                        <div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-4">
+<label class="cursor-pointer relative block h-full group/card hover:z-20">
+                                            <input type="checkbox" class="quote-item peer sr-only" data-type="onetime" data-price-php="25000" data-price-usdt="446">
+                                            <div class="h-full flex flex-col p-5 rounded-xl border border-gray-200 dark:border-gray-700 bg-white/40 dark:bg-white/5 backdrop-blur-sm transition-all duration-300 hover:border-wood-accent/50 hover:shadow-md dark:border-gray-700/50 peer-checked:border-wood-accent peer-checked:ring-1 peer-checked:ring-wood-accent peer-checked:bg-wood-accent/5 dark:peer-checked:bg-wood-accent/10 relative">
+                                                <div class="flex justify-between items-start w-full mb-4">
+                                                    <span class="material-icons-outlined text-gray-400 peer-checked:text-wood-accent transition-colors text-3xl">payments</span>
+                                                    <div class="w-6 h-6 rounded-full border border-gray-300 dark:border-gray-600 flex items-center justify-center peer-checked:bg-wood-accent peer-checked:border-wood-accent transition-colors">
+                                                         <span class="material-icons-outlined text-white text-sm opacity-0 peer-checked:opacity-100">check</span>
+                                                    </div>
+                                                </div>
+                                                <div class="flex flex-col mt-auto">
+                                                    <div class="flex items-center mb-1">
+                                                        <span class="text-sm font-bold text-gray-900 dark:text-gray-200 item-label">Payment Gateway</span>
+                                                        <div class="relative group ml-1.5 inline-flex items-center">
+                                                            <span class="material-icons-outlined text-[16px] text-gray-400 hover:text-wood-accent transition-colors cursor-help">info</span>
+                                                            <div class="absolute bottom-full left-1/2 -translate-x-1/2 mb-2 w-48 p-2.5 bg-gray-900 dark:bg-white dark:text-gray-900 text-white text-xs rounded-lg shadow-2xl opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-[100] text-center pointer-events-none font-normal leading-relaxed ring-1 ring-white/10 dark:ring-black/5">
+                                                                Accept credit cards, PayPal, GCash, or PayMaya securely.
+                                                                <div class="absolute top-full left-1/2 -translate-x-1/2 border-4 border-transparent border-t-gray-900 dark:border-t-white"></div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <span class="text-sm font-mono font-semibold text-wood-accent price-display" data-base-php="25000" data-base-usdt="446">₱25,000</span>
+                                                </div>
+                                            </div>
+                                        </label>
+<label class="cursor-pointer relative block h-full group/card hover:z-20">
+                                            <input type="checkbox" class="quote-item peer sr-only" data-type="onetime" data-price-php="10000" data-price-usdt="179">
+                                            <div class="h-full flex flex-col p-5 rounded-xl border border-gray-200 dark:border-gray-700 bg-white/40 dark:bg-white/5 backdrop-blur-sm transition-all duration-300 hover:border-wood-accent/50 hover:shadow-md dark:border-gray-700/50 peer-checked:border-wood-accent peer-checked:ring-1 peer-checked:ring-wood-accent peer-checked:bg-wood-accent/5 dark:peer-checked:bg-wood-accent/10 relative">
+                                                <div class="flex justify-between items-start w-full mb-4">
+                                                    <span class="material-icons-outlined text-gray-400 peer-checked:text-wood-accent transition-colors text-3xl">forward_to_inbox</span>
+                                                    <div class="w-6 h-6 rounded-full border border-gray-300 dark:border-gray-600 flex items-center justify-center peer-checked:bg-wood-accent peer-checked:border-wood-accent transition-colors">
+                                                         <span class="material-icons-outlined text-white text-sm opacity-0 peer-checked:opacity-100">check</span>
+                                                    </div>
+                                                </div>
+                                                <div class="flex flex-col mt-auto">
+                                                    <div class="flex items-center mb-1">
+                                                        <span class="text-sm font-bold text-gray-900 dark:text-gray-200 item-label">Email Notifications</span>
+                                                        <div class="relative group ml-1.5 inline-flex items-center">
+                                                            <span class="material-icons-outlined text-[16px] text-gray-400 hover:text-wood-accent transition-colors cursor-help">info</span>
+                                                            <div class="absolute bottom-full left-1/2 -translate-x-1/2 mb-2 w-48 p-2.5 bg-gray-900 dark:bg-white dark:text-gray-900 text-white text-xs rounded-lg shadow-2xl opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-[100] text-center pointer-events-none font-normal leading-relaxed ring-1 ring-white/10 dark:ring-black/5">
+                                                                Automated emails for receipts, alerts, and marketing.
+                                                                <div class="absolute top-full left-1/2 -translate-x-1/2 border-4 border-transparent border-t-gray-900 dark:border-t-white"></div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <span class="text-sm font-mono font-semibold text-wood-accent price-display" data-base-php="10000" data-base-usdt="179">₱10,000</span>
+                                                </div>
+                                            </div>
+                                        </label>
+<label class="cursor-pointer relative block h-full group/card hover:z-20">
+                                            <input type="checkbox" class="quote-item peer sr-only" data-type="onetime" data-price-php="15000" data-price-usdt="268">
+                                            <div class="h-full flex flex-col p-5 rounded-xl border border-gray-200 dark:border-gray-700 bg-white/40 dark:bg-white/5 backdrop-blur-sm transition-all duration-300 hover:border-wood-accent/50 hover:shadow-md dark:border-gray-700/50 peer-checked:border-wood-accent peer-checked:ring-1 peer-checked:ring-wood-accent peer-checked:bg-wood-accent/5 dark:peer-checked:bg-wood-accent/10 relative">
+                                                <div class="flex justify-between items-start w-full mb-4">
+                                                    <span class="material-icons-outlined text-gray-400 peer-checked:text-wood-accent transition-colors text-3xl">sms</span>
+                                                    <div class="w-6 h-6 rounded-full border border-gray-300 dark:border-gray-600 flex items-center justify-center peer-checked:bg-wood-accent peer-checked:border-wood-accent transition-colors">
+                                                         <span class="material-icons-outlined text-white text-sm opacity-0 peer-checked:opacity-100">check</span>
+                                                    </div>
+                                                </div>
+                                                <div class="flex flex-col mt-auto">
+                                                    <div class="flex items-center mb-1">
+                                                        <span class="text-sm font-bold text-gray-900 dark:text-gray-200 item-label">SMS Integration</span>
+                                                        <div class="relative group ml-1.5 inline-flex items-center">
+                                                            <span class="material-icons-outlined text-[16px] text-gray-400 hover:text-wood-accent transition-colors cursor-help">info</span>
+                                                            <div class="absolute bottom-full left-1/2 -translate-x-1/2 mb-2 w-48 p-2.5 bg-gray-900 dark:bg-white dark:text-gray-900 text-white text-xs rounded-lg shadow-2xl opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-[100] text-center pointer-events-none font-normal leading-relaxed ring-1 ring-white/10 dark:ring-black/5">
+                                                                Direct text message alerts and OTP verification.
+                                                                <div class="absolute top-full left-1/2 -translate-x-1/2 border-4 border-transparent border-t-gray-900 dark:border-t-white"></div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <span class="text-sm font-mono font-semibold text-wood-accent price-display" data-base-php="15000" data-base-usdt="268">₱15,000</span>
+                                                </div>
+                                            </div>
+                                        </label>
+<label class="cursor-pointer relative block h-full group/card hover:z-20">
+                                            <input type="checkbox" class="quote-item peer sr-only" data-type="onetime" data-price-php="12000" data-price-usdt="214">
+                                            <div class="h-full flex flex-col p-5 rounded-xl border border-gray-200 dark:border-gray-700 bg-white/40 dark:bg-white/5 backdrop-blur-sm transition-all duration-300 hover:border-wood-accent/50 hover:shadow-md dark:border-gray-700/50 peer-checked:border-wood-accent peer-checked:ring-1 peer-checked:ring-wood-accent peer-checked:bg-wood-accent/5 dark:peer-checked:bg-wood-accent/10 relative">
+                                                <div class="flex justify-between items-start w-full mb-4">
+                                                    <span class="material-icons-outlined text-gray-400 peer-checked:text-wood-accent transition-colors text-3xl">cloud_upload</span>
+                                                    <div class="w-6 h-6 rounded-full border border-gray-300 dark:border-gray-600 flex items-center justify-center peer-checked:bg-wood-accent peer-checked:border-wood-accent transition-colors">
+                                                         <span class="material-icons-outlined text-white text-sm opacity-0 peer-checked:opacity-100">check</span>
+                                                    </div>
+                                                </div>
+                                                <div class="flex flex-col mt-auto">
+                                                    <div class="flex items-center mb-1">
+                                                        <span class="text-sm font-bold text-gray-900 dark:text-gray-200 item-label">File Upload System</span>
+                                                        <div class="relative group ml-1.5 inline-flex items-center">
+                                                            <span class="material-icons-outlined text-[16px] text-gray-400 hover:text-wood-accent transition-colors cursor-help">info</span>
+                                                            <div class="absolute bottom-full left-1/2 -translate-x-1/2 mb-2 w-48 p-2.5 bg-gray-900 dark:bg-white dark:text-gray-900 text-white text-xs rounded-lg shadow-2xl opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-[100] text-center pointer-events-none font-normal leading-relaxed ring-1 ring-white/10 dark:ring-black/5">
+                                                                Secure cloud storage for user-uploaded documents and media.
+                                                                <div class="absolute top-full left-1/2 -translate-x-1/2 border-4 border-transparent border-t-gray-900 dark:border-t-white"></div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <span class="text-sm font-mono font-semibold text-wood-accent price-display" data-base-php="12000" data-base-usdt="214">₱12,000</span>
+                                                </div>
+                                            </div>
+                                        </label>
+<label class="cursor-pointer relative block h-full group/card hover:z-20">
+                                            <input type="checkbox" class="quote-item peer sr-only" data-type="onetime" data-price-php="2000" data-price-usdt="357">
+                                            <div class="h-full flex flex-col p-5 rounded-xl border border-gray-200 dark:border-gray-700 bg-white/40 dark:bg-white/5 backdrop-blur-sm transition-all duration-300 hover:border-wood-accent/50 hover:shadow-md dark:border-gray-700/50 peer-checked:border-wood-accent peer-checked:ring-1 peer-checked:ring-wood-accent peer-checked:bg-wood-accent/5 dark:peer-checked:bg-wood-accent/10 relative">
+                                                <div class="flex justify-between items-start w-full mb-4">
+                                                    <span class="material-icons-outlined text-gray-400 peer-checked:text-wood-accent transition-colors text-3xl">swap_horiz</span>
+                                                    <div class="w-6 h-6 rounded-full border border-gray-300 dark:border-gray-600 flex items-center justify-center peer-checked:bg-wood-accent peer-checked:border-wood-accent transition-colors">
+                                                         <span class="material-icons-outlined text-white text-sm opacity-0 peer-checked:opacity-100">check</span>
+                                                    </div>
+                                                </div>
+                                                <div class="flex flex-col mt-auto">
+                                                    <div class="flex items-center mb-1">
+                                                        <span class="text-sm font-bold text-gray-900 dark:text-gray-200 item-label">External API Integration</span>
+                                                        <div class="relative group ml-1.5 inline-flex items-center">
+                                                            <span class="material-icons-outlined text-[16px] text-gray-400 hover:text-wood-accent transition-colors cursor-help">info</span>
+                                                            <div class="absolute bottom-full left-1/2 -translate-x-1/2 mb-2 w-48 p-2.5 bg-gray-900 dark:bg-white dark:text-gray-900 text-white text-xs rounded-lg shadow-2xl opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-[100] text-center pointer-events-none font-normal leading-relaxed ring-1 ring-white/10 dark:ring-black/5">
+                                                                Connect with third-party tools like CRMs, ERPs, or external databases.
+                                                                <div class="absolute top-full left-1/2 -translate-x-1/2 border-4 border-transparent border-t-gray-900 dark:border-t-white"></div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <span class="text-sm font-mono font-semibold text-wood-accent price-display" data-base-php="2000" data-base-usdt="357">₱2,000</span>
+                                                </div>
+                                            </div>
+                                        </label>
+<label class="cursor-pointer relative block h-full group/card hover:z-20">
+                                            <input type="checkbox" class="quote-item peer sr-only" data-type="onetime" data-price-php="10000" data-price-usdt="179">
+                                            <div class="h-full flex flex-col p-5 rounded-xl border border-gray-200 dark:border-gray-700 bg-white/40 dark:bg-white/5 backdrop-blur-sm transition-all duration-300 hover:border-wood-accent/50 hover:shadow-md dark:border-gray-700/50 peer-checked:border-wood-accent peer-checked:ring-1 peer-checked:ring-wood-accent peer-checked:bg-wood-accent/5 dark:peer-checked:bg-wood-accent/10 relative">
+                                                <div class="flex justify-between items-start w-full mb-4">
+                                                    <span class="material-icons-outlined text-gray-400 peer-checked:text-wood-accent transition-colors text-3xl">search</span>
+                                                    <div class="w-6 h-6 rounded-full border border-gray-300 dark:border-gray-600 flex items-center justify-center peer-checked:bg-wood-accent peer-checked:border-wood-accent transition-colors">
+                                                         <span class="material-icons-outlined text-white text-sm opacity-0 peer-checked:opacity-100">check</span>
+                                                    </div>
+                                                </div>
+                                                <div class="flex flex-col mt-auto">
+                                                    <div class="flex items-center mb-1">
+                                                        <span class="text-sm font-bold text-gray-900 dark:text-gray-200 item-label">Search Function</span>
+                                                        <div class="relative group ml-1.5 inline-flex items-center">
+                                                            <span class="material-icons-outlined text-[16px] text-gray-400 hover:text-wood-accent transition-colors cursor-help">info</span>
+                                                            <div class="absolute bottom-full left-1/2 -translate-x-1/2 mb-2 w-48 p-2.5 bg-gray-900 dark:bg-white dark:text-gray-900 text-white text-xs rounded-lg shadow-2xl opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-[100] text-center pointer-events-none font-normal leading-relaxed ring-1 ring-white/10 dark:ring-black/5">
+                                                                Deep global text search across the platform.
+                                                                <div class="absolute top-full left-1/2 -translate-x-1/2 border-4 border-transparent border-t-gray-900 dark:border-t-white"></div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <span class="text-sm font-mono font-semibold text-wood-accent price-display" data-base-php="10000" data-base-usdt="179">₱10,000</span>
+                                                </div>
+                                            </div>
+                                        </label>
+<label class="cursor-pointer relative block h-full group/card hover:z-20">
+                                            <input type="checkbox" class="quote-item peer sr-only" data-type="onetime" data-price-php="25000" data-price-usdt="446">
+                                            <div class="h-full flex flex-col p-5 rounded-xl border border-gray-200 dark:border-gray-700 bg-white/40 dark:bg-white/5 backdrop-blur-sm transition-all duration-300 hover:border-wood-accent/50 hover:shadow-md dark:border-gray-700/50 peer-checked:border-wood-accent peer-checked:ring-1 peer-checked:ring-wood-accent peer-checked:bg-wood-accent/5 dark:peer-checked:bg-wood-accent/10 relative">
+                                                <div class="flex justify-between items-start w-full mb-4">
+                                                    <span class="material-icons-outlined text-gray-400 peer-checked:text-wood-accent transition-colors text-3xl">bolt</span>
+                                                    <div class="w-6 h-6 rounded-full border border-gray-300 dark:border-gray-600 flex items-center justify-center peer-checked:bg-wood-accent peer-checked:border-wood-accent transition-colors">
+                                                         <span class="material-icons-outlined text-white text-sm opacity-0 peer-checked:opacity-100">check</span>
+                                                    </div>
+                                                </div>
+                                                <div class="flex flex-col mt-auto">
+                                                    <div class="flex items-center mb-1">
+                                                        <span class="text-sm font-bold text-gray-900 dark:text-gray-200 item-label">Real-time Updates</span>
+                                                        <div class="relative group ml-1.5 inline-flex items-center">
+                                                            <span class="material-icons-outlined text-[16px] text-gray-400 hover:text-wood-accent transition-colors cursor-help">info</span>
+                                                            <div class="absolute bottom-full left-1/2 -translate-x-1/2 mb-2 w-48 p-2.5 bg-gray-900 dark:bg-white dark:text-gray-900 text-white text-xs rounded-lg shadow-2xl opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-[100] text-center pointer-events-none font-normal leading-relaxed ring-1 ring-white/10 dark:ring-black/5">
+                                                                Live data sync without reloading the page.
+                                                                <div class="absolute top-full left-1/2 -translate-x-1/2 border-4 border-transparent border-t-gray-900 dark:border-t-white"></div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <span class="text-sm font-mono font-semibold text-wood-accent price-display" data-base-php="25000" data-base-usdt="446">₱25,000</span>
+                                                </div>
+                                            </div>
+                                        </label>
+<label class="cursor-pointer relative block h-full group/card hover:z-20">
+                                            <input type="checkbox" class="quote-item peer sr-only" data-type="onetime" data-price-php="35000" data-price-usdt="625">
+                                            <div class="h-full flex flex-col p-5 rounded-xl border border-gray-200 dark:border-gray-700 bg-white/40 dark:bg-white/5 backdrop-blur-sm transition-all duration-300 hover:border-wood-accent/50 hover:shadow-md dark:border-gray-700/50 peer-checked:border-wood-accent peer-checked:ring-1 peer-checked:ring-wood-accent peer-checked:bg-wood-accent/5 dark:peer-checked:bg-wood-accent/10 relative">
+                                                <div class="flex justify-between items-start w-full mb-4">
+                                                    <span class="material-icons-outlined text-gray-400 peer-checked:text-wood-accent transition-colors text-3xl">forum</span>
+                                                    <div class="w-6 h-6 rounded-full border border-gray-300 dark:border-gray-600 flex items-center justify-center peer-checked:bg-wood-accent peer-checked:border-wood-accent transition-colors">
+                                                         <span class="material-icons-outlined text-white text-sm opacity-0 peer-checked:opacity-100">check</span>
+                                                    </div>
+                                                </div>
+                                                <div class="flex flex-col mt-auto">
+                                                    <div class="flex items-center mb-1">
+                                                        <span class="text-sm font-bold text-gray-900 dark:text-gray-200 item-label">Chat / Messaging</span>
+                                                        <div class="relative group ml-1.5 inline-flex items-center">
+                                                            <span class="material-icons-outlined text-[16px] text-gray-400 hover:text-wood-accent transition-colors cursor-help">info</span>
+                                                            <div class="absolute bottom-full left-1/2 -translate-x-1/2 mb-2 w-48 p-2.5 bg-gray-900 dark:bg-white dark:text-gray-900 text-white text-xs rounded-lg shadow-2xl opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-[100] text-center pointer-events-none font-normal leading-relaxed ring-1 ring-white/10 dark:ring-black/5">
+                                                                In-app peer-to-peer or group messaging system.
+                                                                <div class="absolute top-full left-1/2 -translate-x-1/2 border-4 border-transparent border-t-gray-900 dark:border-t-white"></div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <span class="text-sm font-mono font-semibold text-wood-accent price-display" data-base-php="35000" data-base-usdt="625">₱35,000</span>
+                                                </div>
+                                            </div>
+                                        </label>
+<label class="cursor-pointer relative block h-full group/card hover:z-20">
+                                            <input type="checkbox" class="quote-item peer sr-only" data-type="onetime" data-price-php="12000" data-price-usdt="214">
+                                            <div class="h-full flex flex-col p-5 rounded-xl border border-gray-200 dark:border-gray-700 bg-white/40 dark:bg-white/5 backdrop-blur-sm transition-all duration-300 hover:border-wood-accent/50 hover:shadow-md dark:border-gray-700/50 peer-checked:border-wood-accent peer-checked:ring-1 peer-checked:ring-wood-accent peer-checked:bg-wood-accent/5 dark:peer-checked:bg-wood-accent/10 relative">
+                                                <div class="flex justify-between items-start w-full mb-4">
+                                                    <span class="material-icons-outlined text-gray-400 peer-checked:text-wood-accent transition-colors text-3xl">receipt_long</span>
+                                                    <div class="w-6 h-6 rounded-full border border-gray-300 dark:border-gray-600 flex items-center justify-center peer-checked:bg-wood-accent peer-checked:border-wood-accent transition-colors">
+                                                         <span class="material-icons-outlined text-white text-sm opacity-0 peer-checked:opacity-100">check</span>
+                                                    </div>
+                                                </div>
+                                                <div class="flex flex-col mt-auto">
+                                                    <div class="flex items-center mb-1">
+                                                        <span class="text-sm font-bold text-gray-900 dark:text-gray-200 item-label">Activity Logs</span>
+                                                        <div class="relative group ml-1.5 inline-flex items-center">
+                                                            <span class="material-icons-outlined text-[16px] text-gray-400 hover:text-wood-accent transition-colors cursor-help">info</span>
+                                                            <div class="absolute bottom-full left-1/2 -translate-x-1/2 mb-2 w-48 p-2.5 bg-gray-900 dark:bg-white dark:text-gray-900 text-white text-xs rounded-lg shadow-2xl opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-[100] text-center pointer-events-none font-normal leading-relaxed ring-1 ring-white/10 dark:ring-black/5">
+                                                                Track all actions performed by users on the platform.
+                                                                <div class="absolute top-full left-1/2 -translate-x-1/2 border-4 border-transparent border-t-gray-900 dark:border-t-white"></div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <span class="text-sm font-mono font-semibold text-wood-accent price-display" data-base-php="12000" data-base-usdt="214">₱12,000</span>
+                                                </div>
+                                            </div>
+                                        </label>
+<label class="cursor-pointer relative block h-full group/card hover:z-20">
+                                            <input type="checkbox" class="quote-item peer sr-only" data-type="onetime" data-price-php="15000" data-price-usdt="268">
+                                            <div class="h-full flex flex-col p-5 rounded-xl border border-gray-200 dark:border-gray-700 bg-white/40 dark:bg-white/5 backdrop-blur-sm transition-all duration-300 hover:border-wood-accent/50 hover:shadow-md dark:border-gray-700/50 peer-checked:border-wood-accent peer-checked:ring-1 peer-checked:ring-wood-accent peer-checked:bg-wood-accent/5 dark:peer-checked:bg-wood-accent/10 relative">
+                                                <div class="flex justify-between items-start w-full mb-4">
+                                                    <span class="material-icons-outlined text-gray-400 peer-checked:text-wood-accent transition-colors text-3xl">history</span>
+                                                    <div class="w-6 h-6 rounded-full border border-gray-300 dark:border-gray-600 flex items-center justify-center peer-checked:bg-wood-accent peer-checked:border-wood-accent transition-colors">
+                                                         <span class="material-icons-outlined text-white text-sm opacity-0 peer-checked:opacity-100">check</span>
+                                                    </div>
+                                                </div>
+                                                <div class="flex flex-col mt-auto">
+                                                    <div class="flex items-center mb-1">
+                                                        <span class="text-sm font-bold text-gray-900 dark:text-gray-200 item-label">Audit Trail</span>
+                                                        <div class="relative group ml-1.5 inline-flex items-center">
+                                                            <span class="material-icons-outlined text-[16px] text-gray-400 hover:text-wood-accent transition-colors cursor-help">info</span>
+                                                            <div class="absolute bottom-full left-1/2 -translate-x-1/2 mb-2 w-48 p-2.5 bg-gray-900 dark:bg-white dark:text-gray-900 text-white text-xs rounded-lg shadow-2xl opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-[100] text-center pointer-events-none font-normal leading-relaxed ring-1 ring-white/10 dark:ring-black/5">
+                                                                Detailed security logs for compliance and monitoring.
+                                                                <div class="absolute top-full left-1/2 -translate-x-1/2 border-4 border-transparent border-t-gray-900 dark:border-t-white"></div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <span class="text-sm font-mono font-semibold text-wood-accent price-display" data-base-php="15000" data-base-usdt="268">₱15,000</span>
+                                                </div>
+                                            </div>
+                                        </label>
+<label class="cursor-pointer relative block h-full group/card hover:z-20">
+                                            <input type="checkbox" class="quote-item peer sr-only" data-type="onetime" data-price-php="18000" data-price-usdt="321">
+                                            <div class="h-full flex flex-col p-5 rounded-xl border border-gray-200 dark:border-gray-700 bg-white/40 dark:bg-white/5 backdrop-blur-sm transition-all duration-300 hover:border-wood-accent/50 hover:shadow-md dark:border-gray-700/50 peer-checked:border-wood-accent peer-checked:ring-1 peer-checked:ring-wood-accent peer-checked:bg-wood-accent/5 dark:peer-checked:bg-wood-accent/10 relative">
+                                                <div class="flex justify-between items-start w-full mb-4">
+                                                    <span class="material-icons-outlined text-gray-400 peer-checked:text-wood-accent transition-colors text-3xl">notifications</span>
+                                                    <div class="w-6 h-6 rounded-full border border-gray-300 dark:border-gray-600 flex items-center justify-center peer-checked:bg-wood-accent peer-checked:border-wood-accent transition-colors">
+                                                         <span class="material-icons-outlined text-white text-sm opacity-0 peer-checked:opacity-100">check</span>
+                                                    </div>
+                                                </div>
+                                                <div class="flex flex-col mt-auto">
+                                                    <div class="flex items-center mb-1">
+                                                        <span class="text-sm font-bold text-gray-900 dark:text-gray-200 item-label">In-app Notifications</span>
+                                                        <div class="relative group ml-1.5 inline-flex items-center">
+                                                            <span class="material-icons-outlined text-[16px] text-gray-400 hover:text-wood-accent transition-colors cursor-help">info</span>
+                                                            <div class="absolute bottom-full left-1/2 -translate-x-1/2 mb-2 w-48 p-2.5 bg-gray-900 dark:bg-white dark:text-gray-900 text-white text-xs rounded-lg shadow-2xl opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-[100] text-center pointer-events-none font-normal leading-relaxed ring-1 ring-white/10 dark:ring-black/5">
+                                                                Facebook-style alert bell and drop-down notifications.
+                                                                <div class="absolute top-full left-1/2 -translate-x-1/2 border-4 border-transparent border-t-gray-900 dark:border-t-white"></div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <span class="text-sm font-mono font-semibold text-wood-accent price-display" data-base-php="18000" data-base-usdt="321">₱18,000</span>
+                                                </div>
+                                            </div>
+                                        </label>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-step hidden" data-step="5">
+                                    <div>
+                                        <h4 class="text-xl md:text-2xl font-bold text-gray-900 dark:text-white border-b border-gray-200 dark:border-gray-800 pb-3 mb-6 flex items-center">
+                                            <span class="flex items-center justify-center w-8 h-8 rounded-full bg-wood-accent/10 text-wood-accent text-sm mr-3">5</span> 
+                                            Setup & Infrastructure <span class="text-sm text-gray-500 dark:text-gray-400 font-normal ml-3">(One-Time)</span>
+                                        </h4>
+                                        <div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-4">
+<label class="cursor-pointer relative block h-full group/card hover:z-20">
+                                            <input type="checkbox" class="quote-item peer sr-only" data-type="onetime" data-price-php="10000" data-price-usdt="179">
+                                            <div class="h-full flex flex-col p-5 rounded-xl border border-gray-200 dark:border-gray-700 bg-white/40 dark:bg-white/5 backdrop-blur-sm transition-all duration-300 hover:border-wood-accent/50 hover:shadow-md dark:border-gray-700/50 peer-checked:border-wood-accent peer-checked:ring-1 peer-checked:ring-wood-accent peer-checked:bg-wood-accent/5 dark:peer-checked:bg-wood-accent/10 relative">
+                                                <div class="flex justify-between items-start w-full mb-4">
+                                                    <span class="material-icons-outlined text-gray-400 peer-checked:text-wood-accent transition-colors text-3xl">dns</span>
+                                                    <div class="w-6 h-6 rounded-full border border-gray-300 dark:border-gray-600 flex items-center justify-center peer-checked:bg-wood-accent peer-checked:border-wood-accent transition-colors">
+                                                         <span class="material-icons-outlined text-white text-sm opacity-0 peer-checked:opacity-100">check</span>
+                                                    </div>
+                                                </div>
+                                                <div class="flex flex-col mt-auto">
+                                                    <div class="flex items-center mb-1">
+                                                        <span class="text-sm font-bold text-gray-900 dark:text-gray-200 item-label">Server Configuration</span>
+                                                        <div class="relative group ml-1.5 inline-flex items-center">
+                                                            <span class="material-icons-outlined text-[16px] text-gray-400 hover:text-wood-accent transition-colors cursor-help">info</span>
+                                                            <div class="absolute bottom-full left-1/2 -translate-x-1/2 mb-2 w-48 p-2.5 bg-gray-900 dark:bg-white dark:text-gray-900 text-white text-xs rounded-lg shadow-2xl opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-[100] text-center pointer-events-none font-normal leading-relaxed ring-1 ring-white/10 dark:ring-black/5">
+                                                                Initial setup of VPS or cloud hosting environment.
+                                                                <div class="absolute top-full left-1/2 -translate-x-1/2 border-4 border-transparent border-t-gray-900 dark:border-t-white"></div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <span class="text-sm font-mono font-semibold text-wood-accent price-display" data-base-php="10000" data-base-usdt="179">₱10,000</span>
+                                                </div>
+                                            </div>
+                                        </label>
+<label class="cursor-pointer relative block h-full group/card hover:z-20">
+                                            <input type="checkbox" class="quote-item peer sr-only" data-type="onetime" data-price-php="12000" data-price-usdt="214">
+                                            <div class="h-full flex flex-col p-5 rounded-xl border border-gray-200 dark:border-gray-700 bg-white/40 dark:bg-white/5 backdrop-blur-sm transition-all duration-300 hover:border-wood-accent/50 hover:shadow-md dark:border-gray-700/50 peer-checked:border-wood-accent peer-checked:ring-1 peer-checked:ring-wood-accent peer-checked:bg-wood-accent/5 dark:peer-checked:bg-wood-accent/10 relative">
+                                                <div class="flex justify-between items-start w-full mb-4">
+                                                    <span class="material-icons-outlined text-gray-400 peer-checked:text-wood-accent transition-colors text-3xl">sync_alt</span>
+                                                    <div class="w-6 h-6 rounded-full border border-gray-300 dark:border-gray-600 flex items-center justify-center peer-checked:bg-wood-accent peer-checked:border-wood-accent transition-colors">
+                                                         <span class="material-icons-outlined text-white text-sm opacity-0 peer-checked:opacity-100">check</span>
+                                                    </div>
+                                                </div>
+                                                <div class="flex flex-col mt-auto">
+                                                    <div class="flex items-center mb-1">
+                                                        <span class="text-sm font-bold text-gray-900 dark:text-gray-200 item-label">CI/CD Setup</span>
+                                                        <div class="relative group ml-1.5 inline-flex items-center">
+                                                            <span class="material-icons-outlined text-[16px] text-gray-400 hover:text-wood-accent transition-colors cursor-help">info</span>
+                                                            <div class="absolute bottom-full left-1/2 -translate-x-1/2 mb-2 w-48 p-2.5 bg-gray-900 dark:bg-white dark:text-gray-900 text-white text-xs rounded-lg shadow-2xl opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-[100] text-center pointer-events-none font-normal leading-relaxed ring-1 ring-white/10 dark:ring-black/5">
+                                                                Automated testing and deployment pipelines.
+                                                                <div class="absolute top-full left-1/2 -translate-x-1/2 border-4 border-transparent border-t-gray-900 dark:border-t-white"></div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <span class="text-sm font-mono font-semibold text-wood-accent price-display" data-base-php="12000" data-base-usdt="214">₱12,000</span>
+                                                </div>
+                                            </div>
+                                        </label>
+<label class="cursor-pointer relative block h-full group/card hover:z-20">
+                                            <input type="checkbox" class="quote-item peer sr-only" data-type="onetime" data-price-php="5000" data-price-usdt="89">
+                                            <div class="h-full flex flex-col p-5 rounded-xl border border-gray-200 dark:border-gray-700 bg-white/40 dark:bg-white/5 backdrop-blur-sm transition-all duration-300 hover:border-wood-accent/50 hover:shadow-md dark:border-gray-700/50 peer-checked:border-wood-accent peer-checked:ring-1 peer-checked:ring-wood-accent peer-checked:bg-wood-accent/5 dark:peer-checked:bg-wood-accent/10 relative">
+                                                <div class="flex justify-between items-start w-full mb-4">
+                                                    <span class="material-icons-outlined text-gray-400 peer-checked:text-wood-accent transition-colors text-3xl">language</span>
+                                                    <div class="w-6 h-6 rounded-full border border-gray-300 dark:border-gray-600 flex items-center justify-center peer-checked:bg-wood-accent peer-checked:border-wood-accent transition-colors">
+                                                         <span class="material-icons-outlined text-white text-sm opacity-0 peer-checked:opacity-100">check</span>
+                                                    </div>
+                                                </div>
+                                                <div class="flex flex-col mt-auto">
+                                                    <div class="flex items-center mb-1">
+                                                        <span class="text-sm font-bold text-gray-900 dark:text-gray-200 item-label">Domain Setup</span>
+                                                        <div class="relative group ml-1.5 inline-flex items-center">
+                                                            <span class="material-icons-outlined text-[16px] text-gray-400 hover:text-wood-accent transition-colors cursor-help">info</span>
+                                                            <div class="absolute bottom-full left-1/2 -translate-x-1/2 mb-2 w-48 p-2.5 bg-gray-900 dark:bg-white dark:text-gray-900 text-white text-xs rounded-lg shadow-2xl opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-[100] text-center pointer-events-none font-normal leading-relaxed ring-1 ring-white/10 dark:ring-black/5">
+                                                                Configuring DNS records and custom domain mapping.
+                                                                <div class="absolute top-full left-1/2 -translate-x-1/2 border-4 border-transparent border-t-gray-900 dark:border-t-white"></div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <span class="text-sm font-mono font-semibold text-wood-accent price-display" data-base-php="5000" data-base-usdt="89">₱5,000</span>
+                                                </div>
+                                            </div>
+                                        </label>
+<label class="cursor-pointer relative block h-full group/card hover:z-20">
+                                            <input type="checkbox" class="quote-item peer sr-only" data-type="onetime" data-price-php="3000" data-price-usdt="54">
+                                            <div class="h-full flex flex-col p-5 rounded-xl border border-gray-200 dark:border-gray-700 bg-white/40 dark:bg-white/5 backdrop-blur-sm transition-all duration-300 hover:border-wood-accent/50 hover:shadow-md dark:border-gray-700/50 peer-checked:border-wood-accent peer-checked:ring-1 peer-checked:ring-wood-accent peer-checked:bg-wood-accent/5 dark:peer-checked:bg-wood-accent/10 relative">
+                                                <div class="flex justify-between items-start w-full mb-4">
+                                                    <span class="material-icons-outlined text-gray-400 peer-checked:text-wood-accent transition-colors text-3xl">lock_outline</span>
+                                                    <div class="w-6 h-6 rounded-full border border-gray-300 dark:border-gray-600 flex items-center justify-center peer-checked:bg-wood-accent peer-checked:border-wood-accent transition-colors">
+                                                         <span class="material-icons-outlined text-white text-sm opacity-0 peer-checked:opacity-100">check</span>
+                                                    </div>
+                                                </div>
+                                                <div class="flex flex-col mt-auto">
+                                                    <div class="flex items-center mb-1">
+                                                        <span class="text-sm font-bold text-gray-900 dark:text-gray-200 item-label">SSL Installation</span>
+                                                        <div class="relative group ml-1.5 inline-flex items-center">
+                                                            <span class="material-icons-outlined text-[16px] text-gray-400 hover:text-wood-accent transition-colors cursor-help">info</span>
+                                                            <div class="absolute bottom-full left-1/2 -translate-x-1/2 mb-2 w-48 p-2.5 bg-gray-900 dark:bg-white dark:text-gray-900 text-white text-xs rounded-lg shadow-2xl opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-[100] text-center pointer-events-none font-normal leading-relaxed ring-1 ring-white/10 dark:ring-black/5">
+                                                                Securing the site with HTTPS encryption.
+                                                                <div class="absolute top-full left-1/2 -translate-x-1/2 border-4 border-transparent border-t-gray-900 dark:border-t-white"></div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <span class="text-sm font-mono font-semibold text-wood-accent price-display" data-base-php="3000" data-base-usdt="54">₱3,000</span>
+                                                </div>
+                                            </div>
+                                        </label>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <div class="form-step hidden" data-step="6">
+                                    <div class="bg-gray-50 dark:bg-gray-800/20 rounded-lg p-6 border border-gray-200 dark:border-gray-700/50">
+                                        <h4 class="text-lg font-bold text-gray-900 dark:text-white border-b border-gray-200 dark:border-gray-700 pb-3 mb-5">
+                                            Monthly Subscriptions & Maintenance
+                                        </h4>
+                                        <div class="space-y-5">
+                                            <div>
+                                                <label class="text-xs font-bold text-gray-500 uppercase tracking-widest mb-1 block">Hosting</label>
+                                                <select id="hosting-select" class="quote-select block w-full bg-white dark:bg-[#252528] border border-gray-200 dark:border-gray-700 text-gray-900 dark:text-white text-sm rounded-lg focus:ring-2 focus:ring-wood-accent focus:border-transparent p-3 shadow-sm transition-shadow hover:shadow-md outline-none">
+                                                    <option value="0" data-usdt="0">No Hosting Setup</option>
+<option value="2000" data-usdt="36">Basic Hosting (₱2,000/mo)</option>
+<option value="5000" data-usdt="89">Standard Cloud (₱5,000/mo)</option>
+<option value="10000" data-usdt="179">Pro Cloud (₱10,000/mo)</option>
+<option value="20000" data-usdt="357">Enterprise (₱20,000/mo)</option>
+                                                </select>
+                                            </div>
+                                            <div>
+                                                <label class="text-xs font-bold text-gray-500 uppercase tracking-widest mb-1 block">Maintenance</label>
+                                                <select id="maintenance-select" class="quote-select block w-full bg-white dark:bg-[#252528] border border-gray-200 dark:border-gray-700 text-gray-900 dark:text-white text-sm rounded-lg focus:ring-2 focus:ring-wood-accent focus:border-transparent p-3 shadow-sm transition-shadow hover:shadow-md outline-none">
+                                                    <option value="0" data-usdt="0">No Maintenance</option>
+<option value="3000" data-usdt="54">Bug Fix Support (₱3,000/mo)</option>
+<option value="8000" data-usdt="143">Updates + Support (₱8,000/mo)</option>
+<option value="15000" data-usdt="268">Monitoring + Enhancements (₱15,000/mo)</option>
+<option value="25000" data-usdt="446">Priority Full Support (₱25,000/mo)</option>
+                                                </select>
+                                            </div>
+                                            <div>
+                                                <label class="text-xs font-bold text-gray-500 uppercase tracking-widest mb-2 block">Security Add-ons</label>
+                                                <div class="grid grid-cols-1 md:grid-cols-2 gap-3">
+<label class="cursor-pointer relative block h-full group/card hover:z-20">
+                                            <input type="checkbox" class="quote-item peer sr-only" data-type="monthly" data-price-php="3000" data-price-usdt="54">
+                                            <div class="h-full flex flex-col p-5 rounded-xl border border-gray-200 dark:border-gray-700 bg-white/40 dark:bg-white/5 backdrop-blur-sm transition-all duration-300 hover:border-wood-accent/50 hover:shadow-md dark:border-gray-700/50 peer-checked:border-wood-accent peer-checked:ring-1 peer-checked:ring-wood-accent peer-checked:bg-wood-accent/5 dark:peer-checked:bg-wood-accent/10 relative">
+                                                <div class="flex justify-between items-start w-full mb-4">
+                                                    <span class="material-icons-outlined text-gray-400 peer-checked:text-wood-accent transition-colors text-3xl">verified_user</span>
+                                                    <div class="w-6 h-6 rounded-full border border-gray-300 dark:border-gray-600 flex items-center justify-center peer-checked:bg-wood-accent peer-checked:border-wood-accent transition-colors">
+                                                         <span class="material-icons-outlined text-white text-sm opacity-0 peer-checked:opacity-100">check</span>
+                                                    </div>
+                                                </div>
+                                                <div class="flex flex-col mt-auto">
+                                                    <div class="flex items-center mb-1">
+                                                        <span class="text-sm font-bold text-gray-900 dark:text-gray-200 item-label">Security Monitoring</span>
+                                                        <div class="relative group ml-1.5 inline-flex items-center">
+                                                            <span class="material-icons-outlined text-[16px] text-gray-400 hover:text-wood-accent transition-colors cursor-help">info</span>
+                                                            <div class="absolute bottom-full left-1/2 -translate-x-1/2 mb-2 w-48 p-2.5 bg-gray-900 dark:bg-white dark:text-gray-900 text-white text-xs rounded-lg shadow-2xl opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-[100] text-center pointer-events-none font-normal leading-relaxed ring-1 ring-white/10 dark:ring-black/5">
+                                                                24/7 scanning for vulnerabilities and automated threat prevention.
+                                                                <div class="absolute top-full left-1/2 -translate-x-1/2 border-4 border-transparent border-t-gray-900 dark:border-t-white"></div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <span class="text-sm font-mono font-semibold text-wood-accent price-display" data-base-php="3000" data-base-usdt="54">₱3,000</span>
+                                                </div>
+                                            </div>
+                                        </label>
+<label class="cursor-pointer relative block h-full group/card hover:z-20">
+                                            <input type="checkbox" class="quote-item peer sr-only" data-type="monthly" data-price-php="2000" data-price-usdt="36">
+                                            <div class="h-full flex flex-col p-5 rounded-xl border border-gray-200 dark:border-gray-700 bg-white/40 dark:bg-white/5 backdrop-blur-sm transition-all duration-300 hover:border-wood-accent/50 hover:shadow-md dark:border-gray-700/50 peer-checked:border-wood-accent peer-checked:ring-1 peer-checked:ring-wood-accent peer-checked:bg-wood-accent/5 dark:peer-checked:bg-wood-accent/10 relative">
+                                                <div class="flex justify-between items-start w-full mb-4">
+                                                    <span class="material-icons-outlined text-gray-400 peer-checked:text-wood-accent transition-colors text-3xl">backup</span>
+                                                    <div class="w-6 h-6 rounded-full border border-gray-300 dark:border-gray-600 flex items-center justify-center peer-checked:bg-wood-accent peer-checked:border-wood-accent transition-colors">
+                                                         <span class="material-icons-outlined text-white text-sm opacity-0 peer-checked:opacity-100">check</span>
+                                                    </div>
+                                                </div>
+                                                <div class="flex flex-col mt-auto">
+                                                    <div class="flex items-center mb-1">
+                                                        <span class="text-sm font-bold text-gray-900 dark:text-gray-200 item-label">Automated Backups</span>
+                                                        <div class="relative group ml-1.5 inline-flex items-center">
+                                                            <span class="material-icons-outlined text-[16px] text-gray-400 hover:text-wood-accent transition-colors cursor-help">info</span>
+                                                            <div class="absolute bottom-full left-1/2 -translate-x-1/2 mb-2 w-48 p-2.5 bg-gray-900 dark:bg-white dark:text-gray-900 text-white text-xs rounded-lg shadow-2xl opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-[100] text-center pointer-events-none font-normal leading-relaxed ring-1 ring-white/10 dark:ring-black/5">
+                                                                Daily snapshot backups of your database and critical files.
+                                                                <div class="absolute top-full left-1/2 -translate-x-1/2 border-4 border-transparent border-t-gray-900 dark:border-t-white"></div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <span class="text-sm font-mono font-semibold text-wood-accent price-display" data-base-php="2000" data-base-usdt="36">₱2,000</span>
+                                                </div>
+                                            </div>
+                                        </label>
+<label class="cursor-pointer relative block h-full group/card hover:z-20">
+                                            <input type="checkbox" class="quote-item peer sr-only" data-type="monthly" data-price-php="5000" data-price-usdt="89">
+                                            <div class="h-full flex flex-col p-5 rounded-xl border border-gray-200 dark:border-gray-700 bg-white/40 dark:bg-white/5 backdrop-blur-sm transition-all duration-300 hover:border-wood-accent/50 hover:shadow-md dark:border-gray-700/50 peer-checked:border-wood-accent peer-checked:ring-1 peer-checked:ring-wood-accent peer-checked:bg-wood-accent/5 dark:peer-checked:bg-wood-accent/10 relative">
+                                                <div class="flex justify-between items-start w-full mb-4">
+                                                    <span class="material-icons-outlined text-gray-400 peer-checked:text-wood-accent transition-colors text-3xl">speed</span>
+                                                    <div class="w-6 h-6 rounded-full border border-gray-300 dark:border-gray-600 flex items-center justify-center peer-checked:bg-wood-accent peer-checked:border-wood-accent transition-colors">
+                                                         <span class="material-icons-outlined text-white text-sm opacity-0 peer-checked:opacity-100">check</span>
+                                                    </div>
+                                                </div>
+                                                <div class="flex flex-col mt-auto">
+                                                    <div class="flex items-center mb-1">
+                                                        <span class="text-sm font-bold text-gray-900 dark:text-gray-200 item-label">Performance Tuning</span>
+                                                        <div class="relative group ml-1.5 inline-flex items-center">
+                                                            <span class="material-icons-outlined text-[16px] text-gray-400 hover:text-wood-accent transition-colors cursor-help">info</span>
+                                                            <div class="absolute bottom-full left-1/2 -translate-x-1/2 mb-2 w-48 p-2.5 bg-gray-900 dark:bg-white dark:text-gray-900 text-white text-xs rounded-lg shadow-2xl opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-[100] text-center pointer-events-none font-normal leading-relaxed ring-1 ring-white/10 dark:ring-black/5">
+                                                                Monthly optimization of database queries, caches, and load speeds.
+                                                                <div class="absolute top-full left-1/2 -translate-x-1/2 border-4 border-transparent border-t-gray-900 dark:border-t-white"></div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <span class="text-sm font-mono font-semibold text-wood-accent price-display" data-base-php="5000" data-base-usdt="89">₱5,000</span>
+                                                </div>
+                                            </div>
+                                        </label>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="mt-12 flex items-center justify-between border-t border-gray-200 dark:border-gray-800 pt-6">
+                                    <button type="button" id="prev-step-btn" class="hidden px-4 md:px-6 py-3 border border-gray-300 dark:border-gray-600 rounded-lg text-gray-700 dark:text-gray-300 font-bold hover:bg-gray-50 dark:hover:bg-gray-800 transition-colors flex items-center">
+                                        <span class="material-icons-outlined mr-2">arrow_back</span> Back
+                                    </button>
+                                    <div class="text-sm font-medium text-gray-500" id="step-indicator">
+                                        Step 1 of 6
+                                    </div>
+                                    <button type="button" id="next-step-btn" class="px-4 md:px-6 py-3 bg-wood-accent text-white font-bold rounded-lg shadow-md hover:bg-wood-700 transition-colors flex items-center ml-auto">
+                                        Next <span class="material-icons-outlined ml-2">arrow_forward</span>
+                                    </button>
+                                </div>
+                            </div>
+
+                            <!-- Right Column: Monthly Recurring & Summary (Step 7 on Mobile) -->
+                            <div class="xl:col-span-1 border-l-0 xl:border-l border-gray-200 dark:border-gray-800 pl-0 xl:pl-8 order-2 form-step xl:!block xl:!opacity-100 hidden" data-step="7">
+                                <div class="sticky top-6">
+                                    <div class="bg-gray-50 dark:bg-gray-800/20 rounded-2xl p-6 border border-gray-200 dark:border-gray-700/50">
+                                        <div class="flex items-center justify-between border-b border-gray-200 dark:border-gray-700 pb-3 mb-6">
+                                            <h4 class="text-lg md:text-xl font-bold text-gray-900 dark:text-white">Estimate Summary</h4>
+                                            
+                                            <!-- Modal Currency Toggle -->
+                                            <div class="flex items-center bg-gray-100 dark:bg-gray-800 rounded-lg p-1 scale-90 origin-right">
+                                                <button type="button" class="modal-currency-btn px-2 py-1 rounded-md text-[10px] font-bold transition-all duration-200 bg-wood-accent text-white" data-currency="PHP">PHP</button>
+                                                <button type="button" class="modal-currency-btn px-2 py-1 rounded-md text-[10px] font-bold transition-all duration-200 text-gray-500 hover:text-gray-700 dark:hover:text-gray-300" data-currency="USDT">USDT</button>
+                                            </div>
+                                        </div>
+                                        <div class="space-y-6">
+                                            <div>
+                                                <span class="text-[10px] md:text-xs font-bold text-gray-500 uppercase tracking-widest block mb-1">One-Time Total</span>
+                                                <div class="text-xl sm:text-2xl md:text-3xl font-extrabold text-gray-900 dark:text-white" id="onetime-total">₱0</div>
+                                            </div>
+                                            <div>
+                                                <span class="text-[10px] md:text-xs font-bold text-gray-500 uppercase tracking-widest block mb-1">Monthly Total</span>
+                                                <div class="text-2xl sm:text-3xl md:text-4xl font-extrabold text-wood-accent flex items-end tracking-tight" id="monthly-total">₱0<span class="text-base font-bold text-gray-500 ml-1 mb-1">/mo</span></div>
+                                            </div>
+                                            
+                                            <!-- Contact Info Input -->
+                                            <div class="pt-6 border-t border-gray-200 dark:border-gray-700">
+                                                <h5 class="text-sm font-bold text-gray-900 dark:text-white mb-4">Send this estimate to me</h5>
+                                                <div class="space-y-4">
+                                                    <div>
+                                                        <input type="text" id="client-name" placeholder="Your Name" required class="w-full bg-white dark:bg-[#1a1a1a] border border-gray-200 dark:border-gray-700 text-gray-900 dark:text-white text-sm rounded-lg focus:ring-2 focus:ring-wood-accent focus:border-transparent p-3 shadow-sm outline-none placeholder-gray-400">
+                                                    </div>
+                                                    <div>
+                                                        <input type="email" id="client-email" placeholder="Your Email" required class="w-full bg-white dark:bg-[#1a1a1a] border border-gray-200 dark:border-gray-700 text-gray-900 dark:text-white text-sm rounded-lg focus:ring-2 focus:ring-wood-accent focus:border-transparent p-3 shadow-sm outline-none placeholder-gray-400">
+                                                    </div>
+                                                    <div>
+                                                        <textarea id="client-details" placeholder="Additional Details or Questions (Optional)" rows="2" class="w-full bg-white dark:bg-[#1a1a1a] border border-gray-200 dark:border-gray-700 text-gray-900 dark:text-white text-sm rounded-lg focus:ring-2 focus:ring-wood-accent focus:border-transparent p-3 shadow-sm outline-none placeholder-gray-400 resize-none"></textarea>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            <button type="submit" id="submit-quote-btn" class="w-full bg-gray-900 hover:bg-black dark:bg-white dark:hover:bg-gray-100 text-white dark:text-gray-900 font-bold py-4 px-6 rounded-lg transition-colors flex justify-center items-center shadow-md relative group mt-4">
+                                                <span id="btn-text" class="transition-opacity">Email Estimate</span>
+                                                <span id="btn-spinner" class="hidden absolute flex gap-1">
+                                                    <span class="w-2 h-2 bg-current rounded-full animate-bounce"></span>
+                                                    <span class="w-2 h-2 bg-current rounded-full animate-bounce" style="animation-delay: 0.1s"></span>
+                                                    <span class="w-2 h-2 bg-current rounded-full animate-bounce" style="animation-delay: 0.2s"></span>
+                                                </span>
+                                                <span class="material-icons-outlined ml-2 group-hover:translate-x-1 transition-transform" id="btn-icon">arrow_forward</span>
+                                            </button>
+
+                                            <div id="quote-feedback" class="hidden mt-3 text-sm text-center font-medium rounded-lg p-3"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+</form>
+                </div>
+            </div>
+            </div>
+
             <!-- API Status -->
             <div class="mt-4 text-right text-xs text-gray-400" id="exchange-rate-info">
                 Exchange rates provided by <a href="https://www.exchangerate-api.com/" target="_blank" class="hover:text-wood-accent">ExchangeRate-API</a>
             </div>
-            
-            <script>
-                document.addEventListener('DOMContentLoaded', () => {
-                    const toggle = document.getElementById('currency-toggle');
-                    const toggleDot = toggle.querySelector('span');
-                    const labelUsd = document.getElementById('currency-label-usd');
-                    const labelPhp = document.getElementById('currency-label-php');
-                    const currencyCode = document.getElementById('currency-code');
-                    const priceCells = document.querySelectorAll('.price-cell');
-                    const rateInfo = document.getElementById('exchange-rate-info');
-                    
-                    let isPhp = false;
-                    let conversionRate = 56; // Default fallback
-                    
-                    // Fetch real-time rate
-                    fetch('https://api.exchangerate-api.com/v4/latest/USD')
-                        .then(response => response.json())
-                        .then(data => {
-                            conversionRate = data.rates.PHP;
-                            console.log('Current USD to PHP rate:', conversionRate);
-                        })
-                        .catch(error => {
-                            console.error('Error fetching exchange rate:', error);
-                            rateInfo.innerHTML += ' (Using fallback rate)';
-                        });
-
-                    function formatPrice(amount, isPhp) {
-                        if (isPhp) {
-                            // PHP formatting: No decimals, commas
-                            return '₱' + Math.round(amount).toLocaleString('en-US');
-                        } else {
-                            // USD formatting
-                            return '$' + amount.toLocaleString('en-US');
-                        }
-                    }
-
-                    function updatePrices() {
-                        priceCells.forEach(cell => {
-                            const min = parseFloat(cell.dataset.min);
-                            const max = parseFloat(cell.dataset.max);
-                            const hasPlus = cell.dataset.plus === 'true';
-                            
-                            if (isPhp) {
-                                const minPhp = min * conversionRate;
-                                const maxPhp = max * conversionRate;
-                                cell.innerText = `${formatPrice(minPhp, true)} – ${formatPrice(maxPhp, true)}${hasPlus ? '+' : ''}`;
-                            } else {
-                                cell.innerText = `${formatPrice(min, false)} – ${formatPrice(max, false)}${hasPlus ? '+' : ''}`;
-                            }
-                        });
-                    }
-
-                    toggle.addEventListener('click', () => {
-                        isPhp = !isPhp;
-                        
-                        // Update toggle UI
-                        if (isPhp) {
-                            toggle.classList.remove('bg-gray-200', 'dark:bg-gray-700');
-                            toggle.classList.add('bg-wood-accent');
-                            toggleDot.classList.add('translate-x-5');
-                            
-                            labelPhp.classList.remove('text-gray-500');
-                            labelPhp.classList.add('text-gray-900', 'dark:text-white', 'font-bold');
-                            labelUsd.classList.add('text-gray-500');
-                            labelUsd.classList.remove('text-gray-700', 'dark:text-gray-300');
-                            
-                            currencyCode.innerText = '(PHP)';
-                        } else {
-                            toggle.classList.add('bg-gray-200', 'dark:bg-gray-700');
-                            toggle.classList.remove('bg-wood-accent');
-                            toggleDot.classList.remove('translate-x-5');
-                            
-                            labelUsd.classList.remove('text-gray-500');
-                            labelUsd.classList.add('text-gray-700', 'dark:text-gray-300');
-                            labelPhp.classList.add('text-gray-500');
-                            labelPhp.classList.remove('text-gray-900', 'dark:text-white', 'font-bold');
-                            
-                            currencyCode.innerText = '(USD)';
-                        }
-                        
-                        updatePrices();
-                    });
-                });
-            </script>
         </div>
     </section>
         </div>
@@ -341,5 +1424,8 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script src="../js/main.js" defer></script>
+
+    <!-- Quote Maker Logic (extracted to quote-maker.js) -->
+    <script type="module" src="quote-maker.js"></script>
 </body>
 </html>

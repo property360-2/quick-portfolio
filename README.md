@@ -39,22 +39,21 @@ A high-performance, responsive personal portfolio website designed to showcase p
 *   `writings.html` - Blog and Articles.
 *   `about.html` - Biography and Skills.
 
-## 🔧 Setup & Usage
-
-No complex build steps required. This is a static site application.
-
-1.  **Clone the repository** (or download files):
-    ```bash
-    git clone https://github.com/yourusername/quick-portfolio.git
-    ```
-2.  **Run locally**:
-    *   Simply open `index.html` in your browser.
-    *   **Recommended**: Use the "Live Server" extension in VS Code for the best experience.
 
 ## 📄 License
 
-**Open Source / No Copyright**
+**Personal Use Only**
 
-This project is free to use, modify, and distribute for personal or commercial purposes. No attribution is required, though it is appreciated.
+This project is intended for the exclusive use of **Jun Alvior**. Unauthorized copying, modification, or distribution is prohibited.
+
+## 🔧 Setup & Usage (For Jun)
+
+Para ma-run mo ito locally bro, sundin mo lang ito:
+
+1.  **Open the project folder** sa VS Code.
+2.  **Run a local server** (important ito para sa images at modules):
+    *   **Best way**: Gamitin mo yung **"Live Server"** extension sa VS Code. Right-click `index.html` then select **"Open with Live Server"**.
+    *   **Alternative**: Kung may Python ka, run mo `python -m http.server 8000` sa terminal.
+3.  **View it**: Buksan mo yung link na lalabas (usually `http://localhost:5500` or `http://localhost:8000`).
 
 Build something amazing! 🚀
