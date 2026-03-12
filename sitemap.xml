@@ -1,10 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-  <!-- Main Pages -->
   <url>
     <loc>https://property360-2.github.io/quick-portfolio/</loc>
     <lastmod>2026-03-12</lastmod>
-    <changefreq>monthly</changefreq>
+    <changefreq>daily</changefreq>
     <priority>1.0</priority>
   </url>
   <url>
@@ -37,8 +36,6 @@
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
-
-  <!-- Articles -->
   <url>
     <loc>https://property360-2.github.io/quick-portfolio/writings/articles/freelance-developer-pricing-guide/</loc>
     <lastmod>2026-03-05</lastmod>
@@ -69,8 +66,6 @@
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
-
-  <!-- Portfolio Items -->
   <url>
     <loc>https://property360-2.github.io/quick-portfolio/portfolio/gym-project/</loc>
     <lastmod>2024-12-01</lastmod>
