@@ -58,8 +58,9 @@
       }
     </style>
 
-    <!-- AOS CSS -->
-    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet" />
+    <!-- AOS CSS - Loaded late to prevent render blocking -->
+    <link rel="preload" href="https://unpkg.com/aos@2.3.1/dist/aos.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <noscript><link rel="stylesheet" href="https://unpkg.com/aos@2.3.1/dist/aos.css"></noscript>
 
     <!-- Custom CSS -->
     <link rel="stylesheet" href="../css/style.css" />
@@ -228,6 +229,8 @@
                   class="absolute inset-0 object-cover w-full h-full transform group-hover:scale-105 transition-transform duration-500"
                   loading="lazy"
                   decoding="async"
+                  width="800"
+                  height="450"
                 />
                 <div class="absolute inset-0 bg-black/60 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center gap-4 z-10">
                   <a href="gym-project/" class="text-white border px-4 py-2 rounded-full text-sm font-medium tracking-wide hover:bg-white hover:text-black transition-colors">View Details</a>
@@ -253,6 +256,8 @@
                   class="absolute inset-0 object-cover w-full h-full transform group-hover:scale-105 transition-transform duration-500"
                   loading="lazy"
                   decoding="async"
+                  width="800"
+                  height="450"
                 />
                 <div class="absolute inset-0 bg-black/60 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center gap-4 z-10">
                   <a href="study-time-tracker/" class="text-white border px-4 py-2 rounded-full text-sm font-medium tracking-wide hover:bg-white hover:text-black transition-colors">View Details</a>
@@ -278,6 +283,8 @@
                   class="absolute inset-0 object-cover w-full h-full transform group-hover:scale-105 transition-transform duration-500"
                   loading="lazy"
                   decoding="async"
+                  width="800"
+                  height="450"
                 />
                 <div class="absolute inset-0 bg-black/60 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center gap-4 z-10">
                   <a href="bank-project/" class="text-white border px-4 py-2 rounded-full text-sm font-medium tracking-wide hover:bg-white hover:text-black transition-colors">View Details</a>
@@ -302,6 +309,8 @@
                   class="absolute inset-0 object-cover w-full h-full transform group-hover:scale-105 transition-transform duration-500"
                   loading="lazy"
                   decoding="async"
+                  width="800"
+                  height="450"
                 />
                 <div class="absolute inset-0 bg-black/60 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center gap-4 z-10">
                   <a href="inside-portfolio-game/tagasira-ng-syudad/index.html" class="text-white border px-4 py-2 rounded-full text-sm font-medium tracking-wide hover:bg-white hover:text-black transition-colors">View Details</a>
@@ -328,6 +337,8 @@
                   class="absolute inset-0 object-cover w-full h-full transform group-hover:scale-105 transition-transform duration-500"
                   loading="lazy"
                   decoding="async"
+                  width="800"
+                  height="450"
                 />
                 <div class="absolute inset-0 bg-black/60 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center gap-4 z-10">
                   <a href="mind-map-maker/" class="text-white border px-4 py-2 rounded-full text-sm font-medium tracking-wide hover:bg-white hover:text-black transition-colors">View Details</a>
@@ -354,6 +365,8 @@
                   class="absolute inset-0 object-cover w-full h-full transform group-hover:scale-105 transition-transform duration-500"
                   loading="lazy"
                   decoding="async"
+                  width="800"
+                  height="450"
                 />
                 <div class="absolute inset-0 bg-black/60 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center gap-4 z-10">
                   <a href="ojt-journals/" class="text-white border px-4 py-2 rounded-full text-sm font-medium tracking-wide hover:bg-white hover:text-black transition-colors">View Details</a>
@@ -380,6 +393,8 @@
                   class="absolute inset-0 object-cover w-full h-full transform group-hover:scale-105 transition-transform duration-500"
                   loading="lazy"
                   decoding="async"
+                  width="800"
+                  height="450"
                 />
                 <div class="absolute inset-0 bg-black/60 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center gap-4 z-10">
                   <a href="sales-and-inventory/" class="text-white border px-4 py-2 rounded-full text-sm font-medium tracking-wide hover:bg-white hover:text-black transition-colors">View Details</a>
@@ -574,8 +589,8 @@
     </button>
 
     <!-- Scripts -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
-    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js" defer></script>
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js" defer></script>
     <script src="../js/main.js" defer></script>
   </body>
 </html>

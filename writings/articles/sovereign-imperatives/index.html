@@ -38,8 +38,9 @@
     />
 
     <!-- Tailwind CSS -->
-    <!-- AOS CSS -->
-    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet" />
+    <!-- AOS CSS - Loaded late to prevent render blocking -->
+    <link rel="preload" href="https://unpkg.com/aos@2.3.1/dist/aos.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <noscript><link rel="stylesheet" href="https://unpkg.com/aos@2.3.1/dist/aos.css"></noscript>
 
     <!-- Custom CSS -->
     <link rel="stylesheet" href="../../../css/style.css" />
@@ -207,6 +208,8 @@
                 class="w-full h-auto object-cover max-h-[550px]"
                 loading="lazy"
                 decoding="async"
+                width="800"
+                height="450"
               />
             </div>
             <h1
@@ -1376,8 +1379,8 @@
     >
       <span class="material-icons-outlined">arrow_upward</span>
     </button>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
-    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js" defer></script>
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js" defer></script>
     <script src="../../../js/main.js" defer></script>
   </body>
 </html>
