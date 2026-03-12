@@ -46,15 +46,17 @@
     }
     </script>
 
-    <!-- Google Fonts -->
+    <!-- Preconnect to external domains -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link rel="preconnect" href="https://unpkg.com" crossorigin />
+    <link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin />
+
+    <!-- Google Fonts & Icons -->
     <link
       href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap"
       rel="stylesheet"
     />
-
-    <!-- Material Icons -->
     <link
       href="https://fonts.googleapis.com/icon?family=Material+Icons+Outlined"
       rel="stylesheet"
@@ -84,12 +86,13 @@
       }
     </style>
 
-    <!-- AOS CSS -->
-    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet" />
+    <!-- AOS CSS - Loaded late to prevent render blocking -->
+    <link rel="preload" href="https://unpkg.com/aos@2.3.1/dist/aos.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <noscript><link rel="stylesheet" href="https://unpkg.com/aos@2.3.1/dist/aos.css"></noscript>
 
     <!-- Custom CSS -->
     <link rel="stylesheet" href="css/style.css" />
-    <script src="js/theme-check.js"></script>
+    <script src="js/theme-check.js" defer></script>
     <link rel="icon" href="assets/logo.png" type="image/png">
 </head>
   <body
@@ -105,9 +108,10 @@
           <div class="flex-shrink-0 flex items-center">
             <a
               href="index.html"
-              class="text-2xl font-bold text-gray-900 dark:text-white tracking-tight"
+              class="text-2xl font-bold text-gray-900 dark:text-white tracking-tight flex items-center gap-2"
             >
-              Jun <span class="text-wood-accent">Alvior</span>
+              <img src="assets/logo.png" alt="Jun Alvior Logo" class="h-8 w-8" fetchpriority="high">
+              <span>Jun <span class="text-wood-accent">Alvior</span></span>
             </a>
           </div>
 
@@ -334,17 +338,11 @@
               </svg>
             </a>
             <a
-              href="https://www.facebook.com/profile.php?id=100078275869468"
-              target="_blank"
-              rel="noopener noreferrer"
+              href="sitemap.html"
               class="text-gray-400 hover:text-wood-accent transition-colors"
             >
-              <span class="sr-only">Facebook</span>
-              <svg class="h-6 w-6" fill="currentColor" viewBox="0 0 24 24">
-                <path
-                  d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.791-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"
-                />
-              </svg>
+              <span class="sr-only">Sitemap</span>
+              <span class="material-icons-outlined">lan</span>
             </a>
           </div>
         </div>

@@ -1,0 +1,139 @@
+<!doctype html>
+<html lang="en" class="scroll-smooth">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Sitemap | Jun Alvior Portfolio</title>
+    <meta name="description" content="HTML sitemap for Jun Alvior's portfolio, listing all pages, projects, and articles for easy navigation." />
+    <link rel="canonical" href="https://property360-2.github.io/quick-portfolio/sitemap.html" />
+
+    <!-- Preconnect -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+
+    <!-- Google Fonts & Icons -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Outlined" rel="stylesheet" />
+
+    <!-- Theme Script -->
+    <script>
+      const savedTheme = localStorage.getItem("theme");
+      const systemPrefersDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
+      if (savedTheme === "dark" || (!savedTheme && systemPrefersDark)) {
+        document.documentElement.classList.add("dark");
+      } else {
+        document.documentElement.classList.remove("dark");
+      }
+    </script>
+    <style>
+      html { background-color: #f5f5f5; }
+      html.dark { background-color: #1a1a1a; }
+    </style>
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="css/style.css" />
+    <script src="js/theme-check.js" defer></script>
+    <link rel="icon" href="assets/logo.png" type="image/png">
+  </head>
+  <body class="bg-grey-light text-grey-dark dark:bg-[#1a1a1a] dark:text-gray-200 transition-colors duration-300 antialiased font-sans flex flex-col min-h-screen">
+    
+    <!-- Navigation -->
+    <nav class="fixed w-full z-50 bg-white/70 dark:bg-[#1a1a1a]/70 backdrop-blur-md border-b border-gray-100 dark:border-gray-800 transition-colors duration-300">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="flex justify-between items-center h-20">
+          <div class="flex-shrink-0 flex items-center">
+            <a href="index.html" class="text-2xl font-bold text-gray-900 dark:text-white tracking-tight flex items-center gap-2">
+              <img src="assets/logo.png" alt="Jun Alvior Logo" class="h-8 w-8">
+              <span>Jun <span class="text-wood-accent">Alvior</span></span>
+            </a>
+          </div>
+          <div class="hidden md:flex items-center space-x-8">
+            <a href="index.html" class="nav-link text-gray-600 dark:text-gray-300 hover:text-wood-accent dark:hover:text-wood-accent font-medium transition-colors">Home</a>
+            <a href="rate/" class="nav-link text-gray-600 dark:text-gray-300 hover:text-wood-accent dark:hover:text-wood-accent font-medium transition-colors">Rate</a>
+            <a href="portfolio/" class="nav-link text-gray-600 dark:text-gray-300 hover:text-wood-accent dark:hover:text-wood-accent font-medium transition-colors">Portfolio</a>
+            <a href="writings/" class="nav-link text-gray-600 dark:text-gray-300 hover:text-wood-accent dark:hover:text-wood-accent font-medium transition-colors">Writings</a>
+            <a href="about/" class="nav-link text-gray-600 dark:text-gray-300 hover:text-wood-accent dark:hover:text-wood-accent font-medium transition-colors">About Me</a>
+            <button id="theme-toggle" class="p-2 rounded-lg bg-gray-100 dark:bg-gray-800 text-gray-600 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-gray-700 transition-all duration-300">
+              <span class="material-icons-outlined text-xl sun-icon hidden">light_mode</span>
+              <span class="material-icons-outlined text-xl moon-icon">dark_mode</span>
+            </button>
+          </div>
+        </div>
+      </div>
+    </nav>
+
+    <main class="flex-grow pt-32 pb-20">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <header class="mb-12">
+          <h1 class="text-4xl md:text-5xl font-bold text-gray-900 dark:text-white mb-4">Sitemap</h1>
+          <p class="text-xl text-gray-600 dark:text-gray-400">All pages and resources on this site.</p>
+        </header>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-12">
+          <!-- Main Section -->
+          <section>
+            <h2 class="text-2xl font-bold text-wood-accent mb-6 flex items-center gap-2">
+              <span class="material-icons-outlined">home</span> Main Pages
+            </h2>
+            <ul class="space-y-4">
+              <li><a href="index.html" class="text-lg hover:text-wood-accent transition-colors flex items-center gap-2">Home</a></li>
+              <li><a href="about/" class="text-lg hover:text-wood-accent transition-colors flex items-center gap-2">About Me</a></li>
+              <li><a href="portfolio/" class="text-lg hover:text-wood-accent transition-colors flex items-center gap-2">Portfolio</a></li>
+              <li><a href="writings/" class="text-lg hover:text-wood-accent transition-colors flex items-center gap-2">Writings</a></li>
+              <li><a href="rate/" class="text-lg hover:text-wood-accent transition-colors flex items-center gap-2">Service Rates</a></li>
+              <li><a href="inquiries/" class="text-lg hover:text-wood-accent transition-colors flex items-center gap-2">Inquiries</a></li>
+            </ul>
+          </section>
+
+          <!-- Portfolio Section -->
+          <section>
+            <h2 class="text-2xl font-bold text-wood-accent mb-6 flex items-center gap-2">
+              <span class="material-icons-outlined">work_outline</span> Projects
+            </h2>
+            <ul class="space-y-4">
+              <li><a href="portfolio/gym-project/" class="text-lg hover:text-wood-accent transition-colors">Gym Management System</a></li>
+              <li><a href="portfolio/bank-project/" class="text-lg hover:text-wood-accent transition-colors">Modern Banking App</a></li>
+              <li><a href="portfolio/study-time-tracker/" class="text-lg hover:text-wood-accent transition-colors">Study Time Tracker</a></li>
+              <li><a href="portfolio/sales-and-inventory/" class="text-lg hover:text-wood-accent transition-colors">Sales & Inventory System</a></li>
+              <li><a href="portfolio/mind-map-maker/" class="text-lg hover:text-wood-accent transition-colors">Mind Map Maker</a></li>
+              <li><a href="portfolio/ojt-journals/" class="text-lg hover:text-wood-accent transition-colors">OJT Journals</a></li>
+            </ul>
+          </section>
+
+          <!-- Writings Section -->
+          <section>
+            <h2 class="text-2xl font-bold text-wood-accent mb-6 flex items-center gap-2">
+              <span class="material-icons-outlined">article</span> Articles
+            </h2>
+            <ul class="space-y-4">
+              <li><a href="writings/articles/freelance-developer-pricing-guide/" class="text-lg hover:text-wood-accent transition-colors">Freelance Pricing Guide</a></li>
+              <li><a href="writings/articles/legal-kit-ni-juan/" class="text-lg hover:text-wood-accent transition-colors">Legal Kit ni Juan</a></li>
+              <li><a href="writings/articles/sovereign-imperatives/" class="text-lg hover:text-wood-accent transition-colors">Sovereign Imperatives</a></li>
+              <li><a href="writings/articles/how-to-read-people/" class="text-lg hover:text-wood-accent transition-colors">How to Read People</a></li>
+              <li><a href="writings/articles/accessibility-semantic-html-aria/" class="text-lg hover:text-wood-accent transition-colors">Accessibility & Semantic HTML</a></li>
+              <li><a href="writings/articles/accessibility-first-app/" class="text-lg hover:text-wood-accent transition-colors">Accessibility First App</a></li>
+            </ul>
+          </section>
+        </div>
+      </div>
+    </main>
+
+    <footer class="bg-white dark:bg-[#1a1a1a] border-t border-gray-200 dark:border-gray-800 mt-auto">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+        <div class="flex flex-col md:flex-row justify-between items-center text-center md:text-left">
+          <div class="mb-4 md:mb-0">
+            <span class="text-xl font-bold text-gray-900 dark:text-white tracking-tight">Jun <span class="text-wood-accent">Alvior</span></span>
+            <p class="text-sm text-gray-500 mt-1">© 2024. All rights reserved.</p>
+          </div>
+          <div class="flex space-x-6">
+            <a href="index.html" class="text-gray-500 hover:text-wood-accent transition-colors">Home</a>
+            <a href="portfolio/" class="text-gray-500 hover:text-wood-accent transition-colors">Portfolio</a>
+            <a href="writings/" class="text-gray-500 hover:text-wood-accent transition-colors">Writings</a>
+          </div>
+        </div>
+      </div>
+    </footer>
+
+    <script src="js/main.js" defer></script>
+  </body>
+</html>
