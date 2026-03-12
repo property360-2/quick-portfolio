@@ -176,6 +176,13 @@ document.addEventListener("DOMContentLoaded", () => {
   // Only strictly needed if we want to dynamically set helper classes,
   // but the HTML files have them hardcoded for simplicity.
   // Leaving this placeholder for potential dynamic enhancement.
+
+  // ==========================================
+  // 6.5 Dynamic Import of 3D Scene (Desktop Only)
+  // ==========================================
+  if (window.innerWidth >= 1024) {
+    import('./3d-scene.js').catch(err => console.error("Failed to load 3D scene:", err));
+  }
 });
 
 // ==========================================
