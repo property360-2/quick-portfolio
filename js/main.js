@@ -180,8 +180,16 @@ document.addEventListener("DOMContentLoaded", () => {
   // ==========================================
   // 6.5 Dynamic Import of 3D Scene (Desktop Only)
   // ==========================================
-  if (window.innerWidth >= 1024) {
-    import('./3d-scene.js').catch(err => console.error("Failed to load 3D scene:", err));
+  const catContainer = document.getElementById("cat-canvas-container");
+  if (window.innerWidth >= 1024 && catContainer) {
+    // Detect if we are on GitHub Pages to handle base path correctly
+    const isGitHub = window.location.hostname.includes("github.io");
+    const basePath = isGitHub ? "/quick-portfolio" : "";
+
+    // Use an absolute path from the root to ensure it works on all subpages
+    import(`${basePath}/js/3d-scene.js`).catch((err) =>
+      console.error("Failed to load 3D scene:", err)
+    );
   }
 });
 
