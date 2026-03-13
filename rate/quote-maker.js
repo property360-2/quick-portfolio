@@ -101,10 +101,10 @@ document.addEventListener('DOMContentLoaded', () => {
                 nextBtn.classList.add('hidden');
             } else if (currentStep === totalSteps && totalSteps === 6) {
                 nextBtn.classList.remove('hidden');
-                nextBtn.innerHTML = 'Review info below <span class="material-icons-outlined ml-2 animate-bounce">arrow_downward</span>';
+                nextBtn.innerHTML = 'Review info below <svg class="ml-2 animate-bounce" viewBox="0 0 24 24" fill="currentColor"><path d="M20 12l-1.41-1.41L13 16.17V4h-2v12.17l-5.58-5.59L4 12l8 8 8-8z"/></svg>';
             } else {
                 nextBtn.classList.remove('hidden');
-                nextBtn.innerHTML = 'Next <span class="material-icons-outlined ml-2">arrow_forward</span>';
+                nextBtn.innerHTML = 'Next <svg class="ml-2" viewBox="0 0 24 24" fill="currentColor"><path d="M12 4l-1.41 1.41L16.17 11H4v2h12.17l-5.58 5.59L12 20l8-8z"/></svg>';
             }
 
             if (currentStep === 7) {
