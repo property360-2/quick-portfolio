@@ -12,13 +12,13 @@
     <meta property="og:url" content="https://property360-2.github.io/quick-portfolio/writings/" />
     <meta property="og:title" content="Writings, Articles & Tutorials | Jun Alvior" />
     <meta property="og:description" content="Technical articles, developer guides, and personal insights by Jun Alvior." />
-    <meta property="og:image" content="https://property360-2.github.io/quick-portfolio/assets/logo.png" />
+    <meta property="og:image" content="https://property360-2.github.io/quick-portfolio/assets/logo.webp" />
 
     <!-- Twitter -->
     <meta property="twitter:card" content="summary_large_image" />
     <meta property="twitter:title" content="Writings, Articles & Tutorials | Jun Alvior" />
     <meta property="twitter:description" content="Technical articles and developer insights." />
-    <meta property="twitter:image" content="https://property360-2.github.io/quick-portfolio/assets/logo.png" />
+    <meta property="twitter:image" content="https://property360-2.github.io/quick-portfolio/assets/logo.webp" />
 
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -29,10 +29,7 @@
     />
 
     <!-- Material Icons -->
-    <link
-      href="https://fonts.googleapis.com/icon?family=Material+Icons+Outlined"
-      rel="stylesheet"
-    />
+    <!-- Removed for performance optimization - replaced with inline SVGs -->
 
     <!-- Tailwind CSS -->
     <script>
@@ -64,8 +61,8 @@
 
     <!-- Custom CSS -->
     <link rel="stylesheet" href="../css/style.css" />
-    <script src="../js/theme-check.js"></script>
-    <link rel="icon" href="../assets/logo.png" type="image/png" />
+    <script src="../js/theme-check.js" defer></script>
+    <link rel="icon" href="../assets/logo.webp" type="image/webp" />
   </head>
   <body
     class="bg-grey-light text-grey-dark dark:bg-[#1a1a1a] dark:text-gray-200 transition-colors duration-300 antialiased font-sans flex flex-col min-h-screen preload"
@@ -120,12 +117,8 @@
               class="p-2 rounded-lg bg-gray-100 dark:bg-gray-800 text-gray-600 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-wood-accent focus:outline-none transition-all duration-300 hover:scale-110 active:scale-95"
               aria-label="Toggle Dark Mode"
             >
-              <span class="material-icons-outlined text-xl sun-icon hidden"
-                >light_mode</span
-              >
-              <span class="material-icons-outlined text-xl moon-icon"
-                >dark_mode</span
-              >
+              <svg class="w-5 h-5 sun-icon hidden" viewBox="0 0 24 24" fill="currentColor"><path d="M12 7c-2.76 0-5 2.24-5 5s2.24 5 5 5 5-2.24 5-5-2.24-5-5-5zM2 13h2c.55 0 1-.45 1-1s-.45-1-1-1H2c-.55 0-1 .45-1 1s.45 1 1 1zm18 0h2c.55 0 1-.45 1-1s-.45-1-1-1h-2c-.55 0-1 .45-1 1s.45 1 1 1zM11 2v2c0 .55.45 1 1 1s1-.45 1-1V2c0-.55-.45-1-1-1s-1 .45-1 1zm0 18v2c0 .55.45 1 1 1s1-.45 1-1v-2c0-.55-.45-1-1-1s-1 .45-1 1zM5.99 4.58c-.39-.39-1.03-.39-1.41 0s-.39 1.03 0 1.41l1.06 1.06c.39.39 1.03.39 1.41 0s.39-1.03 0-1.41L5.99 4.58zm12.37 12.37c-.39-.39-1.03-.39-1.41 0s-.39 1.03 0 1.41l1.06 1.06c.39.39 1.03.39 1.41 0s.39-1.03 0-1.41l-1.06-1.06zm1.06-12.37c-.39.39-.39 1.03 0 1.41l1.06 1.06c.39.39 1.03.39 1.41 0s.39-1.03 0-1.41l-1.06-1.06c-.39-.39-1.03-.39-1.41 0zm-12.37 12.37c-.39.39-.39 1.03 0 1.41l1.06 1.06c.39.39 1.03.39 1.41 0s.39-1.03 0-1.41l-1.06-1.06c-.39-.39-1.03-.39-1.41 0z"/></svg>
+              <svg class="w-5 h-5 moon-icon font-bold" viewBox="0 0 24 24" fill="currentColor"><path d="M12 3c-4.97 0-9 4.03-9 9s4.03 9 9 9 9-4.03 9-9c0-.46-.04-.92-.1-1.36-.98 1.37-2.58 2.26-4.4 2.26-2.98 0-5.4-2.42-5.4-5.4 0-1.81.89-3.42 2.26-4.4-.44-.06-.9-.1-1.36-.1z"/></svg>
             </button>
           </div>
 
@@ -135,12 +128,8 @@
               id="theme-toggle-mobile"
               class="p-2 rounded-lg bg-gray-100 dark:bg-gray-800 text-gray-600 dark:text-gray-300 focus:outline-none focus:ring-2 focus:ring-wood-accent focus:outline-none transition-all duration-300 hover:scale-110 active:scale-95"
             >
-              <span class="material-icons-outlined text-xl sun-icon hidden"
-                >light_mode</span
-              >
-              <span class="material-icons-outlined text-xl moon-icon"
-                >dark_mode</span
-              >
+              <svg class="w-5 h-5 sun-icon hidden" viewBox="0 0 24 24" fill="currentColor"><path d="M12 7c-2.76 0-5 2.24-5 5s2.24 5 5 5 5-2.24 5-5-2.24-5-5-5zM2 13h2c.55 0 1-.45 1-1s-.45-1-1-1H2c-.55 0-1 .45-1 1s.45 1 1 1zm18 0h2c.55 0 1-.45 1-1s-.45-1-1-1h-2c-.55 0-1 .45-1 1s.45 1 1 1zM11 2v2c0 .55.45 1 1 1s1-.45 1-1V2c0-.55-.45-1-1-1s-1 .45-1 1zm0 18v2c0 .55.45 1 1 1s1-.45 1-1v-2c0-.55-.45-1-1-1s-1 .45-1 1zM5.99 4.58c-.39-.39-1.03-.39-1.41 0s-.39 1.03 0 1.41l1.06 1.06c.39.39 1.03.39 1.41 0s.39-1.03 0-1.41L5.99 4.58zm12.37 12.37c-.39-.39-1.03-.39-1.41 0s-.39 1.03 0 1.41l1.06 1.06c.39.39 1.03.39 1.41 0s.39-1.03 0-1.41l-1.06-1.06zm1.06-12.37c-.39.39-.39 1.03 0 1.41l1.06 1.06c.39.39 1.03.39 1.41 0s.39-1.03 0-1.41l-1.06-1.06c-.39-.39-1.03-.39-1.41 0zm-12.37 12.37c-.39.39-.39 1.03 0 1.41l1.06 1.06c.39.39 1.03.39 1.41 0s.39-1.03 0-1.41l-1.06-1.06c-.39-.39-1.03-.39-1.41 0z"/></svg>
+              <svg class="w-5 h-5 moon-icon" viewBox="0 0 24 24" fill="currentColor"><path d="M12 3c-4.97 0-9 4.03-9 9s4.03 9 9 9 9-4.03 9-9c0-.46-.04-.92-.1-1.36-.98 1.37-2.58 2.26-4.4 2.26-2.98 0-5.4-2.42-5.4-5.4 0-1.81.89-3.42 2.26-4.4-.44-.06-.9-.1-1.36-.1z"/></svg>
             </button>
             <button
               id="mobile-menu-btn"
@@ -148,7 +137,7 @@
               aria-label="Toggle navigation menu"
               class="text-gray-600 dark:text-gray-300 hover:text-wood-accent focus:outline-none"
             >
-              <span class="material-icons-outlined text-3xl">menu</span>
+              <svg class="w-8 h-8" viewBox="0 0 24 24" fill="currentColor"><path d="M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z"/></svg>
             </button>
           </div>
         </div>
@@ -438,7 +427,7 @@
               class="text-gray-400 hover:text-wood-accent transition-colors"
             >
               <span class="sr-only">Email</span>
-              <span class="material-icons-outlined">email</span>
+              <svg class="w-6 h-6" viewBox="0 0 24 24" fill="currentColor"><path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg>
             </a>
             <a
               href="https://github.com/property360-2"
@@ -479,7 +468,7 @@
       class="fixed bottom-8 right-8 p-3 rounded-full bg-wood-accent text-white shadow-lg hover:bg-wood-700 transition-all transform translate-y-20 opacity-0 z-40 focus:outline-none"
       aria-label="Back to Top"
     >
-      <span class="material-icons-outlined">arrow_upward</span>
+      <svg class="w-6 h-6" viewBox="0 0 24 24" fill="currentColor"><path d="M4 12l1.41 1.41L11 7.83V20h2V7.83l5.58 5.59L20 12l-8-8-8 8z"/></svg>
     </button>
 
     <!-- Scripts -->

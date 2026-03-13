@@ -20,14 +20,11 @@
       href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap"
       rel="stylesheet"
     />
-    <link
-      href="https://fonts.googleapis.com/icon?family=Material+Icons+Outlined"
-      rel="stylesheet"
-    />
+    <!-- Material Icons removed for performance -->
 
     <link rel="stylesheet" href="css/style.css" />
-    <script src="js/theme-check.js"></script>
-    <link rel="icon" href="assets/logo.png" type="image/png" />
+    <script src="js/theme-check.js" defer></script>
+    <link rel="icon" href="assets/logo.webp" type="image/webp" />
   </head>
   <body
     class="bg-grey-light text-grey-dark dark:bg-[#1a1a1a] dark:text-gray-200 transition-colors duration-300 antialiased font-sans flex flex-col min-h-screen"
@@ -46,7 +43,7 @@
           href="index.html"
           class="inline-flex items-center justify-center px-8 py-4 bg-wood-accent hover:bg-wood-700 text-white font-medium rounded-lg shadow-lg hover:shadow-wood-accent/40 transition-all focus-visible:ring-2 focus-visible:ring-wood-accent focus:outline-none focus:ring-2 focus:ring-wood-accent"
         >
-          <span class="material-icons-outlined mr-2">home</span>
+          <svg class="w-6 h-6" viewBox="0 0 24 24" fill="currentColor"><path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z"/></svg>
           Return to Homepage
         </a>
       </div>
