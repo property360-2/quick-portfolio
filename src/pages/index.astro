@@ -1,0 +1,96 @@
+---
+import Layout from '../layouts/Layout.astro';
+const title = 'Jun Alvior | Full Stack Developer & Writer';
+const description = 'Portfolio of Jun Alvior, a Full Stack Developer specializing in Python, Django, React, and Supabase. Building clean, fast, and smart digital solutions.';
+---
+
+<Layout title={title} description={description}>
+      <!-- Spacer for fixed Nav -->
+      <!-- Removed spacer for better glassmorphism overlap -->
+
+      <!-- ORGANISMS: Hero Section -->
+      <section
+        id="home"
+        class="flex-grow flex items-center relative overflow-hidden pt-20"
+      >
+        <!-- Ambient Glows -->
+        <div
+          class="absolute top-0 left-1/4 w-96 h-96 bg-wood-300/20 dark:bg-wood-400/10 rounded-full mix-blend-multiply dark:mix-blend-lighten filter blur-[100px] opacity-70 animate-pulse hidden md:block"
+        ></div>
+        <div
+          class="absolute bottom-0 right-1/4 w-96 h-96 bg-wood-accent/20 dark:bg-wood-accent/10 rounded-full mix-blend-multiply dark:mix-blend-lighten filter blur-[100px] opacity-70 animate-pulse hidden md:block"
+          style="animation-delay: 2s"
+        ></div>
+
+        <!-- Background Elements -->
+        <div
+          class="absolute top-0 right-0 w-1/3 h-full bg-wood-50 dark:bg-gray-800/20 -z-10 skew-x-12 transform origin-top-right hidden lg:block"
+        ></div>
+
+        <div
+          class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full py-20 lg:py-12 relative z-10"
+        >
+          <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+            <div class="hero-content space-y-8 text-center lg:text-left">
+              <div class="space-y-4">
+                <h2
+                  class="text-wood-accent font-semibold tracking-wider uppercase text-sm gs-reveal"
+                >
+                  Full Stack Developer
+                </h2>
+                <h1
+                  class="text-4xl md:text-6xl lg:text-7xl font-bold text-gray-900 dark:text-white leading-tight gs-reveal"
+                >
+                  Faster. Cleaner.
+                  <span class="text-wood-accent text-wood-accent">Smarter</span>
+                  <br />digital experiences.
+                </h1>
+                <p
+                  class="text-xl text-gray-600 dark:text-gray-400 max-w-2xl mx-auto lg:mx-0 leading-relaxed gs-reveal"
+                >
+                  I create high-performance web applications that combine speed,
+                  aesthetics, and intelligence to deliver seamless user
+                  journeys.
+                </p>
+              </div>
+
+              <!-- ATOMS: CTA Buttons -->
+              <div
+                class="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start gs-reveal"
+              >
+                <a
+                  href="/quick-portfolio/portfolio/"
+                  aria-label="View Jun Alvior's Portfolio projects"
+                  class="px-8 py-4 bg-wood-accent hover:bg-wood-700 text-white font-medium rounded-lg shadow-lg hover:shadow-wood-accent/40 hover:shadow-2xl transition-all transform hover:-translate-y-1 focus:ring-2 focus:ring-wood-accent focus:ring-offset-2 dark:focus:ring-offset-[#1a1a1a] focus:outline-none"
+                >
+                  View Portfolio
+                </a>
+                <a
+                  href="/quick-portfolio/about/"
+                  aria-label="Learn more about Jun Alvior's background and skills"
+                  class="px-8 py-4 bg-transparent border-2 border-gray-300 dark:border-gray-600 text-gray-700 dark:text-gray-300 font-medium rounded-lg hover:border-wood-accent hover:text-wood-accent dark:hover:border-wood-accent dark:hover:text-wood-accent transition-all focus:ring-2 focus:ring-wood-accent focus:outline-none"
+                >
+                  About Me
+                </a>
+              </div>
+            </div>
+
+            <div
+              class="hero-visual relative hidden lg:block gs-reveal-img h-[500px]"
+            >
+              <div
+                class="absolute inset-0 bg-wood-accent/10 rounded-2xl transform rotate-6 scale-95 blur-sm"
+              ></div>
+              <div
+                id="cat-canvas-container"
+                class="relative rounded-2xl w-full h-full drop-shadow-2xl flex items-center justify-center"
+              >
+                <!-- 3D Cat will render here -->
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ORGANISMS: Footer -->
+</Layout>

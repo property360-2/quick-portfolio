@@ -1,0 +1,129 @@
+---
+import Layout from '../../../layouts/Layout.astro';
+const title = 'Mind Map Maker | Productivity Tool';
+const description = 'A productivity web application to create, save, and export mind maps asynchronously using localStorage. Built with vanilla web technologies.';
+---
+
+<Layout title={title} description={description}>
+<main id="main-content" class="flex-grow flex flex-col">
+      <!-- ORGANISMS: Project Case Study -->
+      <article class="py-24 bg-grey-light dark:bg-[#1a1a1a] flex-grow">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+          <!-- Breadcrumb -->
+          <div class="mb-8 text-sm text-gray-500 dark:text-gray-400">
+            <a
+              href="../../portfolio/"
+              class="hover:text-wood-accent transition-colors"
+              ><- Back to Portfolio</a
+            >
+          </div>
+
+          <!-- Header -->
+          <header class="mb-12" data-aos="fade-up">
+            <div class="mb-8 rounded-xl overflow-hidden shadow-2xl">
+              <img
+                src="../../assets/mind-map-maker.webp"
+                alt="Mind Map Maker"
+                class="w-full h-auto object-cover max-h-[500px]"
+                loading="lazy"
+                decoding="async"
+                width="800"
+                height="450"
+              />
+            </div>
+            <h1
+              class="text-4xl md:text-5xl font-bold text-gray-900 dark:text-white mb-6"
+            >
+              Mind Map Maker
+            </h1>
+            <div class="flex flex-wrap gap-4 text-sm">
+              <span
+                class="px-3 py-1 bg-wood-100 dark:bg-wood-900 text-wood-accent text-wood-accent rounded-full font-medium"
+                >JavaScript</span
+              >
+              <span
+                class="px-3 py-1 bg-wood-100 dark:bg-wood-900 text-wood-accent text-wood-accent rounded-full font-medium"
+                >Productivity</span
+              >
+              <span
+                class="px-3 py-1 bg-wood-100 dark:bg-wood-900 text-wood-accent text-wood-accent rounded-full font-medium"
+                >LocalStorage</span
+              >
+            </div>
+          </header>
+
+          <!-- Content -->
+          <div
+            class="prose dark:prose-invert prose-lg prose-wood dark:prose-invert prose-wood max-w-none"
+            data-aos="fade-up"
+            data-aos-delay="100"
+          >
+            <p>
+              An intuitive and robust web application for creating mind maps.
+              Users can easily map out their ideas interactively, and standard
+              productivity concepts are fully integrated within the
+              application's clean design. Data is asynchronously saved directly
+              to <code>localStorage</code> for a fast, responsive user
+              experience without requiring backend database loads for simple
+              sketches.
+            </p>
+
+            <h3>Key Features</h3>
+            <ul>
+              <li>
+                <strong>Interactive Canvas:</strong> Easily create, drag, and
+                organize nodes to build comprehensive mind maps.
+              </li>
+              <li>
+                <strong>Asynchronous Saving:</strong> Features seamless
+                <code>localStorage</code> integration that saves your progress
+                securely and asynchronously without page reloads.
+              </li>
+              <li>
+                <strong>Easy Export/Import:</strong> Functionality to manage
+                ideas with a smooth export format to visualize ideas.
+              </li>
+            </ul>
+
+            <h3>Project Links</h3>
+            <div class="flex gap-4 not-prose mt-6">
+              <a
+                href="https://property360-2.github.io/mind-map/"
+                target="_blank"
+                class="px-6 py-3 bg-wood-accent hover:bg-wood-700 text-white font-semibold rounded-lg shadow-md transition-all transform hover:-translate-y-0.5 flex items-center"
+              >
+                <svg
+                  class="mr-2 w-5 h-5 mr-2"
+                  viewBox="0 0 24 24"
+                  fill="currentColor"
+                >
+                  <path
+                    d="M19 19H5V5h7V3H5c-1.11 0-2 .9-2 2v14c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2v-7h-2v7zM14 3v2h3.59l-9.83 9.83 1.41 1.41L19 6.41V10h2V3h-7z"
+                  />
+                </svg>
+                Live Demo
+              </a>
+              <a
+                href="https://github.com/property360-2/mind-map/tree/demo-preview"
+                target="_blank"
+                class="px-6 py-3 bg-gray-200 dark:bg-gray-800 hover:bg-gray-300 dark:hover:bg-gray-700 text-gray-900 dark:text-white font-semibold rounded-lg shadow-md transition-all transform hover:-translate-y-0.5 flex items-center"
+              >
+                <svg
+                  class="mr-2 w-5 h-5 mr-2"
+                  viewBox="0 0 24 24"
+                  fill="currentColor"
+                >
+                  <path
+                    d="M9.4 16.6L4.8 12l4.6-4.6L8 6l-6 6 6 6 1.4-1.4zm5.2 0l4.6-4.6-4.6-4.6L16 6l6 6-6 6-1.4-1.4z"
+                  />
+                </svg>
+                View Code
+              </a>
+            </div>
+          </div>
+        </div>
+      </article>
+
+      <!-- ORGANISMS: Footer -->
+    </main>
+</Layout>

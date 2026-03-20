@@ -1,0 +1,152 @@
+---
+import Layout from '../../../layouts/Layout.astro';
+const title = 'OJT Daily Journal System Case Study | Jun Alvior';
+const description = 'A modern, web-based daily journal system designed for OJT students to log their daily activities and for administrators to monitor progress and compliance.';
+---
+
+<Layout title={title} description={description}>
+<main id="main-content" class="flex-grow flex flex-col">
+      <!-- ORGANISMS: Project Case Study -->
+      <article class="py-24 bg-grey-light dark:bg-[#1a1a1a] flex-grow">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+          <!-- Breadcrumb -->
+          <div class="mb-8 text-sm text-gray-500 dark:text-gray-400">
+            <a
+              href="../../portfolio/"
+              class="hover:text-wood-accent transition-colors"
+              >&lt;- Back to Portfolio</a
+            >
+          </div>
+
+          <!-- Header -->
+          <header class="mb-12" data-aos="fade-up">
+            <div class="mb-8 rounded-xl overflow-hidden shadow-2xl">
+              <img
+                src="../../assets/ojt-journals.png"
+                alt="OJT Journals System"
+                class="w-full h-auto object-cover max-h-[500px]"
+                loading="lazy"
+                decoding="async"
+                width="800"
+                height="450"
+              />
+            </div>
+            <h1
+              class="text-4xl md:text-5xl font-bold text-gray-900 dark:text-white mb-6"
+            >
+              OJT Daily Journal System
+            </h1>
+            <div class="flex flex-wrap gap-4 text-sm">
+              <span
+                class="px-3 py-1 bg-wood-100 dark:bg-wood-900 text-wood-accent text-wood-accent rounded-full font-medium"
+                >JavaScript</span
+              >
+              <span
+                class="px-3 py-1 bg-wood-100 dark:bg-wood-900 text-wood-accent text-wood-accent rounded-full font-medium"
+                >Firebase & Firestore</span
+              >
+              <span
+                class="px-3 py-1 bg-wood-100 dark:bg-wood-900 text-wood-accent text-wood-accent rounded-full font-medium"
+                >HTML & CSS</span
+              >
+            </div>
+          </header>
+
+          <!-- Content -->
+          <div
+            class="prose dark:prose-invert prose-lg prose-wood dark:prose-invert prose-wood max-w-none"
+            data-aos="fade-up"
+            data-aos-delay="100"
+          >
+            <p>
+              The OJT Daily Journal System is a modern, web-based platform
+              tailored for OJT students to log their daily activities while
+              giving administrators a clear view over their compliance and
+              progress.
+            </p>
+
+            <h3>Key Features</h3>
+            <ul>
+              <li>
+                <strong>Role-Based Access:</strong> Separate secure dashboards
+                for Students and Administrators.
+              </li>
+              <li>
+                <strong>Daily Journaling:</strong> Students can flexibly write,
+                save drafts, and submit their daily tasks efficiently.
+              </li>
+              <li>
+                <strong>Progress Tracking:</strong> It automatically tracks
+                submitted and missing journals based on the student's OJT start
+                date and specified work schedule.
+              </li>
+              <li>
+                <strong>Admin Review:</strong> Empowering administrators to
+                directly review, remark on, and categorize submissions
+                systematically.
+              </li>
+              <li>
+                <strong>Modern UI:</strong> A clean, responsive, and top-tier
+                design utilizing fluid glassmorphism visual effects for
+                excellent user-experience.
+              </li>
+              <li>
+                <strong>Firebase Integration:</strong> Using Firebase Auth and
+                Firestore for robust, fast, and real-time backend data
+                operations.
+              </li>
+            </ul>
+          </div>
+          <!-- End of Prose Content Container -->
+
+          <!-- Project Links (Ensuring High Contrast Buttons) -->
+          <h3
+            class="mt-20 text-3xl font-bold text-gray-900 dark:text-white mb-8"
+            data-aos="fade-up"
+          >
+            Project Links
+          </h3>
+          <div
+            class="flex flex-wrap gap-6 mt-6 pb-12"
+            data-aos="fade-up"
+            data-aos-delay="200"
+          >
+            <a
+              href="https://property360-2.github.io/ojt-journals/index.html"
+              target="_blank"
+              class="px-8 py-4 bg-wood-accent hover:bg-wood-700 text-white font-bold rounded-xl shadow-lg transition-all transform hover:-translate-y-1 flex items-center justify-center min-w-[200px]"
+            >
+              <svg
+                class="mr-2 w-5 h-5 mr-2"
+                viewBox="0 0 24 24"
+                fill="currentColor"
+              >
+                <path
+                  d="M19 19H5V5h7V3H5c-1.11 0-2 .9-2 2v14c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2v-7h-2v7zM14 3v2h3.59l-9.83 9.83 1.41 1.41L19 6.41V10h2V3h-7z"
+                />
+              </svg>
+              Live Demo
+            </a>
+            <a
+              href="https://github.com/property360-2/ojt-journals"
+              target="_blank"
+              class="px-8 py-4 bg-gray-900 dark:bg-white text-white dark:text-gray-900 hover:bg-gray-800 dark:hover:bg-gray-100 font-bold rounded-xl shadow-lg transition-all transform hover:-translate-y-1 flex items-center justify-center min-w-[200px]"
+            >
+              <svg
+                class="mr-2 w-5 h-5 mr-2"
+                viewBox="0 0 24 24"
+                fill="currentColor"
+              >
+                <path
+                  d="M9.4 16.6L4.8 12l4.6-4.6L8 6l-6 6 6 6 1.4-1.4zm5.2 0l4.6-4.6-4.6-4.6L16 6l6 6-6 6-1.4-1.4z"
+                />
+              </svg>
+              View GitHub
+            </a>
+          </div>
+        </div>
+      </article>
+
+      <!-- ORGANISMS: Footer -->
+    </main>
+</Layout>
