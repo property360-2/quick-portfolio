@@ -3,45 +3,56 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Accessibility Guide: Semantic HTML & ARIA Patterns | Jun Alvior</title>
-    <meta name="description" content="Technical guide on building inclusive websites with Semantic HTML and ARIA. Master accessibility-first development for modern web apps." />
-    <meta name="keywords" content="Web Accessibility, A11y, Semantic HTML, ARIA patterns, Inclusive Design, Web Development Tutorial" />
+    <title>
+      Accessibility Guide: Semantic HTML & ARIA Patterns | Jun Alvior
+    </title>
+    <meta
+      name="description"
+      content="Technical guide on building inclusive websites with Semantic HTML and ARIA. Master accessibility-first development for modern web apps."
+    />
+    <meta
+      name="keywords"
+      content="Web Accessibility, A11y, Semantic HTML, ARIA patterns, Inclusive Design, Web Development Tutorial"
+    />
     <meta name="author" content="Jun Alvior" />
-    <link rel="canonical" href="https://property360-2.github.io/quick-portfolio/writings/articles/accessibility-semantic-html-aria/" />
+    <link
+      rel="canonical"
+      href="https://property360-2.github.io/quick-portfolio/writings/articles/accessibility-semantic-html-aria/"
+    />
 
     <!-- Open Graph -->
-    <meta property="og:type" content="article" />
+    
     <meta property="article:published_time" content="2026-02-11" />
     <meta property="article:author" content="Jun Alvior" />
-    <meta property="og:url" content="https://property360-2.github.io/quick-portfolio/writings/articles/accessibility-semantic-html-aria/" />
-    <meta property="og:title" content="Accessibility First: Semantic HTML & ARIA Guide" />
-    <meta property="og:description" content="Technical guide on building accessible websites using Semantic HTML and ARIA." />
-    <meta property="og:image" content="https://property360-2.github.io/quick-portfolio/assets/accesibility-image.webp" />
+    
+    
+    
+    
 
     <!-- Twitter -->
-    <meta property="twitter:card" content="summary_large_image" />
-    <meta property="twitter:title" content="Accessibility First: Semantic HTML & ARIA Guide" />
-    <meta property="twitter:description" content="Building inclusive websites with modern standards." />
-    <meta property="twitter:image" content="https://property360-2.github.io/quick-portfolio/assets/accesibility-image.webp" />
+    
+    
+    
+    
 
     <!-- Structured Data (JSON-LD) -->
     <script type="application/ld+json">
-    {
-      "@context": "https://schema.org",
-      "@type": "Article",
-      "headline": "Accessibility First Development: The Semantic Foundation and the Art of ARIA",
-      "description": "A comprehensive technical guide on building accessible websites using modern Semantic HTML and ARIA best practices.",
-      "image": "https://property360-2.github.io/quick-portfolio/assets/accesibility-image.webp",
-      "author": {
-        "@type": "Person",
-        "name": "Jun Alvior"
-      },
-      "publisher": {
-        "@type": "Person",
-        "name": "Jun Alvior"
-      },
-      "datePublished": "2026-02-11"
-    }
+      {
+        "@context": "https://schema.org",
+        "@type": "Article",
+        "headline": "Accessibility First Development: The Semantic Foundation and the Art of ARIA",
+        "description": "A comprehensive technical guide on building accessible websites using modern Semantic HTML and ARIA best practices.",
+        "image": "https://property360-2.github.io/quick-portfolio/assets/accesibility-image.webp",
+        "author": {
+          "@type": "Person",
+          "name": "Jun Alvior"
+        },
+        "publisher": {
+          "@type": "Person",
+          "name": "Jun Alvior"
+        },
+        "datePublished": "2026-02-11"
+      }
     </script>
 
     <!-- Google Fonts -->
@@ -57,8 +68,18 @@
 
     <!-- Tailwind CSS -->
     <!-- AOS CSS - Loaded late to prevent render blocking -->
-    <link rel="preload" href="https://unpkg.com/aos@2.3.1/dist/aos.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
-    <noscript><link rel="stylesheet" href="https://unpkg.com/aos@2.3.1/dist/aos.css"></noscript>
+    <link
+      rel="preload"
+      href="https://unpkg.com/aos@2.3.1/dist/aos.css"
+      as="style"
+      onload="
+        this.onload = null;
+        this.rel = 'stylesheet';
+      "
+    />
+    <noscript
+      ><link rel="stylesheet" href="https://unpkg.com/aos@2.3.1/dist/aos.css"
+    /></noscript>
 
     <!-- Custom CSS -->
     <link rel="stylesheet" href="../../../css/style.css" />
@@ -87,8 +108,24 @@
       }
     </style>
     <script src="../../../js/theme-check.js" defer></script>
-    <link rel="icon" href="../../../assets/logo.webp" type="image/webp" />
-  </head>
+    
+  
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://property360-2.github.io/quick-portfolio/writings/articles/accessibility-semantic-html-aria/" />
+    <meta property="og:title" content="Accessibility Guide: Semantic HTML & ARIA Patterns | Jun Alvior" />
+    <meta property="og:description" content="Technical guide on building inclusive websites with Semantic HTML and ARIA. Master accessibility-first development for modern web apps." />
+    <meta property="og:image" content="https://property360-2.github.io/quick-portfolio/assets/my-website-logo.png" />
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image" />
+    <meta property="twitter:url" content="https://property360-2.github.io/quick-portfolio/writings/articles/accessibility-semantic-html-aria/" />
+    <meta property="twitter:title" content="Accessibility Guide: Semantic HTML & ARIA Patterns | Jun Alvior" />
+    <meta property="twitter:description" content="Technical guide on building inclusive websites with Semantic HTML and ARIA. Master accessibility-first development for modern web apps." />
+    <meta property="twitter:image" content="https://property360-2.github.io/quick-portfolio/assets/my-website-logo.png" />
+
+    <link rel="icon" href="../../../assets/my-website-logo.svg" type="image/svg+xml" />
+    </head>
   <body
     class="bg-grey-light text-grey-dark dark:bg-[#1a1a1a] dark:text-gray-300 transition-colors duration-300 antialiased font-sans flex flex-col min-h-screen"
   >
@@ -149,12 +186,24 @@
               id="theme-toggle-mobile"
               class="p-2 rounded-lg bg-gray-100 dark:bg-gray-800 text-gray-600 dark:text-gray-300 focus:ring-2 focus:ring-wood-accent focus:outline-none transition-all duration-300 hover:scale-110 active:scale-95"
             >
-              <span class="material-icons-outlined text-xl sun-icon hidden"
-                >light_mode</span
+              <svg
+                class="w-5 h-5 sun-icon hidden"
+                viewBox="0 0 24 24"
+                fill="currentColor"
               >
-              <span class="material-icons-outlined text-xl moon-icon"
-                >dark_mode</span
+                <path
+                  d="M12 7c-2.76 0-5 2.24-5 5s2.24 5 5 5 5-2.24 5-5-2.24-5-5-5zM2 13h2c.55 0 1-.45 1-1s-.45-1-1-1H2c-.55 0-1 .45-1 1s.45 1 1 1zm18 0h2c.55 0 1-.45 1-1s-.45-1-1-1h-2c-.55 0-1 .45-1 1s.45 1 1 1zM11 2v2c0 .55.45 1 1 1s1-.45 1-1V2c0-.55-.45-1-1-1s-1 .45-1 1zm0 18v2c0 .55.45 1 1 1s1-.45 1-1v-2c0-.55-.45-1-1-1s-1 .45-1 1zM5.99 4.58c-.39-.39-1.03-.39-1.41 0s-.39 1.03 0 1.41l1.06 1.06c.39.39 1.03.39 1.41 0s.39-1.03 0-1.41L5.99 4.58zm12.37 12.37c-.39-.39-1.03-.39-1.41 0s-.39 1.03 0 1.41l1.06 1.06c.39.39 1.03.39 1.41 0s.39-1.03 0-1.41L5.99 4.58zm12.37 12.37c-.39-.39-1.03-.39-1.41 0s-.39 1.03 0-1.41l1.06 1.06c.39.39 1.03.39 1.41 0s.39-1.03 0-1.41L5.99 4.58zm1.06-12.37c-.39.39-.39 1.03 0 1.41l1.06 1.06c.39.39 1.03.39 1.41 0s.39-1.03 0-1.41l-1.06-1.06c-.39-.39-1.03-.39-1.41 0zm-12.37 12.37c-.39.39-.39 1.03 0 1.41l1.06 1.06c.39.39 1.03.39 1.41 0s.39-1.03 0-1.41l-1.06-1.06c-.39-.39-1.03-.39-1.41 0z"
+                />
+              </svg>
+              <svg
+                class="w-5 h-5 moon-icon"
+                viewBox="0 0 24 24"
+                fill="currentColor"
               >
+                <path
+                  d="M12 3c-4.97 0-9 4.03-9 9s4.03 9 9 9 9-4.03 9-9c0-.46-.04-.92-.1-1.36-.98 1.37-2.58 2.26-4.4 2.26-2.98 0-5.4-2.42-5.4-5.4 0-1.81.89-3.42 2.26-4.4-.44-.06-.9-.1-1.36-.1z"
+                />
+              </svg>
             </button>
             <button
               id="mobile-menu-btn"
@@ -162,7 +211,9 @@
               aria-label="Toggle navigation menu"
               class="text-gray-600 dark:text-gray-300 focus:outline-none"
             >
-              <svg class="w-8 h-8" viewBox="0 0 24 24" fill="currentColor"><path d="M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z"/></svg>
+              <svg class="w-8 h-8" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z" />
+              </svg>
             </button>
           </div>
         </div>
@@ -209,9 +260,11 @@
               href="../../../writings/"
               class="hover:text-wood-accent transition-colors flex items-center"
             >
-              <span class="material-icons-outlined text-sm mr-1"
-                >arrow_back</span
-              >
+              <svg class="w-4 h-4 mr-1" viewBox="0 0 24 24" fill="currentColor">
+                <path
+                  d="M20 11H7.83l5.59-5.59L12 4l-8 8 8 8 1.41-1.41L7.83 13H20v-2z"
+                />
+              </svg>
               Back to Writings
             </a>
           </div>
@@ -240,22 +293,40 @@
               class="flex flex-wrap items-center text-sm font-medium text-gray-500 dark:text-gray-400 gap-6 border-y border-gray-100 dark:border-gray-800 py-6"
             >
               <span class="flex items-center"
-                ><span
-                  class="material-icons-outlined text-base mr-2 text-wood-accent"
-                  >calendar_today</span
-                >Feb 11, 2026</span
+                ><svg
+                  class="w-4 h-4 mr-2 text-wood-accent"
+                  viewBox="0 0 24 24"
+                  fill="currentColor"
+                >
+                  <path
+                    d="M19 4h-1V2h-2v2H8V2H6v2H5c-1.11 0-1.99.9-1.99 2L3 20c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 16H5V10h14v10zm0-12H5V6h14v2z"
+                  />
+                </svg>
+                Feb 11, 2026</span
               >
               <span class="flex items-center"
-                ><span
-                  class="material-icons-outlined text-base mr-2 text-wood-accent"
-                  >person</span
-                >Jun Alvior</span
+                ><svg
+                  class="w-4 h-4 mr-2 text-wood-accent"
+                  viewBox="0 0 24 24"
+                  fill="currentColor"
+                >
+                  <path
+                    d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"
+                  />
+                </svg>
+                Jun Alvior</span
               >
               <span class="flex items-center"
-                ><span
-                  class="material-icons-outlined text-base mr-2 text-wood-accent"
-                  >article</span
-                >Technical Paper</span
+                ><svg
+                  class="w-4 h-4 mr-2 text-wood-accent"
+                  viewBox="0 0 24 24"
+                  fill="currentColor"
+                >
+                  <path
+                    d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-5 14H7v-2h7v2zm3-4H7v-2h10v2zm0-4H7V7h10v2z"
+                  />
+                </svg>
+                Technical Paper</span
               >
             </div>
           </header>
@@ -687,8 +758,11 @@
             <a
               href="mailto:junalvior21@gmail.com"
               class="text-gray-400 hover:text-wood-accent transition-colors"
-              ><svg class="w-6 h-6" viewBox="0 0 24 24" fill="currentColor"><path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg></a
-            >
+              ><svg class="w-6 h-6" viewBox="0 0 24 24" fill="currentColor">
+                <path
+                  d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"
+                /></svg
+            ></a>
             <a
               href="https://github.com/property360-2"
               target="_blank"
@@ -708,12 +782,17 @@
       id="back-to-top"
       class="fixed bottom-8 right-8 p-3 rounded-full bg-wood-accent text-white shadow-lg hover:bg-wood-700 transition-all transform translate-y-20 opacity-0 z-40"
     >
-      <svg class="w-6 h-6" viewBox="0 0 24 24" fill="currentColor"><path d="M4 12l1.41 1.41L11 7.83V20h2V7.83l5.58 5.59L20 12l-8-8-8 8z"/></svg>
+      <svg class="w-6 h-6" viewBox="0 0 24 24" fill="currentColor">
+        <path d="M4 12l1.41 1.41L11 7.83V20h2V7.83l5.58 5.59L20 12l-8-8-8 8z" />
+      </svg>
     </button>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js" defer></script>
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"
+      defer
+    ></script>
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js" defer></script>
     <script src="../../../js/main.js" defer></script>
-  
+
     <script type="importmap">
       {
         "imports": {

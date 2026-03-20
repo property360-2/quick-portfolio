@@ -258,7 +258,6 @@ canvas {
 }
 
 @keyframes pulseGlow {
-
   0%,
   100% {
     box-shadow:

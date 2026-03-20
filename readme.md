@@ -2,7 +2,8 @@
 
 Welcome to my personal portfolio! This project showcases my journey as a **Full Stack Developer** and a **Political Science student**, blending technical expertise with strong work ethics.
 
-##  Features
+## Features
+
 - **Performance Optimized**: Ultra-fast loading speeds using WebP images, deferred loading, and inline SVGs.
 - **Modern UI/UX**: Sleek, glassmorphic design inspired by premium aesthetics.
 - **Dark Mode**: Intelligent theme switching with persistent storage.
@@ -11,12 +12,13 @@ Welcome to my personal portfolio! This project showcases my journey as a **Full 
 - **Admin Dashboard**: Secure Firebase-backed inquiries management.
 
 ## Tech Stack
+
 - **Frontend**: HTML5, Vanilla JavaScript, Tailwind CSS (via CDN/Script).
 - **Libraries**: Three.js, GSAP, AOS (Animate on Scroll).
 - **Backend/Database**: Firebase (for inquiries).
 - **Optimization**: WebP conversion, Critical CSS, Preload/Preconnect hints.
 
-##  How to Run Locally
+## How to Run Locally
 
 Since this is a static website, you don't need any complex installation.
 
@@ -32,7 +34,7 @@ Since this is a static website, you don't need any complex installation.
 
 > [!IMPORTANT]
 > **This project and all its source code are EXCLUSIVELY OWNED by Dionisio "Jun" Alvior.**
-> 
+>
 > - **Only the owner (Jun Alvior) is authorized to use, modify, or deploy this creation.**
 > - **NO ONE has the rights to copy, reproduce, redistribute, or use any part of this codebase for their own projects, commercial or otherwise.**
 > - Unauthorized use or distribution of this code constitutes a violation of copyright and intellectual property rights.

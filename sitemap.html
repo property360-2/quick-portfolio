@@ -4,22 +4,37 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Sitemap | Jun Alvior Portfolio</title>
-    <meta name="description" content="HTML sitemap for Jun Alvior's portfolio, listing all pages, projects, and articles for easy navigation." />
-    <link rel="canonical" href="https://property360-2.github.io/quick-portfolio/sitemap.html" />
+    <meta
+      name="description"
+      content="HTML sitemap for Jun Alvior's portfolio, listing all pages, projects, and articles for easy navigation."
+    />
+    <link
+      rel="canonical"
+      href="https://property360-2.github.io/quick-portfolio/sitemap.html"
+    />
 
     <!-- Preconnect -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 
     <!-- Google Fonts & Icons -->
-    <link rel="preload" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" as="style">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+    <link
+      rel="preload"
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap"
+      as="style"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
     <!-- Material Icons removed for performance -->
 
     <!-- Theme Script -->
     <script>
       const savedTheme = localStorage.getItem("theme");
-      const systemPrefersDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
+      const systemPrefersDark = window.matchMedia(
+        "(prefers-color-scheme: dark)",
+      ).matches;
       if (savedTheme === "dark" || (!savedTheme && systemPrefersDark)) {
         document.documentElement.classList.add("dark");
       } else {
@@ -27,19 +42,42 @@
       }
     </script>
     <style>
-      html { background-color: #f5f5f5; }
-      html.dark { background-color: #1a1a1a; }
+      html {
+        background-color: #f5f5f5;
+      }
+      html.dark {
+        background-color: #1a1a1a;
+      }
     </style>
 
     <!-- Custom CSS -->
     <link rel="stylesheet" href="css/style.css" />
     <script src="js/theme-check.js" defer></script>
-    <link rel="icon" href="assets/logo.webp" type="image/webp">
-  </head>
-  <body class="bg-grey-light text-grey-dark dark:bg-[#1a1a1a] dark:text-gray-200 transition-colors duration-300 antialiased font-sans flex flex-col min-h-screen">
     
+  
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://property360-2.github.io/quick-portfolio/sitemap.html" />
+    <meta property="og:title" content="Sitemap | Jun Alvior Portfolio" />
+    <meta property="og:description" content="HTML sitemap for Jun Alvior's portfolio, listing all pages, projects, and articles for easy navigation." />
+    <meta property="og:image" content="https://property360-2.github.io/quick-portfolio/assets/my-website-logo.png" />
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image" />
+    <meta property="twitter:url" content="https://property360-2.github.io/quick-portfolio/sitemap.html" />
+    <meta property="twitter:title" content="Sitemap | Jun Alvior Portfolio" />
+    <meta property="twitter:description" content="HTML sitemap for Jun Alvior's portfolio, listing all pages, projects, and articles for easy navigation." />
+    <meta property="twitter:image" content="https://property360-2.github.io/quick-portfolio/assets/my-website-logo.png" />
+
+    <link rel="icon" href="assets/my-website-logo.svg" type="image/svg+xml" />
+    </head>
+  <body
+    class="bg-grey-light text-grey-dark dark:bg-[#1a1a1a] dark:text-gray-200 transition-colors duration-300 antialiased font-sans flex flex-col min-h-screen"
+  >
     <!-- Navigation -->
-    <nav class="fixed w-full z-50 bg-white/70 dark:bg-[#1a1a1a]/70 backdrop-blur-md border-b border-gray-100 dark:border-gray-800 transition-colors duration-300">
+    <nav
+      class="fixed w-full z-50 bg-white/70 dark:bg-[#1a1a1a]/70 backdrop-blur-md border-b border-gray-100 dark:border-gray-800 transition-colors duration-300"
+    >
       <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="flex justify-between items-center h-20">
           <div class="flex-shrink-0 flex items-center">
@@ -51,14 +89,53 @@
             </a>
           </div>
           <div class="hidden md:flex items-center space-x-8">
-            <a href="index.html" class="nav-link text-gray-600 dark:text-gray-300 hover:text-wood-accent dark:hover:text-wood-accent font-medium transition-colors">Home</a>
-            <a href="rate/" class="nav-link text-gray-600 dark:text-gray-300 hover:text-wood-accent dark:hover:text-wood-accent font-medium transition-colors">Rate</a>
-            <a href="portfolio/" class="nav-link text-gray-600 dark:text-gray-300 hover:text-wood-accent dark:hover:text-wood-accent font-medium transition-colors">Portfolio</a>
-            <a href="writings/" class="nav-link text-gray-600 dark:text-gray-300 hover:text-wood-accent dark:hover:text-wood-accent font-medium transition-colors">Writings</a>
-            <a href="about/" class="nav-link text-gray-600 dark:text-gray-300 hover:text-wood-accent dark:hover:text-wood-accent font-medium transition-colors">About Me</a>
-            <button id="theme-toggle" class="p-2 rounded-lg bg-gray-100 dark:bg-gray-800 text-gray-600 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-gray-700 transition-all duration-300">
-              <svg class="w-5 h-5 sun-icon hidden" viewBox="0 0 24 24" fill="currentColor"><path d="M12 7c-2.76 0-5 2.24-5 5s2.24 5 5 5 5-2.24 5-5-2.24-5-5-5zM2 13h2c.55 0 1-.45 1-1s-.45-1-1-1H2c-.55 0-1 .45-1 1s.45 1 1 1zm18 0h2c.55 0 1-.45 1-1s-.45-1-1-1h-2c-.55 0-1 .45-1 1s.45 1 1 1zM11 2v2c0 .55.45 1 1 1s1-.45 1-1V2c0-.55-.45-1-1-1s-1 .45-1 1zm0 18v2c0 .55.45 1 1 1s1-.45 1-1v-2c0-.55-.45-1-1-1s-1 .45-1 1zM5.99 4.58c-.39-.39-1.03-.39-1.41 0s-.39 1.03 0 1.41l1.06 1.06c.39.39 1.03.39 1.41 0s.39-1.03 0-1.41L5.99 4.58zm12.37 12.37c-.39-.39-1.03-.39-1.41 0s-.39 1.03 0 1.41l1.06 1.06c.39.39 1.03.39 1.41 0s.39-1.03 0-1.41l-1.06-1.06zm1.06-12.37c-.39.39-.39 1.03 0 1.41l1.06 1.06c.39.39 1.03.39 1.41 0s.39-1.03 0-1.41l-1.06-1.06c-.39-.39-1.03-.39-1.41 0zm-12.37 12.37c-.39.39-.39 1.03 0 1.41l1.06 1.06c.39.39 1.03.39 1.41 0s.39-1.03 0-1.41l-1.06-1.06c-.39-.39-1.03-.39-1.41 0z"/></svg>
-              <svg class="w-5 h-5 moon-icon" viewBox="0 0 24 24" fill="currentColor"><path d="M12 3c-4.97 0-9 4.03-9 9s4.03 9 9 9 9-4.03 9-9c0-.46-.04-.92-.1-1.36-.98 1.37-2.58 2.26-4.4 2.26-2.98 0-5.4-2.42-5.4-5.4 0-1.81.89-3.42 2.26-4.4-.44-.06-.9-.1-1.36-.1z"/></svg>
+            <a
+              href="index.html"
+              class="nav-link text-gray-600 dark:text-gray-300 hover:text-wood-accent dark:hover:text-wood-accent font-medium transition-colors"
+              >Home</a
+            >
+            <a
+              href="rate/"
+              class="nav-link text-gray-600 dark:text-gray-300 hover:text-wood-accent dark:hover:text-wood-accent font-medium transition-colors"
+              >Rate</a
+            >
+            <a
+              href="portfolio/"
+              class="nav-link text-gray-600 dark:text-gray-300 hover:text-wood-accent dark:hover:text-wood-accent font-medium transition-colors"
+              >Portfolio</a
+            >
+            <a
+              href="writings/"
+              class="nav-link text-gray-600 dark:text-gray-300 hover:text-wood-accent dark:hover:text-wood-accent font-medium transition-colors"
+              >Writings</a
+            >
+            <a
+              href="about/"
+              class="nav-link text-gray-600 dark:text-gray-300 hover:text-wood-accent dark:hover:text-wood-accent font-medium transition-colors"
+              >About Me</a
+            >
+            <button
+              id="theme-toggle"
+              class="p-2 rounded-lg bg-gray-100 dark:bg-gray-800 text-gray-600 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-gray-700 transition-all duration-300"
+            >
+              <svg
+                class="w-5 h-5 sun-icon hidden"
+                viewBox="0 0 24 24"
+                fill="currentColor"
+              >
+                <path
+                  d="M12 7c-2.76 0-5 2.24-5 5s2.24 5 5 5 5-2.24 5-5-2.24-5-5-5zM2 13h2c.55 0 1-.45 1-1s-.45-1-1-1H2c-.55 0-1 .45-1 1s.45 1 1 1zm18 0h2c.55 0 1-.45 1-1s-.45-1-1-1h-2c-.55 0-1 .45-1 1s.45 1 1 1zM11 2v2c0 .55.45 1 1 1s1-.45 1-1V2c0-.55-.45-1-1-1s-1 .45-1 1zm0 18v2c0 .55.45 1 1 1s1-.45 1-1v-2c0-.55-.45-1-1-1s-1 .45-1 1zM5.99 4.58c-.39-.39-1.03-.39-1.41 0s-.39 1.03 0 1.41l1.06 1.06c.39.39 1.03.39 1.41 0s.39-1.03 0-1.41L5.99 4.58zm12.37 12.37c-.39-.39-1.03-.39-1.41 0s-.39 1.03 0 1.41l1.06 1.06c.39.39 1.03.39 1.41 0s.39-1.03 0-1.41l-1.06-1.06zm1.06-12.37c-.39.39-.39 1.03 0 1.41l1.06 1.06c.39.39 1.03.39 1.41 0s.39-1.03 0-1.41l-1.06-1.06c-.39-.39-1.03-.39-1.41 0zm-12.37 12.37c-.39.39-.39 1.03 0 1.41l1.06 1.06c.39.39 1.03.39 1.41 0s.39-1.03 0-1.41l-1.06-1.06c-.39-.39-1.03-.39-1.41 0z"
+                />
+              </svg>
+              <svg
+                class="w-5 h-5 moon-icon"
+                viewBox="0 0 24 24"
+                fill="currentColor"
+              >
+                <path
+                  d="M12 3c-4.97 0-9 4.03-9 9s4.03 9 9 9 9-4.03 9-9c0-.46-.04-.92-.1-1.36-.98 1.37-2.58 2.26-4.4 2.26-2.98 0-5.4-2.42-5.4-5.4 0-1.81.89-3.42 2.26-4.4-.44-.06-.9-.1-1.36-.1z"
+                />
+              </svg>
             </button>
           </div>
         </div>
@@ -68,77 +145,235 @@
     <main class="flex-grow pt-32 pb-20">
       <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <header class="mb-12">
-          <h1 class="text-4xl md:text-5xl font-bold text-gray-900 dark:text-white mb-4">Sitemap</h1>
-          <p class="text-xl text-gray-600 dark:text-gray-400">All pages and resources on this site.</p>
+          <h1
+            class="text-4xl md:text-5xl font-bold text-gray-900 dark:text-white mb-4"
+          >
+            Sitemap
+          </h1>
+          <p class="text-xl text-gray-600 dark:text-gray-400">
+            All pages and resources on this site.
+          </p>
         </header>
 
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-12">
           <!-- Main Section -->
           <section>
-            <h2 class="text-2xl font-bold text-wood-accent mb-6 flex items-center gap-2">
-              <svg class="w-6 h-6" viewBox="0 0 24 24" fill="currentColor"><path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z"/></svg> Main Pages
+            <h2
+              class="text-2xl font-bold text-wood-accent mb-6 flex items-center gap-2"
+            >
+              <svg class="w-6 h-6" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z" />
+              </svg>
+              Main Pages
             </h2>
             <ul class="space-y-4">
-              <li><a href="index.html" class="text-lg hover:text-wood-accent transition-colors flex items-center gap-2">Home</a></li>
-              <li><a href="about/" class="text-lg hover:text-wood-accent transition-colors flex items-center gap-2">About Me</a></li>
-              <li><a href="portfolio/" class="text-lg hover:text-wood-accent transition-colors flex items-center gap-2">Portfolio</a></li>
-              <li><a href="writings/" class="text-lg hover:text-wood-accent transition-colors flex items-center gap-2">Writings</a></li>
-              <li><a href="rate/" class="text-lg hover:text-wood-accent transition-colors flex items-center gap-2">Service Rates</a></li>
-              <li><a href="inquiries/" class="text-lg hover:text-wood-accent transition-colors flex items-center gap-2">Inquiries</a></li>
+              <li>
+                <a
+                  href="index.html"
+                  class="text-lg hover:text-wood-accent transition-colors flex items-center gap-2"
+                  >Home</a
+                >
+              </li>
+              <li>
+                <a
+                  href="about/"
+                  class="text-lg hover:text-wood-accent transition-colors flex items-center gap-2"
+                  >About Me</a
+                >
+              </li>
+              <li>
+                <a
+                  href="portfolio/"
+                  class="text-lg hover:text-wood-accent transition-colors flex items-center gap-2"
+                  >Portfolio</a
+                >
+              </li>
+              <li>
+                <a
+                  href="writings/"
+                  class="text-lg hover:text-wood-accent transition-colors flex items-center gap-2"
+                  >Writings</a
+                >
+              </li>
+              <li>
+                <a
+                  href="rate/"
+                  class="text-lg hover:text-wood-accent transition-colors flex items-center gap-2"
+                  >Service Rates</a
+                >
+              </li>
+              <li>
+                <a
+                  href="inquiries/"
+                  class="text-lg hover:text-wood-accent transition-colors flex items-center gap-2"
+                  >Inquiries</a
+                >
+              </li>
             </ul>
           </section>
 
           <!-- Portfolio Section -->
           <section>
-            <h2 class="text-2xl font-bold text-wood-accent mb-6 flex items-center gap-2">
-              <svg class="w-6 h-6" viewBox="0 0 24 24" fill="currentColor"><path d="M14 6V4h-4v2h4zM4 8v11h16V8H4zm16-2c1.11 0 2 .89 2 2v11c0 1.11-.89 2-2 2H4c-1.11 0-2-.89-2-2V8c0-1.11.89-2 2-2h4V4c0-1.11.89-2 2-2h4c1.11 0 2 .89 2 2v2h4z"/></svg> Projects
+            <h2
+              class="text-2xl font-bold text-wood-accent mb-6 flex items-center gap-2"
+            >
+              <svg class="w-6 h-6" viewBox="0 0 24 24" fill="currentColor">
+                <path
+                  d="M14 6V4h-4v2h4zM4 8v11h16V8H4zm16-2c1.11 0 2 .89 2 2v11c0 1.11-.89 2-2 2H4c-1.11 0-2-.89-2-2V8c0-1.11.89-2 2-2h4V4c0-1.11.89-2 2-2h4c1.11 0 2 .89 2 2v2h4z"
+                />
+              </svg>
+              Projects
             </h2>
             <ul class="space-y-4">
-              <li><a href="portfolio/gym-project/" class="text-lg hover:text-wood-accent transition-colors">Gym Management System</a></li>
-              <li><a href="portfolio/bank-project/" class="text-lg hover:text-wood-accent transition-colors">Modern Banking App</a></li>
-              <li><a href="portfolio/study-time-tracker/" class="text-lg hover:text-wood-accent transition-colors">Study Time Tracker</a></li>
-              <li><a href="portfolio/sales-and-inventory/" class="text-lg hover:text-wood-accent transition-colors">Sales & Inventory System</a></li>
-              <li><a href="portfolio/mind-map-maker/" class="text-lg hover:text-wood-accent transition-colors">Mind Map Maker</a></li>
-              <li><a href="portfolio/ojt-journals/" class="text-lg hover:text-wood-accent transition-colors">OJT Journals</a></li>
+              <li>
+                <a
+                  href="portfolio/gym-project/"
+                  class="text-lg hover:text-wood-accent transition-colors"
+                  >Gym Management System</a
+                >
+              </li>
+              <li>
+                <a
+                  href="portfolio/bank-project/"
+                  class="text-lg hover:text-wood-accent transition-colors"
+                  >Modern Banking App</a
+                >
+              </li>
+              <li>
+                <a
+                  href="portfolio/study-time-tracker/"
+                  class="text-lg hover:text-wood-accent transition-colors"
+                  >Study Time Tracker</a
+                >
+              </li>
+              <li>
+                <a
+                  href="portfolio/sales-and-inventory/"
+                  class="text-lg hover:text-wood-accent transition-colors"
+                  >Sales & Inventory System</a
+                >
+              </li>
+              <li>
+                <a
+                  href="portfolio/mind-map-maker/"
+                  class="text-lg hover:text-wood-accent transition-colors"
+                  >Mind Map Maker</a
+                >
+              </li>
+              <li>
+                <a
+                  href="portfolio/ojt-journals/"
+                  class="text-lg hover:text-wood-accent transition-colors"
+                  >OJT Journals</a
+                >
+              </li>
             </ul>
           </section>
 
           <!-- Writings Section -->
           <section>
-            <h2 class="text-2xl font-bold text-wood-accent mb-6 flex items-center gap-2">
-              <svg class="w-4 h-4 mr-2 text-wood-accent" viewBox="0 0 24 24" fill="currentColor"><path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-5 14H7v-2h7v2zm3-4H7v-2h10v2zm0-4H7V7h10v2z"/></svg> Articles
+            <h2
+              class="text-2xl font-bold text-wood-accent mb-6 flex items-center gap-2"
+            >
+              <svg
+                class="w-4 h-4 mr-2 text-wood-accent"
+                viewBox="0 0 24 24"
+                fill="currentColor"
+              >
+                <path
+                  d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-5 14H7v-2h7v2zm3-4H7v-2h10v2zm0-4H7V7h10v2z"
+                />
+              </svg>
+              Articles
             </h2>
             <ul class="space-y-4">
-              <li><a href="writings/articles/freelance-developer-pricing-guide/" class="text-lg hover:text-wood-accent transition-colors">Freelance Pricing Guide</a></li>
-              <li><a href="writings/articles/legal-kit-ni-juan/" class="text-lg hover:text-wood-accent transition-colors">Legal Kit ni Juan</a></li>
-              <li><a href="writings/articles/sovereign-imperatives/" class="text-lg hover:text-wood-accent transition-colors">Sovereign Imperatives</a></li>
-              <li><a href="writings/articles/how-to-read-people/" class="text-lg hover:text-wood-accent transition-colors">How to Read People</a></li>
-              <li><a href="writings/articles/accessibility-semantic-html-aria/" class="text-lg hover:text-wood-accent transition-colors">Accessibility & Semantic HTML</a></li>
-              <li><a href="writings/articles/accessibility-first-app/" class="text-lg hover:text-wood-accent transition-colors">Accessibility First App</a></li>
+              <li>
+                <a
+                  href="writings/articles/freelance-developer-pricing-guide/"
+                  class="text-lg hover:text-wood-accent transition-colors"
+                  >Freelance Pricing Guide</a
+                >
+              </li>
+              <li>
+                <a
+                  href="writings/articles/legal-kit-ni-juan/"
+                  class="text-lg hover:text-wood-accent transition-colors"
+                  >Legal Kit ni Juan</a
+                >
+              </li>
+              <li>
+                <a
+                  href="writings/articles/sovereign-imperatives/"
+                  class="text-lg hover:text-wood-accent transition-colors"
+                  >Sovereign Imperatives</a
+                >
+              </li>
+              <li>
+                <a
+                  href="writings/articles/how-to-read-people/"
+                  class="text-lg hover:text-wood-accent transition-colors"
+                  >How to Read People</a
+                >
+              </li>
+              <li>
+                <a
+                  href="writings/articles/accessibility-semantic-html-aria/"
+                  class="text-lg hover:text-wood-accent transition-colors"
+                  >Accessibility & Semantic HTML</a
+                >
+              </li>
+              <li>
+                <a
+                  href="writings/articles/accessibility-first-app/"
+                  class="text-lg hover:text-wood-accent transition-colors"
+                  >Accessibility First App</a
+                >
+              </li>
             </ul>
           </section>
         </div>
       </div>
     </main>
 
-    <footer class="bg-white dark:bg-[#1a1a1a] border-t border-gray-200 dark:border-gray-800 mt-auto">
+    <footer
+      class="bg-white dark:bg-[#1a1a1a] border-t border-gray-200 dark:border-gray-800 mt-auto"
+    >
       <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
-        <div class="flex flex-col md:flex-row justify-between items-center text-center md:text-left">
+        <div
+          class="flex flex-col md:flex-row justify-between items-center text-center md:text-left"
+        >
           <div class="mb-4 md:mb-0">
-            <span class="text-xl font-bold text-gray-900 dark:text-white tracking-tight">Jun <span class="text-wood-accent">Alvior</span></span>
-            <p class="text-sm text-gray-500 mt-1">© 2024. All rights reserved.</p>
+            <span
+              class="text-xl font-bold text-gray-900 dark:text-white tracking-tight"
+              >Jun <span class="text-wood-accent">Alvior</span></span
+            >
+            <p class="text-sm text-gray-500 mt-1">
+              © 2024. All rights reserved.
+            </p>
           </div>
           <div class="flex space-x-6">
-            <a href="index.html" class="text-gray-500 hover:text-wood-accent transition-colors">Home</a>
-            <a href="portfolio/" class="text-gray-500 hover:text-wood-accent transition-colors">Portfolio</a>
-            <a href="writings/" class="text-gray-500 hover:text-wood-accent transition-colors">Writings</a>
+            <a
+              href="index.html"
+              class="text-gray-500 hover:text-wood-accent transition-colors"
+              >Home</a
+            >
+            <a
+              href="portfolio/"
+              class="text-gray-500 hover:text-wood-accent transition-colors"
+              >Portfolio</a
+            >
+            <a
+              href="writings/"
+              class="text-gray-500 hover:text-wood-accent transition-colors"
+              >Writings</a
+            >
           </div>
         </div>
       </div>
     </footer>
 
     <script src="js/main.js" defer></script>
-  
+
     <script type="importmap">
       {
         "imports": {

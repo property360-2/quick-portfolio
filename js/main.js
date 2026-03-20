@@ -188,123 +188,70 @@ document.addEventListener("DOMContentLoaded", () => {
 
     // Use an absolute path from the root to ensure it works on all subpages
     import(`${basePath}/js/3d-scene.js`).catch((err) =>
-      console.error("Failed to load 3D scene:", err)
+      console.error("Failed to load 3D scene:", err),
     );
   }
 });
 
-// ==========================================
-// 7. Portfolio Modal Logic (Global functions)
-// ==========================================
-const projectData = {
-  project1: {
-    title: "E-commerce Dashboard",
-    image:
-      "https://images.unsplash.com/photo-1460925895917-afdab827c52f?ixlib=rb-1.2.1&auto=format&fit=crop&w=1200&q=80",
-    description:
-      "A React-based dashboard for managing orders, analytics, and inventory. Features include real-time data visualization with Chart.js, dark mode support, and full responsiveness using Tailwind CSS.",
-    tags: ["React", "Tailwind", "Chart.js", "Node.js"],
-  },
-  project2: {
-    title: "FinTrack Mobile App",
-    image:
-      "https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-1.2.1&auto=format&fit=crop&w=1200&q=80",
-    description:
-      "A Vue.js progressive web application for tracking personal finances. Users can link bank accounts, categorize transactions, and set budget goals. Visualizations powered by D3.js.",
-    tags: ["Vue.js", "D3.js", "Firebase", "PWA"],
-  },
-};
-
-function openModal(projectId) {
-  const modal = document.getElementById("project-modal");
-  if (!modal) return; // Guard clause
-
-  const data = projectData[projectId];
-  if (!data) return;
-
-  document.getElementById("modal-title").textContent = data.title;
-  document.getElementById("modal-image").src = data.image;
-  document.getElementById("modal-description").textContent = data.description;
-
-  // Clear and add tags
-  const tagsContainer = document.getElementById("modal-tags");
-  tagsContainer.innerHTML = "";
-  data.tags.forEach((tag) => {
-    const span = document.createElement("span");
-    span.className =
-      "px-2 py-1 bg-wood-100 dark:bg-wood-900 text-wood-700 dark:text-wood-300 text-xs rounded";
-    span.textContent = tag;
-    tagsContainer.appendChild(span);
-  });
-
-  modal.classList.remove("hidden");
-  document.body.style.overflow = "hidden"; // Prevent scrolling
-}
-
-function closeModal() {
-  const modal = document.getElementById("project-modal");
-  if (!modal) return; // Guard clause
-
-  modal.classList.add("hidden");
-  document.body.style.overflow = ""; // Restore scrolling
-}
-
-// Close modal when clicking outside
-window.addEventListener("click", (e) => {
-  const modal = document.getElementById("project-modal");
-  const backdrop = document.getElementById("modal-backdrop");
-  if (modal && e.target === backdrop) {
-    closeModal();
-  }
-});
+// 7. Portfolio Modal Logic - (Removed unused code)
 
 // ==========================================
 // 8. Portfolio Category Filtering
 // ==========================================
 document.addEventListener("DOMContentLoaded", () => {
-  const filterBtns = document.querySelectorAll('.filter-btn');
-  const projectCards = document.querySelectorAll('.project-card');
+  const filterBtns = document.querySelectorAll(".filter-btn");
+  const projectCards = document.querySelectorAll(".project-card");
 
   if (filterBtns.length > 0 && projectCards.length > 0) {
-    filterBtns.forEach(btn => {
-      btn.addEventListener('click', () => {
+    filterBtns.forEach((btn) => {
+      btn.addEventListener("click", () => {
         // Remove active class from all buttons
-        filterBtns.forEach(b => {
-          b.classList.remove('active', 'bg-wood-accent', 'text-white');
-          b.classList.add('bg-gray-200', 'dark:bg-gray-800', 'text-gray-700', 'dark:text-gray-300');
+        filterBtns.forEach((b) => {
+          b.classList.remove("active", "bg-wood-accent", "text-white");
+          b.classList.add(
+            "bg-gray-200",
+            "dark:bg-gray-800",
+            "text-gray-700",
+            "dark:text-gray-300",
+          );
         });
 
         // Add active class to clicked button
-        btn.classList.remove('bg-gray-200', 'dark:bg-gray-800', 'text-gray-700', 'dark:text-gray-300');
-        btn.classList.add('active', 'bg-wood-accent', 'text-white');
+        btn.classList.remove(
+          "bg-gray-200",
+          "dark:bg-gray-800",
+          "text-gray-700",
+          "dark:text-gray-300",
+        );
+        btn.classList.add("active", "bg-wood-accent", "text-white");
 
-        const filterValue = btn.getAttribute('data-filter');
+        const filterValue = btn.getAttribute("data-filter");
 
-        projectCards.forEach(card => {
-          if (filterValue === 'all') {
-            card.style.display = 'block';
+        projectCards.forEach((card) => {
+          if (filterValue === "all") {
+            card.style.display = "block";
             setTimeout(() => {
-              card.style.opacity = '1';
-              card.classList.add('aos-animate');
+              card.style.opacity = "1";
+              card.classList.add("aos-animate");
             }, 50);
           } else {
-            const categories = card.getAttribute('data-category');
+            const categories = card.getAttribute("data-category");
             if (categories && categories.includes(filterValue)) {
-              card.style.display = 'block';
+              card.style.display = "block";
               setTimeout(() => {
-                card.style.opacity = '1';
-                card.classList.add('aos-animate');
+                card.style.opacity = "1";
+                card.classList.add("aos-animate");
               }, 50);
             } else {
-              card.style.opacity = '0';
-              card.classList.remove('aos-animate');
-              setTimeout(() => card.style.display = 'none', 300);
+              card.style.opacity = "0";
+              card.classList.remove("aos-animate");
+              setTimeout(() => (card.style.display = "none"), 300);
             }
           }
         });
 
         setTimeout(() => {
-          if (typeof AOS !== 'undefined') AOS.refresh();
+          if (typeof AOS !== "undefined") AOS.refresh();
         }, 350);
       });
     });

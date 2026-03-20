@@ -14,10 +14,7 @@
     />
 
     <!-- Open Graph -->
-    <meta
-      property="og:image"
-      content="https://property360-2.github.io/quick-portfolio/assets/mind-map-maker.webp"
-    />
+    
 
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -32,14 +29,40 @@
 
     <!-- Tailwind CSS -->
     <!-- AOS CSS - Loaded late to prevent render blocking -->
-    <link rel="preload" href="https://unpkg.com/aos@2.3.1/dist/aos.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
-    <noscript><link rel="stylesheet" href="https://unpkg.com/aos@2.3.1/dist/aos.css"></noscript>
+    <link
+      rel="preload"
+      href="https://unpkg.com/aos@2.3.1/dist/aos.css"
+      as="style"
+      onload="
+        this.onload = null;
+        this.rel = 'stylesheet';
+      "
+    />
+    <noscript
+      ><link rel="stylesheet" href="https://unpkg.com/aos@2.3.1/dist/aos.css"
+    /></noscript>
 
     <!-- Custom CSS -->
     <link rel="stylesheet" href="../../css/style.css" />
     <script src="../../js/theme-check.js" defer></script>
-    <link rel="icon" href="../../assets/logo.webp" type="image/webp" />
-  </head>
+    
+  
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://property360-2.github.io/quick-portfolio/portfolio/mind-map-maker/" />
+    <meta property="og:title" content="Mind Map Maker | Productivity Tool" />
+    <meta property="og:description" content="A productivity web application to create, save, and export mind maps asynchronously using localStorage. Built with vanilla web technologies." />
+    <meta property="og:image" content="https://property360-2.github.io/quick-portfolio/assets/my-website-logo.png" />
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image" />
+    <meta property="twitter:url" content="https://property360-2.github.io/quick-portfolio/portfolio/mind-map-maker/" />
+    <meta property="twitter:title" content="Mind Map Maker | Productivity Tool" />
+    <meta property="twitter:description" content="A productivity web application to create, save, and export mind maps asynchronously using localStorage. Built with vanilla web technologies." />
+    <meta property="twitter:image" content="https://property360-2.github.io/quick-portfolio/assets/my-website-logo.png" />
+
+    <link rel="icon" href="../../assets/my-website-logo.svg" type="image/svg+xml" />
+    </head>
   <body
     class="bg-grey-light text-grey-dark dark:bg-[#1a1a1a] dark:text-gray-200 transition-colors duration-300 antialiased font-sans flex flex-col min-h-screen"
   >
@@ -87,7 +110,7 @@
               >About Me</a
             >
 
-          <!-- ATOMS: Theme Toggle (Desktop) -->
+            <!-- ATOMS: Theme Toggle (Desktop) -->
             <button
               id="theme-toggle"
               class="p-2 rounded-lg bg-gray-100 dark:bg-gray-800 text-gray-600 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-wood-accent focus:outline-none transition-all duration-300 hover:scale-110 active:scale-95"
@@ -121,7 +144,9 @@
               aria-label="Toggle navigation menu"
               class="text-gray-600 dark:text-gray-300 hover:text-wood-accent focus:outline-none"
             >
-              <svg class="w-8 h-8" viewBox="0 0 24 24" fill="currentColor"><path d="M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z"/></svg>
+              <svg class="w-8 h-8" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z" />
+              </svg>
             </button>
           </div>
         </div>
@@ -218,19 +243,29 @@
             data-aos-delay="100"
           >
             <p>
-              An intuitive and robust web application for creating mind maps. Users can easily map out their ideas interactively, and standard productivity concepts are fully integrated within the application's clean design. Data is asynchronously saved directly to <code>localStorage</code> for a fast, responsive user experience without requiring backend database loads for simple sketches.
+              An intuitive and robust web application for creating mind maps.
+              Users can easily map out their ideas interactively, and standard
+              productivity concepts are fully integrated within the
+              application's clean design. Data is asynchronously saved directly
+              to <code>localStorage</code> for a fast, responsive user
+              experience without requiring backend database loads for simple
+              sketches.
             </p>
 
             <h3>Key Features</h3>
             <ul>
               <li>
-                <strong>Interactive Canvas:</strong> Easily create, drag, and organize nodes to build comprehensive mind maps.
+                <strong>Interactive Canvas:</strong> Easily create, drag, and
+                organize nodes to build comprehensive mind maps.
               </li>
               <li>
-                <strong>Asynchronous Saving:</strong> Features seamless <code>localStorage</code> integration that saves your progress securely and asynchronously without page reloads.
+                <strong>Asynchronous Saving:</strong> Features seamless
+                <code>localStorage</code> integration that saves your progress
+                securely and asynchronously without page reloads.
               </li>
               <li>
-                <strong>Easy Export/Import:</strong> Functionality to manage ideas with a smooth export format to visualize ideas.
+                <strong>Easy Export/Import:</strong> Functionality to manage
+                ideas with a smooth export format to visualize ideas.
               </li>
             </ul>
 
@@ -241,7 +276,15 @@
                 target="_blank"
                 class="px-6 py-3 bg-wood-accent hover:bg-wood-700 text-white font-semibold rounded-lg shadow-md transition-all transform hover:-translate-y-0.5 flex items-center"
               >
-                <svg class="mr-2 w-5 h-5 mr-2" viewBox="0 0 24 24" fill="currentColor"><path d="M19 19H5V5h7V3H5c-1.11 0-2 .9-2 2v14c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2v-7h-2v7zM14 3v2h3.59l-9.83 9.83 1.41 1.41L19 6.41V10h2V3h-7z"/></svg>
+                <svg
+                  class="mr-2 w-5 h-5 mr-2"
+                  viewBox="0 0 24 24"
+                  fill="currentColor"
+                >
+                  <path
+                    d="M19 19H5V5h7V3H5c-1.11 0-2 .9-2 2v14c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2v-7h-2v7zM14 3v2h3.59l-9.83 9.83 1.41 1.41L19 6.41V10h2V3h-7z"
+                  />
+                </svg>
                 Live Demo
               </a>
               <a
@@ -249,7 +292,15 @@
                 target="_blank"
                 class="px-6 py-3 bg-gray-200 dark:bg-gray-800 hover:bg-gray-300 dark:hover:bg-gray-700 text-gray-900 dark:text-white font-semibold rounded-lg shadow-md transition-all transform hover:-translate-y-0.5 flex items-center"
               >
-                <svg class="mr-2 w-5 h-5 mr-2" viewBox="0 0 24 24" fill="currentColor"><path d="M9.4 16.6L4.8 12l4.6-4.6L8 6l-6 6 6 6 1.4-1.4zm5.2 0l4.6-4.6-4.6-4.6L16 6l6 6-6 6-1.4-1.4z"/></svg>
+                <svg
+                  class="mr-2 w-5 h-5 mr-2"
+                  viewBox="0 0 24 24"
+                  fill="currentColor"
+                >
+                  <path
+                    d="M9.4 16.6L4.8 12l4.6-4.6L8 6l-6 6 6 6 1.4-1.4zm5.2 0l4.6-4.6-4.6-4.6L16 6l6 6-6 6-1.4-1.4z"
+                  />
+                </svg>
                 View Code
               </a>
             </div>
@@ -280,7 +331,11 @@
               class="text-gray-400 hover:text-wood-accent transition-colors"
             >
               <span class="sr-only">Email</span>
-              <svg class="w-6 h-6" viewBox="0 0 24 24" fill="currentColor"><path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg>
+              <svg class="w-6 h-6" viewBox="0 0 24 24" fill="currentColor">
+                <path
+                  d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"
+                />
+              </svg>
             </a>
             <a
               href="https://github.com/property360-2"
@@ -321,10 +376,11 @@
       class="fixed bottom-8 right-8 p-3 rounded-full bg-wood-accent text-white shadow-lg hover:bg-wood-700 transition-all transform translate-y-20 opacity-0 z-40 focus:outline-none"
       aria-label="Back to Top"
     >
-      <svg class="w-6 h-6" viewBox="0 0 24 24" fill="currentColor"><path d="M4 12l1.41 1.41L11 7.83V20h2V7.83l5.58 5.59L20 12l-8-8-8 8z"/></svg>
+      <svg class="w-6 h-6" viewBox="0 0 24 24" fill="currentColor">
+        <path d="M4 12l1.41 1.41L11 7.83V20h2V7.83l5.58 5.59L20 12l-8-8-8 8z" />
+      </svg>
     </button>
 
-    
     <script type="importmap">
       {
         "imports": {
@@ -334,7 +390,10 @@
       }
     </script>
     <!-- Scripts -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js" defer></script>
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"
+      defer
+    ></script>
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js" defer></script>
     <script src="../../js/main.js" defer></script>
   </body>
