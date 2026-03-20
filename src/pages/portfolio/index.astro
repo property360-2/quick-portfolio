@@ -1,0 +1,500 @@
+---
+import Layout from '../../layouts/Layout.astro';
+const title = 'Portfolio & Projects | Jun Alvior';
+const description = "Explore Jun Alvior's web development projects, including Gym Systems, Finance Trackers, and Cloud-integrated apps built with Supabase and Django.";
+---
+
+<Layout title={title} description={description}>
+<main id="main-content" class="flex-grow flex flex-col">
+      <!-- ORGANISMS: Portfolio -->
+      <section
+        id="portfolio"
+        class="py-24 bg-grey-light dark:bg-[#1a1a1a] flex-grow"
+      >
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div class="text-center mb-16">
+            <h2
+              class="text-sm font-bold tracking-widest text-wood-accent uppercase gs-reveal"
+            >
+              Portfolio
+            </h2>
+            <h3
+              class="mt-2 text-3xl leading-8 font-extrabold tracking-tight text-gray-900 dark:text-white sm:text-4xl gs-reveal"
+            >
+              Selected Work
+            </h3>
+          </div>
+
+          <!-- Project Filters -->
+          <div
+            class="flex flex-wrap justify-center gap-4 mb-12 gs-reveal"
+            id="portfolio-filters"
+          >
+            <button
+              class="filter-btn active px-6 py-2 rounded-full bg-wood-accent text-white font-medium transition-colors"
+              data-filter="all"
+            >
+              All
+            </button>
+            <button
+              class="filter-btn px-6 py-2 rounded-full bg-gray-200 dark:bg-gray-800 text-gray-700 dark:text-gray-300 hover:bg-wood-accent hover:text-white transition-colors"
+              data-filter="django"
+            >
+              Django
+            </button>
+            <button
+              class="filter-btn px-6 py-2 rounded-full bg-gray-200 dark:bg-gray-800 text-gray-700 dark:text-gray-300 hover:bg-wood-accent hover:text-white transition-colors"
+              data-filter="javascript"
+            >
+              JavaScript
+            </button>
+            <button
+              class="filter-btn px-6 py-2 rounded-full bg-gray-200 dark:bg-gray-800 text-gray-700 dark:text-gray-300 hover:bg-wood-accent hover:text-white transition-colors"
+              data-filter="gamedev"
+            >
+              GameDev
+            </button>
+          </div>
+
+          <div
+            class="grid grid-cols-1 md:grid-cols-2 gap-8"
+            id="portfolio-grid"
+          >
+            <!-- Project 1 -->
+            <div
+              class="project-card group"
+              data-aos="fade-up"
+              data-category="django"
+            >
+              <div
+                class="relative overflow-hidden rounded-xl shadow-lg aspect-video bg-gray-200 flex flex-col justify-end"
+              >
+                <img
+                  src="../assets/gym-ng-mga-supersaiyan.webp"
+                  alt="Gym Project"
+                  class="absolute inset-0 object-cover w-full h-full transform group-hover:scale-105 transition-transform duration-500"
+                  loading="lazy"
+                  decoding="async"
+                  width="800"
+                  height="450"
+                />
+                <div
+                  class="absolute inset-0 bg-black/60 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center gap-4 z-10"
+                >
+                  <a
+                    href="gym-project/"
+                    class="text-white border px-4 py-2 rounded-full text-sm font-medium tracking-wide hover:bg-white hover:text-black transition-colors"
+                    >View Details</a
+                  >
+                </div>
+              </div>
+              <a href="gym-project/" class="block mt-4">
+                <div class="flex gap-2 mb-2">
+                  <span
+                    class="text-xs bg-wood-100 dark:bg-wood-900 text-wood-accent px-2 py-1 rounded"
+                    >Django</span
+                  >
+                  <span
+                    class="text-xs bg-wood-100 dark:bg-wood-900 text-wood-accent px-2 py-1 rounded"
+                    >Python</span
+                  >
+                  <span
+                    class="text-xs bg-wood-100 dark:bg-wood-900 text-wood-accent px-2 py-1 rounded"
+                    >Tailwind</span
+                  >
+                </div>
+                <h4
+                  class="text-xl font-bold text-gray-900 dark:text-white group-hover:text-wood-accent transition-colors"
+                >
+                  Gym Project
+                </h4>
+                <p class="text-gray-600 dark:text-gray-400 text-sm mt-1">
+                  A full-featured gym management and membership system.
+                </p>
+              </a>
+            </div>
+
+            <!-- Project 2 -->
+            <div
+              class="project-card group"
+              data-aos="fade-up"
+              data-aos-delay="100"
+              data-category="django"
+            >
+              <div
+                class="relative overflow-hidden rounded-xl shadow-lg aspect-video bg-gray-200 flex flex-col justify-end"
+              >
+                <img
+                  src="../assets/study-time-tracker.webp"
+                  alt="Study Time Tracker"
+                  class="absolute inset-0 object-cover w-full h-full transform group-hover:scale-105 transition-transform duration-500"
+                  loading="lazy"
+                  decoding="async"
+                  width="800"
+                  height="450"
+                />
+                <div
+                  class="absolute inset-0 bg-black/60 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center gap-4 z-10"
+                >
+                  <a
+                    href="study-time-tracker/"
+                    class="text-white border px-4 py-2 rounded-full text-sm font-medium tracking-wide hover:bg-white hover:text-black transition-colors"
+                    >View Details</a
+                  >
+                  <a
+                    href="https://simple-study-time-tracker.onrender.com/login/?next=/"
+                    target="_blank"
+                    class="text-white bg-wood-accent px-4 py-2 rounded-full text-sm font-medium tracking-wide hover:bg-wood-700 transition-colors"
+                    >Live Demo</a
+                  >
+                </div>
+              </div>
+              <a href="study-time-tracker/" class="block mt-4">
+                <div class="flex gap-2 mb-2">
+                  <span
+                    class="text-xs bg-wood-100 dark:bg-wood-900 text-wood-accent px-2 py-1 rounded"
+                    >Django</span
+                  >
+                  <span
+                    class="text-xs bg-wood-100 dark:bg-wood-900 text-wood-accent px-2 py-1 rounded"
+                    >Web App</span
+                  >
+                </div>
+                <h4
+                  class="text-xl font-bold text-gray-900 dark:text-white group-hover:text-wood-accent transition-colors"
+                >
+                  Study Time Tracker
+                </h4>
+                <p class="text-gray-600 dark:text-gray-400 text-sm mt-1">
+                  A productivity tool for tracking study sessions.
+                </p>
+              </a>
+            </div>
+
+            <!-- Project 3 -->
+            <div
+              class="project-card group"
+              data-aos="fade-up"
+              data-aos-delay="200"
+              data-category="django"
+            >
+              <div
+                class="relative overflow-hidden rounded-xl shadow-lg aspect-video bg-gray-200 flex flex-col justify-end"
+              >
+                <img
+                  src="../assets/banko.webp"
+                  alt="Bank Management System"
+                  class="absolute inset-0 object-cover w-full h-full transform group-hover:scale-105 transition-transform duration-500"
+                  loading="lazy"
+                  decoding="async"
+                  width="800"
+                  height="450"
+                />
+                <div
+                  class="absolute inset-0 bg-black/60 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center gap-4 z-10"
+                >
+                  <a
+                    href="bank-project/"
+                    class="text-white border px-4 py-2 rounded-full text-sm font-medium tracking-wide hover:bg-white hover:text-black transition-colors"
+                    >View Details</a
+                  >
+                </div>
+              </div>
+              <a href="bank-project/" class="block mt-4">
+                <div class="flex gap-2 mb-2">
+                  <span
+                    class="text-xs bg-wood-100 dark:bg-wood-900 text-wood-accent px-2 py-1 rounded"
+                    >Django</span
+                  >
+                  <span
+                    class="text-xs bg-wood-100 dark:bg-wood-900 text-wood-accent px-2 py-1 rounded"
+                    >Finance</span
+                  >
+                </div>
+                <h4
+                  class="text-xl font-bold text-gray-900 dark:text-white group-hover:text-wood-accent transition-colors"
+                >
+                  Bank Management System
+                </h4>
+                <p class="text-gray-600 dark:text-gray-400 text-sm mt-1">
+                  A comprehensive banking system implementation.
+                </p>
+              </a>
+            </div>
+
+            <!-- Project 4: Tagawasak ng Syudad -->
+            <div
+              class="project-card group"
+              data-aos="fade-up"
+              data-aos-delay="300"
+              data-category="gamedev javascript"
+            >
+              <div
+                class="relative overflow-hidden rounded-xl shadow-lg aspect-video bg-gray-200 flex flex-col justify-end"
+              >
+                <img
+                  src="../assets/tagawasak-ng-syudad.webp"
+                  alt="Tagawasak ng Syudad"
+                  class="absolute inset-0 object-cover w-full h-full transform group-hover:scale-105 transition-transform duration-500"
+                  loading="lazy"
+                  decoding="async"
+                  width="800"
+                  height="450"
+                />
+                <div
+                  class="absolute inset-0 bg-black/60 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center gap-4 z-10"
+                >
+                  <a
+                    href="inside-portfolio-game/tagasira-ng-syudad/index.html"
+                    class="text-white border px-4 py-2 rounded-full text-sm font-medium tracking-wide hover:bg-white hover:text-black transition-colors"
+                    >View Details</a
+                  >
+                  <a
+                    href="inside-portfolio-game/tagasira-ng-syudad/index.html"
+                    target="_blank"
+                    class="text-white bg-wood-accent px-4 py-2 rounded-full text-sm font-medium tracking-wide hover:bg-wood-700 transition-colors"
+                    >Live Demo</a
+                  >
+                </div>
+              </div>
+              <a
+                href="inside-portfolio-game/tagasira-ng-syudad/index.html"
+                class="block mt-4"
+              >
+                <div class="flex gap-2 mb-2">
+                  <span
+                    class="text-xs bg-wood-100 dark:bg-wood-900 text-wood-accent px-2 py-1 rounded"
+                    >Three.js</span
+                  >
+                  <span
+                    class="text-xs bg-wood-100 dark:bg-wood-900 text-wood-accent px-2 py-1 rounded"
+                    >JavaScript</span
+                  >
+                  <span
+                    class="text-xs bg-wood-100 dark:bg-wood-900 text-wood-accent px-2 py-1 rounded"
+                    >GameDev</span
+                  >
+                </div>
+                <h4
+                  class="text-xl font-bold text-gray-900 dark:text-white group-hover:text-wood-accent transition-colors"
+                >
+                  Tagawasak ng Syudad
+                </h4>
+                <p class="text-gray-600 dark:text-gray-400 text-sm mt-1">
+                  An interactive 3D city destruction sandbox mini-game with
+                  custom procedural Web Audio sound effects, particle physics,
+                  and screen shake.
+                </p>
+              </a>
+            </div>
+
+            <!-- Project 5: Mind Map Maker -->
+            <div
+              class="project-card group"
+              data-aos="fade-up"
+              data-aos-delay="400"
+              data-category="javascript"
+            >
+              <div
+                class="relative overflow-hidden rounded-xl shadow-lg aspect-video bg-gray-200 flex flex-col justify-end"
+              >
+                <img
+                  src="../assets/mind-map-maker.webp"
+                  alt="Mind Map Maker"
+                  class="absolute inset-0 object-cover w-full h-full transform group-hover:scale-105 transition-transform duration-500"
+                  loading="lazy"
+                  decoding="async"
+                  width="800"
+                  height="450"
+                />
+                <div
+                  class="absolute inset-0 bg-black/60 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center gap-4 z-10"
+                >
+                  <a
+                    href="mind-map-maker/"
+                    class="text-white border px-4 py-2 rounded-full text-sm font-medium tracking-wide hover:bg-white hover:text-black transition-colors"
+                    >View Details</a
+                  >
+                  <a
+                    href="https://property360-2.github.io/mind-map/"
+                    target="_blank"
+                    class="text-white bg-wood-accent px-4 py-2 rounded-full text-sm font-medium tracking-wide hover:bg-wood-700 transition-colors"
+                    >Live Demo</a
+                  >
+                </div>
+              </div>
+              <a href="mind-map-maker/" class="block mt-4">
+                <div class="flex gap-2 mb-2">
+                  <span
+                    class="text-xs bg-wood-100 dark:bg-wood-900 text-wood-accent px-2 py-1 rounded"
+                    >JavaScript</span
+                  >
+                  <span
+                    class="text-xs bg-wood-100 dark:bg-wood-900 text-wood-accent px-2 py-1 rounded"
+                    >Productivity</span
+                  >
+                  <span
+                    class="text-xs bg-wood-100 dark:bg-wood-900 text-wood-accent px-2 py-1 rounded"
+                    >Web App</span
+                  >
+                </div>
+                <h4
+                  class="text-xl font-bold text-gray-900 dark:text-white group-hover:text-wood-accent transition-colors"
+                >
+                  Mind Map Maker
+                </h4>
+                <p class="text-gray-600 dark:text-gray-400 text-sm mt-1">
+                  An interactive mind mapping tool that asynchronously saves
+                  your ideas locally.
+                </p>
+              </a>
+            </div>
+
+            <!-- Project 6: OJT Journals -->
+            <div
+              class="project-card group"
+              data-aos="fade-up"
+              data-aos-delay="500"
+              data-category="javascript"
+            >
+              <div
+                class="relative overflow-hidden rounded-xl shadow-lg aspect-video bg-gray-200 flex flex-col justify-end"
+              >
+                <img
+                  src="../assets/ojt-journals.png"
+                  alt="OJT Daily Journal System"
+                  class="absolute inset-0 object-cover w-full h-full transform group-hover:scale-105 transition-transform duration-500"
+                  loading="lazy"
+                  decoding="async"
+                  width="800"
+                  height="450"
+                />
+                <div
+                  class="absolute inset-0 bg-black/60 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center gap-4 z-10"
+                >
+                  <a
+                    href="ojt-journals/"
+                    class="text-white border px-4 py-2 rounded-full text-sm font-medium tracking-wide hover:bg-white hover:text-black transition-colors"
+                    >View Details</a
+                  >
+                  <a
+                    href="https://property360-2.github.io/ojt-journals/index.html"
+                    target="_blank"
+                    class="text-white bg-wood-accent px-4 py-2 rounded-full text-sm font-medium tracking-wide hover:bg-wood-700 transition-colors"
+                    >Live Demo</a
+                  >
+                </div>
+              </div>
+              <a href="ojt-journals/" class="block mt-4">
+                <div class="flex gap-2 mb-2">
+                  <span
+                    class="text-xs bg-wood-100 dark:bg-wood-900 text-wood-accent px-2 py-1 rounded"
+                    >JavaScript</span
+                  >
+                  <span
+                    class="text-xs bg-wood-100 dark:bg-wood-900 text-wood-accent px-2 py-1 rounded"
+                    >Firebase</span
+                  >
+                  <span
+                    class="text-xs bg-wood-100 dark:bg-wood-900 text-wood-accent px-2 py-1 rounded"
+                    >Web App</span
+                  >
+                </div>
+                <h4
+                  class="text-xl font-bold text-gray-900 dark:text-white group-hover:text-wood-accent transition-colors"
+                >
+                  OJT Daily Journal System
+                </h4>
+                <p class="text-gray-600 dark:text-gray-400 text-sm mt-1">
+                  A modern, web-based daily journal system designed for OJT
+                  students to log their daily activities.
+                </p>
+              </a>
+            </div>
+
+            <!-- Project 7: Sales and Inventory System -->
+            <div
+              class="project-card group"
+              data-aos="fade-up"
+              data-aos-delay="600"
+              data-category="django"
+            >
+              <div
+                class="relative overflow-hidden rounded-xl shadow-lg aspect-video bg-gray-200 flex flex-col justify-end"
+              >
+                <img
+                  src="../assets/sales-and-inventory.png"
+                  alt="Sales and Inventory Management System"
+                  class="absolute inset-0 object-cover w-full h-full transform group-hover:scale-105 transition-transform duration-500"
+                  loading="lazy"
+                  decoding="async"
+                  width="800"
+                  height="450"
+                />
+                <div
+                  class="absolute inset-0 bg-black/60 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center gap-4 z-10"
+                >
+                  <a
+                    href="sales-and-inventory/"
+                    class="text-white border px-4 py-2 rounded-full text-sm font-medium tracking-wide hover:bg-white hover:text-black transition-colors"
+                    >View Details</a
+                  >
+                  <a
+                    href="https://github.com/property360-2/FJC-Pizza"
+                    target="_blank"
+                    class="text-white bg-wood-accent px-4 py-2 rounded-full text-sm font-medium tracking-wide hover:bg-wood-700 transition-colors"
+                    >View GitHub</a
+                  >
+                </div>
+              </div>
+              <a href="sales-and-inventory/" class="block mt-4">
+                <div class="flex gap-2 mb-2">
+                  <span
+                    class="text-xs bg-wood-100 dark:bg-wood-900 text-wood-accent px-2 py-1 rounded"
+                    >Django</span
+                  >
+                  <span
+                    class="text-xs bg-wood-100 dark:bg-wood-900 text-wood-accent px-2 py-1 rounded"
+                    >Python</span
+                  >
+                  <span
+                    class="text-xs bg-wood-100 dark:bg-wood-900 text-wood-accent px-2 py-1 rounded"
+                    >PostgreSQL</span
+                  >
+                </div>
+                <h4
+                  class="text-xl font-bold text-gray-900 dark:text-white group-hover:text-wood-accent transition-colors"
+                >
+                  Sales & Inventory System
+                </h4>
+                <p class="text-gray-600 dark:text-gray-400 text-sm mt-1">
+                  A 3-tier enterprise POS and inventory management system for
+                  business operations and analytics.
+                </p>
+              </a>
+            </div>
+          </div>
+
+          <!-- More Projects Coming Soon -->
+          <div
+            class="mt-16 text-center"
+            data-aos="fade-up"
+            data-aos-delay="300"
+          >
+            <p
+              class="text-lg text-gray-600 dark:text-gray-400 font-medium italic"
+            >
+              "More exciting projects are coming soon. Stay tuned!"
+            </p>
+            <div class="mt-4 flex justify-center">
+              <span
+                class="inline-block w-16 h-1 bg-wood-accent rounded-full opacity-50"
+              ></span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ORGANISMS: Footer -->
+    </main>
+</Layout>

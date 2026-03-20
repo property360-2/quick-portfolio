@@ -1,0 +1,200 @@
+---
+import Layout from '../layouts/Layout.astro';
+const title = 'Sitemap | Jun Alvior Portfolio';
+const description = "HTML sitemap for Jun Alvior's portfolio, listing all pages, projects, and articles for easy navigation.";
+---
+
+<Layout title={title} description={description}>
+<main class="flex-grow pt-32 pb-20">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <header class="mb-12">
+          <h1
+            class="text-4xl md:text-5xl font-bold text-gray-900 dark:text-white mb-4"
+          >
+            Sitemap
+          </h1>
+          <p class="text-xl text-gray-600 dark:text-gray-400">
+            All pages and resources on this site.
+          </p>
+        </header>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-12">
+          <!-- Main Section -->
+          <section>
+            <h2
+              class="text-2xl font-bold text-wood-accent mb-6 flex items-center gap-2"
+            >
+              <svg class="w-6 h-6" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z" />
+              </svg>
+              Main Pages
+            </h2>
+            <ul class="space-y-4">
+              <li>
+                <a
+                  href="/"
+                  class="text-lg hover:text-wood-accent transition-colors flex items-center gap-2"
+                  >Home</a
+                >
+              </li>
+              <li>
+                <a
+                  href="about/"
+                  class="text-lg hover:text-wood-accent transition-colors flex items-center gap-2"
+                  >About Me</a
+                >
+              </li>
+              <li>
+                <a
+                  href="portfolio/"
+                  class="text-lg hover:text-wood-accent transition-colors flex items-center gap-2"
+                  >Portfolio</a
+                >
+              </li>
+              <li>
+                <a
+                  href="writings/"
+                  class="text-lg hover:text-wood-accent transition-colors flex items-center gap-2"
+                  >Writings</a
+                >
+              </li>
+              <li>
+                <a
+                  href="rate/"
+                  class="text-lg hover:text-wood-accent transition-colors flex items-center gap-2"
+                  >Service Rates</a
+                >
+              </li>
+              <li>
+                <a
+                  href="inquiries/"
+                  class="text-lg hover:text-wood-accent transition-colors flex items-center gap-2"
+                  >Inquiries</a
+                >
+              </li>
+            </ul>
+          </section>
+
+          <!-- Portfolio Section -->
+          <section>
+            <h2
+              class="text-2xl font-bold text-wood-accent mb-6 flex items-center gap-2"
+            >
+              <svg class="w-6 h-6" viewBox="0 0 24 24" fill="currentColor">
+                <path
+                  d="M14 6V4h-4v2h4zM4 8v11h16V8H4zm16-2c1.11 0 2 .89 2 2v11c0 1.11-.89 2-2 2H4c-1.11 0-2-.89-2-2V8c0-1.11.89-2 2-2h4V4c0-1.11.89-2 2-2h4c1.11 0 2 .89 2 2v2h4z"
+                />
+              </svg>
+              Projects
+            </h2>
+            <ul class="space-y-4">
+              <li>
+                <a
+                  href="portfolio/gym-project/"
+                  class="text-lg hover:text-wood-accent transition-colors"
+                  >Gym Management System</a
+                >
+              </li>
+              <li>
+                <a
+                  href="portfolio/bank-project/"
+                  class="text-lg hover:text-wood-accent transition-colors"
+                  >Modern Banking App</a
+                >
+              </li>
+              <li>
+                <a
+                  href="portfolio/study-time-tracker/"
+                  class="text-lg hover:text-wood-accent transition-colors"
+                  >Study Time Tracker</a
+                >
+              </li>
+              <li>
+                <a
+                  href="portfolio/sales-and-inventory/"
+                  class="text-lg hover:text-wood-accent transition-colors"
+                  >Sales & Inventory System</a
+                >
+              </li>
+              <li>
+                <a
+                  href="portfolio/mind-map-maker/"
+                  class="text-lg hover:text-wood-accent transition-colors"
+                  >Mind Map Maker</a
+                >
+              </li>
+              <li>
+                <a
+                  href="portfolio/ojt-journals/"
+                  class="text-lg hover:text-wood-accent transition-colors"
+                  >OJT Journals</a
+                >
+              </li>
+            </ul>
+          </section>
+
+          <!-- Writings Section -->
+          <section>
+            <h2
+              class="text-2xl font-bold text-wood-accent mb-6 flex items-center gap-2"
+            >
+              <svg
+                class="w-4 h-4 mr-2 text-wood-accent"
+                viewBox="0 0 24 24"
+                fill="currentColor"
+              >
+                <path
+                  d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-5 14H7v-2h7v2zm3-4H7v-2h10v2zm0-4H7V7h10v2z"
+                />
+              </svg>
+              Articles
+            </h2>
+            <ul class="space-y-4">
+              <li>
+                <a
+                  href="writings/articles/freelance-developer-pricing-guide/"
+                  class="text-lg hover:text-wood-accent transition-colors"
+                  >Freelance Pricing Guide</a
+                >
+              </li>
+              <li>
+                <a
+                  href="writings/articles/legal-kit-ni-juan/"
+                  class="text-lg hover:text-wood-accent transition-colors"
+                  >Legal Kit ni Juan</a
+                >
+              </li>
+              <li>
+                <a
+                  href="writings/articles/sovereign-imperatives/"
+                  class="text-lg hover:text-wood-accent transition-colors"
+                  >Sovereign Imperatives</a
+                >
+              </li>
+              <li>
+                <a
+                  href="writings/articles/how-to-read-people/"
+                  class="text-lg hover:text-wood-accent transition-colors"
+                  >How to Read People</a
+                >
+              </li>
+              <li>
+                <a
+                  href="writings/articles/accessibility-semantic-html-aria/"
+                  class="text-lg hover:text-wood-accent transition-colors"
+                  >Accessibility & Semantic HTML</a
+                >
+              </li>
+              <li>
+                <a
+                  href="writings/articles/accessibility-first-app/"
+                  class="text-lg hover:text-wood-accent transition-colors"
+                  >Accessibility First App</a
+                >
+              </li>
+            </ul>
+          </section>
+        </div>
+      </div>
+    </main>
+</Layout>

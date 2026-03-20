@@ -1,44 +1,46 @@
-# 🚀 Jun Alvior Portfolio
+# Astro Starter Kit: Basics
 
-Welcome to my personal portfolio! This project showcases my journey as a **Full Stack Developer** and a **Political Science student**, blending technical expertise with strong work ethics.
+```sh
+npm create astro@latest -- --template basics
+```
 
-## Features
+> 🧑‍🚀 **Seasoned astronaut?** Delete this file. Have fun!
 
-- **Performance Optimized**: Ultra-fast loading speeds using WebP images, deferred loading, and inline SVGs.
-- **Modern UI/UX**: Sleek, glassmorphic design inspired by premium aesthetics.
-- **Dark Mode**: Intelligent theme switching with persistent storage.
-- **Dynamic Animations**: Smooth transitions powered by GSAP and AOS.
-- **Responsive Design**: Fully functional across mobile, tablet, and desktop devices.
-- **Admin Dashboard**: Secure Firebase-backed inquiries management.
+## 🚀 Project Structure
 
-## Tech Stack
+Inside of your Astro project, you'll see the following folders and files:
 
-- **Frontend**: HTML5, Vanilla JavaScript, Tailwind CSS (via CDN/Script).
-- **Libraries**: Three.js, GSAP, AOS (Animate on Scroll).
-- **Backend/Database**: Firebase (for inquiries).
-- **Optimization**: WebP conversion, Critical CSS, Preload/Preconnect hints.
+```text
+/
+├── public/
+│   └── favicon.svg
+├── src
+│   ├── assets
+│   │   └── astro.svg
+│   ├── components
+│   │   └── Welcome.astro
+│   ├── layouts
+│   │   └── Layout.astro
+│   └── pages
+│       └── index.astro
+└── package.json
+```
 
-## How to Run Locally
+To learn more about the folder structure of an Astro project, refer to [our guide on project structure](https://docs.astro.build/en/basics/project-structure/).
 
-Since this is a static website, you don't need any complex installation.
+## 🧞 Commands
 
-1. **Clone or Download** this repository.
-2. **Open `index.html`**:
-   - You can simply double-click `index.html` in your file explorer.
-   - **Recommended**: Use a local development server (like VS Code **Live Server** extension) to ensure all assets and scripts load correctly via the `file://` or `http://` protocol.
-3. That's it, bro! No `npm install` required.
+All commands are run from the root of the project, from a terminal:
 
----
+| Command                   | Action                                           |
+| :------------------------ | :----------------------------------------------- |
+| `npm install`             | Installs dependencies                            |
+| `npm run dev`             | Starts local dev server at `localhost:4321`      |
+| `npm run build`           | Build your production site to `./dist/`          |
+| `npm run preview`         | Preview your build locally, before deploying     |
+| `npm run astro ...`       | Run CLI commands like `astro add`, `astro check` |
+| `npm run astro -- --help` | Get help using the Astro CLI                     |
 
-## Ownership & Copyright Notice
+## 👀 Want to learn more?
 
-> [!IMPORTANT]
-> **This project and all its source code are EXCLUSIVELY OWNED by Dionisio "Jun" Alvior.**
->
-> - **Only the owner (Jun Alvior) is authorized to use, modify, or deploy this creation.**
-> - **NO ONE has the rights to copy, reproduce, redistribute, or use any part of this codebase for their own projects, commercial or otherwise.**
-> - Unauthorized use or distribution of this code constitutes a violation of copyright and intellectual property rights.
->
-> **Respect the hustle, bro. This is my craft.**
-
-© 2024-2026 Jun Alvior. All rights reserved.
+Feel free to check [our documentation](https://docs.astro.build) or jump into our [Discord server](https://astro.build/chat).

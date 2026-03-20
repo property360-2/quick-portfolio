@@ -1,34 +1,21 @@
 {
-  "name": "quick-portfolio",
-  "version": "1.0.0",
-  "description": "> **\"Faster. Cleaner. Smarter digital experiences.\"**",
-  "main": "index.js",
+  "name": "astro-app",
+  "type": "module",
+  "version": "0.0.1",
+  "engines": {
+    "node": ">=22.12.0"
+  },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "build": "npx tailwindcss -i ./css/input.css -o ./css/style.css --minify",
-    "format": "prettier --write .",
-    "dev": "live-server --entry-file=404.html"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/property360-2/quick-portfolio.git"
-  },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
-  "type": "commonjs",
-  "bugs": {
-    "url": "https://github.com/property360-2/quick-portfolio/issues"
-  },
-  "homepage": "https://github.com/property360-2/quick-portfolio#readme",
-  "devDependencies": {
-    "@tailwindcss/typography": "^0.5.19",
-    "prettier": "^3.8.1",
-    "tailwindcss": "^3.4.19"
+    "dev": "astro dev",
+    "build": "astro build",
+    "preview": "astro preview",
+    "astro": "astro"
   },
   "dependencies": {
-    "autoprefixer": "^10.4.27",
-    "firebase": "^12.10.0",
-    "postcss": "^8.5.8"
+    "@astrojs/tailwind": "^5.1.5",
+    "@tailwindcss/typography": "^0.5.19",
+    "@tailwindcss/vite": "^4.2.2",
+    "astro": "^6.0.7",
+    "tailwindcss": "^3.4.19"
   }
 }
