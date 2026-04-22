@@ -122,10 +122,7 @@ body.loaded {
     0 10px 10px -5px rgba(141, 110, 99, 0.15);
 }
 
-/* Hide/Show logic utilities */
-.hidden {
-  display: none;
-}
+/* Removed redundant .hidden class to avoid conflict with Tailwind */
 
 /* Mobile Menu Transitions */
 #mobile-menu {

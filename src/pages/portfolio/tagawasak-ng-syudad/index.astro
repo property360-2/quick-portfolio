@@ -1,0 +1,124 @@
+---
+import Layout from '../../../layouts/Layout.astro';
+const title = 'Tagawasak ng Syudad | Game Development';
+const description = 'A chaotic sandbox city destruction game built with Three.js and Web Audio API. Featuring procedural building destruction and physics.';
+---
+
+<Layout title={title} description={description}>
+<main id="main-content" class="flex-grow flex flex-col">
+      <!-- ORGANISMS: Project Case Study -->
+      <article class="py-24 bg-grey-light dark:bg-[#1a1a1a] flex-grow">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+          <!-- Breadcrumb -->
+          <div class="mb-8 text-sm text-gray-500 dark:text-gray-400">
+            <a
+              href="/quick-portfolio/portfolio/"
+              class="hover:text-wood-accent transition-colors"
+              ><- Back to Portfolio</a
+            >
+          </div>
+
+          <!-- Header -->
+          <header class="mb-12" data-aos="fade-up">
+            <div class="mb-8 rounded-xl overflow-hidden shadow-2xl">
+              <img
+                src="/quick-portfolio/assets/tagawasak-ng-syudad.webp"
+                alt="Tagawasak ng Syudad"
+                class="w-full h-auto object-cover max-h-[500px]"
+                loading="lazy"
+                decoding="async"
+                width="800"
+                height="450"
+              />
+            </div>
+            <h1
+              class="text-4xl md:text-5xl font-bold text-gray-900 dark:text-white mb-6"
+            >
+              Tagawasak ng Syudad
+            </h1>
+            <div class="flex flex-wrap gap-4 text-sm">
+              <span
+                class="px-3 py-1 bg-wood-100 dark:bg-wood-900 text-wood-accent rounded-full font-medium"
+                >Three.js</span
+              >
+              <span
+                class="px-3 py-1 bg-wood-100 dark:bg-wood-900 text-wood-accent rounded-full font-medium"
+                >JavaScript</span
+              >
+              <span
+                class="px-3 py-1 bg-wood-100 dark:bg-wood-900 text-wood-accent rounded-full font-medium"
+                >GameDev</span
+              >
+              <span
+                class="px-3 py-1 bg-wood-100 dark:bg-wood-900 text-wood-accent rounded-full font-medium"
+                >Web Audio API</span
+              >
+            </div>
+          </header>
+
+          <!-- Content -->
+          <div
+            class="prose dark:prose-invert prose-lg prose-wood max-w-none"
+            data-aos="fade-up"
+            data-aos-delay="100"
+          >
+            <p>
+              Tagawasak ng Syudad (City Destroyer) is a technical demonstration of real-time 3D physics and procedural audio in the browser. It was designed as a chaotic sandbox where users can explore city destruction mechanics.
+            </p>
+
+            <h3>Key Features</h3>
+            <ul>
+              <li>
+                <strong>Procedural Destruction:</strong> Buildings are composed of individual entities that react to physics-based impacts and explosions.
+              </li>
+              <li>
+                <strong>Arsenal of Destruction:</strong> Includes Bombs, Asteroid Strikes, Fire, Kaiju Monsters, and Atomic Nukes.
+              </li>
+              <li>
+                <strong>Dynamic Audio:</strong> Custom Web Audio API implementation that generates unique destruction sounds in real-time.
+              </li>
+              <li>
+                <strong>Visual Effects:</strong> Integrated particle systems for fragment debris, smoke, and screen shake trauma.
+              </li>
+            </ul>
+
+            <h3>Project Links</h3>
+            <div class="flex flex-wrap gap-4 not-prose mt-6">
+              <a
+                href="/quick-portfolio/portfolio/inside-portfolio-game/tagasira-ng-syudad/index.html"
+                target="_blank"
+                class="px-6 py-3 bg-wood-accent hover:bg-wood-700 text-white font-semibold rounded-lg shadow-md transition-all transform hover:-translate-y-0.5 flex items-center"
+              >
+                <svg
+                  class="mr-2 w-5 h-5"
+                  viewBox="0 0 24 24"
+                  fill="currentColor"
+                >
+                  <path
+                    d="M19 19H5V5h7V3H5c-1.11 0-2 .9-2 2v14c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2v-7h-2v7zM14 3v2h3.59l-9.83 9.83 1.41 1.41L19 6.41V10h2V3h-7z"
+                  />
+                </svg>
+                Live Demo
+              </a>
+              <a
+                href="https://github.com/property360-2/quick-portfolio"
+                target="_blank"
+                class="px-6 py-3 bg-gray-200 dark:bg-gray-800 hover:bg-gray-300 dark:hover:bg-gray-700 text-gray-900 dark:text-white font-semibold rounded-lg shadow-md transition-all transform hover:-translate-y-0.5 flex items-center"
+              >
+                <svg
+                  class="mr-2 w-5 h-5"
+                  viewBox="0 0 24 24"
+                  fill="currentColor"
+                >
+                  <path
+                    d="M9.4 16.6L4.8 12l4.6-4.6L8 6l-6 6 6 6 1.4-1.4zm5.2 0l4.6-4.6-4.6-4.6L16 6l6 6-6 6-1.4-1.4z"
+                  />
+                </svg>
+                View Code
+              </a>
+            </div>
+          </div>
+        </div>
+      </article>
+    </main>
+</Layout>
