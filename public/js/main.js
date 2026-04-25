@@ -178,14 +178,19 @@ document.addEventListener("DOMContentLoaded", () => {
   // Leaving this placeholder for potential dynamic enhancement.
 
   // ==========================================
-  // 6.5 Dynamic Import of 3D Scene (Desktop Only)
-  // ==========================================
+  // 6.5 Dynamic Import of 3D Scene (Desktop & Tablet)
   const catContainer = document.getElementById("cat-canvas-container");
-  if (window.innerWidth >= 1024 && catContainer) {
-    // Ported to absolute path for Astro /quick-portfolio base
-    import("/quick-portfolio/js/3d-scene.js").catch((err) =>
-      console.error("Failed to load 3D scene:", err),
-    );
+  // Check both window width and if the container is actually visible/has size
+  if (window.innerWidth >= 768 && catContainer && catContainer.offsetWidth > 0) {
+    console.log("3D Scene: Initializing cat tracking...");
+    // Added cache busting timestamp to ensure the latest script is loaded
+    import(`/quick-portfolio/js/3d-scene.js?v=${Date.now()}`)
+      .then(() => console.log("3D Scene: Loaded successfully."))
+      .catch((err) =>
+        console.error("Failed to load 3D scene. Check if path is correct for your base URL:", err),
+      );
+  } else if (catContainer) {
+    console.log("3D Scene: Skipped (screen too small or container hidden).");
   }
 });
 

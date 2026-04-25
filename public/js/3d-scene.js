@@ -146,6 +146,10 @@ if (!container) {
     eyeGroupR.rotation.x = -0.1;
     cat.add(eyeGroupR);
 
+    // Store references for eyes tracking
+    cat.userData.pupils = [pupilL, pupilR];
+    cat.userData.eyeBases = [eyeL, eyeR];
+
     // 4. Nose
     const noseGeo = new THREE.ConeGeometry(0.1, 0.12, 3); // triangle
     noseGeo.rotateX(Math.PI / 2);
@@ -254,6 +258,9 @@ if (!container) {
   catGroup.rotation.x = 0.05;
   catGroup.scale.setScalar(1.1); // Reduced from 1.4 to make it a little smaller
 
+  // Reference the pupils from baseCat for the animation loop
+  const catPupils = baseCat.userData.pupils;
+
   catGroup.userData = {
     time: 0,
     startY: catGroup.position.y,
@@ -293,6 +300,22 @@ if (!container) {
     // adding a tiny bounce effect for cuteness
     catGroup.rotation.y += (targetRotation.y - catGroup.rotation.y) * 0.08;
     catGroup.rotation.x += (targetRotation.x - catGroup.rotation.x) * 0.08;
+
+    // Eye tracking logic
+    if (catPupils && catPupils.length > 0) {
+      catPupils.forEach((pupil) => {
+        // Subtle offset based on mouse position
+        // Horizontal: mouse.x is -windowHalf.x to windowHalf.x
+        // Vertical: mouse.y is -windowHalf.y to windowHalf.y
+        // Increased intensity for better visibility (0.05 -> 0.1)
+        const targetX = (mouse.x / windowHalf.x) * 0.1;
+        const targetY = -(mouse.y / windowHalf.y) * 0.08;
+
+        // Smoothly interpolate pupil position
+        pupil.position.x += (targetX - pupil.position.x) * 0.1;
+        pupil.position.y += (targetY - pupil.position.y) * 0.1;
+      });
+    }
 
     renderer.render(scene, camera);
   }

@@ -6,6 +6,7 @@ import tailwindcss from '@tailwindcss/vite';
 export default defineConfig({
   // Palitan mo ito ng iyong totoong domain mamaya (hal. https://www.iyongdomain.com)
   site: 'https://quick-portfolio.vercel.app', 
+  base: '/quick-portfolio',
   vite: {
     plugins: [tailwindcss()],
   },
