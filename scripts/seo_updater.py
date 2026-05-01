@@ -37,10 +37,10 @@ def process_html(file_path):
     page_url = f"https://property360-2.github.io/quick-portfolio/{clean_rel_url}"
 
     title_match = re.search(r'<title>(.*?)</title>', content, re.IGNORECASE | re.DOTALL)
-    title = title_match.group(1).strip() if title_match else "Jun Alvior | Full Stack Developer"
+    title = title_match.group(1).strip() if title_match else "Jun Alvior | Full Stack Software Developer"
 
     desc_match = re.search(r'<meta\s+name=["\']description["\']\s+content=["\'](.*?)["\']\s*/?>', content, re.IGNORECASE | re.DOTALL)
-    description = desc_match.group(1).strip() if desc_match else "Portfolio of Jun Alvior, a Full Stack Developer specializing in Python, Django, React, and Supabase."
+    description = desc_match.group(1).strip() if desc_match else "Portfolio of Jun Alvior, a Full Stack Software Developer specializing in Python, Django, React, and Supabase."
 
     # Remove existing favicon mapping
     content = re.sub(r'<link\s+[^>]*rel=["\']icon["\'][^>]*>', '', content, flags=re.IGNORECASE)
