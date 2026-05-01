@@ -1,3 +1,8 @@
+# Purpose: Defines the GitHub Actions deployment workflow for this Astro portfolio.
+# Contains the checkout, Node.js setup, dependency installation, Astro build, and
+# GitHub Pages publishing steps that run whenever changes are pushed to the main
+# deployment branches.
+
 name: Deploy Astro to GitHub Pages
 
 on:
@@ -19,7 +24,7 @@ jobs:
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: 20
+          node-version: 22.12.0
 
       - name: Install Dependencies
         run: npm install
