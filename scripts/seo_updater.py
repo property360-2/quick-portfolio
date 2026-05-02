@@ -2,7 +2,7 @@ import os
 import re
 import base64
 
-WORKSPACE = r"c:\Users\Administrator\Desktop\quick-portfolio"
+WORKSPACE = r"c:\Users\junal\OneDrive\Desktop\personal-projects\quick-portfolio"
 
 # 1. Create SVG
 png_path = os.path.join(WORKSPACE, "assets", "my-website-logo.png")
