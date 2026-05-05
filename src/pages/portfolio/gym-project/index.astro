@@ -1,5 +1,12 @@
 ---
+/**
+ * Gym Project Case Study Page
+ * Purpose: Detailed case study for the Gym Management System project.
+ * Contains: Project overview, key features, technology stack, and live links.
+ * System Role: Provides in-depth information about a specific full-stack project in the portfolio.
+ */
 import Layout from '../../../layouts/Layout.astro';
+import { RENDER_COLD_START_NOTE } from '../../../utils/constants';
 const title = 'Gym Management System Case Study | Jun Alvior';
 const description = 'A robust Gym Management System built with Django and Tailwind CSS. Features membership tracking, user authentication, and responsive design.';
 ---
@@ -81,6 +88,9 @@ const description = 'A robust Gym Management System built with Django and Tailwi
             </ul>
 
             <h3>Project Links</h3>
+            <p class="text-sm text-gray-500 dark:text-gray-400 italic mb-4">
+              {RENDER_COLD_START_NOTE}
+            </p>
             <div class="flex flex-wrap gap-4 not-prose mt-6">
               <a
                 href="https://vibe-kbvc.onrender.com/login/?next=/"

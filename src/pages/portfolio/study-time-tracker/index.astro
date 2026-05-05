@@ -1,5 +1,12 @@
 ---
+/**
+ * Study Time Tracker Case Study Page
+ * Purpose: Detailed case study for the Study Time Tracker productivity app.
+ * Contains: Project highlights, technical details, and direct access links.
+ * System Role: Showcases a specific tool built to solve student productivity challenges.
+ */
 import Layout from '../../../layouts/Layout.astro';
+import { RENDER_COLD_START_NOTE } from '../../../utils/constants';
 const title = 'Study Time Tracker: Productivity App for Students | Jun Alvior';
 const description = 'Boost your productivity with the Study Time Tracker. Log sessions, visualize progress, and manage academic goals with this Django-powered web tool.';
 ---
@@ -81,6 +88,9 @@ const description = 'Boost your productivity with the Study Time Tracker. Log se
             </ul>
 
             <h3>Project Links</h3>
+            <p class="text-sm text-gray-500 dark:text-gray-400 italic mb-4">
+              {RENDER_COLD_START_NOTE}
+            </p>
             <div class="flex gap-4 not-prose mt-6">
               <a
                 href="https://simple-study-time-tracker.onrender.com/journal/"

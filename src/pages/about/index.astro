@@ -1,4 +1,10 @@
 ---
+/**
+ * About Page Component
+ * Purpose: Provides a detailed overview of Jun Alvior's professional journey, technical expertise, and core competencies.
+ * Contains: Introduction, detailed Tech Stack categories (PHP, Django, Frontend, Firebase/BaaS), and professional experience timeline.
+ * System Role: One of the primary informational pages helping potential clients/employers understand the developer's background.
+ */
 import Layout from '../../layouts/Layout.astro';
 const title = 'About Jun Alvior | Full Stack Software Developer';
 const description = "Learn about Jun Alvior's journey from construction to code. A dedicated Full Stack Software Developer with a blend of tech expertise and strong work ethic. ✓";
@@ -48,12 +54,12 @@ const description = "Learn about Jun Alvior's journey from construction to code.
                   22-year-old full stack software developer and a 4th-year BSIS
                   student. I love building web applications that are
                   <strong>functional, beautiful, and user-friendly</strong>,
-                  using a wide variety of tech stacks like
+                  utilizing a diverse range of modern technologies including
                   <strong
-                    >Python (Django + Templates), React, Next.js, Node.js
-                    (Prisma), PHP (Laravel & vanilla PHP), Supabase, and
-                    Firebase</strong
-                  >.
+                    >PHP (Laravel), Python (Django), Frontend (Astro, Next.js),
+                    and Firebase</strong
+                  >
+                  to create high-impact solutions.
                 </p>
                 <p class="mb-4">
                   I’ve also embraced <strong>AI-assisted development</strong>,
@@ -74,33 +80,49 @@ const description = "Learn about Jun Alvior's journey from construction to code.
                 </p>
               </div>
 
-              <div class="mt-8">
-                <h4
-                  class="text-lg font-semibold text-gray-900 dark:text-white mb-4"
-                >
-                  Tech Stack
-                </h4>
-                <div class="flex flex-wrap gap-2">
-                  <span
-                    class="px-3 py-1 bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-full text-sm text-gray-600 dark:text-gray-300"
-                    >Python (Django/Flask)</span
-                  >
-                  <span
-                    class="px-3 py-1 bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-full text-sm text-gray-600 dark:text-gray-300"
-                    >JavaScript (React/Next.js/Node)</span
-                  >
-                  <span
-                    class="px-3 py-1 bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-full text-sm text-gray-600 dark:text-gray-300"
-                    >PHP (Laravel/Vanilla)</span
-                  >
-                  <span
-                    class="px-3 py-1 bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-full text-sm text-gray-600 dark:text-gray-300"
-                    >Databases (SQLite/MySQL/Postgres)</span
-                  >
-                  <span
-                    class="px-3 py-1 bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-full text-sm text-gray-600 dark:text-gray-300"
-                    >BaaS (Supabase/Firebase)</span
-                  >
+              <div class="mt-8 space-y-6">
+                <div>
+                  <h4 class="text-sm font-bold text-gray-900 dark:text-white uppercase tracking-widest mb-3">
+                    PHP Development
+                  </h4>
+                  <div class="flex flex-wrap gap-2">
+                    <span class="px-3 py-1 bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-full text-sm text-gray-600 dark:text-gray-300">Laravel API-only</span>
+                    <span class="px-3 py-1 bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-full text-sm text-gray-600 dark:text-gray-300">Laravel Full-stack (Blade)</span>
+                    <span class="px-3 py-1 bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-full text-sm text-gray-600 dark:text-gray-300">Vanilla PHP</span>
+                  </div>
+                </div>
+
+                <div>
+                  <h4 class="text-sm font-bold text-gray-900 dark:text-white uppercase tracking-widest mb-3">
+                    Django / Python
+                  </h4>
+                  <div class="flex flex-wrap gap-2">
+                    <span class="px-3 py-1 bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-full text-sm text-gray-600 dark:text-gray-300">Django API-only</span>
+                    <span class="px-3 py-1 bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-full text-sm text-gray-600 dark:text-gray-300">Django Full-stack (Templates)</span>
+                    <span class="px-3 py-1 bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-full text-sm text-gray-600 dark:text-gray-300">Vanilla Python</span>
+                  </div>
+                </div>
+
+                <div>
+                  <h4 class="text-sm font-bold text-gray-900 dark:text-white uppercase tracking-widest mb-3">
+                    Frontend
+                  </h4>
+                  <div class="flex flex-wrap gap-2">
+                    <span class="px-3 py-1 bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-full text-sm text-gray-600 dark:text-gray-300">Astro</span>
+                    <span class="px-3 py-1 bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-full text-sm text-gray-600 dark:text-gray-300">Next.js</span>
+                    <span class="px-3 py-1 bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-full text-sm text-gray-600 dark:text-gray-300">HTML / CSS / JS</span>
+                  </div>
+                </div>
+
+                <div>
+                  <h4 class="text-sm font-bold text-gray-900 dark:text-white uppercase tracking-widest mb-3">
+                    Firebase & BaaS
+                  </h4>
+                  <div class="flex flex-wrap gap-2">
+                    <span class="px-3 py-1 bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-full text-sm text-gray-600 dark:text-gray-300">Firebase Auth</span>
+                    <span class="px-3 py-1 bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-full text-sm text-gray-600 dark:text-gray-300">CMS & Flexible Data Storage</span>
+                    <span class="px-3 py-1 bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-full text-sm text-gray-600 dark:text-gray-300">Hardcoded Automation Workflows</span>
+                  </div>
                 </div>
               </div>
             </div>

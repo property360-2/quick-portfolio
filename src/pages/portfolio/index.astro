@@ -1,5 +1,12 @@
 ---
+/**
+ * Portfolio Index Page
+ * Purpose: Showcases a gallery of selected projects with filtering capabilities.
+ * Contains: Filterable project cards for Fullstack, Frontend, Tools, and GameDev projects.
+ * System Role: The main hub for exploring the developer's work, including direct links to live demos and case studies.
+ */
 import Layout from '../../layouts/Layout.astro';
+import { RENDER_COLD_START_NOTE } from '../../utils/constants';
 const title = 'Portfolio & Projects | Jun Alvior | Full Stack Software Developer';
 const description = "Explore Jun Alvior's web development projects, including Gym Systems, Finance Trackers, and Cloud-integrated apps built with Supabase and Django.";
 ---
@@ -144,19 +151,24 @@ const description = "Explore Jun Alvior's web development projects, including Gy
                   height="450"
                 />
                 <div
-                  class="absolute inset-0 bg-black/60 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center gap-4 z-10"
+                  class="absolute inset-0 bg-black/60 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col items-center justify-center gap-4 z-10"
                 >
-                  <a
-                    href="/quick-portfolio/portfolio/gym-project/"
-                    class="text-white border px-4 py-2 rounded-full text-sm font-medium tracking-wide hover:bg-white hover:text-black transition-colors"
-                    >View Details</a
-                  >
-                  <a
-                    href="https://vibe-kbvc.onrender.com/login/?next=/"
-                    target="_blank"
-                    class="text-white bg-wood-accent px-4 py-2 rounded-full text-sm font-medium tracking-wide hover:bg-wood-700 transition-colors"
-                    >Live Demo</a
-                  >
+                  <div class="flex gap-4">
+                    <a
+                      href="/quick-portfolio/portfolio/gym-project/"
+                      class="text-white border px-4 py-2 rounded-full text-sm font-medium tracking-wide hover:bg-white hover:text-black transition-colors"
+                      >View Details</a
+                    >
+                    <a
+                      href="https://vibe-kbvc.onrender.com/login/?next=/"
+                      target="_blank"
+                      class="text-white bg-wood-accent px-4 py-2 rounded-full text-sm font-medium tracking-wide hover:bg-wood-700 transition-colors"
+                      >Live Demo</a
+                    >
+                  </div>
+                  <p class="text-[10px] text-gray-300 px-6 text-center italic leading-tight">
+                    {RENDER_COLD_START_NOTE}
+                  </p>
                 </div>
               </div>
               <a href="/quick-portfolio/portfolio/gym-project/" class="block mt-4">
@@ -182,6 +194,9 @@ const description = "Explore Jun Alvior's web development projects, including Gy
                 <p class="text-gray-600 dark:text-gray-400 text-sm mt-1">
                   A full-featured gym management and membership system.
                 </p>
+                <p class="text-[10px] text-gray-500 dark:text-gray-500 mt-2 italic leading-tight">
+                  {RENDER_COLD_START_NOTE}
+                </p>
               </a>
             </div>
 
@@ -205,19 +220,24 @@ const description = "Explore Jun Alvior's web development projects, including Gy
                   height="450"
                 />
                 <div
-                  class="absolute inset-0 bg-black/60 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center gap-4 z-10"
+                  class="absolute inset-0 bg-black/60 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col items-center justify-center gap-4 z-10"
                 >
-                  <a
-                    href="/quick-portfolio/portfolio/study-time-tracker/"
-                    class="text-white border px-4 py-2 rounded-full text-sm font-medium tracking-wide hover:bg-white hover:text-black transition-colors"
-                    >View Details</a
-                  >
-                  <a
-                    href="https://simple-study-time-tracker.onrender.com/journal/"
-                    target="_blank"
-                    class="text-white bg-wood-accent px-4 py-2 rounded-full text-sm font-medium tracking-wide hover:bg-wood-700 transition-colors"
-                    >Live Demo</a
-                  >
+                  <div class="flex gap-4">
+                    <a
+                      href="/quick-portfolio/portfolio/study-time-tracker/"
+                      class="text-white border px-4 py-2 rounded-full text-sm font-medium tracking-wide hover:bg-white hover:text-black transition-colors"
+                      >View Details</a
+                    >
+                    <a
+                      href="https://simple-study-time-tracker.onrender.com/journal/"
+                      target="_blank"
+                      class="text-white bg-wood-accent px-4 py-2 rounded-full text-sm font-medium tracking-wide hover:bg-wood-700 transition-colors"
+                      >Live Demo</a
+                    >
+                  </div>
+                  <p class="text-[10px] text-gray-300 px-6 text-center italic leading-tight">
+                    {RENDER_COLD_START_NOTE}
+                  </p>
                 </div>
               </div>
               <a href="/quick-portfolio/portfolio/study-time-tracker/" class="block mt-4">
@@ -238,6 +258,9 @@ const description = "Explore Jun Alvior's web development projects, including Gy
                 </h4>
                 <p class="text-gray-600 dark:text-gray-400 text-sm mt-1">
                   A productivity tool for tracking study sessions.
+                </p>
+                <p class="text-[10px] text-gray-500 dark:text-gray-500 mt-2 italic leading-tight">
+                  {RENDER_COLD_START_NOTE}
                 </p>
               </a>
             </div>

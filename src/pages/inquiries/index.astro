@@ -1,254 +1,355 @@
 ---
-import Layout from '../../layouts/Layout.astro';
-const title = 'Inquiries Dashboard | Jun Alvior | Full Stack Software Developer';
-const description = 'Admin dashboard for managing project inquiries and quotes for Jun Alvior, Full Stack Software Developer.';
+/**
+ * Firebase-backed inquiries inbox page for the quick portfolio site.
+ * This file renders an admin-only inquiry workspace protected by Firebase Email/Password Auth.
+ * Project ideas submitted from the Rate page are read from Firestore for admin review and follow-up tracking.
+ */
+import Layout from "../../layouts/Layout.astro";
+import { FIREBASE_ADMIN_EMAILS } from "../../utils/firebase";
+
+const title = "Project Inquiries | Jun Alvior | Full Stack Software Developer";
+const description = "Firebase-protected inbox for reviewing project inquiries submitted from the Rate page.";
+const adminEmailLabel = FIREBASE_ADMIN_EMAILS.join(", ");
 ---
 
 <Layout title={title} description={description}>
-<main
-      class="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8 py-12 min-h-screen relative"
-    >
-      <!-- Password Modal -->
-      <div
-        id="auth-overlay"
-        class="fixed inset-0 z-[60] bg-gray-50 dark:bg-[#1a1a1a] flex flex-col items-center justify-center p-4 transition-all duration-500"
-      >
-        <div
-          class="bg-white dark:bg-[#252528] rounded-2xl p-8 border border-gray-200 dark:border-gray-800 shadow-xl max-w-md w-full text-center scale-100 transition-transform"
-        >
-          <svg
-            class="text-5xl text-wood-accent mb-4"
-            viewBox="0 0 24 24"
-            fill="currentColor"
-          >
-            <path
-              d="M12 17c1.1 0 2-.9 2-2s-.9-2-2-2-2 .9-2 2 .9 2 2 2zm6-9h-1V6c0-2.76-2.24-5-5-5S7 3.24 7 6v2H6c-1.1 0-2 .9-2 2v10c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V10c0-1.1-.9-2-2-2zM8.9 6c0-1.71 1.39-3.1 3.1-3.1 1.71 0 3.1 1.39 3.1 3.1v2H8.9V6zM18 20H6V10h12v10z"
-            />
-          </svg>
-          <h2 class="text-2xl font-bold mb-2">Admin Access</h2>
-          <p class="text-gray-500 dark:text-gray-400 text-sm mb-6">
-            Enter the master password to view inquiries.
+  <main id="main-content" class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-24 min-h-screen">
+    <section id="auth-panel" class="max-w-md mx-auto">
+      <form id="login-form" class="bg-white dark:bg-[#252528] rounded-2xl p-6 border border-gray-200 dark:border-gray-800 shadow-xl space-y-5" novalidate>
+        <div class="text-center">
+          <span class="text-wood-accent font-bold tracking-widest uppercase text-xs mb-2 block">Admin Access</span>
+          <h1 class="text-3xl font-extrabold text-gray-900 dark:text-white">Project Inquiries Login</h1>
+          <p class="text-sm text-gray-600 dark:text-gray-400 mt-2">
+            Sign in with the Firebase admin account for this portfolio.
           </p>
+        </div>
 
-          <form id="auth-form" class="space-y-4">
-            <input
-              type="password"
-              id="admin-pass"
-              required
-              placeholder="Enter Password"
-              class="block w-full bg-gray-50 dark:bg-[#1a1a1a] border border-gray-300 dark:border-gray-600 text-gray-900 dark:text-white rounded-lg focus:ring-wood-accent focus:border-wood-accent p-3 outline-none transition-all"
-            />
-            <button
-              type="submit"
-              id="auth-btn"
-              class="w-full py-3 px-4 bg-wood-accent text-white font-bold rounded-lg shadow-md hover:bg-wood-700 transition-colors flex items-center justify-center"
-            >
-              <span id="auth-btn-text">Authenticate</span>
-              <svg
-                id="auth-spinner"
-                class="hidden animate-spin ml-2 h-5 w-5 text-white"
-                xmlns="http://www.w3.org/2000/svg"
-                fill="none"
-                viewBox="0 0 24 24"
-              >
-                <circle
-                  class="opacity-25"
-                  cx="12"
-                  cy="12"
-                  r="10"
-                  stroke="currentColor"
-                  stroke-width="4"
-                ></circle>
-                <path
-                  class="opacity-75"
-                  fill="currentColor"
-                  d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"
-                ></path>
-              </svg>
-            </button>
-            <p id="auth-error" class="text-red-500 text-sm hidden">
-              Incorrect Password.
-            </p>
-          </form>
+        <div>
+          <label for="admin-email" class="block text-sm font-bold text-gray-900 dark:text-white mb-2">Email</label>
+          <input id="admin-email" name="email" type="email" autocomplete="email" class="w-full bg-gray-50 dark:bg-[#1a1a1a] border border-gray-200 dark:border-gray-700 text-gray-900 dark:text-white text-sm rounded-lg focus:ring-2 focus:ring-wood-accent focus:border-transparent p-3 shadow-sm outline-none placeholder-gray-400" placeholder={adminEmailLabel} />
+        </div>
+
+        <div>
+          <label for="admin-password" class="block text-sm font-bold text-gray-900 dark:text-white mb-2">Password</label>
+          <input id="admin-password" name="password" type="password" autocomplete="current-password" class="w-full bg-gray-50 dark:bg-[#1a1a1a] border border-gray-200 dark:border-gray-700 text-gray-900 dark:text-white text-sm rounded-lg focus:ring-2 focus:ring-wood-accent focus:border-transparent p-3 shadow-sm outline-none placeholder-gray-400" placeholder="Firebase password" />
+        </div>
+
+        <button type="submit" class="w-full bg-wood-accent hover:bg-wood-700 text-white font-bold py-4 px-6 rounded-lg transition-colors flex justify-center items-center shadow-md">
+          Sign In
+        </button>
+
+        <p id="auth-feedback" class="hidden text-sm font-medium rounded-lg p-3" role="status" aria-live="polite"></p>
+      </form>
+    </section>
+
+    <section id="notes-panel" class="hidden">
+      <div class="flex flex-col md:flex-row justify-between gap-4 md:items-end border-b border-gray-200 dark:border-gray-800 pb-6 mb-6">
+        <div>
+          <span class="text-wood-accent font-bold tracking-widest uppercase text-xs mb-2 block">Inbox</span>
+          <h1 class="text-3xl md:text-4xl font-extrabold text-gray-900 dark:text-white">Project Inquiries</h1>
+          <p id="signed-in-label" class="text-sm text-gray-600 dark:text-gray-400 mt-2"></p>
+        </div>
+        <div class="flex flex-wrap items-center gap-3">
+          <div id="lead-count" class="px-4 py-2.5 bg-white dark:bg-[#252528] border border-gray-200 dark:border-gray-800 rounded-xl text-xs font-bold text-gray-600 dark:text-gray-400 shadow-sm">
+            0 Inquiries
+          </div>
+          <button id="sign-out-btn" type="button" class="bg-gray-100 hover:bg-gray-200 dark:bg-gray-800 dark:hover:bg-gray-700 text-gray-700 dark:text-gray-200 font-bold py-2.5 px-4 rounded-lg transition-colors">
+            Sign Out
+          </button>
         </div>
       </div>
 
-      <!-- Dashboard Content -->
-      <div
-        id="dashboard-content"
-        class="hidden opacity-0 transition-opacity duration-500"
-      >
-        <div
-          class="flex flex-col md:flex-row justify-between items-start md:items-end mb-8 border-b border-gray-200 dark:border-gray-800 pb-6"
-        >
-          <div>
-            <h1
-              class="text-3xl font-bold text-gray-900 dark:text-white gap-2 flex items-center"
-            >
-              <svg
-                class="text-wood-accent text-3xl"
-                viewBox="0 0 24 24"
-                fill="currentColor"
-              >
-                <path
-                  d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm0 16H5v-3h3.56c.69 1.19 1.97 2 3.44 2s2.75-.81 3.44-2H19v3zm0-5h-4.99c0 1.1-.9 2-2 2s-2-.9-2-2H5V5h14v9z"
-                />
-              </svg>
-              Project Inquiries
-            </h1>
-            <p class="text-gray-500 mt-2">
-              Manage and review quotes submitted from your rate page.
-            </p>
-          </div>
-          <div class="flex flex-wrap items-center gap-4 mt-4 md:mt-0">
-            <!-- Currency Visual Toggle -->
-            <div
-              class="flex items-center space-x-2 bg-gray-100 dark:bg-black/20 p-1.5 rounded-xl border border-gray-200 dark:border-gray-800 shadow-sm"
-            >
-              <span class="text-[10px] font-bold text-gray-500 uppercase px-2"
-                >Convert to:</span
-              >
-              <div class="flex space-x-1">
-                <button
-                  id="display-php"
-                  class="display-toggle px-3 py-1.5 rounded-lg text-[11px] font-bold transition-all bg-wood-accent text-white shadow-sm"
-                  data-currency="PHP"
-                >
-                  PHP
-                </button>
-                <button
-                  id="display-usdt"
-                  class="display-toggle px-3 py-1.5 rounded-lg text-[11px] font-bold transition-all text-gray-500 hover:text-gray-700 dark:hover:text-gray-300"
-                  data-currency="USDT"
-                >
-                  USDT
-                </button>
-              </div>
-            </div>
+      <p id="lead-feedback" class="hidden text-sm font-medium rounded-lg p-3 mb-6" role="status" aria-live="polite"></p>
+      <div id="lead-notes-list" class="grid grid-cols-1 gap-4"></div>
 
-            <div
-              id="quote-count"
-              class="px-4 py-2.5 bg-white dark:bg-[#252528] border border-gray-200 dark:border-gray-800 rounded-xl text-xs font-bold text-gray-600 dark:text-gray-400 shadow-sm flex items-center"
-            >
-              <svg
-                class="text-sm mr-2 opacity-50"
-                viewBox="0 0 24 24"
-                fill="currentColor"
-              >
-                <path d="M15 4v2h3v12h-3v2h5V4zM4 20h5v-2H6V6h3V4H4z" />
-              </svg>
-              <span id="inquiry-count-text">0 Inquiries</span>
-            </div>
-            <button
-              id="refresh-btn"
-              class="p-2.5 bg-white dark:bg-[#252528] border border-gray-200 dark:border-gray-800 rounded-xl hover:bg-gray-50 dark:hover:bg-gray-700 transition-all shadow-sm active:scale-95 group"
-            >
-              <svg
-                class="block group-hover:rotate-180 transition-transform duration-500"
-                viewBox="0 0 24 24"
-                fill="currentColor"
-              >
-                <path
-                  d="M17.65 6.35C16.2 4.9 14.21 4 12 4c-4.42 0-7.99 3.58-7.99 8s3.57 8 7.99 8c3.73 0 6.84-2.55 7.73-6h-2.08c-.82 2.33-3.04 4-5.65 4-3.31 0-6-2.69-6-6s2.69-6 6-6c1.66 0 3.14.69 4.22 1.78L13 11h7V4l-2.35 2.35z"
-                />
-              </svg>
-            </button>
-          </div>
-        </div>
-
-        <!-- Loader -->
-        <div id="data-loader" class="flex justify-center items-center py-20">
-          <svg
-            class="animate-spin h-10 w-10 text-wood-accent"
-            xmlns="http://www.w3.org/2000/svg"
-            fill="none"
-            viewBox="0 0 24 24"
-          >
-            <circle
-              class="opacity-25"
-              cx="12"
-              cy="12"
-              r="10"
-              stroke="currentColor"
-              stroke-width="4"
-            ></circle>
-            <path
-              class="opacity-75"
-              fill="currentColor"
-              d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"
-            ></path>
-          </svg>
-        </div>
-
-        <!-- Table Container -->
-        <div
-          id="table-wrapper"
-          class="hidden overflow-hidden bg-white dark:bg-[#252528] rounded-2xl border border-gray-200 dark:border-gray-800 shadow-xl relative"
-        >
-          <div class="overflow-x-auto custom-scrollbar">
-            <table class="w-full text-left border-collapse table-auto">
-              <thead>
-                <tr
-                  class="bg-gray-50/50 dark:bg-black/20 border-b border-gray-200 dark:border-gray-800"
-                >
-                  <th
-                    class="px-6 py-5 text-xs font-bold text-gray-500 uppercase tracking-widest min-w-[140px]"
-                  >
-                    Date Received
-                  </th>
-                  <th
-                    class="px-6 py-5 text-xs font-bold text-gray-500 uppercase tracking-widest min-w-[180px]"
-                  >
-                    Client Info
-                  </th>
-                  <th
-                    class="px-6 py-5 text-xs font-bold text-gray-500 uppercase tracking-widest min-w-[250px]"
-                  >
-                    Project Details
-                  </th>
-                  <th
-                    class="px-6 py-5 text-xs font-bold text-gray-500 uppercase tracking-widest text-right whitespace-nowrap"
-                  >
-                    One-Time Total
-                  </th>
-                  <th
-                    class="px-6 py-5 text-xs font-bold text-gray-500 uppercase tracking-widest text-right whitespace-nowrap"
-                  >
-                    Monthly Total
-                  </th>
-                  <th
-                    class="px-6 py-5 text-xs font-bold text-gray-500 uppercase tracking-widest text-center"
-                  >
-                    Action
-                  </th>
-                </tr>
-              </thead>
-              <tbody
-                id="quotes-tbody"
-                class="divide-y divide-gray-100 dark:divide-gray-800"
-              >
-                <!-- Rows populated here -->
-              </tbody>
-            </table>
-          </div>
-        </div>
-
-        <div
-          id="empty-state"
-          class="hidden flex-col items-center justify-center py-32 text-gray-400"
-        >
-          <svg
-            class="text-7xl mb-4 text-gray-300 dark:text-gray-700"
-            viewBox="0 0 24 24"
-            fill="currentColor"
-          >
-            <path
-              d="M12 13L2 6.67V18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6.67L12 13zM12 11l8.52-5.51C20.18 5.14 19.62 5 19 5H5c-.62 0-1.18.14-1.52.49L12 11z"
-            />
-          </svg>
-          <p class="text-lg font-medium">No inquiries received yet.</p>
-          <p class="text-sm mt-1">Quotes will appear here after submission.</p>
-        </div>
+      <div id="empty-lead-state" class="hidden flex-col items-center justify-center py-24 text-center text-gray-400">
+        <svg class="w-16 h-16 mb-4 text-gray-300 dark:text-gray-700" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+          <path d="M12 13 2 6.67V18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6.67zm0-2 8.52-5.51C20.18 5.14 19.62 5 19 5H5c-.62 0-1.18.14-1.52.49z"></path>
+        </svg>
+        <p class="text-lg font-bold text-gray-500 dark:text-gray-400">No project inquiries yet.</p>
+        <p class="text-sm mt-1">Submissions from the Rate page will appear here.</p>
       </div>
-    </main>
+    </section>
+  </main>
+
+  <script>
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/12.10.0/firebase-app.js";
+    import { getAuth, onAuthStateChanged, signInWithEmailAndPassword, signOut } from "https://www.gstatic.com/firebasejs/12.10.0/firebase-auth.js";
+    import { collection, deleteDoc, doc, getFirestore, onSnapshot, orderBy, query, serverTimestamp, updateDoc } from "https://www.gstatic.com/firebasejs/12.10.0/firebase-firestore.js";
+    import { sanitizeContactField } from "../../utils/contact";
+    import { FIREBASE_ADMIN_EMAILS, FIREBASE_CONFIG, LEAD_NOTES_COLLECTION } from "../../utils/firebase";
+    const firebaseApp = initializeApp(FIREBASE_CONFIG);
+    const auth = getAuth(firebaseApp);
+    const database = getFirestore(firebaseApp);
+    let unsubscribeFromNotes = null;
+
+    /**
+     * Shows a clean status message for authentication or Firestore operations.
+     * It accepts an element id, message, and variant string, then renders safe user-facing text.
+     */
+    function showFeedback(elementId, message, variant) {
+      const feedback = document.getElementById(elementId);
+      if (!feedback) return;
+
+      feedback.classList.remove("hidden", "bg-red-100", "text-red-700", "bg-green-100", "text-green-700");
+      feedback.classList.add(variant === "error" ? "bg-red-100" : "bg-green-100", variant === "error" ? "text-red-700" : "text-green-700");
+      feedback.textContent = message;
+    }
+
+    /**
+     * Checks whether a Firebase user can access the notes workspace.
+     * It accepts a Firebase user object and returns true when the user's email is configured as an admin.
+     */
+    function isAllowedAdmin(user) {
+      return Boolean(user?.email && FIREBASE_ADMIN_EMAILS.includes(user.email.toLowerCase()));
+    }
+
+    /**
+     * Creates a text node wrapper with the requested classes for safe note rendering.
+     * It accepts an HTML tag name, class names, and text, then returns a DOM element using textContent.
+     */
+    function createTextElement(tagName, className, text) {
+      const element = document.createElement(tagName);
+      element.className = className;
+      element.textContent = text;
+      return element;
+    }
+
+    /**
+     * Creates the editable status selector for a Firestore note card.
+     * It accepts a note object and returns a select element wired by data attributes.
+     */
+    function createStatusSelect(note) {
+      const select = document.createElement("select");
+      select.className = "note-status bg-gray-50 dark:bg-[#1a1a1a] border border-gray-200 dark:border-gray-700 text-gray-900 dark:text-white text-sm rounded-lg p-2 outline-none";
+      select.dataset.noteId = note.id;
+
+      ["New", "Contacted", "Meeting", "Waiting", "Closed"].forEach((status) => {
+        const option = document.createElement("option");
+        option.value = status;
+        option.textContent = status;
+        option.selected = note.status === status;
+        select.append(option);
+      });
+
+      return select;
+    }
+
+    /**
+     * Creates the editable next-action field for a Firestore note card.
+     * It accepts a note object and returns an input element wired by data attributes.
+     */
+    function createNextActionInput(note) {
+      const input = document.createElement("input");
+      input.type = "text";
+      input.value = note.nextAction ?? "";
+      input.placeholder = "Next action";
+      input.dataset.noteId = note.id;
+      input.className = "note-next-action w-full bg-gray-50 dark:bg-[#1a1a1a] border border-gray-200 dark:border-gray-700 text-gray-900 dark:text-white text-sm rounded-lg p-2 outline-none";
+      return input;
+    }
+
+    /**
+     * Creates a complete note card with safe text rendering and editable controls.
+     * It accepts a Firestore note object and returns an article element for the notes list.
+     */
+    function createLeadNoteCard(note) {
+      const card = document.createElement("article");
+      card.className = "bg-white dark:bg-[#252528] rounded-2xl p-5 border border-gray-200 dark:border-gray-800 shadow-sm space-y-4";
+
+      const header = document.createElement("div");
+      header.className = "flex flex-col md:flex-row md:items-start md:justify-between gap-3";
+
+      const identity = document.createElement("div");
+      identity.append(createTextElement("h3", "text-lg font-bold text-gray-900 dark:text-white", note.name));
+      identity.append(createTextElement("p", "text-sm text-gray-500 dark:text-gray-400", note.email || "No email saved"));
+
+      const actions = document.createElement("div");
+      actions.className = "flex items-center gap-2";
+      actions.append(createStatusSelect(note));
+
+      const deleteButton = document.createElement("button");
+      deleteButton.type = "button";
+      deleteButton.dataset.noteId = note.id;
+      deleteButton.className = "delete-note px-3 py-2 text-sm font-bold rounded-lg bg-red-100 text-red-700 hover:bg-red-200 transition-colors";
+      deleteButton.textContent = "Delete";
+      actions.append(deleteButton);
+
+      header.append(identity, actions);
+      card.append(header);
+      card.append(createTextElement("p", "text-sm text-gray-700 dark:text-gray-300 whitespace-pre-wrap", note.idea));
+      if (note.budget || note.timeline) {
+        card.append(createTextElement("p", "text-xs font-bold text-gray-500 dark:text-gray-400", `Budget: ${note.budget || "Not provided"} | Timeline: ${note.timeline || "Not provided"}`));
+      }
+
+      const footer = document.createElement("div");
+      footer.className = "grid grid-cols-1 md:grid-cols-[1fr_auto] gap-3 items-center pt-3 border-t border-gray-100 dark:border-gray-800";
+      footer.append(createNextActionInput(note));
+      footer.append(createTextElement("span", "text-xs text-gray-400", note.createdAtLabel));
+      card.append(footer);
+
+      return card;
+    }
+
+    /**
+     * Renders the current Firestore note collection into the board.
+     * It accepts an array of note objects and updates list, empty state, and count elements.
+     */
+    function renderLeadNotes(notes) {
+      const list = document.getElementById("lead-notes-list");
+      const emptyState = document.getElementById("empty-lead-state");
+      const leadCount = document.getElementById("lead-count");
+      if (!list || !emptyState || !leadCount) return;
+
+      list.replaceChildren();
+      notes.forEach((note) => list.append(createLeadNoteCard(note)));
+      emptyState.classList.toggle("hidden", notes.length > 0);
+      emptyState.classList.toggle("flex", notes.length === 0);
+      leadCount.textContent = `${notes.length} ${notes.length === 1 ? "Inquiry" : "Inquiries"}`;
+    }
+
+    /**
+     * Converts a Firestore document snapshot into a renderable note object.
+     * It accepts a document snapshot and returns normalized data for the note board.
+     */
+    function mapLeadNoteDocument(documentSnapshot) {
+      const data = documentSnapshot.data();
+      const createdAtDate = data.createdAt?.toDate?.();
+
+      return {
+        id: documentSnapshot.id,
+        name: data.name ?? "",
+        email: data.email ?? "",
+        idea: data.idea ?? "",
+        budget: data.budget ?? "",
+        timeline: data.timeline ?? "",
+        nextAction: data.nextAction ?? "",
+        status: data.status ?? "New",
+        createdAtLabel: createdAtDate ? createdAtDate.toLocaleDateString() : "Just now",
+      };
+    }
+
+    /**
+     * Starts the realtime Firestore listener for project inquiries.
+     * It accepts no arguments and updates the board whenever Firestore changes.
+     */
+    function subscribeToLeadNotes() {
+      if (unsubscribeFromNotes) unsubscribeFromNotes();
+
+      const notesQuery = query(collection(database, LEAD_NOTES_COLLECTION), orderBy("createdAt", "desc"));
+      unsubscribeFromNotes = onSnapshot(
+        notesQuery,
+        (snapshot) => renderLeadNotes(snapshot.docs.map(mapLeadNoteDocument)),
+        () => showFeedback("lead-feedback", "Project inquiries could not be loaded from Firebase.", "error"),
+      );
+    }
+
+    /**
+     * Shows the correct workspace area for the current authentication state.
+     * It accepts the Firebase user object and updates the login and notes panels.
+     */
+    function renderAuthState(user) {
+      const authPanel = document.getElementById("auth-panel");
+      const notesPanel = document.getElementById("notes-panel");
+      const signedInLabel = document.getElementById("signed-in-label");
+
+      if (isAllowedAdmin(user)) {
+        authPanel?.classList.add("hidden");
+        notesPanel?.classList.remove("hidden");
+        if (signedInLabel) signedInLabel.textContent = `Signed in as ${user.email}. Reviewing submissions from the Rate page.`;
+        subscribeToLeadNotes();
+        return;
+      }
+
+      if (unsubscribeFromNotes) unsubscribeFromNotes();
+      authPanel?.classList.remove("hidden");
+      notesPanel?.classList.add("hidden");
+      renderLeadNotes([]);
+
+      if (user) {
+        signOut(auth).catch(() => showFeedback("auth-feedback", "This account is not allowed to access project inquiries.", "error"));
+      }
+    }
+
+    /**
+     * Initializes Firebase Auth and Firestore interactions once the document is ready.
+     * It accepts no arguments and wires login, sign out, updates, deletes, and realtime rendering.
+     */
+    function initializeFirebaseLeadNotesPage() {
+      const loginForm = document.getElementById("login-form");
+      const signOutButton = document.getElementById("sign-out-btn");
+      const notesList = document.getElementById("lead-notes-list");
+
+      onAuthStateChanged(auth, renderAuthState);
+
+      loginForm?.addEventListener("submit", async (event) => {
+        event.preventDefault();
+        const formData = new FormData(loginForm);
+        const email = sanitizeContactField(String(formData.get("email") ?? ""));
+        const password = String(formData.get("password") ?? "");
+
+        if (!email || !password) {
+          showFeedback("auth-feedback", "Please enter your Firebase email and password.", "error");
+          return;
+        }
+
+        try {
+          await signInWithEmailAndPassword(auth, email, password);
+          loginForm.reset();
+        } catch {
+          showFeedback("auth-feedback", "Sign in failed. Check the Firebase email and password.", "error");
+        }
+      });
+
+      signOutButton?.addEventListener("click", async () => {
+        try {
+          await signOut(auth);
+        } catch {
+          showFeedback("lead-feedback", "Sign out failed. Please try again.", "error");
+        }
+      });
+
+      notesList?.addEventListener("change", async (event) => {
+        const target = event.target;
+        if (!(target instanceof HTMLSelectElement) || !target.classList.contains("note-status")) return;
+
+        try {
+          await updateDoc(doc(database, LEAD_NOTES_COLLECTION, target.dataset.noteId), {
+            status: target.value,
+            updatedAt: serverTimestamp(),
+          });
+        } catch {
+          showFeedback("lead-feedback", "Status could not be updated.", "error");
+        }
+      });
+
+      notesList?.addEventListener("change", async (event) => {
+        const target = event.target;
+        if (!(target instanceof HTMLInputElement) || !target.classList.contains("note-next-action")) return;
+
+        try {
+          await updateDoc(doc(database, LEAD_NOTES_COLLECTION, target.dataset.noteId), {
+            nextAction: sanitizeContactField(target.value),
+            updatedAt: serverTimestamp(),
+          });
+        } catch {
+          showFeedback("lead-feedback", "Next action could not be updated.", "error");
+        }
+      });
+
+      notesList?.addEventListener("click", async (event) => {
+        const target = event.target;
+        if (!(target instanceof HTMLButtonElement) || !target.classList.contains("delete-note")) return;
+
+        try {
+          await deleteDoc(doc(database, LEAD_NOTES_COLLECTION, target.dataset.noteId));
+          showFeedback("lead-feedback", "Project inquiry deleted from Firebase.", "success");
+        } catch {
+          showFeedback("lead-feedback", "Project inquiry could not be deleted.", "error");
+        }
+      });
+    }
+
+    document.addEventListener("DOMContentLoaded", initializeFirebaseLeadNotesPage);
+  </script>
 </Layout>

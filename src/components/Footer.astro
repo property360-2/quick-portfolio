@@ -1,4 +1,10 @@
 ---
+/**
+ * Site footer component for the quick portfolio.
+ * This component renders brand attribution and footer navigation links, including the centralized contact email.
+ * It fits into the shared Layout component so every page exposes consistent contact and sitemap access.
+ */
+import { CONTACT_EMAIL } from "../utils/contact";
 ---
 <footer
       class="bg-white dark:bg-[#1a1a1a] border-t border-gray-200 dark:border-gray-800 mt-auto"
@@ -17,7 +23,7 @@
 
           <div class="flex space-x-6">
             <a
-              href="mailto:junalvior21@gmail.com"
+              href={`mailto:${CONTACT_EMAIL}`}
               class="text-gray-400 hover:text-wood-accent transition-colors"
             >
               <span class="sr-only">Email</span>
