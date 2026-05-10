@@ -1,0 +1,130 @@
+---
+/**
+ * DocuMind AI Case Study Page
+ * Purpose: Detailed case study for the DocuMind AI project (Tropang AI).
+ * Contains: Project overview, key features, technology stack, and live links.
+ * System Role: Provides in-depth information about a specific full-stack RAG project in the portfolio.
+ */
+import Layout from '../../../layouts/Layout.astro';
+import { RENDER_COLD_START_NOTE } from '../../../utils/constants';
+
+const title = 'DocuMind AI Case Study | Jun Alvior | Full Stack Software Developer';
+const description = 'A professional-grade Retrieval-Augmented Generation (RAG) platform featuring TropangAI, a context-aware assistant for chatting with documents.';
+---
+
+<Layout title={title} description={description}>
+<main id="main-content" class="flex-grow flex flex-col">
+      <!-- ORGANISMS: Project Case Study -->
+      <article class="py-24 bg-grey-light dark:bg-[#1a1a1a] flex-grow">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+          <!-- Breadcrumb -->
+          <div class="mb-8 text-sm text-gray-500 dark:text-gray-400">
+            <a
+              href="../../portfolio/"
+              class="hover:text-wood-accent transition-colors"
+              ><- Back to Portfolio</a
+            >
+          </div>
+
+          <!-- Header -->
+          <header class="mb-12" data-aos="fade-up">
+            <div class="mb-8 rounded-xl overflow-hidden shadow-2xl">
+              <img
+                src="../../assets/tropang-ai.png"
+                alt="DocuMind AI"
+                class="w-full h-auto object-cover max-h-[500px]"
+                loading="lazy"
+                decoding="async"
+                width="800"
+                height="450"
+              />
+            </div>
+            <h1
+              class="text-4xl md:text-5xl font-bold text-gray-900 dark:text-white mb-6"
+            >
+              DocuMind AI
+            </h1>
+            <div class="flex flex-wrap gap-4 text-sm">
+              <span
+                class="px-3 py-1 bg-wood-100 dark:bg-wood-900 text-wood-accent rounded-full font-medium"
+                >Next.js 16</span
+              >
+              <span
+                class="px-3 py-1 bg-wood-100 dark:bg-wood-900 text-wood-accent rounded-full font-medium"
+                >Tailwind CSS 4</span
+              >
+              <span
+                class="px-3 py-1 bg-wood-100 dark:bg-wood-900 text-wood-accent rounded-full font-medium"
+                >Firebase</span
+              >
+              <span
+                class="px-3 py-1 bg-wood-100 dark:bg-wood-900 text-wood-accent rounded-full font-medium"
+                >Groq</span
+              >
+              <span
+                class="px-3 py-1 bg-wood-100 dark:bg-wood-900 text-wood-accent rounded-full font-medium"
+                >LangChain</span
+              >
+            </div>
+          </header>
+
+          <!-- Content -->
+          <div
+            class="prose dark:prose-invert prose-lg prose-wood max-w-none"
+            data-aos="fade-up"
+            data-aos-delay="100"
+          >
+            <p>
+              DocuMind AI is a professional-grade <strong>Retrieval-Augmented Generation (RAG)</strong> platform that transforms static documents into dynamic, conversational knowledge. It features <strong>TropangAI</strong>, a context-aware assistant designed to chat naturally with your PDFs, Word documents, and Excel spreadsheets.
+            </p>
+
+            <h3>Key Features</h3>
+            <ul>
+              <li>
+                <strong>Lightning-Fast RAG:</strong> Optimized with Groq's high-speed inference and a custom BM25 ranking engine for instant responses.
+              </li>
+              <li>
+                <strong>Multi-Format Support:</strong> Seamlessly parses and indexes PDFs, Word documents (DOCX), and Excel spreadsheets (XLSX).
+              </li>
+              <li>
+                <strong>Premium UI/UX:</strong> A sleek glassmorphism interface built with Tailwind CSS 4 and Framer Motion for smooth animations.
+              </li>
+              <li>
+                <strong>Robust Failover:</strong> Intelligent model switching between Llama 3.1, Mixtral, and Gemma to ensure continuous availability.
+              </li>
+              <li>
+                <strong>Secure Auth:</strong> Integrated with Firebase Auth for personal document isolation and security.
+              </li>
+            </ul>
+
+            <h3>Meet TropangAI</h3>
+            <p>
+              Unlike typical robotic assistants, TropangAI is tuned for natural conversation. It prioritizes clarity and directness, acting more like a smart colleague than a data auditor. It can summarize complex financial reports, explain technical specs, and handle multiple documents simultaneously for cross-referencing.
+            </p>
+
+            <h3>Project Links</h3>
+            <div class="flex flex-wrap gap-4 not-prose mt-6">
+              <a
+                href="https://tropangai.vercel.app/"
+                target="_blank"
+                class="px-6 py-3 bg-wood-accent hover:bg-wood-700 text-white font-semibold rounded-lg shadow-md transition-all transform hover:-translate-y-0.5 flex items-center"
+              >
+                <svg
+                  class="mr-2 w-5 h-5"
+                  viewBox="0 0 24 24"
+                  fill="currentColor"
+                >
+                  <path
+                    d="M19 19H5V5h7V3H5c-1.11 0-2 .9-2 2v14c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2v-7h-2v7zM14 3v2h3.59l-9.83 9.83 1.41 1.41L19 6.41V10h2V3h-7z"
+                  />
+                </svg>
+                Live Demo
+              </a>
+            </div>
+          </div>
+        </div>
+      </article>
+
+      <!-- ORGANISMS: Footer -->
+    </main>
+</Layout>
