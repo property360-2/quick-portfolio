@@ -80,8 +80,8 @@ const services = [
                 </svg>
               </button>
 
-              <div class="flex items-center space-x-3 bg-white dark:bg-black/20 p-3 rounded-xl border border-gray-200 dark:border-gray-700 shadow-sm min-h-[52px]">
-                <span class="text-sm font-medium text-gray-500 dark:text-gray-500">USDT ($)</span>
+              <div class="flex items-center gap-6 bg-white dark:bg-black/20 p-3 px-5 rounded-xl border border-gray-200 dark:border-gray-700 shadow-sm min-h-[52px] w-fit">
+                <span class="text-sm font-medium text-gray-500 dark:text-gray-400 whitespace-nowrap">USDT ($)</span>
                 <button
                   id="currency-toggle"
                   class="relative inline-flex flex-shrink-0 h-6 w-11 border-2 border-transparent rounded-full cursor-pointer transition-colors ease-in-out duration-200 focus:outline-none bg-wood-accent"
@@ -89,9 +89,10 @@ const services = [
                   aria-checked="true"
                   type="button"
                 >
-                  <span aria-hidden="true" class="translate-x-5 pointer-events-none inline-block h-5 w-5 rounded-full bg-white shadow transform ring-0 transition ease-in-out duration-200"></span>
+                  <span class="sr-only">Toggle currency</span>
+                  <span aria-hidden="true" id="toggle-thumb" class="translate-x-5 pointer-events-none inline-block h-5 w-5 rounded-full bg-white shadow transform ring-0 transition ease-in-out duration-200"></span>
                 </button>
-                <span class="text-sm font-bold text-gray-900 dark:text-white">PHP</span>
+                <span class="text-sm font-bold text-gray-900 dark:text-white whitespace-nowrap">PHP</span>
               </div>
             </div>
 
@@ -427,7 +428,7 @@ const services = [
       currencyToggle?.addEventListener("click", () => {
         const isPhp = currencyToggle.getAttribute("aria-checked") === "true";
         currencyToggle.setAttribute("aria-checked", String(!isPhp));
-        currencyToggle.querySelector("span")?.classList.toggle("translate-x-5", !isPhp);
+        currencyToggle.querySelector("#toggle-thumb")?.classList.toggle("translate-x-5", !isPhp);
         setCurrency(!isPhp ? "PHP" : "USDT");
       });
 
