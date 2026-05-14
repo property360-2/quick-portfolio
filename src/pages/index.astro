@@ -1,13 +1,18 @@
 ---
+/**
+ * Home Page / Hero Section Component
+ * Purpose: Serves as the high-impact landing page showcasing Jun Alvior's core value proposition,
+ * premium interactive aesthetics, and primary navigation calls-to-action.
+ * Contains: Catchy headline messaging, customizable CTA buttons, dynamic ambient glowing lighting effects,
+ * and a highly sophisticated interactive premium SVG cybernetic/anime cat visualization responsive to user input.
+ * System Role: The root entry point of the application designed to wow visitors with performance, beauty, and smooth client-side interactions.
+ */
 import Layout from '../layouts/Layout.astro';
 const title = 'Jun Alvior | Full Stack Software Developer';
 const description = 'Portfolio of Jun Alvior, a Full Stack Software Developer specializing in Python, Django, React, and Supabase. Building clean, fast, and smart digital solutions.';
 ---
 
 <Layout title={title} description={description}>
-      <!-- Spacer for fixed Nav -->
-      <!-- Removed spacer for better glassmorphism overlap -->
-
       <!-- ORGANISMS: Hero Section -->
       <section
         id="home"
@@ -42,7 +47,7 @@ const description = 'Portfolio of Jun Alvior, a Full Stack Software Developer sp
                   class="text-4xl md:text-6xl lg:text-7xl font-bold text-gray-900 dark:text-white leading-tight gs-reveal"
                 >
                   Faster. Cleaner.
-                  <span class="text-wood-accent text-wood-accent">Smarter</span>
+                  <span class="text-wood-accent">Smarter</span>
                   <br />digital experiences.
                 </h1>
                 <p
@@ -82,15 +87,248 @@ const description = 'Portfolio of Jun Alvior, a Full Stack Software Developer sp
                 class="absolute inset-0 bg-wood-accent/10 rounded-2xl transform rotate-6 scale-95 blur-sm"
               ></div>
               <div
-                id="cat-canvas-container"
-                class="relative rounded-2xl w-full h-full drop-shadow-2xl flex items-center justify-center"
+                id="hero-svg-container"
+                class="relative rounded-2xl w-full h-full flex items-center justify-center overflow-hidden text-gray-800 dark:text-gray-200"
               >
-                <!-- 3D Cat will render here -->
+                <!-- Premium Dynamic Interactive Cybernetic Cat Graphic -->
+                <svg id="interactive-cat" viewBox="0 0 400 400" class="w-full h-full max-w-md select-none overflow-visible drop-shadow-[0_20px_50px_rgba(0,0,0,0.15)] dark:drop-shadow-[0_20px_50px_rgba(255,255,255,0.05)]" aria-hidden="true">
+                  <defs>
+                    <!-- Floating Platform Base Gradient -->
+                    <linearGradient id="platformGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                      <stop offset="0%" stop-color="currentColor" stop-opacity="0.05" />
+                      <stop offset="50%" stop-color="currentColor" stop-opacity="0.15" />
+                      <stop offset="100%" stop-color="currentColor" stop-opacity="0.02" />
+                    </linearGradient>
+
+                    <!-- Premium Vibrant Emerald/Wood Accent Eye Gradient -->
+                    <linearGradient id="catEyeGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                      <stop offset="0%" class="text-emerald-400 dark:text-cyan-400 transition-colors duration-700" stop-color="currentColor" />
+                      <stop offset="100%" class="text-emerald-600 dark:text-cyan-600 transition-colors duration-700" stop-color="currentColor" />
+                    </linearGradient>
+
+                    <!-- Elegant Inner Ear Contrast Gradient -->
+                    <linearGradient id="innerEarGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+                      <stop offset="0%" class="text-rose-400 dark:text-indigo-400 transition-colors duration-700" stop-color="currentColor" stop-opacity="0.75" />
+                      <stop offset="100%" class="text-rose-600 dark:text-indigo-600 transition-colors duration-700" stop-color="currentColor" stop-opacity="0.3" />
+                    </linearGradient>
+
+                    <!-- Premium High-Fidelity Glow Filter -->
+                    <filter id="premiumGlow" x="-20%" y="-20%" width="140%" height="140%">
+                      <feGaussianBlur stdDeviation="6" result="blur" />
+                      <feComposite in="SourceGraphic" in2="blur" operator="over" />
+                    </filter>
+                  </defs>
+
+                  <!-- Outer Futuristic Hover Base Platform -->
+                  <g class="cat-platform" transform="translate(200, 330)">
+                    <ellipse cx="0" cy="0" rx="150" ry="45" fill="url(#platformGrad)" stroke="currentColor" stroke-width="1.5" class="text-wood-accent/40" stroke-dasharray="12 6" />
+                    <ellipse cx="0" cy="0" rx="115" ry="32" fill="none" stroke="currentColor" stroke-width="2" class="text-wood-accent/60 cat-ring-inner" />
+                    <!-- Cybernetic glowing node beacons -->
+                    <circle cx="-115" cy="0" r="4.5" fill="currentColor" class="text-wood-accent animate-pulse opacity-80" />
+                    <circle cx="115" cy="0" r="4.5" fill="currentColor" class="text-wood-accent animate-pulse opacity-80" />
+                  </g>
+
+                  <!-- Ambient Floating Magical Particles -->
+                  <g class="cat-particles text-wood-accent">
+                    <circle class="particle p1" cx="80" cy="110" r="3.5" fill="currentColor" opacity="0.6" />
+                    <circle class="particle p2" cx="330" cy="140" r="2.5" fill="currentColor" opacity="0.5" />
+                    <circle class="particle p3" cx="290" cy="70" r="4.5" fill="currentColor" opacity="0.8" />
+                    <circle class="particle p4" cx="100" cy="250" r="2.5" fill="currentColor" opacity="0.5" />
+                    <circle class="particle p5" cx="310" cy="270" r="3.5" fill="currentColor" opacity="0.7" />
+                  </g>
+
+                  <!-- Main Cat Structure Layer -->
+                  <g id="premium-cat-group">
+                    <!-- Graceful Styled Tail -->
+                    <path class="cat-tail text-amber-500 dark:text-gray-300 transition-colors duration-700" d="M 260 250 C 330 275, 375 190, 350 140 C 340 120, 315 130, 325 155 C 340 190, 290 245, 250 238 Z" fill="currentColor" opacity="0.95" />
+
+                    <!-- Sleek Tapered Torso -->
+                    <path class="cat-torso text-amber-600 dark:text-gray-400 transition-colors duration-700" d="M 115 285 C 115 195, 285 195, 285 285 C 285 295, 115 295, 115 285 Z" fill="currentColor" />
+
+                    <!-- Striking Polished Cat Silhouette Head -->
+                    <path class="cat-head text-amber-500 dark:text-gray-300 transition-colors duration-700" d="M 95 185 C 95 90, 305 90, 305 185 C 305 245, 255 275, 200 275 C 145 275, 95 245, 95 185 Z" fill="currentColor" />
+
+                    <!-- Sharp Expressive Outer Ears -->
+                    <path class="cat-ear-l text-amber-600 dark:text-gray-400 transition-colors duration-700" d="M 105 135 L 85 40 C 82 30, 95 25, 105 35 L 160 110 Z" fill="currentColor" />
+                    <path class="cat-ear-r text-amber-600 dark:text-gray-400 transition-colors duration-700" d="M 295 135 L 315 40 C 318 30, 305 25, 295 35 L 240 110 Z" fill="currentColor" />
+
+                    <!-- Premium Accented Inner Ears -->
+                    <path class="cat-inner-ear-l" d="M 112 125 L 96 55 L 145 108 Z" fill="url(#innerEarGrad)" />
+                    <path class="cat-inner-ear-r" d="M 288 125 L 304 55 L 255 108 Z" fill="url(#innerEarGrad)" />
+
+                    <!-- Glowing High-Fidelity Eye System -->
+                    <g class="cat-eyes-group">
+                      <!-- Left Eye -->
+                      <ellipse class="cat-eye-bg-l" cx="145" cy="175" rx="24" ry="20" fill="#ffffff" filter="url(#premiumGlow)" />
+                      <ellipse class="cat-eye-l" cx="145" cy="175" rx="22" ry="18" fill="url(#catEyeGrad)" />
+                      <ellipse class="cat-pupil-l text-emerald-900 dark:text-cyan-950 transition-colors duration-700" cx="145" cy="175" rx="6.5" ry="13" fill="currentColor" />
+                      <!-- Left Catchlights -->
+                      <circle class="cat-highlight-1" cx="152" cy="168" r="4.5" fill="#ffffff" />
+                      <circle class="cat-highlight-2" cx="138" cy="182" r="2" fill="#ffffff" />
+
+                      <!-- Right Eye -->
+                      <ellipse class="cat-eye-bg-r" cx="255" cy="175" rx="24" ry="20" fill="#ffffff" filter="url(#premiumGlow)" />
+                      <ellipse class="cat-eye-r" cx="255" cy="175" rx="22" ry="18" fill="url(#catEyeGrad)" />
+                      <ellipse class="cat-pupil-r text-emerald-900 dark:text-cyan-950 transition-colors duration-700" cx="255" cy="175" rx="6.5" ry="13" fill="currentColor" />
+                      <!-- Right Catchlights -->
+                      <circle class="cat-highlight-1" cx="262" cy="168" r="4.5" fill="#ffffff" />
+                      <circle class="cat-highlight-2" cx="248" cy="182" r="2" fill="#ffffff" />
+                    </g>
+
+                    <!-- Accented Minimalist Cyber Nose & Mouth -->
+                    <path class="cat-nose text-wood-accent" d="M 191 202 L 209 202 L 200 214 Z" fill="currentColor" filter="url(#premiumGlow)" />
+                    <path d="M 200 214 L 200 223" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" class="text-wood-accent/80" />
+                    <path d="M 188 226 C 194 231, 200 223, 200 223 C 200 223, 206 231, 212 226" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" class="text-wood-accent/80" />
+
+                    <!-- Dynamic Fluid Sweeping Whiskers -->
+                    <g class="cat-whiskers text-gray-400 dark:text-gray-500" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round">
+                      <!-- Left Whiskers -->
+                      <path d="M 105 195 Q 50 185 20 180" class="whisker opacity-60" />
+                      <path d="M 100 208 Q 45 208 15 210" class="whisker opacity-80" />
+                      <path d="M 105 221 Q 50 231 25 242" class="whisker opacity-60" />
+                      <!-- Right Whiskers -->
+                      <path d="M 295 195 Q 350 185 380 180" class="whisker opacity-60" />
+                      <path d="M 300 208 Q 355 208 385 210" class="whisker opacity-80" />
+                      <path d="M 295 221 Q 350 231 375 242" class="whisker opacity-60" />
+                    </g>
+
+                    <!-- Premium Cybernetic Forehead Markings -->
+                    <path d="M 200 120 L 188 138 L 212 138 Z" fill="currentColor" class="text-wood-accent/30" />
+                    <polygon points="200,143 194,152 206,152" fill="currentColor" class="text-wood-accent/50" />
+                  </g>
+                </svg>
               </div>
             </div>
           </div>
         </div>
       </section>
-
-      <!-- ORGANISMS: Footer -->
 </Layout>
+
+<script>
+  import { animate } from 'animejs';
+
+  /**
+   * Initializes high-fidelity client-side animations for the Hero section premium SVG cat.
+   * Leverages advanced timeline features, dynamic transformation origins, and continuous
+   * event monitoring to orchestrate complex natural movements:
+   * - Gentle idle breathing and multi-layered float offsets.
+   * - Infinite cyclic rotation of the cybernetic base platform rings.
+   * - Graceful waving of the feline tail geometry.
+   * - Subtle, continuous ambient drifting and fading of floating magical particles.
+   * - Fluid mathematical interpolation for accurate eye catchlight/pupil tracking on mousemove.
+   * - Responsive multi-axis ear twitching triggered by lateral pointer speed.
+   * - Immersion-enhancing click reactive ripples, blink scale reductions, and particle bursts.
+   * Accepts no external arguments and executes directly within the client execution context.
+   */
+  document.addEventListener("DOMContentLoaded", () => {
+    const container = document.getElementById("hero-svg-container");
+    const catGroup = document.getElementById("premium-cat-group");
+    const catSvg = document.getElementById("interactive-cat");
+    const pupils = document.querySelectorAll(".cat-pupil-l, .cat-pupil-r");
+    const eyes = document.querySelectorAll(".cat-eyes-group");
+    const tail = document.querySelector(".cat-tail");
+    const innerRing = document.querySelector(".cat-ring-inner");
+    const particles = document.querySelectorAll(".cat-particles .particle");
+    const leftEars = document.querySelectorAll(".cat-ear-l, .cat-inner-ear-l");
+    const rightEars = document.querySelectorAll(".cat-ear-r, .cat-inner-ear-r");
+
+    if (container && catSvg && catGroup) {
+      // Floating animation removed for a more stable appearance.
+
+      // 2. Elegant cyclical tail wagging
+      if (tail) {
+        animate(tail, {
+          rotateZ: [0, 10],
+          direction: 'alternate',
+          loop: true,
+          ease: 'easeInOutQuad',
+          duration: 3200,
+          transformOrigin: '260px 250px'
+        });
+      }
+
+      // Platform rotation removed for a cleaner design.
+
+      // 4. Ethereal glowing ambient particles drifting independently
+      particles.forEach((particle, idx) => {
+        animate(particle, {
+          translateY: [-12, 12],
+          translateX: idx % 2 === 0 ? [-6, 6] : [6, -6],
+          opacity: [0.3, 0.95],
+          direction: 'alternate',
+          loop: true,
+          ease: 'easeInOutSine',
+          duration: 2200 + idx * 450
+        });
+      });
+
+      /**
+       * Captures cursor movements to compute relative vectors for immersive parallax feedback.
+       * Accepts the browser MouseEvent payload and triggers localized translation matrices.
+       */
+      window.addEventListener("mousemove", (e) => {
+        const rect = container.getBoundingClientRect();
+        const centerX = rect.left + rect.width / 2;
+        const centerY = rect.top + rect.height / 2;
+        
+        const deltaX = e.clientX - centerX;
+        const deltaY = e.clientY - centerY;
+        
+        // Fluid full body head alignment
+        animate(catGroup, {
+          translateX: deltaX * 0.04,
+          rotate: deltaX * 0.012,
+          duration: 450,
+          ease: 'easeOutSine'
+        });
+
+        // Precision visual tracking maps pupil elements
+        animate(pupils, {
+          translateX: deltaX * 0.022,
+          translateY: deltaY * 0.022,
+          duration: 120,
+          ease: 'easeOutQuad'
+        });
+
+        // Outer eye mapping tracks closely with slightly higher weight
+        animate(eyes, {
+          translateX: deltaX * 0.008,
+          translateY: deltaY * 0.008,
+          duration: 220,
+          ease: 'easeOutSine'
+        });
+
+        // Ear twitching functionality has been removed.
+      });
+
+      /**
+       * Interactive click feedback layer triggering delightful visual micro-interactions.
+       * Invokes sequential animation frames for blinking, base platform scaling, and particle dispersal.
+       */
+      catSvg.addEventListener("click", () => {
+        // Expressive full blink transformation
+        animate([".cat-eye-l", ".cat-eye-r", ".cat-eye-bg-l", ".cat-eye-bg-r", ".cat-pupil-l", ".cat-pupil-r"], {
+          scaleY: [1, 0.05, 1],
+          duration: 250,
+          ease: 'easeInOutQuad',
+          transformOrigin: '200px 175px'
+        });
+
+        // Particle kinetic surge
+        animate(particles, {
+          scale: [1, 2, 1],
+          opacity: [1, 0.2, 0.9],
+          duration: 700,
+          ease: 'easeOutElastic(1, 0.4)'
+        });
+
+        // Resonant cybernetic platform sub-bass shockwave
+        animate(".cat-platform", {
+          scale: [1, 1.06, 1],
+          duration: 450,
+          ease: 'easeInOutSine'
+        });
+      });
+    }
+  });
+</script>

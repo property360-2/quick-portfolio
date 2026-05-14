@@ -1,0 +1,130 @@
+---
+/**
+ * Solar System Showcase Case Study
+ * Purpose: Provides a detailed breakdown of the Solar System Showcase project.
+ * Contains: Project overview, technical stack, key features, and links to the live demo and source code.
+ * System Role: A case study page within the portfolio to showcase high-fidelity frontend and interactive capabilities.
+ */
+import Layout from '../../../layouts/Layout.astro';
+const title = 'Solar System Showcase | Interactive 3D Experience';
+const description = 'An immersive, high-fidelity 3D solar system visualization built with Three.js and CSS3D. Featuring fluid camera movements and responsive planetary data.';
+---
+
+<Layout title={title} description={description}>
+<main id="main-content" class="flex-grow flex flex-col">
+      <!-- ORGANISMS: Project Case Study -->
+      <article class="py-24 bg-grey-light dark:bg-[#1a1a1a] flex-grow">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+          <!-- Breadcrumb -->
+          <div class="mb-8 text-sm text-gray-500 dark:text-gray-400">
+            <a
+              href="/quick-portfolio/portfolio/"
+              class="hover:text-wood-accent transition-colors"
+              ><- Back to Portfolio</a
+            >
+          </div>
+
+          <!-- Header -->
+          <header class="mb-12" data-aos="fade-up">
+            <div class="mb-8 rounded-xl overflow-hidden shadow-2xl">
+              <img
+                src="/quick-portfolio/assets/solar-system.webp"
+                alt="Solar System Showcase"
+                class="w-full h-auto object-cover max-h-[500px]"
+                loading="lazy"
+                decoding="async"
+                width="800"
+                height="450"
+              />
+            </div>
+            <h1
+              class="text-4xl md:text-5xl font-bold text-gray-900 dark:text-white mb-6"
+            >
+              Solar System Showcase
+            </h1>
+            <div class="flex flex-wrap gap-4 text-sm">
+              <span
+                class="px-3 py-1 bg-wood-100 dark:bg-wood-900 text-wood-accent rounded-full font-medium"
+                >Three.js</span
+              >
+              <span
+                class="px-3 py-1 bg-wood-100 dark:bg-wood-900 text-wood-accent rounded-full font-medium"
+                >JavaScript</span
+              >
+              <span
+                class="px-3 py-1 bg-wood-100 dark:bg-wood-900 text-wood-accent rounded-full font-medium"
+                >CSS3D</span
+              >
+              <span
+                class="px-3 py-1 bg-wood-100 dark:bg-wood-900 text-wood-accent rounded-full font-medium"
+                >Responsive Design</span
+              >
+            </div>
+          </header>
+
+          <!-- Content -->
+          <div
+            class="prose dark:prose-invert prose-lg prose-wood max-w-none"
+            data-aos="fade-up"
+            data-aos-delay="100"
+          >
+            <p>
+              The Solar System Showcase is an interactive web experience that combines the power of 3D rendering with a sleek, responsive user interface. It allows users to explore the celestial bodies of our solar system in an immersive environment.
+            </p>
+
+            <h3>Technical Highlights</h3>
+            <ul>
+              <li>
+                <strong>Hybrid Rendering:</strong> Utilizes Three.js for high-performance 3D planet rendering while leveraging CSS3D for seamless integration of UI elements in the 3D space.
+              </li>
+              <li>
+                <strong>Fluid Navigation:</strong> Implements custom camera controllers for smooth orbiting and zooming transitions between planets.
+              </li>
+              <li>
+                <strong>Dynamic Information Display:</strong> Planet data is pulled and displayed in real-time as users interact with the 3D models.
+              </li>
+              <li>
+                <strong>Mobile Optimized:</strong> Features a refined mobile-exclusive interface that preserves the immersive experience on smaller screens.
+              </li>
+            </ul>
+
+            <h3>Project Links</h3>
+            <div class="flex flex-wrap gap-4 not-prose mt-6">
+              <a
+                href="/quick-portfolio/portfolio/solar-system-showcase/index.html"
+                target="_blank"
+                class="px-6 py-3 bg-wood-accent hover:bg-wood-700 text-white font-semibold rounded-lg shadow-md transition-all transform hover:-translate-y-0.5 flex items-center"
+              >
+                <svg
+                  class="mr-2 w-5 h-5"
+                  viewBox="0 0 24 24"
+                  fill="currentColor"
+                >
+                  <path
+                    d="M19 19H5V5h7V3H5c-1.11 0-2 .9-2 2v14c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2v-7h-2v7zM14 3v2h3.59l-9.83 9.83 1.41 1.41L19 6.41V10h2V3h-7z"
+                  />
+                </svg>
+                Live Demo
+              </a>
+              <a
+                href="https://github.com/property360-2/quick-portfolio"
+                target="_blank"
+                class="px-6 py-3 bg-gray-200 dark:bg-gray-800 hover:bg-gray-300 dark:hover:bg-gray-700 text-gray-900 dark:text-white font-semibold rounded-lg shadow-md transition-all transform hover:-translate-y-0.5 flex items-center"
+              >
+                <svg
+                  class="mr-2 w-5 h-5"
+                  viewBox="0 0 24 24"
+                  fill="currentColor"
+                >
+                  <path
+                    d="M9.4 16.6L4.8 12l4.6-4.6L8 6l-6 6 6 6 1.4-1.4zm5.2 0l4.6-4.6-4.6-4.6L16 6l6 6-6 6-1.4-1.4z"
+                  />
+                </svg>
+                View Code
+              </a>
+            </div>
+          </div>
+        </div>
+      </article>
+    </main>
+</Layout>

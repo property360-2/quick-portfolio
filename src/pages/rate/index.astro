@@ -80,19 +80,35 @@ const services = [
                 </svg>
               </button>
 
-              <div class="flex items-center gap-6 bg-white dark:bg-black/20 p-3 px-5 rounded-xl border border-gray-200 dark:border-gray-700 shadow-sm min-h-[52px] w-fit">
-                <span class="text-sm font-medium text-gray-500 dark:text-gray-400 whitespace-nowrap">USDT ($)</span>
+              <div class="flex items-center gap-4 bg-white dark:bg-black/20 p-3 px-5 rounded-xl border border-gray-200 dark:border-gray-700 shadow-sm min-h-[52px] w-fit">
+                <span class="text-sm font-medium text-gray-500 dark:text-gray-400 whitespace-nowrap" id="label-usdt">USDT ($)</span>
+                
                 <button
                   id="currency-toggle"
-                  class="relative inline-flex flex-shrink-0 h-6 w-11 border-2 border-transparent rounded-full cursor-pointer transition-colors ease-in-out duration-200 focus:outline-none bg-wood-accent"
+                  class="relative flex items-center justify-center w-14 h-8 rounded-full cursor-pointer focus:outline-none focus:ring-2 focus:ring-wood-accent bg-gray-200 dark:bg-gray-700 overflow-hidden"
                   role="switch"
                   aria-checked="true"
                   type="button"
                 >
                   <span class="sr-only">Toggle currency</span>
-                  <span aria-hidden="true" id="toggle-thumb" class="translate-x-5 pointer-events-none inline-block h-5 w-5 rounded-full bg-white shadow transform ring-0 transition ease-in-out duration-200"></span>
+                  <!-- Toggle background (animated color) -->
+                  <div id="toggle-bg" class="absolute inset-0 bg-wood-accent opacity-100"></div>
+                  <!-- SVG Track and Thumb -->
+                  <svg width="56" height="32" viewBox="0 0 56 32" class="absolute inset-0 pointer-events-none z-10">
+                    <rect x="0" y="0" width="56" height="32" rx="16" fill="none" stroke="currentColor" stroke-width="2" class="text-transparent" />
+                    <!-- The thumb -->
+                    <circle id="toggle-thumb-svg" cx="40" cy="16" r="12" fill="#fff" class="drop-shadow-md" />
+                    <!-- SVG icons inside thumb -->
+                    <g id="toggle-icon-php" transform="translate(34, 10) scale(0.5)" opacity="1">
+                      <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1.44 14.8c-.2.2-.45.3-.78.3-.33 0-.59-.1-.78-.3-.19-.19-.29-.46-.29-.81 0-.35.1-.62.29-.81.2-.2.45-.3.78-.3.33 0 .59.1.78.3.19.2.29.47.29.81s-.1.62-.29.81z" fill="#d4a373"/>
+                    </g>
+                    <g id="toggle-icon-usdt" transform="translate(34, 10) scale(0.5)" opacity="0">
+                      <path d="M11.8 10.9c-2.27-.59-3-1.2-3-2.15 0-1.09 1.01-1.85 2.7-1.85 1.78 0 2.44.85 2.5 2.1h2.21c-.07-1.72-1.12-3.3-3.21-3.81V3h-3v2.16c-1.94.42-3.5 1.68-3.5 3.61 0 2.31 1.91 3.46 4.7 4.13 2.5.6 3 1.48 3 2.41 0 .69-.49 1.79-2.7 1.79-2.06 0-2.87-.92-2.98-2.1h-2.2c.12 2.19 1.76 3.42 3.68 3.83V21h3v-2.15c1.95-.37 3.5-1.5 3.5-3.55 0-2.84-2.43-3.81-4.7-4.4z" fill="#4ade80"/>
+                    </g>
+                  </svg>
                 </button>
-                <span class="text-sm font-bold text-gray-900 dark:text-white whitespace-nowrap">PHP</span>
+
+                <span class="text-sm font-bold text-gray-900 dark:text-white whitespace-nowrap" id="label-php">PHP</span>
               </div>
             </div>
 
@@ -134,7 +150,20 @@ const services = [
       <button id="project-idea-backdrop" type="button" class="fixed inset-0 bg-black/60 backdrop-blur-sm" aria-label="Close project idea form"></button>
 
       <div class="relative z-10 w-full max-w-2xl mx-auto min-h-full flex items-center justify-center py-8">
-        <form id="project-idea-form" class="relative w-full bg-gray-50 dark:bg-[#252528] rounded-2xl p-6 sm:p-8 border border-gray-200 dark:border-gray-800 shadow-2xl space-y-5" novalidate>
+        <form id="project-idea-form" class="relative w-full bg-gray-50 dark:bg-[#252528] rounded-2xl p-6 sm:p-8 border border-gray-200 dark:border-gray-800 shadow-2xl space-y-5 overflow-hidden" novalidate>
+          <!-- Success Overlay -->
+          <div id="success-animation-overlay" class="absolute inset-0 bg-gray-50 dark:bg-[#252528] z-50 flex flex-col items-center justify-center pointer-events-none opacity-0">
+            <svg width="80" height="80" viewBox="0 0 80 80" class="mb-6">
+              <!-- Circle -->
+              <circle id="success-circle" cx="40" cy="40" r="36" fill="none" stroke="#22c55e" stroke-width="4" stroke-dasharray="226" style="stroke-dashoffset: 226;" />
+              <!-- Checkmark -->
+              <path id="success-check" d="M24 40 L36 52 L56 28" fill="none" stroke="#22c55e" stroke-width="6" stroke-linecap="round" stroke-linejoin="round" stroke-dasharray="60" style="stroke-dashoffset: 60;" />
+            </svg>
+            <h3 id="success-title" class="text-3xl font-extrabold text-gray-900 dark:text-white opacity-0 transform translate-y-4">Idea Sent!</h3>
+            <p id="success-message" class="text-gray-600 dark:text-gray-400 mt-3 text-center opacity-0 transform translate-y-4 px-6 text-sm">
+              Thank you. I'll review it and reach out to you shortly.
+            </p>
+          </div>
           <button id="close-project-idea-modal" type="button" class="absolute top-4 right-4 p-2 rounded-full bg-white dark:bg-white/5 text-gray-500 dark:text-gray-400 hover:text-wood-accent focus:outline-none focus:ring-2 focus:ring-wood-accent transition-colors" aria-label="Close project idea form">
             <svg class="w-5 h-5" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
               <path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"></path>
@@ -262,6 +291,7 @@ const services = [
   <script>
     import { initializeApp } from "https://www.gstatic.com/firebasejs/12.10.0/firebase-app.js";
     import { addDoc, collection, getFirestore, serverTimestamp } from "https://www.gstatic.com/firebasejs/12.10.0/firebase-firestore.js";
+    import { animate } from "animejs";
     import { sanitizeContactField, sanitizeContactMessage, validateProjectIdeaInput } from "../../utils/contact";
     import { FIREBASE_CONFIG, LEAD_NOTES_COLLECTION } from "../../utils/firebase";
 
@@ -428,8 +458,72 @@ const services = [
       currencyToggle?.addEventListener("click", () => {
         const isPhp = currencyToggle.getAttribute("aria-checked") === "true";
         currencyToggle.setAttribute("aria-checked", String(!isPhp));
-        currencyToggle.querySelector("#toggle-thumb")?.classList.toggle("translate-x-5", !isPhp);
-        setCurrency(!isPhp ? "PHP" : "USDT");
+        
+        const newCurrency = !isPhp ? "PHP" : "USDT";
+        setCurrency(newCurrency);
+
+        // Anime.js transition for toggle
+        const toggleBg = document.getElementById("toggle-bg");
+        const toggleThumb = document.getElementById("toggle-thumb-svg");
+        const iconPhp = document.getElementById("toggle-icon-php");
+        const iconUsdt = document.getElementById("toggle-icon-usdt");
+        const labelPhp = document.getElementById("label-php");
+        const labelUsdt = document.getElementById("label-usdt");
+
+        // Move thumb
+        animate(toggleThumb, {
+          cx: newCurrency === "PHP" ? 40 : 16,
+          duration: 400,
+          ease: "spring(1, 80, 10, 0)"
+        });
+
+        // Move icons with thumb, ensuring vertical alignment and scale are preserved
+        animate([iconPhp, iconUsdt], {
+          translateX: newCurrency === "PHP" ? 34 : 10,
+          translateY: 10,
+          scale: 0.5,
+          duration: 400,
+          ease: "spring(1, 80, 10, 0)"
+        });
+
+        // Fade background color opacity
+        animate(toggleBg, {
+          opacity: newCurrency === "PHP" ? 1 : 0,
+          duration: 300,
+          ease: "easeInOutQuad"
+        });
+
+        // Fade icons
+        animate(iconPhp, {
+          opacity: newCurrency === "PHP" ? 1 : 0,
+          duration: 200,
+          ease: "easeInOutQuad"
+        });
+
+        animate(iconUsdt, {
+          opacity: newCurrency === "USDT" ? 1 : 0,
+          duration: 200,
+          ease: "easeInOutQuad"
+        });
+
+        // Highlight active text and sync font weights
+        if (newCurrency === "PHP") {
+          labelPhp.classList.replace("text-gray-500", "text-gray-900");
+          labelPhp.classList.replace("dark:text-gray-400", "dark:text-white");
+          labelPhp.classList.replace("font-medium", "font-bold");
+          
+          labelUsdt.classList.replace("text-gray-900", "text-gray-500");
+          labelUsdt.classList.replace("dark:text-white", "dark:text-gray-400");
+          labelUsdt.classList.replace("font-bold", "font-medium");
+        } else {
+          labelUsdt.classList.replace("text-gray-500", "text-gray-900");
+          labelUsdt.classList.replace("dark:text-gray-400", "dark:text-white");
+          labelUsdt.classList.replace("font-medium", "font-bold");
+          
+          labelPhp.classList.replace("text-gray-900", "text-gray-500");
+          labelPhp.classList.replace("dark:text-white", "dark:text-gray-400");
+          labelPhp.classList.replace("font-bold", "font-medium");
+        }
       });
 
       ideaForm?.addEventListener("submit", async (event) => {
@@ -458,11 +552,48 @@ const services = [
             createdAt: serverTimestamp(),
             updatedAt: serverTimestamp(),
           });
-          ideaForm.reset();
-          showFeedback("Project idea sent. I will review it and follow up manually.", "success");
+          // Trigger visually appealing success animation
+          const successOverlay = document.getElementById("success-animation-overlay");
+          const successCircle = document.getElementById("success-circle");
+          const successCheck = document.getElementById("success-check");
+          const successTitle = document.getElementById("success-title");
+          const successMessage = document.getElementById("success-message");
+          
+          successOverlay.classList.remove("pointer-events-none");
+          
+          animate(successOverlay, { opacity: 1, duration: 300, ease: "linear" });
+          animate(successCircle, { strokeDashoffset: [226, 0], duration: 800, delay: 100, ease: "easeInOutQuad" });
+          animate(successCheck, { strokeDashoffset: [60, 0], duration: 500, delay: 500, ease: "easeOutQuad" });
+          
+          animate(successTitle, { opacity: [0, 1], translateY: [16, 0], duration: 600, delay: 700, ease: "spring(1, 80, 10, 0)" });
+          animate(successMessage, { opacity: [0, 1], translateY: [16, 0], duration: 600, delay: 850, ease: "spring(1, 80, 10, 0)" });
+          
+          setTimeout(() => {
+            const ideaModal = document.getElementById("project-idea-modal");
+            const ctaButton = document.getElementById("send-project-idea-btn");
+            closeProjectIdeaModal(ideaModal, ctaButton);
+            
+            // Reset states silently after modal is hidden
+            setTimeout(() => {
+              ideaForm.reset();
+              successOverlay.classList.add("pointer-events-none");
+              successOverlay.style.opacity = "0";
+              successCircle.style.strokeDashoffset = "226";
+              successCheck.style.strokeDashoffset = "60";
+              successTitle.style.opacity = "0";
+              successTitle.style.transform = "translateY(16px)";
+              successMessage.style.opacity = "0";
+              successMessage.style.transform = "translateY(16px)";
+              submitButton.disabled = false;
+              submitButton.textContent = "Send Project Idea";
+              
+              const feedback = document.getElementById("idea-feedback");
+              if(feedback) feedback.classList.add("hidden");
+            }, 300);
+          }, 3500);
+
         } catch {
           showFeedback("Project idea could not be sent right now. Please try again later.", "error");
-        } finally {
           submitButton.disabled = false;
           submitButton.textContent = "Send Project Idea";
         }
