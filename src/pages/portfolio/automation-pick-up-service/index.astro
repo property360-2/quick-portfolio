@@ -1,13 +1,13 @@
 ---
 /**
- * Solar System Case Study
- * Purpose: Provides a detailed breakdown of the Solar System project.
+ * Automation Pick-up Service Case Study
+ * Purpose: Provides a detailed breakdown of the Automation Pick-up Service project.
  * Contains: Project overview, technical stack, key features, and links to the live demo and source code.
- * System Role: A case study page within the portfolio to showcase high-fidelity frontend and interactive capabilities.
+ * System Role: A case study page within the portfolio to showcase fullstack and automation capabilities.
  */
 import Layout from '../../../layouts/Layout.astro';
-const title = 'Solar System | Interactive SVG Experience';
-const description = 'An immersive, high-fidelity web experience exploring the solar system with procedural SVG art, fluid motion design, and a responsive deep-dive system.';
+const title = 'Automation Pick-up Service | Smart Inventory & Fulfillment';
+const description = 'A professional web application designed to streamline inventory management and order fulfillment for local businesses using Google Sheets as a database.';
 ---
 
 <Layout title={title} description={description}>
@@ -28,8 +28,8 @@ const description = 'An immersive, high-fidelity web experience exploring the so
           <header class="mb-12" data-aos="fade-up">
             <div class="mb-8 rounded-xl overflow-hidden shadow-2xl">
               <img
-                src="/quick-portfolio/assets/solar-system.webp"
-                alt="Solar System"
+                src="/quick-portfolio/assets/automation-showcase.png"
+                alt="Automation Pick-up Service"
                 class="w-full h-auto object-cover max-h-[500px]"
                 loading="lazy"
                 decoding="async"
@@ -40,24 +40,24 @@ const description = 'An immersive, high-fidelity web experience exploring the so
             <h1
               class="text-4xl md:text-5xl font-bold text-gray-900 dark:text-white mb-6"
             >
-              Solar System
+              Automation Pick-up Service
             </h1>
             <div class="flex flex-wrap gap-4 text-sm">
               <span
                 class="px-3 py-1 bg-wood-100 dark:bg-wood-900 text-wood-accent rounded-full font-medium"
-                >SVG Art</span
+                >React</span
               >
               <span
                 class="px-3 py-1 bg-wood-100 dark:bg-wood-900 text-wood-accent rounded-full font-medium"
-                >JavaScript</span
+                >Google Sheets API</span
               >
               <span
                 class="px-3 py-1 bg-wood-100 dark:bg-wood-900 text-wood-accent rounded-full font-medium"
-                >HTML5 Canvas</span
+                >Firebase</span
               >
               <span
                 class="px-3 py-1 bg-wood-100 dark:bg-wood-900 text-wood-accent rounded-full font-medium"
-                >Anime.js</span
+                >Tailwind CSS 4</span
               >
             </div>
           </header>
@@ -69,29 +69,43 @@ const description = 'An immersive, high-fidelity web experience exploring the so
             data-aos-delay="100"
           >
             <p>
-              Solar System is an immersive, high-fidelity, and interactive web experience exploring the wonders of our solar system. This project combines procedural SVG art, fluid motion design, and a responsive "Deep Dive" system to deliver a museum-grade educational experience.
+              The Automation Pick-up Service is a high-performance web application designed to bridge the gap between traditional manual inventory management and modern digital workflows. By leveraging Google Sheets as a lightweight, real-time database, it allows business owners to manage their stock effortlessly while providing customers with a sleek, real-time ordering experience.
             </p>
 
-            <h3>Technical Highlights</h3>
+            <h3>Core Features</h3>
             <ul>
               <li>
-                <strong>Procedural SVG Illustrations:</strong> Data-driven visuals with atmospheric glows and layered rendering for complex effects like Saturn's rings.
+                <strong>Public Inventory System:</strong> A high-performance product catalog pulled directly from Google Sheets, ensuring data consistency without complex database overhead.
               </li>
               <li>
-                <strong>Deep-Dive Side Drawer:</strong> An interactive detail view for every planet, revealing internal layer compositions and core facts.
+                <strong>Secure Ordering Workflow:</strong> Integrated with Firebase Authentication for secure customer accounts and order tracking.
               </li>
               <li>
-                <strong>Multi-layered Starfield:</strong> A high-performance parallax background rendered on a 2D HTML5 canvas.
+                <strong>Admin Fulfillment Hub:</strong> A dedicated dashboard for store owners to manage pending orders, update fulfillment status, and monitor business performance.
               </li>
               <li>
-                <strong>Fluid Motion Logic:</strong> Sophisticated animation timelines powered by Anime.js for seamless transitions and user feedback.
+                <strong>Automated Event Triggers:</strong> Real-time email notifications powered by Resend, alerting customers when orders are placed and ready for pickup.
+              </li>
+              <li>
+                <strong>Glassmorphic UI:</strong> Built with Tailwind CSS 4 and Framer Motion for a premium, responsive aesthetic that feels alive.
               </li>
             </ul>
+
+            <h3>Technical Architecture</h3>
+            <p>
+              The system operates on four technology pillars:
+            </p>
+            <ol>
+              <li><strong>Identity:</strong> Secure user management via Firebase Auth.</li>
+              <li><strong>Database:</strong> Google Sheets API for a flexible, collaborative data source.</li>
+              <li><strong>Automation:</strong> Vercel Serverless Functions orchestrating order flows and email triggers.</li>
+              <li><strong>Frontend:</strong> React + Vite for a blazing-fast user experience.</li>
+            </ol>
 
             <h3>Project Links</h3>
             <div class="flex flex-wrap gap-4 not-prose mt-6">
               <a
-                href="https://property360-2.github.io/planets-blog/"
+                href="https://vercel.com/junalvior21-6266s-projects/automation-pick-up-service"
                 target="_blank"
                 class="px-6 py-3 bg-wood-accent hover:bg-wood-700 text-white font-semibold rounded-lg shadow-md transition-all transform hover:-translate-y-0.5 flex items-center"
               >
@@ -107,7 +121,7 @@ const description = 'An immersive, high-fidelity web experience exploring the so
                 Live Demo
               </a>
               <a
-                href="https://github.com/property360-2/planets-blog"
+                href="https://github.com/property360-2/automation-pick-up-service"
                 target="_blank"
                 class="px-6 py-3 bg-gray-200 dark:bg-gray-800 hover:bg-gray-300 dark:hover:bg-gray-700 text-gray-900 dark:text-white font-semibold rounded-lg shadow-md transition-all transform hover:-translate-y-0.5 flex items-center"
               >
@@ -121,6 +135,20 @@ const description = 'An immersive, high-fidelity web experience exploring the so
                   />
                 </svg>
                 View Code
+              </a>
+              <a
+                href="https://docs.google.com/spreadsheets/d/1YDC6X73PJHPYlcC_4H1PIFmwk91Nng_UoCbuDzGnJHg/edit?usp=sharing"
+                target="_blank"
+                class="px-6 py-3 bg-green-600 hover:bg-green-700 text-white font-semibold rounded-lg shadow-md transition-all transform hover:-translate-y-0.5 flex items-center"
+              >
+                <svg
+                  class="mr-2 w-5 h-5"
+                  viewBox="0 0 24 24"
+                  fill="currentColor"
+                >
+                   <path d="M14,2H6A2,2 0 0,0 4,4V20A2,2 0 0,0 6,22H18A2,2 0 0,0 20,20V8L14,2M13,9V3.5L18.5,9H13Z" />
+                </svg>
+                Google Sheets DB
               </a>
             </div>
           </div>
