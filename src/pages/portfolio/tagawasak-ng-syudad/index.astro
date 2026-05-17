@@ -1,4 +1,10 @@
 ---
+/**
+ * Tagawasak ng Syudad Case Study Page
+ * Purpose: Detailed case study for the Tagawasak ng Syudad 3D sandbox physics demo.
+ * Contains: Project highlights, custom Web Audio synthesis details, and direct access links.
+ * System Role: Showcases high-framerate browser performance and procedural audio capabilities.
+ */
 import Layout from '../../../layouts/Layout.astro';
 const title = 'Tagawasak ng Syudad | Game Development';
 const description = 'A chaotic sandbox city destruction game built with Three.js and Web Audio API. Featuring procedural building destruction and physics.';
@@ -98,8 +104,14 @@ const description = 'A chaotic sandbox city destruction game built with Three.js
             data-aos="fade-up"
             data-aos-delay="100"
           >
+            <h2>Overview</h2>
             <p>
-              Tagawasak ng Syudad (City Destroyer) is a technical demonstration of real-time 3D physics and procedural audio in the browser. It was designed as a chaotic sandbox where users can explore city destruction mechanics.
+              Tagawasak ng Syudad (City Destroyer) is a high-performance 3D sandbox physics demonstration built to test the extreme limits of browser rendering and real-time audio synthesis. It allows users to simulate the procedural destruction of a custom-built city block with zero pre-rendered animations or heavy assets.
+            </p>
+
+            <h2>The Problem It Solves</h2>
+            <p>
+              Traditional 3D web applications and games rely heavily on massive pre-baked animation files and large static media assets, leading to severe page load lag and high bandwidth overhead. This project solves this by leveraging pure procedural math—generating all 3D geometries, particle-based physics trajectories, and dynamic collision audio frequencies entirely on the client side in real time, showing how highly interactive games can remain lightweight and fast.
             </p>
 
             <h3>Key Features</h3>
@@ -117,8 +129,6 @@ const description = 'A chaotic sandbox city destruction game built with Three.js
                 <strong>Visual Effects:</strong> Integrated particle systems for fragment debris, smoke, and screen shake trauma.
               </li>
             </ul>
-
-
           </div>
         </div>
       </article>

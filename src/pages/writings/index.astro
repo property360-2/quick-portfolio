@@ -28,7 +28,13 @@ const description = 'Read articles on web development, accessibility, and tech a
             <!-- MOLECULES: Tabs -->
             <div class="flex space-x-1 mt-6 md:mt-0" data-aos="fade-left">
               <button
-                class="tab-btn active px-6 py-2 rounded-t-lg text-sm font-medium transition-colors border-b-2 border-wood-accent text-wood-accent text-wood-accent"
+                class="tab-btn active px-6 py-2 rounded-t-lg text-sm font-medium transition-colors border-b-2 border-wood-accent text-wood-700 dark:text-wood-300"
+                data-target="pinned"
+              >
+                Pinned
+              </button>
+              <button
+                class="tab-btn px-6 py-2 rounded-t-lg text-sm font-medium text-gray-500 dark:text-gray-400 hover:text-gray-700 dark:hover:text-gray-200 transition-colors border-b-2 border-transparent"
                 data-target="articles"
               >
                 Articles
@@ -42,9 +48,104 @@ const description = 'Read articles on web development, accessibility, and tech a
             </div>
           </div>
 
+          <!-- Pinned Content Block (Renders pinned featured articles) -->
+          <div
+            id="pinned"
+            class="tab-content block animate-fade-in space-y-8"
+          >
+            <!-- Pinned 1: Accessibility First -->
+            <div
+              class="flex flex-col md:flex-row gap-6 items-start"
+              data-aos="fade-up"
+            >
+              <div class="w-full md:w-1/4 flex flex-col gap-1.5">
+                <span class="text-sm text-gray-400 font-mono">Feb 11, 2026</span>
+                <div>
+                  <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-bold bg-wood-accent/15 text-wood-accent gap-1">
+                    <svg class="w-3 h-3" fill="currentColor" viewBox="0 0 24 24">
+                      <path d="M16 12V4H17V2H7V4H8V12L6 14V16H11.2V22H12.8V16H18V14L16 12Z"/>
+                    </svg>
+                    Pinned
+                  </span>
+                </div>
+              </div>
+              <div
+                class="w-full md:w-3/4 hover:translate-x-2 transition-transform duration-300"
+              >
+                <h4
+                  class="text-xl font-bold text-gray-900 dark:text-white mb-2"
+                >
+                  <a
+                    href="articles/accessibility-semantic-html-aria/"
+                    class="hover:text-wood-accent"
+                    >Accessibility First: Semantic HTML and ARIA</a
+                  >
+                </h4>
+                <p class="text-gray-600 dark:text-gray-400 leading-relaxed">
+                  Why semantic HTML is the bedrock of a usable web and how to
+                  implement ARIA roles correctly.
+                </p>
+                <div class="mt-4 flex gap-2">
+                  <span
+                    class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-gray-100 dark:bg-gray-800 text-gray-800 dark:text-gray-200"
+                  >
+                    Tech & Engineering
+                  </span>
+                </div>
+              </div>
+            </div>
+
+            <!-- Pinned 2: The Solar System (Interactive 3D) -->
+            <div
+              class="flex flex-col md:flex-row gap-6 items-start"
+              data-aos="fade-up"
+            >
+              <div class="w-full md:w-1/4 flex flex-col gap-1.5">
+                <span class="text-sm text-gray-400 font-mono">May 14, 2026</span>
+                <div>
+                  <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-bold bg-wood-accent/15 text-wood-accent gap-1">
+                    <svg class="w-3 h-3" fill="currentColor" viewBox="0 0 24 24">
+                      <path d="M16 12V4H17V2H7V4H8V12L6 14V16H11.2V22H12.8V16H18V14L16 12Z"/>
+                    </svg>
+                    Pinned
+                  </span>
+                </div>
+              </div>
+              <div
+                class="w-full md:w-3/4 hover:translate-x-2 transition-transform duration-300"
+              >
+                <h4
+                  class="text-xl font-bold text-gray-900 dark:text-white mb-2"
+                >
+                  <a
+                    href="/quick-portfolio/portfolio/solar-system-showcase/index.html"
+                    class="hover:text-wood-accent"
+                    >The Solar System (Interactive 3D)</a
+                  >
+                </h4>
+                <p class="text-gray-600 dark:text-gray-400 leading-relaxed">
+                  Exploring the intersection of educational technology and interactive 3D graphics in my latest portfolio project.
+                </p>
+                <div class="mt-4 flex gap-2">
+                  <span
+                    class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-gray-100 dark:bg-gray-800 text-gray-800 dark:text-gray-200"
+                  >
+                    3D Graphics
+                  </span>
+                  <span
+                    class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-gray-100 dark:bg-gray-800 text-gray-800 dark:text-gray-200"
+                  >
+                    Portfolio Showcase
+                  </span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Articles Content Block (Shifted to hidden by default) -->
           <div
             id="articles"
-            class="tab-content block animate-fade-in space-y-8"
+            class="tab-content hidden animate-fade-in space-y-8"
           >
             <!-- New Article -->
             <div
@@ -71,11 +172,21 @@ const description = 'Read articles on web development, accessibility, and tech a
                 <p class="text-gray-600 dark:text-gray-400 leading-relaxed">
                   An exhaustive analysis of fourteen core domains of human performance, detailing biological mechanisms and evidence-based protocols for optimization.
                 </p>
-                <div class="mt-4 flex gap-2">
+                <div class="mt-4 flex flex-wrap gap-2">
                   <span
                     class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-gray-100 dark:bg-gray-800 text-gray-800 dark:text-gray-200"
                   >
                     Performance Science
+                  </span>
+                  <span
+                    class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-gray-100 dark:bg-gray-800 text-gray-800 dark:text-gray-200"
+                  >
+                    Biohacking
+                  </span>
+                  <span
+                    class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-gray-100 dark:bg-gray-800 text-gray-800 dark:text-gray-200"
+                  >
+                    Optimization
                   </span>
                 </div>
               </div>
@@ -110,11 +221,26 @@ const description = 'Read articles on web development, accessibility, and tech a
                   tech stacks (Python, JavaScript, PHP), databases, and total
                   cost of ownership.
                 </p>
-                <div class="mt-4 flex gap-2">
+                <div class="mt-4 flex flex-wrap gap-2">
                   <span
                     class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-gray-100 dark:bg-gray-800 text-gray-800 dark:text-gray-200"
                   >
-                    Tech & Engineering
+                    Freelancing
+                  </span>
+                  <span
+                    class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-gray-100 dark:bg-gray-800 text-gray-800 dark:text-gray-200"
+                  >
+                    Pricing Strategy
+                  </span>
+                  <span
+                    class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-gray-100 dark:bg-gray-800 text-gray-800 dark:text-gray-200"
+                  >
+                    Philippines Market
+                  </span>
+                  <span
+                    class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-gray-100 dark:bg-gray-800 text-gray-800 dark:text-gray-200"
+                  >
+                    Tech Careers
                   </span>
                 </div>
               </div>
@@ -148,6 +274,23 @@ const description = 'Read articles on web development, accessibility, and tech a
                   jurisprudence through Atty. Christian D. Sorongon's seminal
                   work.
                 </p>
+                <div class="mt-4 flex flex-wrap gap-2">
+                  <span
+                    class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-gray-100 dark:bg-gray-800 text-gray-800 dark:text-gray-200"
+                  >
+                    Legal Tech
+                  </span>
+                  <span
+                    class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-gray-100 dark:bg-gray-800 text-gray-800 dark:text-gray-200"
+                  >
+                    Philippine Law
+                  </span>
+                  <span
+                    class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-gray-100 dark:bg-gray-800 text-gray-800 dark:text-gray-200"
+                  >
+                    Book Report
+                  </span>
+                </div>
               </div>
             </div>
             <!-- Article 2 -->
@@ -178,6 +321,23 @@ const description = 'Read articles on web development, accessibility, and tech a
                   geopolitical foundations establishing Philippine sovereignty
                   over the Kalayaan Island Group.
                 </p>
+                <div class="mt-4 flex flex-wrap gap-2">
+                  <span
+                    class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-gray-100 dark:bg-gray-800 text-gray-800 dark:text-gray-200"
+                  >
+                    Geopolitics
+                  </span>
+                  <span
+                    class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-gray-100 dark:bg-gray-800 text-gray-800 dark:text-gray-200"
+                  >
+                    National Sovereignty
+                  </span>
+                  <span
+                    class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-gray-100 dark:bg-gray-800 text-gray-800 dark:text-gray-200"
+                  >
+                    West Philippine Sea
+                  </span>
+                </div>
               </div>
             </div>
             <!-- Article 3 -->
@@ -207,6 +367,28 @@ const description = 'Read articles on web development, accessibility, and tech a
                   Why semantic HTML is the bedrock of a usable web and how to
                   implement ARIA roles correctly.
                 </p>
+                <div class="mt-4 flex flex-wrap gap-2">
+                  <span
+                    class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-gray-100 dark:bg-gray-800 text-gray-800 dark:text-gray-200"
+                  >
+                    Accessibility (a11y)
+                  </span>
+                  <span
+                    class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-gray-100 dark:bg-gray-800 text-gray-800 dark:text-gray-200"
+                  >
+                    Semantic HTML
+                  </span>
+                  <span
+                    class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-gray-100 dark:bg-gray-800 text-gray-800 dark:text-gray-200"
+                  >
+                    W3C Standards
+                  </span>
+                  <span
+                    class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-gray-100 dark:bg-gray-800 text-gray-800 dark:text-gray-200"
+                  >
+                    Frontend
+                  </span>
+                </div>
               </div>
             </div>
             <!-- Article 4 -->
@@ -236,10 +418,28 @@ const description = 'Read articles on web development, accessibility, and tech a
                   A deep dive into understanding human behavior, motivation, and
                   non-verbal communication.
                 </p>
+                <div class="mt-4 flex flex-wrap gap-2">
+                  <span
+                    class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-gray-100 dark:bg-gray-800 text-gray-800 dark:text-gray-200"
+                  >
+                    Psychology
+                  </span>
+                  <span
+                    class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-gray-100 dark:bg-gray-800 text-gray-800 dark:text-gray-200"
+                  >
+                    Human Behavior
+                  </span>
+                  <span
+                    class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-gray-100 dark:bg-gray-800 text-gray-800 dark:text-gray-200"
+                  >
+                    Book Report
+                  </span>
+                </div>
               </div>
             </div>
           </div>
 
+          <!-- Blogs Content Block -->
           <div id="blogs" class="tab-content hidden animate-fade-in space-y-8">
             <!-- Blog: Solar System Showcase -->
             <div class="flex flex-col md:flex-row gap-6 items-start">
@@ -261,6 +461,23 @@ const description = 'Read articles on web development, accessibility, and tech a
                 <p class="text-gray-600 dark:text-gray-400 leading-relaxed">
                   Exploring the intersection of educational technology and interactive 3D graphics in my latest portfolio project.
                 </p>
+                <div class="mt-4 flex flex-wrap gap-2">
+                  <span
+                    class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-gray-100 dark:bg-gray-800 text-gray-800 dark:text-gray-200"
+                  >
+                    3D Graphics
+                  </span>
+                  <span
+                    class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-gray-100 dark:bg-gray-800 text-gray-800 dark:text-gray-200"
+                  >
+                    Three.js
+                  </span>
+                  <span
+                    class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-gray-100 dark:bg-gray-800 text-gray-800 dark:text-gray-200"
+                  >
+                    Educational Tech
+                  </span>
+                </div>
               </div>
             </div>
 
@@ -285,6 +502,23 @@ const description = 'Read articles on web development, accessibility, and tech a
                   Reflecting on 5 years of software engineering and lessons
                   learned along the way.
                 </p>
+                <div class="mt-4 flex flex-wrap gap-2">
+                  <span
+                    class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-gray-100 dark:bg-gray-800 text-gray-800 dark:text-gray-200"
+                  >
+                    Career
+                  </span>
+                  <span
+                    class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-gray-100 dark:bg-gray-800 text-gray-800 dark:text-gray-200"
+                  >
+                    Software Engineering
+                  </span>
+                  <span
+                    class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-gray-100 dark:bg-gray-800 text-gray-800 dark:text-gray-200"
+                  >
+                    Personal
+                  </span>
+                </div>
               </div>
             </div>
           </div>
