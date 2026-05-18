@@ -4,8 +4,8 @@ import tailwindcss from '@tailwindcss/vite';
 
 // https://astro.build/config
 export default defineConfig({
-  // Palitan mo ito ng iyong totoong domain mamaya (hal. https://www.iyongdomain.com)
-  site: 'https://quick-portfolio.vercel.app', 
+  // Set to your GitHub Pages domain
+  site: 'https://property360-2.github.io', 
   base: '/quick-portfolio',
   vite: {
     plugins: [tailwindcss()],

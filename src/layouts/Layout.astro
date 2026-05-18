@@ -13,6 +13,7 @@ const { title, description } = Astro.props;
     <title>{title}</title>
     <meta name="description" content={description} />
     <meta name="author" content="Jun Alvior" />
+    <link rel="canonical" href={new URL(Astro.url.pathname, Astro.site)} />
     
     <link rel="icon" href="/quick-portfolio/assets/favicon.png" type="image/png" />
 
