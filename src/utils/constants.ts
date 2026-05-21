@@ -6,3 +6,16 @@
  */
 
 export const RENDER_COLD_START_NOTE = "Hosted on Render free tier. First load may take a short while because the app can sleep when inactive.";
+
+/**
+ * NOTE: The live Vercel production deployment URL for the portfolio chatbot backend.
+ */
+export const PROD_BACKEND_URL = "https://chatbot-for-portfolio.vercel.app";
+
+/**
+ * NOTE: The local development URL for the chatbot backend.
+ * Set to your live Vercel URL so local frontend testing works immediately. Change to "http://localhost:3000" if running backend locally.
+ */
+export const DEV_BACKEND_URL = "https://chatbot-for-portfolio.vercel.app";
+
+
