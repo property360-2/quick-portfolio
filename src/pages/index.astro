@@ -106,9 +106,9 @@ const description = 'Ditch the spreadsheet and manual workflow chaos. Scale your
                   <!-- 3 Column Metrics Cards Grid -->
                   <div class="grid grid-cols-3 gap-3.5">
                     <!-- Metric Card 1: Admin Tasks -->
-                    <div class="relative p-3.5 bg-gray-50 dark:bg-[#1a1a1a]/80 border border-gray-200 dark:border-gray-800 rounded-xl flex flex-col justify-between overflow-hidden shadow-inner group">
+                    <div class="relative p-3.5 bg-gray-50 dark:!bg-[#151518] border border-gray-200 dark:!border-zinc-800/80 rounded-xl flex flex-col justify-between overflow-hidden shadow-inner group">
                       <div class="absolute -right-6 -bottom-6 w-16 h-16 bg-amber-500/5 rounded-full filter blur-xl transition-all duration-500 group-hover:scale-150"></div>
-                      <div class="text-[10px] uppercase font-bold text-gray-500 dark:text-gray-400 tracking-wider">Pending Admin Tasks</div>
+                      <div class="text-[10px] uppercase font-bold text-gray-500 dark:text-zinc-400 tracking-wider">Pending Admin Tasks</div>
                       <div class="my-3 text-3xl font-extrabold text-amber-600 dark:text-amber-500 tracking-tight font-mono">
                         <span id="metric-tasks-val">42</span>
                       </div>
@@ -118,11 +118,11 @@ const description = 'Ditch the spreadsheet and manual workflow chaos. Scale your
                     </div>
 
                     <!-- Metric Card 2: Operating Cost -->
-                    <div class="relative p-3.5 bg-gray-50 dark:bg-[#1a1a1a]/80 border border-gray-200 dark:border-gray-800 rounded-xl flex flex-col justify-between overflow-hidden shadow-inner group">
+                    <div class="relative p-3.5 bg-gray-50 dark:!bg-[#151518] border border-gray-200 dark:!border-zinc-800/80 rounded-xl flex flex-col justify-between overflow-hidden shadow-inner group">
                       <div class="absolute -right-6 -bottom-6 w-16 h-16 bg-rose-500/5 rounded-full filter blur-xl transition-all duration-500 group-hover:scale-150"></div>
-                      <div class="text-[10px] uppercase font-bold text-gray-500 dark:text-gray-400 tracking-wider">Operating Cost</div>
-                      <div class="my-3 text-3xl font-extrabold text-gray-800 dark:text-gray-100 tracking-tight font-mono">
-                        $<span id="metric-cost-val">120</span><span class="text-xs text-gray-500 dark:text-gray-400 font-normal">/hr</span>
+                      <div class="text-[10px] uppercase font-bold text-gray-500 dark:text-zinc-400 tracking-wider">Operating Cost</div>
+                      <div id="cost-value-container" class="my-3 text-3xl font-extrabold text-rose-600 dark:text-rose-500 tracking-tight font-mono transition-all duration-300">
+                        $<span id="metric-cost-val">120</span><span id="metric-cost-suffix" class="text-xs text-rose-500 dark:text-rose-400/80 font-normal transition-colors duration-300">/hr</span>
                       </div>
                       <div class="flex items-center gap-1.5 mt-0.5">
                         <span id="metric-cost-badge" class="px-1.5 py-0.5 text-[9px] font-bold rounded bg-rose-500/10 border border-rose-500/20 text-rose-600 dark:text-rose-400 font-mono">Unoptimized Flow</span>
@@ -130,11 +130,11 @@ const description = 'Ditch the spreadsheet and manual workflow chaos. Scale your
                     </div>
 
                     <!-- Metric Card 3: Saved Overhead -->
-                    <div class="relative p-3.5 bg-gray-50 dark:bg-[#1a1a1a]/80 border border-gray-200 dark:border-gray-800 rounded-xl flex flex-col justify-between overflow-hidden shadow-inner group">
+                    <div class="relative p-3.5 bg-gray-50 dark:!bg-[#151518] border border-gray-200 dark:!border-zinc-800/80 rounded-xl flex flex-col justify-between overflow-hidden shadow-inner group">
                       <div class="absolute -right-6 -bottom-6 w-16 h-16 bg-emerald-500/5 rounded-full filter blur-xl transition-all duration-500 group-hover:scale-150"></div>
-                      <div class="text-[10px] uppercase font-bold text-gray-500 dark:text-gray-400 tracking-wider">Saved Overhead</div>
-                      <div class="my-3 text-3xl font-extrabold text-gray-400 dark:text-gray-500 tracking-tight font-mono transition-all duration-300" id="saved-value-container">
-                        $<span id="metric-saved-val">0</span><span class="text-xs text-gray-500 dark:text-gray-400 font-normal">/hr</span>
+                      <div class="text-[10px] uppercase font-bold text-gray-500 dark:text-zinc-400 tracking-wider">Saved Overhead</div>
+                      <div class="my-3 text-3xl font-extrabold text-gray-400 dark:text-zinc-400 tracking-tight font-mono transition-all duration-300" id="saved-value-container">
+                        $<span id="metric-saved-val">0</span><span class="text-xs text-gray-500 dark:text-zinc-500 font-normal">/hr</span>
                       </div>
                       <div class="flex items-center gap-1.5 mt-0.5" id="saved-badge-container">
                         <span id="metric-saved-badge" class="px-1.5 py-0.5 text-[9px] font-bold rounded bg-gray-200 dark:bg-gray-700 text-gray-500 dark:text-gray-400 border border-gray-300 dark:border-gray-800 font-mono font-bold">Direct ROI Demo</span>
@@ -143,8 +143,8 @@ const description = 'Ditch the spreadsheet and manual workflow chaos. Scale your
                   </div>
 
                   <!-- Central Automation Trigger Interface -->
-                  <div class="p-4 bg-gray-50 dark:bg-[#1a1a1a]/40 border border-gray-200 dark:border-gray-800 rounded-xl text-center space-y-3">
-                    <p class="text-xs text-gray-600 dark:text-gray-400">
+                  <div class="p-4 bg-gray-50 dark:!bg-[#121214] border border-gray-200 dark:!border-zinc-800/80 rounded-xl text-center space-y-3">
+                    <p class="text-xs text-gray-600 dark:text-zinc-300">
                       Click the trigger below to simulate a real B2B custom database & workflow automation setup:
                     </p>
                     
@@ -429,7 +429,9 @@ const description = 'Ditch the spreadsheet and manual workflow chaos. Scale your
           const tasksVal = document.getElementById('metric-tasks-val');
           const tasksBadge = document.getElementById('metric-tasks-badge');
           
+          const costValContainer = document.getElementById('cost-value-container');
           const costVal = document.getElementById('metric-cost-val');
+          const costSuffix = document.getElementById('metric-cost-suffix');
           const costBadge = document.getElementById('metric-cost-badge');
           
           const savedVal = document.getElementById('metric-saved-val');
@@ -555,6 +557,13 @@ const description = 'Ditch the spreadsheet and manual workflow chaos. Scale your
                   // Animate Card 2 and Card 3 synchronously
                   animateValue(costVal, 120, 75, 1200).then(() => {
                     try {
+                      // Transition entire text and suffix to premium emerald-green on target cost achievement
+                      if (costValContainer) {
+                        costValContainer.className = "my-3 text-3xl font-extrabold text-emerald-500 dark:text-emerald-400 tracking-tight font-mono transition-all duration-300";
+                      }
+                      if (costSuffix) {
+                        costSuffix.className = "text-xs text-emerald-400 dark:text-emerald-400/80 font-normal transition-colors duration-300";
+                      }
                       costBadge.className = "px-1.5 py-0.5 text-[9px] font-bold rounded bg-emerald-500/15 text-emerald-400 font-mono";
                       costBadge.innerText = "Target Cost Achieved";
                     } catch (e) {
@@ -636,12 +645,19 @@ const description = 'Ditch the spreadsheet and manual workflow chaos. Scale your
               tasksBadge.innerText = "Spreadsheet Chaos";
 
               costVal.innerText = "120";
+              // Reset cost value text and suffix styles back to unoptimized rose-red
+              if (costValContainer) {
+                costValContainer.className = "my-3 text-3xl font-extrabold text-rose-600 dark:text-rose-500 tracking-tight font-mono transition-all duration-300";
+              }
+              if (costSuffix) {
+                costSuffix.className = "text-xs text-rose-500 dark:text-rose-400/80 font-normal transition-colors duration-300";
+              }
               costBadge.className = "px-1.5 py-0.5 text-[9px] font-bold rounded bg-rose-500/15 text-rose-400 font-mono";
               costBadge.innerText = "Unoptimized Flow";
 
               savedVal.innerText = "0";
-              savedValContainer.className = "my-3 text-3xl font-extrabold text-slate-500 tracking-tight font-mono transition-all duration-300";
-              savedBadge.className = "px-1.5 py-0.5 text-[9px] font-bold rounded bg-slate-700/30 text-slate-500 font-mono";
+              savedValContainer.className = "my-3 text-3xl font-extrabold text-slate-500 dark:text-zinc-400 tracking-tight font-mono transition-all duration-300";
+              savedBadge.className = "px-1.5 py-0.5 text-[9px] font-bold rounded bg-slate-700/30 text-slate-500 dark:text-zinc-400 font-mono";
               savedBadge.innerText = "Direct ROI Demo";
 
               // Collapse terminal logs panel
