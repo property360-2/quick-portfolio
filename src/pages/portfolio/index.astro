@@ -186,6 +186,68 @@ const description = "Explore professional AI automation systems, enterprise-grad
               </a>
             </div>
 
+            <!-- 
+              Project: tagForge (AI SEO & Metadata Generator)
+              Description: Renders the summary preview card for the tagForge project in the portfolio gallery grid.
+              Interaction / Filtering:
+                - Filter Category: 'fullstack' (displays when 'All' or 'Fullstack' is selected).
+                - View Details CTA: Links to the Astro details case study page: `/quick-portfolio/portfolio/tagforge/`.
+                - Live Demo CTA: Links to the external production deployed application: `https://seo-project-21.vercel.app/`.
+              Aesthetics & Design: 
+                - Uses standard responsive grid grouping styles.
+                - Features a vibrant thumbnail hover effect scaling the `../assets/tagForge.webp` asset.
+                - Dynamic dark-mode compatible text headers and sleek high-contrast layout matching existing project cards.
+            -->
+            <div
+              class="project-card group"
+              data-aos="fade-up"
+              data-category="fullstack"
+            >
+              <div
+                class="relative overflow-hidden rounded-xl shadow-lg aspect-video bg-gray-200 flex flex-col justify-end"
+              >
+                <img
+                  src="../assets/tagForge.webp"
+                  alt="tagForge AI SEO Suite"
+                  class="absolute inset-0 object-cover w-full h-full transform group-hover:scale-105 transition-transform duration-500"
+                  loading="lazy"
+                  decoding="async"
+                  width="800"
+                  height="450"
+                />
+                <div
+                  class="absolute inset-0 bg-black/60 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col items-center justify-center p-8 gap-4 z-10 text-center"
+                >
+                  <div class="flex flex-wrap justify-center gap-4">
+                    <a
+                      href="/quick-portfolio/portfolio/tagforge/"
+                      class="text-white border px-4 py-2 rounded-full text-sm font-medium tracking-wide hover:bg-white hover:text-black transition-colors"
+                      >View Details</a
+                    >
+                    <a
+                      href="https://seo-project-21.vercel.app/"
+                      target="_blank"
+                      class="text-white bg-wood-accent px-4 py-2 rounded-full text-sm font-medium tracking-wide hover:bg-wood-700 transition-colors"
+                      >Live Demo</a
+                    >
+                  </div>
+                </div>
+              </div>
+              <a href="/quick-portfolio/portfolio/tagforge/" class="block mt-4">
+                <h4
+                  class="text-xl font-bold text-gray-900 dark:text-white group-hover:text-wood-accent transition-colors"
+                >
+                  tagForge: Enterprise AI SEO & Metadata Suite
+                </h4>
+                <p class="text-xs font-semibold text-wood-accent mt-1 italic">
+                  Pain Fixed: High hosting costs, manual metadata synthesis & complex OAuth configurations.
+                </p>
+                <p class="text-gray-600 dark:text-gray-400 text-sm mt-2 leading-relaxed">
+                  Consolidated a full-stack Next.js and Express.js system under a single domain rewrite to bypass CORS and eliminate server costs. Integrated high-throughput Groq Llama-3 endpoints to deliver sub-second metadata syntheses under a secure Stripe subscription tier.
+                </p>
+              </a>
+            </div>
+
             <!-- Project: DocuMind AI (Tropang AI) -->
             <div
               class="project-card group"
