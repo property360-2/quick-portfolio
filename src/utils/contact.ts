@@ -5,7 +5,11 @@
  * It supports Astro pages that need a backend-free path from visitor intent to a manually sent email.
  */
 
-export const CONTACT_EMAIL = "junalvior21@gmail.com";
+/**
+ * The primary professional contact email address for Jun Alvior.
+ * All public inquiry forms, rate estimates, and mailto action flows route messages here.
+ */
+export const CONTACT_EMAIL = "junalvior.dev@gmail.com";
 
 export type ProjectIdeaInput = {
   name: string;

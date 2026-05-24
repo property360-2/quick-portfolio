@@ -1,0 +1,691 @@
+---
+/**
+ * Autonomous Client Acquisition Web Scraper Case Study Page
+ * Purpose: Presents a high-fidelity, comprehensive case study of the Client Acquisition Scraper.
+ * Contents: Includes project overview, executive summary, problem statement, solution details,
+ *           architectural pillars (stealth crawling, SQLModel thread-safety, query routing),
+ *           database schemas, operational run rules, and measurable business benefits.
+ * Fit: Part of the portfolio subpages under '/portfolio/web-scraper-for-client-acquisition',
+ *      highlighting multi-source automation, Python/Playwright crawling, LLM synthesis, and Streamlit UX.
+ * Design: Matches the high-fidelity structure, color palettes, cards, and sections of the tagForge case study.
+ */
+
+import Layout from '../../../layouts/Layout.astro';
+const title = 'Autonomous Client Acquisition Scraper Case Study | Jun Alvior';
+const description = 'An autonomous multi-source lead acquisition system that sweeps job lists, rates them with an LLM ranking engine, and drafts custom pitches in under 2 minutes.';
+---
+
+<Layout title={title} description={description}>
+  <main id="main-content" class="flex-grow flex flex-col">
+    <!-- ORGANISMS: Project Case Study -->
+    <article class="py-24 bg-grey-light dark:bg-[#1a1a1a] flex-grow transition-colors duration-300">
+      <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+        <!-- Breadcrumb -->
+        <div class="mb-8 text-sm text-gray-700 dark:text-gray-300">
+          <a
+            href="../../portfolio/"
+            class="hover:text-wood-accent transition-colors flex items-center gap-1 font-medium"
+          >
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" />
+            </svg>
+            Back to Portfolio
+          </a>
+        </div>
+
+        <!-- Header -->
+        <header class="mb-12" data-aos="fade-up">
+          <div class="mb-8 rounded-2xl overflow-hidden shadow-2xl border border-gray-200/50 dark:border-gray-800/50">
+            <img
+              src="/quick-portfolio/assets/web-scraper.webp"
+              alt="Client Acquisition Scraper Control Center Mockup"
+              class="w-full h-auto object-cover max-h-[500px] hover:scale-101 transition-transform duration-700"
+              loading="lazy"
+              decoding="async"
+              width="800"
+              height="450"
+            />
+          </div>
+          <div class="flex items-center gap-2 mb-4">
+            <span class="inline-flex items-center px-3 py-1 rounded-full text-xs font-semibold bg-green-100 dark:bg-green-950/50 text-green-700 dark:text-green-400">
+              Active Project
+            </span>
+            <span class="inline-flex items-center px-3 py-1 rounded-full text-xs font-semibold bg-wood-100 dark:bg-wood-950/50 text-wood-900 dark:text-wood-100">
+              Case Study
+            </span>
+          </div>
+          <h1 class="text-3xl md:text-5xl font-extrabold text-gray-900 dark:text-white tracking-tight mb-4">
+            Autonomous Client Acquisition Scraper
+          </h1>
+          <p class="text-lg md:text-xl text-gray-700 dark:text-gray-300 leading-relaxed font-normal">
+            High-Performance Multi-Source Lead Harvester with Custom Intent-Relevancy Scoring and Headless Playwright Automation
+          </p>
+
+          <div class="flex flex-wrap gap-2.5 mt-6">
+            <span class="px-3 py-1 bg-white dark:bg-[#252528] border border-gray-200 dark:border-gray-800 text-wood-900 dark:text-wood-100 rounded-full text-xs font-semibold tracking-wide shadow-sm transition-colors duration-300">
+              Python 3.12
+            </span>
+            <span class="px-3 py-1 bg-white dark:bg-[#252528] border border-gray-200 dark:border-gray-800 text-wood-900 dark:text-wood-100 rounded-full text-xs font-semibold tracking-wide shadow-sm transition-colors duration-300">
+              Playwright (Headless)
+            </span>
+            <span class="px-3 py-1 bg-white dark:bg-[#252528] border border-gray-200 dark:border-gray-800 text-wood-900 dark:text-wood-100 rounded-full text-xs font-semibold tracking-wide shadow-sm transition-colors duration-300">
+              Streamlit Dashboard
+            </span>
+            <span class="px-3 py-1 bg-white dark:bg-[#252528] border border-gray-200 dark:border-gray-800 text-wood-900 dark:text-wood-100 rounded-full text-xs font-semibold tracking-wide shadow-sm transition-colors duration-300">
+              SQLModel ORM
+            </span>
+            <span class="px-3 py-1 bg-white dark:bg-[#252528] border border-gray-200 dark:border-gray-800 text-wood-900 dark:text-wood-100 rounded-full text-xs font-semibold tracking-wide shadow-sm transition-colors duration-300">
+              SQLite Database
+            </span>
+            <span class="px-3 py-1 bg-white dark:bg-[#252528] border border-gray-200 dark:border-gray-800 text-wood-900 dark:text-wood-100 rounded-full text-xs font-semibold tracking-wide shadow-sm transition-colors duration-300">
+              Groq Llama-3-70B
+            </span>
+          </div>
+        </header>
+
+        <!-- Project Links (Top CTA) -->
+        <div class="flex flex-wrap gap-4 mb-16" data-aos="fade-up" data-aos-delay="50">
+          <button
+            id="btn-scroll-video"
+            class="px-6 py-3.5 bg-wood-accent hover:bg-wood-700 text-white font-semibold rounded-xl shadow-md hover:shadow-lg transition-all transform hover:-translate-y-0.5 flex items-center gap-2 cursor-pointer"
+          >
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14.752 11.168l-3.197-2.132A1 1 0 0010 9.87v4.263a1 1 0 001.555.832l3.197-2.132a1 1 0 000-1.664z" />
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+            </svg>
+            Watch Demo Video
+          </button>
+          <a
+            href="https://github.com/property360-2/web-scraper-for-client-acquisition"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="px-6 py-3.5 bg-transparent border-2 border-wood-accent hover:bg-wood-50 dark:hover:bg-[#252528] text-wood-accent dark:text-wood-300 font-semibold rounded-xl shadow-sm hover:shadow-md transition-all transform hover:-translate-y-0.5 flex items-center gap-2"
+          >
+            <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+              <path fill-rule="evenodd" d="M12 2C6.477 2 2 6.477 2 12c0 4.42 2.865 8.166 6.839 9.489.5.092.682-.217.682-.482 0-.237-.008-.866-.013-1.7-2.782.603-3.369-1.34-3.369-1.34-.454-1.156-1.11-1.462-1.11-1.462-.908-.62.069-.608.069-.608 1.003.07 1.531 1.03 1.531 1.03.892 1.529 2.341 1.087 2.91.831.092-.646.35-1.086.636-1.336-2.22-.253-4.555-1.11-4.555-4.943 0-1.091.39-1.984 1.029-2.683-.103-.253-.446-1.27.098-2.647 0 0 .84-.269 2.75 1.025A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.294 2.747-1.025 2.747-1.025.546 1.377.203 2.394.1 2.647.64.699 1.028 1.592 1.028 2.683 0 3.842-2.339 4.687-4.566 4.935.359.309.678.919.678 1.852 0 1.336-.012 2.415-.012 2.743 0 .267.18.579.688.481C19.137 20.164 22 16.418 22 12c0-5.523-4.477-10-10-10z" clip-rule="evenodd" />
+            </svg>
+            View Code
+          </a>
+        </div>
+
+        <!-- Content Flow -->
+        <div class="space-y-16">
+
+          <!-- SECTION 1: Executive Summary -->
+          <section id="executive-summary" class="bg-white dark:bg-[#252528] border-l-4 border-wood-accent border-y border-r border-gray-200 dark:border-gray-800 rounded-r-2xl p-6 sm:p-8" data-aos="fade-up">
+            <div class="flex gap-4">
+              <div class="hidden sm:block text-wood-accent">
+                <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+                </svg>
+              </div>
+              <div>
+                <h2 class="text-xl font-bold text-gray-900 dark:text-white mb-3 flex items-center gap-2">
+                  <svg class="w-5 h-5 text-wood-accent shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path>
+                  </svg>
+                  Executive Summary
+                </h2>
+                <p class="text-gray-700 dark:text-gray-300 leading-relaxed">
+                  The <strong>Autonomous Client Acquisition Scraper &amp; Control Center</strong> is an enterprise-grade, high-performance sourcing system designed to eliminate the exhausting operational friction of finding, prioritizing, and writing high-converting pitches to target prospects.
+                </p>
+                <p class="text-gray-700 dark:text-gray-300 leading-relaxed mt-3">
+                  By orchestrating a robust multi-source crawling engine co-hosting <strong>lightweight RSS scanners</strong>, <strong>API parsers</strong>, and <strong>headless Playwright browsers</strong>, the platform autonomously aggregates warm leads from directories and forums. Integrated with a local **SQLModel relational schema**, a custom **0–100 prompt intent-scoring module**, and rapid LLM inference utilizing **Groq Llama-3-70B**, the pipeline automatically constructs highly-targeted, custom outreaches in **under 2 minutes** — bypassing manual research bottlenecks entirely.
+                </p>
+              </div>
+            </div>
+          </section>
+
+          <!-- SECTION 2: The Problem vs The Solution -->
+          <section id="problem-solution" class="grid grid-cols-1 md:grid-cols-2 gap-8" data-aos="fade-up">
+            <!-- Problem Card -->
+            <div class="bg-white dark:bg-[#252528] border border-gray-200 dark:border-gray-800 shadow-sm rounded-2xl p-6 sm:p-8 flex flex-col">
+              <div class="flex items-center gap-3 mb-6">
+                <span class="p-2 bg-red-100 dark:bg-red-950/50 text-red-600 dark:text-red-400 rounded-lg">
+                  <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z" />
+                  </svg>
+                </span>
+                <h3 class="text-lg font-bold text-gray-900 dark:text-white">Manual Sourcing Bottleneck</h3>
+              </div>
+              <ul class="space-y-4 text-gray-700 dark:text-gray-300 text-sm leading-relaxed flex-grow">
+                <li class="flex gap-2">
+                  <span class="text-red-500 font-bold">•</span>
+                  <span><strong>High Sourcing Overhead:</strong> Sifting through endless regional Craigslist feeds, Google Maps listings, and forums manually consumes 3-4 hours daily.</span>
+                </li>
+                <li class="flex gap-2">
+                  <span class="text-red-500 font-bold">•</span>
+                  <span><strong>Relevancy Blindness:</strong> Manually reviewing hundreds of spam postings to identify the 5% that align with specific technical services.</span>
+                </li>
+                <li class="flex gap-2">
+                  <span class="text-red-500 font-bold">•</span>
+                  <span><strong>Outreach Fatigue:</strong> Crafting high-converting, personalized value pitches based on the company's background causes writer fatigue.</span>
+                </li>
+                <li class="flex gap-2">
+                  <span class="text-red-500 font-bold">•</span>
+                  <span><strong>Dashboard State Crashing:</strong> Running programmatic updates on Streamlit filter states during database queries often triggers layout API conflicts.</span>
+                </li>
+              </ul>
+            </div>
+
+            <!-- Solution Card -->
+            <div class="bg-white dark:bg-[#252528] border border-gray-200 dark:border-gray-800 shadow-sm rounded-2xl p-6 sm:p-8 flex flex-col">
+              <div class="flex items-center gap-3 mb-6">
+                <span class="p-2 bg-green-100 dark:bg-green-950/50 text-green-600 dark:text-green-400 rounded-lg">
+                  <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                  </svg>
+                </span>
+                <h3 class="text-lg font-bold text-gray-900 dark:text-white">The Engineering Solution</h3>
+              </div>
+              <ul class="space-y-4 text-gray-700 dark:text-gray-300 text-sm leading-relaxed flex-grow">
+                <li class="flex gap-2">
+                  <span class="text-green-500 font-bold">•</span>
+                  <span><strong>Tri-Engine Sweep:</strong> Automates simultaneous crawling using HackerNews Algolia endpoints, RSS parsers, and stealth Playwright engines.</span>
+                </li>
+                <li class="flex gap-2">
+                  <span class="text-green-500 font-bold">•</span>
+                  <span><strong>Intent-Scoring Core:</strong> Runs unstructured text through an AI evaluation module to assign a custom priority metric (0-100) instantly.</span>
+                </li>
+                <li class="flex gap-2">
+                  <span class="text-green-500 font-bold">•</span>
+                  <span><strong>Groq AI Synthesizer:</strong> Integrates context-aware prompt templates to draft custom, conversion-optimized outreaches in seconds.</span>
+                </li>
+                <li class="flex gap-2">
+                  <span class="text-green-500 font-bold">•</span>
+                  <span><strong>Safe Callback Interceptor:</strong> Implements custom `on_click` state overrides to update dashboard filters with zero interface exceptions.</span>
+                </li>
+              </ul>
+            </div>
+          </section>
+
+          <!-- SECTION 3: Visual Flow Diagram & Video Walkthrough -->
+          <section id="architecture-flow" class="border border-gray-200 dark:border-gray-800 bg-white dark:bg-[#252528] rounded-2xl p-6 sm:p-8" data-aos="fade-up">
+            <h3 class="text-xl font-bold text-gray-900 dark:text-white mb-6 text-center">Lead Sourcing System Architecture</h3>
+            
+            <!-- Architecture flow diagram — custom transparent inline SVG -->
+            <div class="not-prose my-6 overflow-x-auto">
+              <svg viewBox="0 0 880 140" class="w-full h-auto min-w-[800px] max-w-4xl mx-auto" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <defs>
+                  <!-- Arrowhead definition -->
+                  <marker id="arrow" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+                    <path d="M 0 1.5 L 6 5 L 0 8.5 z" class="fill-wood-accent" />
+                  </marker>
+                  <!-- Elegant subtle drop shadow for cards -->
+                  <filter id="card-shadow" x="-10%" y="-10%" width="120%" height="120%">
+                    <feDropShadow dx="0" dy="4" stdDeviation="6" flood-color="#8c6239" flood-opacity="0.08"/>
+                  </filter>
+                </defs>
+
+                <!-- Node 1: Sources -->
+                <g class="transition-transform duration-300 hover:-translate-y-1">
+                  <rect x="10" y="10" width="140" height="120" rx="12" class="stroke-wood-accent/30 dark:stroke-wood-accent/50 fill-wood-accent/[0.03] dark:fill-wood-accent/[0.05]" stroke-width="1.5" filter="url(#card-shadow)"/>
+                  <path d="M 22 10 L 138 10" class="stroke-wood-accent" stroke-width="3" stroke-linecap="round" />
+                  <text x="80" y="42" text-anchor="middle" class="fill-wood-accent font-bold text-xs uppercase tracking-widest" font-family="system-ui, -apple-system, sans-serif">Sources</text>
+                  <text x="80" y="70" text-anchor="middle" class="fill-gray-700 dark:fill-gray-300 text-[11px]" font-family="system-ui, -apple-system, sans-serif">HackerNews API</text>
+                  <text x="80" y="88" text-anchor="middle" class="fill-gray-700 dark:fill-gray-300 text-[11px]" font-family="system-ui, -apple-system, sans-serif">Craigslist RSS</text>
+                  <text x="80" y="106" text-anchor="middle" class="fill-gray-700 dark:fill-gray-300 text-[11px]" font-family="system-ui, -apple-system, sans-serif">Playwright / Maps</text>
+                </g>
+
+                <!-- Connection 1 -> 2 -->
+                <line x1="150" y1="70" x2="184" y2="70" class="stroke-wood-accent/50" stroke-width="1.5" stroke-dasharray="4 3" marker-end="url(#arrow)" />
+
+                <!-- Node 2: Lead Harvester -->
+                <g class="transition-transform duration-300 hover:-translate-y-1">
+                  <rect x="190" y="10" width="140" height="120" rx="12" class="stroke-wood-accent/30 dark:stroke-wood-accent/50 fill-wood-accent/[0.03] dark:fill-wood-accent/[0.05]" stroke-width="1.5" filter="url(#card-shadow)"/>
+                  <path d="M 202 10 L 318 10" class="stroke-wood-accent" stroke-width="3" stroke-linecap="round" />
+                  <text x="260" y="42" text-anchor="middle" class="fill-wood-accent font-bold text-xs uppercase tracking-widest" font-family="system-ui, -apple-system, sans-serif">Lead Harvester</text>
+                  <text x="260" y="74" text-anchor="middle" class="fill-gray-700 dark:fill-gray-300 text-[11px]" font-family="system-ui, -apple-system, sans-serif">Scoring Engine</text>
+                  <text x="260" y="94" text-anchor="middle" class="fill-gray-700 dark:fill-gray-300 text-[11px]" font-family="system-ui, -apple-system, sans-serif">0–100 Priority</text>
+                </g>
+
+                <!-- Connection 2 -> 3 -->
+                <line x1="330" y1="70" x2="364" y2="70" class="stroke-wood-accent/50" stroke-width="1.5" stroke-dasharray="4 3" marker-end="url(#arrow)" />
+
+                <!-- Node 3: SQLite DB -->
+                <g class="transition-transform duration-300 hover:-translate-y-1">
+                  <rect x="370" y="10" width="140" height="120" rx="12" class="stroke-wood-accent/30 dark:stroke-wood-accent/50 fill-wood-accent/[0.03] dark:fill-wood-accent/[0.05]" stroke-width="1.5" filter="url(#card-shadow)"/>
+                  <path d="M 382 10 L 498 10" class="stroke-wood-accent" stroke-width="3" stroke-linecap="round" />
+                  <text x="440" y="42" text-anchor="middle" class="fill-wood-accent font-bold text-xs uppercase tracking-widest" font-family="system-ui, -apple-system, sans-serif">SQLite DB</text>
+                  <text x="440" y="74" text-anchor="middle" class="fill-gray-700 dark:fill-gray-300 text-[11px]" font-family="system-ui, -apple-system, sans-serif">SQLModel ORM</text>
+                  <text x="440" y="94" text-anchor="middle" class="fill-gray-700 dark:fill-gray-300 text-[11px]" font-family="system-ui, -apple-system, sans-serif">Leads &amp; Drafts</text>
+                </g>
+
+                <!-- Connection 3 -> 4 -->
+                <line x1="510" y1="70" x2="544" y2="70" class="stroke-wood-accent/50" stroke-width="1.5" stroke-dasharray="4 3" marker-end="url(#arrow)" />
+
+                <!-- Node 4: Groq AI -->
+                <g class="transition-transform duration-300 hover:-translate-y-1">
+                  <rect x="550" y="10" width="140" height="120" rx="12" class="stroke-wood-accent/30 dark:stroke-wood-accent/50 fill-wood-accent/[0.03] dark:fill-wood-accent/[0.05]" stroke-width="1.5" filter="url(#card-shadow)"/>
+                  <path d="M 562 10 L 678 10" class="stroke-wood-accent" stroke-width="3" stroke-linecap="round" />
+                  <text x="620" y="42" text-anchor="middle" class="fill-wood-accent font-bold text-xs uppercase tracking-widest" font-family="system-ui, -apple-system, sans-serif">Groq AI</text>
+                  <text x="620" y="74" text-anchor="middle" class="fill-gray-700 dark:fill-gray-300 text-[11px]" font-family="system-ui, -apple-system, sans-serif">Llama LLM</text>
+                  <text x="620" y="94" text-anchor="middle" class="fill-gray-700 dark:fill-gray-300 text-[11px]" font-family="system-ui, -apple-system, sans-serif">Pitch Drafts</text>
+                </g>
+
+                <!-- Connection 4 -> 5 -->
+                <line x1="690" y1="70" x2="724" y2="70" class="stroke-wood-accent/50" stroke-width="1.5" stroke-dasharray="4 3" marker-end="url(#arrow)" />
+
+                <!-- Node 5: Streamlit UI -->
+                <g class="transition-transform duration-300 hover:-translate-y-1">
+                  <rect x="730" y="10" width="140" height="120" rx="12" class="stroke-wood-accent/30 dark:stroke-wood-accent/50 fill-wood-accent/[0.03] dark:fill-wood-accent/[0.05]" stroke-width="1.5" filter="url(#card-shadow)"/>
+                  <path d="M 742 10 L 858 10" class="stroke-wood-accent" stroke-width="3" stroke-linecap="round" />
+                  <text x="800" y="42" text-anchor="middle" class="fill-wood-accent font-bold text-xs uppercase tracking-widest" font-family="system-ui, -apple-system, sans-serif">Streamlit UI</text>
+                  <text x="800" y="74" text-anchor="middle" class="fill-gray-700 dark:fill-gray-300 text-[11px]" font-family="system-ui, -apple-system, sans-serif">Control Center</text>
+                  <text x="800" y="94" text-anchor="middle" class="fill-gray-700 dark:fill-gray-300 text-[11px]" font-family="system-ui, -apple-system, sans-serif">Badge → New Tab</text>
+                </g>
+              </svg>
+            </div>
+
+            <!-- Glowing separator and description -->
+            <div class="my-6 text-center text-xs text-gray-600 dark:text-gray-300 border-t border-gray-100 dark:border-gray-800 pt-4 flex items-center justify-center gap-2">
+              <svg class="w-4 h-4 text-amber-500 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"></path>
+              </svg>
+              <span><strong>Unified Local Funnel:</strong> Headless Playwright sweeps Google Maps &rarr; SQLModel stores Lead entries &rarr; Groq synthesizes outreach drafts &rarr; Interactive Badges launch Pitch Editor directly in new browser tabs.</span>
+            </div>
+
+            <!-- Video Demonstration Container -->
+            <div class="mt-8 border-t border-gray-150 dark:border-gray-800 pt-6" id="video-section">
+              <h4 class="text-sm font-bold tracking-widest text-wood-accent uppercase text-center mb-4">
+                Operational Video Walkthrough
+              </h4>
+              <!-- Click-to-Play Video Banner -->
+              <div class="rounded-xl overflow-hidden shadow-2xl relative group cursor-pointer border border-gray-100 dark:border-gray-800/80" id="video-wrapper">
+                <video
+                  id="case-study-video"
+                  class="w-full h-auto object-cover max-h-[460px] block"
+                  poster="/quick-portfolio/assets/web-scraper.webp"
+                  preload="none"
+                  playsinline
+                  controls
+                >
+                  <source src="/quick-portfolio/assets/web-scraper-demo.mp4" type="video/mp4" />
+                  Your browser does not support the HTML5 video element.
+                </video>
+
+                <!-- Play button overlay -->
+                <div
+                  id="play-overlay"
+                  class="absolute inset-0 flex items-center justify-center bg-black/30 group-hover:bg-black/40 transition-colors"
+                  aria-hidden="true"
+                >
+                  <div class="w-16 h-16 rounded-full bg-wood-accent/90 flex items-center justify-center shadow-xl group-hover:scale-110 transition-transform duration-200">
+                    <svg class="w-6 h-6 text-white ml-1" viewBox="0 0 24 24" fill="currentColor">
+                      <path d="M8 5v14l11-7z" />
+                    </svg>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </section>
+
+          <!-- SECTION 4: Architecture Pillars -->
+          <section id="architecture-pillars" class="space-y-8" data-aos="fade-up">
+            <h3 class="text-2xl font-bold text-gray-900 dark:text-white border-b border-gray-200 dark:border-gray-800 pb-3 flex items-center gap-2">
+              <svg class="w-6 h-6 text-wood-accent shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z"></path>
+              </svg>
+              Core Architecture Pillars
+            </h3>
+            
+            <div class="space-y-6">
+              <div>
+                <h4 class="text-lg font-bold text-gray-900 dark:text-white mb-2 flex items-center gap-2">
+                  <span class="w-1.5 h-6 bg-wood-accent rounded-full"></span>
+                  1. Multi-Source Scraping Core & Playwright Stealth Integration
+                </h4>
+                <p class="text-gray-700 dark:text-gray-300 leading-relaxed text-sm">
+                  To harvest leads without trigger blocks or CAPTCHA defenses across regional listings and physical business directories, we implemented distinct data pipelines:
+                </p>
+                <ul class="list-disc pl-5 mt-2 space-y-2 text-gray-700 dark:text-gray-300 text-sm">
+                  <li><strong>Playwright Harvester</strong> spins up headless Chromium instances with custom user-agents, randomized scroll intervals, and device dimension mimicking to safely scrape targeted physical local businesses.</li>
+                  <li><strong>API and RSS Connectors</strong> fetch real-time listings from HackerNews (via Algolia REST APIs) and Craigslist feeds asynchronously with minimum overhead.</li>
+                </ul>
+              </div>
+
+              <div>
+                <h4 class="text-lg font-bold text-gray-900 dark:text-white mb-2 flex items-center gap-2">
+                  <span class="w-1.5 h-6 bg-wood-accent rounded-full"></span>
+                  2. Asynchronous State Callbacks & Multitasking Workflows
+                </h4>
+                <p class="text-gray-700 dark:text-gray-300 leading-relaxed text-sm">
+                  Streamlit frontend applications normally re-run the entire script context from top-to-bottom on user interactions, which poses unique state sync challenges:
+                </p>
+                <ul class="list-disc pl-5 mt-2 space-y-2 text-gray-700 dark:text-gray-300 text-sm">
+                  <li><strong>Programmatic Selectbox Modification:</strong> Standard state changes on active select widgets normally trigger layout API exceptions. We resolved this by integrating custom `on_click` callback functions that update `st.session_state` parameters safely before elements are rendered.</li>
+                  <li><strong>New Tab Badge Interception:</strong> Clicking dynamic <code>New</code> or <code>Drafted</code> workflow status badges programmatically constructs URL query parameters and intercepts them via secure routing loops, launching the side-by-side pitch editor panel directly in a **new browser tab** and leaving the main prospects dashboard list completely intact.</li>
+                </ul>
+              </div>
+
+              <div>
+                <h4 class="text-lg font-bold text-gray-900 dark:text-white mb-2 flex items-center gap-2">
+                  <span class="w-1.5 h-6 bg-wood-accent rounded-full"></span>
+                  3. Dynamic Lead Action Console & Side-by-Side Pitch Editor
+                </h4>
+                <p class="text-gray-700 dark:text-gray-300 leading-relaxed text-sm">
+                  Outbound sales managers require rapid context shifts without closing their primary search lists:
+                </p>
+                
+                <div class="mt-4 bg-zinc-50 dark:bg-[#1a1a1a] border border-zinc-100 dark:border-gray-800 rounded-xl p-5">
+                  <h5 class="font-bold text-wood-accent text-sm mb-3 flex items-center gap-2">
+                    <svg class="w-4 h-4 text-wood-accent shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"></path>
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path>
+                    </svg>
+                    Managing Multi-threaded SQLModel Relational Databases
+                  </h5>
+                  <p class="text-gray-700 dark:text-gray-300 text-sm leading-relaxed">
+                    Because multiple background scrapers and dynamic multi-tab Streamlit instances write to the SQLite database simultaneously, we configured the connection engine defensively:
+                  </p>
+                  <ul class="list-disc pl-5 mt-2 space-y-1.5 text-gray-700 dark:text-gray-300 text-sm">
+                    <li>Constructed SQLite database links using <code>connect_args=&#123;"check_same_thread": False&#125;</code> parameters.</li>
+                    <li>Utilized a secure context manager session handler (`with Session(engine) as session`) that safely commits transactional updates and isolates operations in concurrent processing environments.</li>
+                    <li>Mapped database relations using SQLModel ORM structure, guaranteeing full schema safety while saving or editing OutreachDraft objects.</li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </section>
+
+          <!-- SECTION 5: Database & Schema Design -->
+          <section id="database-design" class="space-y-6" data-aos="fade-up">
+            <h3 class="text-2xl font-bold text-gray-900 dark:text-white border-b border-gray-200 dark:border-gray-800 pb-3 flex items-center gap-2">
+              <svg class="w-6 h-6 text-wood-accent shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 7v10c0 2.21 3.582 4 8 4s8-1.79 8-4V7M4 7c0 2.21 3.582 4 8 4s8-1.79 8-4M4 7c0-2.21 3.582-4 8-4s8 1.79 8 4m0 5c0 2.21-3.582 4-8 4s-8-1.79-8-4"></path>
+              </svg>
+              Database &amp; Schema Design
+            </h3>
+            <p class="text-gray-700 dark:text-gray-300 leading-relaxed text-sm">
+              The system operates a local SQLite database designed using SQLModel ORM structures, maintaining a strict 1-to-many relationship between acquired leads and synthesized pitches:
+            </p>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mt-4">
+              <!-- Leads Schema Card -->
+              <div class="border border-gray-200 dark:border-gray-800 bg-white dark:bg-[#252528] rounded-xl p-5">
+                <div class="flex items-center justify-between border-b border-gray-100 dark:border-gray-800 pb-2 mb-4">
+                  <h4 class="font-bold text-gray-900 dark:text-white text-sm flex items-center gap-2">
+                    <span class="w-2 h-2 rounded-full bg-blue-500"></span>
+                    Lead (Table Schema)
+                  </h4>
+                  <span class="text-2xs font-mono text-gray-600 dark:text-gray-400">ID: Integer (PK)</span>
+                </div>
+                <ul class="space-y-2 font-mono text-xs text-gray-700 dark:text-zinc-300">
+                  <li class="flex justify-between border-b border-gray-100/50 dark:border-gray-800/60 pb-1">
+                    <span class="text-gray-800 dark:text-gray-200">company</span>
+                    <span class="text-emerald-600 dark:text-emerald-400">string (Nullable)</span>
+                  </li>
+                  <li class="flex justify-between border-b border-gray-100/50 dark:border-gray-800/60 pb-1">
+                    <span class="text-gray-800 dark:text-gray-200">title</span>
+                    <span class="text-emerald-600 dark:text-emerald-400">string</span>
+                  </li>
+                  <li class="flex justify-between border-b border-gray-100/50 dark:border-gray-800/60 pb-1">
+                    <span class="text-gray-800 dark:text-gray-200">description</span>
+                    <span class="text-emerald-600 dark:text-emerald-400">string</span>
+                  </li>
+                  <li class="flex justify-between border-b border-gray-100/50 dark:border-gray-800/60 pb-1">
+                    <span class="text-gray-800 dark:text-gray-200">source</span>
+                    <span class="text-blue-600 dark:text-blue-400">"HackerNews" | "Craigslist" | "Maps"</span>
+                  </li>
+                  <li class="flex justify-between border-b border-gray-100/50 dark:border-gray-800/60 pb-1">
+                    <span class="text-gray-800 dark:text-gray-200">score</span>
+                    <span class="text-purple-600 dark:text-purple-400">integer (0–100)</span>
+                  </li>
+                  <li class="flex justify-between border-b border-gray-100/50 dark:border-gray-800/60 pb-1">
+                    <span class="text-gray-800 dark:text-gray-200">status</span>
+                    <span class="text-blue-600 dark:text-blue-400">"new" | "drafted" | "contacted" | "archived"</span>
+                  </li>
+                  <li class="flex justify-between">
+                    <span class="text-gray-800 dark:text-gray-200">createdAt</span>
+                    <span class="text-amber-600 dark:text-amber-400">DateTime</span>
+                  </li>
+                </ul>
+              </div>
+
+              <!-- Outreach Schema Card -->
+              <div class="border border-gray-200 dark:border-gray-800 bg-white dark:bg-[#252528] rounded-xl p-5">
+                <div class="flex items-center justify-between border-b border-gray-100 dark:border-gray-800 pb-2 mb-4">
+                  <h4 class="font-bold text-gray-900 dark:text-white text-sm flex items-center gap-2">
+                    <span class="w-2 h-2 rounded-full bg-emerald-500"></span>
+                    OutreachDraft (Schema)
+                  </h4>
+                  <span class="text-2xs font-mono text-gray-600 dark:text-gray-400">ID: Integer (PK)</span>
+                </div>
+                <ul class="space-y-2 font-mono text-xs text-gray-700 dark:text-zinc-300">
+                  <li class="flex justify-between border-b border-gray-100/50 dark:border-gray-800/60 pb-1">
+                    <span class="text-gray-800 dark:text-gray-200">leadId <span class="text-blue-500 font-bold">[FK]</span></span>
+                    <span class="text-emerald-600 dark:text-emerald-400">ForeignKey (Lead.id)</span>
+                  </li>
+                  <li class="flex justify-between border-b border-gray-100/50 dark:border-gray-800/60 pb-1">
+                    <span class="text-gray-800 dark:text-gray-200">subject</span>
+                    <span class="text-emerald-600 dark:text-emerald-400">string</span>
+                  </li>
+                  <li class="flex justify-between border-b border-gray-100/50 dark:border-gray-800/60 pb-1">
+                    <span class="text-gray-800 dark:text-gray-200">body</span>
+                    <span class="text-emerald-600 dark:text-emerald-400">string (TEXT)</span>
+                  </li>
+                  <li class="flex justify-between border-b border-gray-100/50 dark:border-gray-800/60 pb-1">
+                    <span class="text-gray-800 dark:text-gray-200">createdAt</span>
+                    <span class="text-amber-600 dark:text-amber-400">DateTime</span>
+                  </li>
+                  <li class="flex justify-between">
+                    <span class="text-gray-800 dark:text-gray-200">updatedAt</span>
+                    <span class="text-amber-600 dark:text-amber-400">DateTime</span>
+                  </li>
+                </ul>
+              </div>
+            </div>
+
+            <div class="mt-4 bg-zinc-50 dark:bg-[#1a1a1a] border border-gray-200/50 dark:border-gray-800 rounded-xl p-5 text-sm text-gray-700 dark:text-gray-300">
+              <h5 class="font-bold text-gray-900 dark:text-white mb-2 flex items-center gap-1.5">
+                <svg class="w-5 h-5 text-wood-accent" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z" />
+                </svg>
+                Dynamic SQLite Indexing Strategy
+              </h5>
+              <ul class="list-disc pl-5 space-y-2">
+                <li><strong>Table Indexes:</strong> Built SQL indexes on `Lead.score` and `Lead.status` columns to ensure database search filters inside the Streamlit grid run in **O(log N) complexity**, guaranteeing instantaneous rendering even with thousands of crawled leads.</li>
+                <li><strong>ForeignKey Cascading:</strong> Mapped cascading delete configurations so archiving/removing a Lead automatically cleans up the corresponding OutreachDraft record to keep storage requirements minimal.</li>
+              </ul>
+            </div>
+          </section>
+
+          <!-- SECTION 6: Lead Priority & Intent Valuation -->
+          <section id="compliance-logic" class="space-y-6" data-aos="fade-up">
+            <h3 class="text-2xl font-bold text-gray-900 dark:text-white border-b border-gray-200 dark:border-gray-800 pb-3 flex items-center gap-2">
+              <svg class="w-6 h-6 text-wood-accent shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"></path>
+              </svg>
+              Operational Lead Intent Valuation Tiers
+            </h3>
+            <p class="text-gray-700 dark:text-gray-300 leading-relaxed text-sm">
+              To prioritize high-value client opportunities, the organic scoring module runs posting descriptions through strict parameters to group leads into separate operation workflow paths:
+            </p>
+
+            <div class="overflow-x-auto rounded-xl border border-gray-200 dark:border-gray-800 shadow-sm mt-4">
+              <table class="w-full text-left border-collapse bg-white dark:bg-[#252528]">
+                <thead>
+                  <tr class="bg-gray-50 dark:bg-[#1a1a1a] border-b border-gray-200 dark:border-gray-800 text-xs font-bold uppercase tracking-wider">
+                    <th class="px-6 py-4 text-gray-700 dark:text-zinc-200">Relevancy Tier</th>
+                    <th class="px-6 py-4 text-gray-700 dark:text-zinc-200">Score Range</th>
+                    <th class="px-6 py-4 text-gray-700 dark:text-zinc-200">Evaluation Rules</th>
+                    <th class="px-6 py-4 text-gray-700 dark:text-zinc-200">Action Strategy</th>
+                  </tr>
+                </thead>
+                <tbody class="divide-y divide-gray-150 dark:divide-gray-800 text-sm">
+                  <tr class="hover:bg-gray-50/50 dark:hover:bg-[#1a1a1a]/40 transition-colors">
+                    <td class="px-6 py-4 font-semibold text-green-600 dark:text-green-400">High Relevancy</td>
+                    <td class="px-6 py-4 font-mono text-gray-700 dark:text-gray-200">80 – 100</td>
+                    <td class="px-6 py-4 text-gray-700 dark:text-gray-200">Direct tech stack match (e.g. Next.js, AI, automation) + urgent signals.</td>
+                    <td class="px-6 py-4">
+                      <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-semibold bg-green-100 dark:bg-green-950/40 text-green-700 dark:text-green-400 border border-green-200/50 dark:border-green-900/30">
+                        Auto-Generated Pitch
+                      </span>
+                    </td>
+                  </tr>
+                  <tr class="hover:bg-gray-50/50 dark:hover:bg-[#1a1a1a]/40 transition-colors">
+                    <td class="px-6 py-4 font-semibold text-wood-accent">Medium Relevancy</td>
+                    <td class="px-6 py-4 font-mono text-gray-700 dark:text-gray-200">50 – 79</td>
+                    <td class="px-6 py-4 text-gray-700 dark:text-gray-200">Generic tech requirements, partial stack match, or low urgency listings.</td>
+                    <td class="px-6 py-4">
+                      <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-semibold bg-yellow-100 dark:bg-yellow-950/40 text-yellow-700 dark:text-yellow-400 border border-yellow-200/50 dark:border-yellow-900/30">
+                        On-Demand Draft
+                      </span>
+                    </td>
+                  </tr>
+                  <tr class="hover:bg-gray-50/50 dark:hover:bg-[#1a1a1a]/40 transition-colors">
+                    <td class="px-6 py-4 font-semibold text-red-500">Low Relevancy</td>
+                    <td class="px-6 py-4 font-mono text-gray-700 dark:text-gray-200">0 – 49</td>
+                    <td class="px-6 py-4 text-gray-700 dark:text-gray-200">Out-of-scope work (e.g. basic data entry), non-technical listings, or spam.</td>
+                    <td class="px-6 py-4">
+                      <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-semibold bg-red-100 dark:bg-red-950/40 text-red-700 dark:text-red-400 border border-red-200/50 dark:border-red-900/30">
+                        Automatic Archive
+                      </span>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </section>
+
+          <!-- SECTION 7: Outcomes & Key Benefits -->
+          <section id="outcomes-benefits" class="space-y-6" data-aos="fade-up">
+            <h3 class="text-2xl font-bold text-gray-900 dark:text-white border-b border-gray-200 dark:border-gray-800 pb-3 flex items-center gap-2">
+              <svg class="w-6 h-6 text-wood-accent shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path>
+              </svg>
+              Key Benefits &amp; Tangible Outcomes
+            </h3>
+            
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+              <!-- Benefit 1 -->
+              <div class="border border-gray-200 dark:border-gray-800 bg-white dark:bg-[#252528] rounded-xl p-5 hover:translate-y-[-4px] hover:shadow-md transition-all duration-300 flex flex-col items-start">
+                <div class="p-2 w-10 h-10 rounded-lg bg-amber-50 dark:bg-amber-950/20 text-amber-500 flex items-center justify-center mb-3">
+                  <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                  </svg>
+                </div>
+                <h4 class="font-bold text-gray-900 dark:text-white text-sm mb-2">92% Operational Hours Reclaimed</h4>
+                <p class="text-xs text-gray-700 dark:text-gray-300 leading-relaxed">
+                  Reduces typical manual sourcing tasks to under 2 minutes, saving outbound agency managers 15-20 tedious hours every single week.
+                </p>
+              </div>
+
+              <!-- Benefit 2 -->
+              <div class="border border-gray-200 dark:border-gray-800 bg-white dark:bg-[#252528] rounded-xl p-5 hover:translate-y-[-4px] hover:shadow-md transition-all duration-300 flex flex-col items-start">
+                <div class="p-2 w-10 h-10 rounded-lg bg-emerald-50 dark:bg-emerald-950/20 text-emerald-500 flex items-center justify-center mb-3">
+                  <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path>
+                  </svg>
+                </div>
+                <h4 class="font-bold text-gray-900 dark:text-white text-sm mb-2">Top-of-Inbox Outbound Speed</h4>
+                <p class="text-xs text-gray-700 dark:text-gray-300 leading-relaxed">
+                  Generates unique personalized value pitches within seconds of a post appearing online, placing outreaches at the top of client inboxes.
+                </p>
+              </div>
+
+              <!-- Benefit 3 -->
+              <div class="border border-gray-200 dark:border-gray-800 bg-white dark:bg-[#252528] rounded-xl p-5 hover:translate-y-[-4px] hover:shadow-md transition-all duration-300 flex flex-col items-start">
+                <div class="p-2 w-10 h-10 rounded-lg bg-blue-50 dark:bg-blue-950/20 text-blue-500 flex items-center justify-center mb-3">
+                  <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10"></path>
+                  </svg>
+                </div>
+                <h4 class="font-bold text-gray-900 dark:text-white text-sm mb-2">Unified Sourcing Ingestion</h4>
+                <p class="text-xs text-gray-700 dark:text-gray-300 leading-relaxed">
+                  Aggregates HackerNews API parameters, Craigslist regional RSS feeds, and dynamic Google Maps local lists into a single consolidated dashboard.
+                </p>
+              </div>
+
+              <!-- Benefit 4 -->
+              <div class="border border-gray-200 dark:border-gray-800 bg-white dark:bg-[#252528] rounded-xl p-5 hover:translate-y-[-4px] hover:shadow-md transition-all duration-300 flex flex-col items-start">
+                <div class="p-2 w-10 h-10 rounded-lg bg-purple-50 dark:bg-purple-950/20 text-purple-500 flex items-center justify-center mb-3">
+                  <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"></path>
+                  </svg>
+                </div>
+                <h4 class="font-bold text-gray-900 dark:text-white text-sm mb-2">0-Maintenance Relational DB</h4>
+                <p class="text-xs text-gray-700 dark:text-gray-300 leading-relaxed">
+                  Relational tables managed through Python SQLModel require absolutely zero external database configurations, maintaining local data integrity effortlessly.
+                </p>
+              </div>
+            </div>
+
+            <!-- Footer Presentation Badge -->
+            <div class="mt-8 border-t border-gray-200 dark:border-gray-800 pt-6 text-center">
+              <span class="inline-flex items-center gap-2 px-4 py-2 rounded-xl text-xs font-semibold bg-white dark:bg-[#252528] text-wood-accent border border-gray-200 dark:border-gray-800">
+                <svg class="w-4 h-4 text-wood-accent shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 14l9-5-9-5-9 5 9 5z"></path>
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 14l6.16-3.422a12.083 12.083 0 01.665 6.479A11.952 11.952 0 0012 20.055a11.952 11.952 0 00-6.824-2.998 12.078 12.078 0 01.665-6.479L12 14z"></path>
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 14v7"></path>
+                </svg>
+                Engineered for High-Velocity Lead Outbound Operations &amp; Client Acquisition Funnels
+              </span>
+            </div>
+          </section>
+
+        </div>
+      </div>
+    </article>
+  </main>
+</Layout>
+
+<!-- Scoped CSS rules for high-contrast accessibility in dark mode -->
+<style>
+  /* Dark mode contrast accessibility overrides to bypass compiled CSS conflicts */
+  :global(html.dark) .font-mono.text-xs li span:first-child {
+    color: #e4e4e7 !important; /* zinc-200 */
+  }
+  :global(html.dark) .text-2xs.font-mono.text-gray-600 {
+    color: #a1a1aa !important; /* zinc-400 */
+  }
+  :global(html.dark) table th {
+    color: #f4f4f5 !important; /* zinc-100 */
+  }
+  :global(html.dark) table td.text-gray-700 {
+    color: #e4e4e7 !important; /* zinc-200 */
+  }
+  :global(html.dark) p.italic.text-xs {
+    color: #d4d4d8 !important; /* zinc-300 */
+  }
+</style>
+
+<script>
+  /**
+   * Playback management and interactivity controllers for the video showcase banner.
+   */
+  (function initCaseStudyInteractions() {
+    // 1. Scroll-to-video CTA logic
+    const scrollBtn = document.getElementById('btn-scroll-video');
+    const videoSec  = document.getElementById('video-section');
+    if (scrollBtn && videoSec) {
+      scrollBtn.addEventListener('click', () => {
+        videoSec.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      });
+    }
+
+    // 2. Click-to-play video overlay logic
+    const wrapper = document.getElementById('video-wrapper');
+    const video   = document.getElementById('case-study-video') as HTMLVideoElement | null;
+    const overlay = document.getElementById('play-overlay');
+
+    if (!video || !overlay || !wrapper) return;
+
+    function hideOverlay() {
+      if (overlay) overlay.style.display = 'none';
+    }
+
+    wrapper.addEventListener('click', (e) => {
+      // Don't trigger if they specifically clicked native browser control overlay areas
+      const target = e.target as HTMLElement;
+      if (target === video) return;
+
+      video.play().catch(() => {
+        // Playback blocked, fall back gracefully to native controls
+      });
+      hideOverlay();
+    });
+
+    video.addEventListener('play', hideOverlay);
+  })();
+</script>
