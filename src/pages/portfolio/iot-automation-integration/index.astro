@@ -133,46 +133,6 @@ const description = 'ESP32 + RC522 RFID scanner validated against Supabase datab
 
         <!-- Content -->
         <div class="prose dark:prose-invert prose-lg prose-wood max-w-none" data-aos="fade-up" data-aos-delay="100">
-          <h2>Overview</h2>
-          <p>
-            The <strong>RFID IoT Membership Scanner & Automation Integration</strong> is a production-ready hardware-to-cloud ecosystem designed to replace manual, error-prone spreadsheet check-in systems. Built on an **ESP32 microcontroller** wired to an **RC522 RFID reader**, the scanner validates membership cards directly against a **Supabase PostgreSQL database** using secure RLS (Row Level Security) schemas. 
-          </p>
-          <p>
-            It integrates an offline-first cache database using **LittleFS** file systems to guarantee scan capture during internet drops, hosting local WebSocket monitors for onsite staff and visual cloud pipelines in **n8n** for Telegram notifications and auto-expiration auditing.
-          </p>
-
-          <h2>The Problem It Solves</h2>
-          <p>
-            Gyms, coworking spaces, and member clubs lose billable hours and leak subscription revenue because of manual check-in processes, lost paper journals, and unmonitored membership expirations. 
-          </p>
-          <p>
-            This system completely automates the entry/exit validations. A single tap of an RFID tag queries database states in <strong>sub-100ms</strong>, flashes colored LEDs for immediate user feedback, stores logs, alerts staff via Telegram if an invalid or expired card is scanned, and calculates auto-expirations daily without manual intervention.
-          </p>
-
-          <h2>Core Subsystems</h2>
-          
-          <h3>1. ESP32 Microprocessor Firmware</h3>
-          <ul>
-            <li><strong>MFRC522 Library</strong>: Captures high-frequency 13.56MHz RFID card UID numbers.</li>
-            <li><strong>Offline Queue Database</strong>: Integrates LittleFS storage to queue scans locally during WiFi outages, automatically syncing backlogs to Supabase upon reconnection.</li>
-            <li><strong>Local WebSocket Server</strong>: Serves a lightweight web interface locally, allowing staff on the same network to view scans live without relying on outside web servers.</li>
-            <li><strong>Captive Portal Setup</strong>: Integrates WiFiManager to allow easy configuration of WiFi SSID/passwords via phone browser without hardcoding credentials in firmware.</li>
-          </ul>
-
-          <h3>2. Supabase Backend Database</h3>
-          <ul>
-            <li><strong>Relational DB Layout</strong>: Normalizes `members`, `plans`, `memberships`, and `scan_logs` tables.</li>
-            <li><strong>Validate Scan Stored Procedure</strong>: Executes transactional checks (card presence, active plan date, and scan status toggle) in a single atomic SQL transaction.</li>
-            <li><strong>Row Level Security (RLS)</strong>: Enforces strict data access rules protecting database connections.</li>
-          </ul>
-
-          <h3>3. n8n Cloud Automation & Telegram Alerts</h3>
-          <ul>
-            <li><strong>Instant Notifications</strong>: Translates database webhooks into formatted Telegram message warnings for expired access attempts.</li>
-            <li><strong>Auto-Expiration Daemon</strong>: Runs scheduled Cron jobs to toggle member status to expired, keeping data clean.</li>
-            <li><strong>Outbound Reporting</strong>: Compiles daily check-in reports sent straight to admins' chats.</li>
-          </ul>
-
           <h2>System Demonstration & Walkthrough</h2>
           <p>Below are video recordings showcasing the hardware scanner in action, user registration, database state syncing, and the unified admin interface:</p>
           
@@ -222,6 +182,46 @@ const description = 'ESP32 + RC522 RFID scanner validated against Supabase datab
               </div>
             </div>
           </div>
+
+          <h2>Overview</h2>
+          <p>
+            The <strong>RFID IoT Membership Scanner & Automation Integration</strong> is a production-ready hardware-to-cloud ecosystem designed to replace manual, error-prone spreadsheet check-in systems. Built on an **ESP32 microcontroller** wired to an **RC522 RFID reader**, the scanner validates membership cards directly against a **Supabase PostgreSQL database** using secure RLS (Row Level Security) schemas. 
+          </p>
+          <p>
+            It integrates an offline-first cache database using **LittleFS** file systems to guarantee scan capture during internet drops, hosting local WebSocket monitors for onsite staff and visual cloud pipelines in **n8n** for Telegram notifications and auto-expiration auditing.
+          </p>
+
+          <h2>The Problem It Solves</h2>
+          <p>
+            Gyms, coworking spaces, and member clubs lose billable hours and leak subscription revenue because of manual check-in processes, lost paper journals, and unmonitored membership expirations. 
+          </p>
+          <p>
+            This system completely automates the entry/exit validations. A single tap of an RFID tag queries database states in <strong>sub-100ms</strong>, flashes colored LEDs for immediate user feedback, stores logs, alerts staff via Telegram if an invalid or expired card is scanned, and calculates auto-expirations daily without manual intervention.
+          </p>
+
+          <h2>Core Subsystems</h2>
+          
+          <h3>1. ESP32 Microprocessor Firmware</h3>
+          <ul>
+            <li><strong>MFRC522 Library</strong>: Captures high-frequency 13.56MHz RFID card UID numbers.</li>
+            <li><strong>Offline Queue Database</strong>: Integrates LittleFS storage to queue scans locally during WiFi outages, automatically syncing backlogs to Supabase upon reconnection.</li>
+            <li><strong>Local WebSocket Server</strong>: Serves a lightweight web interface locally, allowing staff on the same network to view scans live without relying on outside web servers.</li>
+            <li><strong>Captive Portal Setup</strong>: Integrates WiFiManager to allow easy configuration of WiFi SSID/passwords via phone browser without hardcoding credentials in firmware.</li>
+          </ul>
+
+          <h3>2. Supabase Backend Database</h3>
+          <ul>
+            <li><strong>Relational DB Layout</strong>: Normalizes `members`, `plans`, `memberships`, and `scan_logs` tables.</li>
+            <li><strong>Validate Scan Stored Procedure</strong>: Executes transactional checks (card presence, active plan date, and scan status toggle) in a single atomic SQL transaction.</li>
+            <li><strong>Row Level Security (RLS)</strong>: Enforces strict data access rules protecting database connections.</li>
+          </ul>
+
+          <h3>3. n8n Cloud Automation & Telegram Alerts</h3>
+          <ul>
+            <li><strong>Instant Notifications</strong>: Translates database webhooks into formatted Telegram message warnings for expired access attempts.</li>
+            <li><strong>Auto-Expiration Daemon</strong>: Runs scheduled Cron jobs to toggle member status to expired, keeping data clean.</li>
+            <li><strong>Outbound Reporting</strong>: Compiles daily check-in reports sent straight to admins' chats.</li>
+          </ul>
 
           <h2>Hardware Wiring Schematics</h2>
           <p>Below is the SPI pin connections utilized between the ESP32 DevKit board and the RC522 RFID IC:</p>
