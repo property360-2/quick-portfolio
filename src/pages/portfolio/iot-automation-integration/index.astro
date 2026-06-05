@@ -1,0 +1,345 @@
+---
+/**
+ * RFID IoT Membership Scanner & Automation Integration Case Study
+ * Purpose: Detailed case study for the RFID IoT Membership Scanner & Automation Integration.
+ * Contains: Interactive image carousel, project overview, key features, hardware wiring, and stack details.
+ * System Role: Explains the hardware-to-cloud operational automation architecture.
+ */
+import Layout from '../../../layouts/Layout.astro';
+
+const title = 'RFID IoT Membership Scanner & Automation Case Study | Jun Alvior';
+const description = 'ESP32 + RC522 RFID scanner validated against Supabase databases, generating real-time cloud n8n workflows and automated Telegram logs.';
+---
+
+<Layout title={title} description={description}>
+  <main id="main-content" class="flex-grow flex flex-col">
+    <!-- ORGANISMS: Project Case Study -->
+    <article class="py-24 bg-grey-light dark:bg-[#1a1a1a] flex-grow">
+      <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+        <!-- Breadcrumb -->
+        <div class="mb-8 text-sm text-gray-500 dark:text-gray-400">
+          <a href="../../portfolio/" class="hover:text-wood-accent transition-colors">
+            &larr; Back to Portfolio
+          </a>
+        </div>
+
+        <!-- Header -->
+        <header class="mb-12" data-aos="fade-up">
+          <!-- PREMIUM INTERACTIVE CAROUSEL -->
+          <div class="relative overflow-hidden rounded-xl shadow-2xl bg-black aspect-video mb-8 group">
+            <!-- Slides Container -->
+            <div id="carousel-slides" class="relative w-full h-full flex transition-transform duration-500 ease-out" style="transform: translateX(0%);">
+              <!-- Slide 1: Local Dashboard -->
+              <div class="w-full h-full flex-shrink-0 relative">
+                <img
+                  src="/quick-portfolio/assets/iot-automation-integration/localhost.png"
+                  alt="Staff Scan Local Dashboard View"
+                  class="w-full h-full object-cover"
+                  loading="eager"
+                  decoding="async"
+                />
+                <div class="absolute bottom-0 inset-x-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent p-6 text-white">
+                  <h4 class="text-lg font-bold">1. Local Staff Scan Monitor</h4>
+                  <p class="text-xs text-gray-300">WebSocket-driven local dashboard served directly from the ESP32 chip for immediate scan feedbacks.</p>
+                </div>
+              </div>
+              
+              <!-- Slide 2: Member Status Portal -->
+              <div class="w-full h-full flex-shrink-0 relative">
+                <img
+                  src="/quick-portfolio/assets/iot-automation-integration/online.png"
+                  alt="Online Member Portal status query view"
+                  class="w-full h-full object-cover"
+                  loading="lazy"
+                  decoding="async"
+                />
+                <div class="absolute bottom-0 inset-x-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent p-6 text-white">
+                  <h4 class="text-lg font-bold">2. Public Member Portal</h4>
+                  <p class="text-xs text-gray-300">Public cloud check-in query page deployed to Vercel for members to query expiration logs.</p>
+                </div>
+              </div>
+
+              <!-- Slide 3: n8n Cloud Workflow -->
+              <div class="w-full h-full flex-shrink-0 relative">
+                <img
+                  src="/quick-portfolio/assets/iot-automation-integration/workflow.png"
+                  alt="n8n cloud automated integration workflow mapping"
+                  class="w-full h-full object-cover"
+                  loading="lazy"
+                  decoding="async"
+                />
+                <div class="absolute bottom-0 inset-x-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent p-6 text-white">
+                  <h4 class="text-lg font-bold">3. n8n Cloud Automation Mapping</h4>
+                  <p class="text-xs text-gray-300">Visual automation pipelines routing logs, sending Telegram warnings, and handling database cleanups.</p>
+                </div>
+              </div>
+
+              <!-- Slide 4: Physical Hardware Setup -->
+              <div class="w-full h-full flex-shrink-0 relative">
+                <img
+                  src="/quick-portfolio/assets/iot-automation-integration/IMG_20260605_154927.jpg"
+                  alt="Physical IoT Scanner RFID setup and hardware board wiring photo"
+                  class="w-full h-full object-cover"
+                  loading="lazy"
+                  decoding="async"
+                />
+                <div class="absolute bottom-0 inset-x-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent p-6 text-white">
+                  <h4 class="text-lg font-bold">4. Physical Hardware Setup</h4>
+                  <p class="text-xs text-gray-300">ESP32 microchip, RC522 RFID scanner, and status indicators wired on a breadboard.</p>
+                </div>
+              </div>
+            </div>
+
+            <!-- Left Arrow Navigation -->
+            <button
+              id="prev-slide"
+              aria-label="Previous Slide"
+              class="absolute left-4 top-1/2 -translate-y-1/2 w-10 h-10 rounded-full bg-black/40 hover:bg-black/70 text-white flex items-center justify-center transition-colors cursor-pointer select-none z-20 group-hover:scale-105"
+            >
+              &larr;
+            </button>
+            
+            <!-- Right Arrow Navigation -->
+            <button
+              id="next-slide"
+              aria-label="Next Slide"
+              class="absolute right-4 top-1/2 -translate-y-1/2 w-10 h-10 rounded-full bg-black/40 hover:bg-black/70 text-white flex items-center justify-center transition-colors cursor-pointer select-none z-20 group-hover:scale-105"
+            >
+              &rarr;
+            </button>
+
+            <!-- Slide Dots Indicator -->
+            <div class="absolute bottom-4 left-1/2 -translate-x-1/2 flex gap-2 z-20">
+              <button class="carousel-dot w-2.5 h-2.5 rounded-full bg-white opacity-100 transition-opacity" data-index="0" aria-label="Slide 1"></button>
+              <button class="carousel-dot w-2.5 h-2.5 rounded-full bg-white opacity-50 transition-opacity" data-index="1" aria-label="Slide 2"></button>
+              <button class="carousel-dot w-2.5 h-2.5 rounded-full bg-white opacity-50 transition-opacity" data-index="2" aria-label="Slide 3"></button>
+              <button class="carousel-dot w-2.5 h-2.5 rounded-full bg-white opacity-50 transition-opacity" data-index="3" aria-label="Slide 4"></button>
+            </div>
+          </div>
+
+          <h1 class="text-4xl md:text-5xl font-bold text-gray-900 dark:text-white mb-6">
+            RFID IoT Membership Scanner & Automation Integration
+          </h1>
+          
+          <div class="flex flex-wrap gap-3 text-sm">
+            <span class="px-3 py-1 bg-wood-100 dark:bg-wood-900 text-wood-accent rounded-full font-medium">ESP32 DevKit</span>
+            <span class="px-3 py-1 bg-wood-100 dark:bg-wood-900 text-wood-accent rounded-full font-medium">RC522 RFID</span>
+            <span class="px-3 py-1 bg-wood-100 dark:bg-wood-900 text-wood-accent rounded-full font-medium">Supabase (PostgreSQL)</span>
+            <span class="px-3 py-1 bg-wood-100 dark:bg-wood-900 text-wood-accent rounded-full font-medium">n8n Cloud</span>
+            <span class="px-3 py-1 bg-wood-100 dark:bg-wood-900 text-wood-accent rounded-full font-medium">Telegram API</span>
+            <span class="px-3 py-1 bg-wood-100 dark:bg-wood-900 text-wood-accent rounded-full font-medium">LittleFS</span>
+          </div>
+        </header>
+
+        <!-- Content -->
+        <div class="prose dark:prose-invert prose-lg prose-wood max-w-none" data-aos="fade-up" data-aos-delay="100">
+          <h2>Overview</h2>
+          <p>
+            The <strong>RFID IoT Membership Scanner & Automation Integration</strong> is a production-ready hardware-to-cloud ecosystem designed to replace manual, error-prone spreadsheet check-in systems. Built on an **ESP32 microcontroller** wired to an **RC522 RFID reader**, the scanner validates membership cards directly against a **Supabase PostgreSQL database** using secure RLS (Row Level Security) schemas. 
+          </p>
+          <p>
+            It integrates an offline-first cache database using **LittleFS** file systems to guarantee scan capture during internet drops, hosting local WebSocket monitors for onsite staff and visual cloud pipelines in **n8n** for Telegram notifications and auto-expiration auditing.
+          </p>
+
+          <h2>The Problem It Solves</h2>
+          <p>
+            Gyms, coworking spaces, and member clubs lose billable hours and leak subscription revenue because of manual check-in processes, lost paper journals, and unmonitored membership expirations. 
+          </p>
+          <p>
+            This system completely automates the entry/exit validations. A single tap of an RFID tag queries database states in <strong>sub-100ms</strong>, flashes colored LEDs for immediate user feedback, stores logs, alerts staff via Telegram if an invalid or expired card is scanned, and calculates auto-expirations daily without manual intervention.
+          </p>
+
+          <h2>Core Subsystems</h2>
+          
+          <h3>1. ESP32 Microprocessor Firmware</h3>
+          <ul>
+            <li><strong>MFRC522 Library</strong>: Captures high-frequency 13.56MHz RFID card UID numbers.</li>
+            <li><strong>Offline Queue Database</strong>: Integrates LittleFS storage to queue scans locally during WiFi outages, automatically syncing backlogs to Supabase upon reconnection.</li>
+            <li><strong>Local WebSocket Server</strong>: Serves a lightweight web interface locally, allowing staff on the same network to view scans live without relying on outside web servers.</li>
+            <li><strong>Captive Portal Setup</strong>: Integrates WiFiManager to allow easy configuration of WiFi SSID/passwords via phone browser without hardcoding credentials in firmware.</li>
+          </ul>
+
+          <h3>2. Supabase Backend Database</h3>
+          <ul>
+            <li><strong>Relational DB Layout</strong>: Normalizes `members`, `plans`, `memberships`, and `scan_logs` tables.</li>
+            <li><strong>Validate Scan Stored Procedure</strong>: Executes transactional checks (card presence, active plan date, and scan status toggle) in a single atomic SQL transaction.</li>
+            <li><strong>Row Level Security (RLS)</strong>: Enforces strict data access rules protecting database connections.</li>
+          </ul>
+
+          <h3>3. n8n Cloud Automation & Telegram Alerts</h3>
+          <ul>
+            <li><strong>Instant Notifications</strong>: Translates database webhooks into formatted Telegram message warnings for expired access attempts.</li>
+            <li><strong>Auto-Expiration Daemon</strong>: Runs scheduled Cron jobs to toggle member status to expired, keeping data clean.</li>
+            <li><strong>Outbound Reporting</strong>: Compiles daily check-in reports sent straight to admins' chats.</li>
+          </ul>
+
+          <h2>System Demonstration & Walkthrough</h2>
+          <p>Below are video recordings showcasing the hardware scanner in action, user registration, database state syncing, and the unified admin interface:</p>
+          
+          <div class="grid grid-cols-1 md:grid-cols-3 gap-6 my-8">
+            <div class="rounded-xl overflow-hidden shadow-lg border border-gray-200 dark:border-gray-800 bg-black flex flex-col h-full">
+              <video 
+                src="/quick-portfolio/assets/iot-automation-integration/in-and-out.mp4" 
+                controls 
+                class="w-full aspect-video object-cover" 
+                preload="metadata"
+              >
+                Your browser does not support the video tag.
+              </video>
+              <div class="p-4 bg-white dark:bg-[#1a1a1a] flex-grow">
+                <h4 class="font-bold text-base text-gray-900 dark:text-white mb-1">Hardware RFID In & Out Demo</h4>
+                <p class="text-xs text-gray-500 dark:text-gray-400">Real-time check-in/check-out scanner feedback with automatic LED visual indicator cues.</p>
+              </div>
+            </div>
+            
+            <div class="rounded-xl overflow-hidden shadow-lg border border-gray-200 dark:border-gray-800 bg-black flex flex-col h-full">
+              <video 
+                src="/quick-portfolio/assets/iot-automation-integration/user-registration.mp4" 
+                controls 
+                class="w-full aspect-video object-cover" 
+                preload="metadata"
+              >
+                Your browser does not support the video tag.
+              </video>
+              <div class="p-4 bg-white dark:bg-[#1a1a1a] flex-grow">
+                <h4 class="font-bold text-base text-gray-900 dark:text-white mb-1">User Registration & Card Setup</h4>
+                <p class="text-xs text-gray-500 dark:text-gray-400">Scanning new RFID tag UIDs and linking them dynamically with user profiles inside the system backend.</p>
+              </div>
+            </div>
+
+            <div class="rounded-xl overflow-hidden shadow-lg border border-gray-200 dark:border-gray-800 bg-black flex flex-col h-full">
+              <video 
+                src="/quick-portfolio/assets/iot-automation-integration/UI-Automation-Integration.mp4" 
+                controls 
+                class="w-full aspect-video object-cover" 
+                preload="metadata"
+              >
+                Your browser does not support the video tag.
+              </video>
+              <div class="p-4 bg-white dark:bg-[#1a1a1a] flex-grow">
+                <h4 class="font-bold text-base text-gray-900 dark:text-white mb-1">UI Automation & Web Integration</h4>
+                <p class="text-xs text-gray-500 dark:text-gray-400">Admin dashboard telemetry controls, real-time sync, and automated cloud notification triggers.</p>
+              </div>
+            </div>
+          </div>
+
+          <h2>Hardware Wiring Schematics</h2>
+          <p>Below is the SPI pin connections utilized between the ESP32 DevKit board and the RC522 RFID IC:</p>
+          
+          <table class="min-w-full divide-y divide-gray-200 dark:divide-gray-800 text-sm">
+            <thead>
+              <tr class="bg-gray-50 dark:bg-gray-800/40">
+                <th class="px-4 py-2 text-left font-bold text-gray-700 dark:text-gray-200">RC522 Pin</th>
+                <th class="px-4 py-2 text-left font-bold text-gray-700 dark:text-gray-200">ESP32 GPIO</th>
+                <th class="px-4 py-2 text-left font-bold text-gray-700 dark:text-gray-200">Description</th>
+              </tr>
+            </thead>
+            <tbody class="divide-y divide-gray-100 dark:divide-gray-800/50">
+              <tr>
+                <td class="px-4 py-2 font-mono text-wood-accent">SDA (SS)</td>
+                <td class="px-4 py-2 font-mono">GPIO 21</td>
+                <td class="px-4 py-2 text-gray-500">Chip Select</td>
+              </tr>
+              <tr>
+                <td class="px-4 py-2 font-mono text-wood-accent">SCK</td>
+                <td class="px-4 py-2 font-mono">GPIO 18</td>
+                <td class="px-4 py-2 text-gray-500">SPI Clock</td>
+              </tr>
+              <tr>
+                <td class="px-4 py-2 font-mono text-wood-accent">MOSI</td>
+                <td class="px-4 py-2 font-mono">GPIO 23</td>
+                <td class="px-4 py-2 text-gray-500">Master Out Slave In</td>
+              </tr>
+              <tr>
+                <td class="px-4 py-2 font-mono text-wood-accent">MISO</td>
+                <td class="px-4 py-2 font-mono">GPIO 19</td>
+                <td class="px-4 py-2 text-gray-500">Master In Slave Out</td>
+              </tr>
+              <tr>
+                <td class="px-4 py-2 font-mono text-wood-accent">RST</td>
+                <td class="px-4 py-2 font-mono">GPIO 22</td>
+                <td class="px-4 py-2 text-gray-500">Hardware Reset Pin</td>
+              </tr>
+              <tr>
+                <td class="px-4 py-2 font-mono text-wood-accent">3.3V</td>
+                <td class="px-4 py-2 font-mono">3.3V</td>
+                <td class="px-4 py-2 text-gray-500">Power Source (3.3V Only)</td>
+              </tr>
+              <tr>
+                <td class="px-4 py-2 font-mono text-wood-accent">GND</td>
+                <td class="px-4 py-2 font-mono">GND</td>
+                <td class="px-4 py-2 text-gray-500">Ground Reference Connection</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </article>
+  </main>
+</Layout>
+
+<!-- CAROUSEL CONTROLLER SCRIPT -->
+<script is:inline>
+  document.addEventListener('DOMContentLoaded', () => {
+    const slides = document.getElementById('carousel-slides');
+    const dots = document.querySelectorAll('.carousel-dot');
+    const prevBtn = document.getElementById('prev-slide');
+    const nextBtn = document.getElementById('next-slide');
+    
+    if (!slides || dots.length === 0 || !prevBtn || !nextBtn) return;
+    
+    let currentIndex = 0;
+    const totalSlides = dots.length;
+    
+    function updateCarousel(index) {
+      // Boundaries check
+      if (index < 0) index = totalSlides - 1;
+      if (index >= totalSlides) index = 0;
+      
+      currentIndex = index;
+      
+      // Move slides row using translateX
+      slides.style.transform = `translateX(-${currentIndex * 100}%)`;
+      
+      // Update indicators active visibility states
+      dots.forEach((dot, idx) => {
+        if (idx === currentIndex) {
+          dot.classList.remove('opacity-50');
+          dot.classList.add('opacity-100');
+        } else {
+          dot.classList.remove('opacity-100');
+          dot.classList.add('opacity-50');
+        }
+      });
+    }
+    
+    // Left & Right Arrow Event hooks
+    prevBtn.addEventListener('click', () => updateCarousel(currentIndex - 1));
+    nextBtn.addEventListener('click', () => updateCarousel(currentIndex + 1));
+    
+    // Bottom dots jump hooks
+    dots.forEach((dot) => {
+      dot.addEventListener('click', () => {
+        const targetIndex = parseInt(dot.getAttribute('data-index') || '0', 10);
+        updateCarousel(targetIndex);
+      });
+    });
+
+    // Auto rotate every 6 seconds
+    let autoPlayInterval = setInterval(() => {
+      updateCarousel(currentIndex + 1);
+    }, 6000);
+
+    // Stop autoplay on user click interactions
+    const stopAutoPlay = () => {
+      if (autoPlayInterval) {
+        clearInterval(autoPlayInterval);
+        autoPlayInterval = null;
+      }
+    };
+
+    prevBtn.addEventListener('click', stopAutoPlay);
+    nextBtn.addEventListener('click', stopAutoPlay);
+    dots.forEach(dot => dot.addEventListener('click', stopAutoPlay));
+  });
+</script>

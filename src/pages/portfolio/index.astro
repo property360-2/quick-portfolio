@@ -133,6 +133,107 @@ const description = "Explore professional AI automation systems, enterprise-grad
               </a>
             </div>
 
+            <!-- Project: RFID IoT Membership Scanner & Automation Integration -->
+            <div
+              class="project-card group"
+              data-aos="fade-up"
+              data-category="fullstack tools"
+            >
+              <div
+                class="relative overflow-hidden rounded-xl shadow-lg aspect-video bg-gray-200 flex flex-col justify-end"
+              >
+                <!-- Carousel Container -->
+                <div id="card-carousel-slides" class="absolute inset-0 flex transition-transform duration-500 ease-out" style="transform: translateX(0%);">
+                  <div class="w-full h-full flex-shrink-0">
+                    <img
+                      src="/quick-portfolio/assets/iot-automation-integration/localhost.png"
+                      alt="RFID IoT Membership Scanner - Staff Scan Dashboard"
+                      class="w-full h-full object-cover"
+                      loading="lazy"
+                      decoding="async"
+                    />
+                  </div>
+                  <div class="w-full h-full flex-shrink-0">
+                    <img
+                      src="/quick-portfolio/assets/iot-automation-integration/online.png"
+                      alt="RFID IoT Membership Scanner - Public Status Portal"
+                      class="w-full h-full object-cover"
+                      loading="lazy"
+                      decoding="async"
+                    />
+                  </div>
+                  <div class="w-full h-full flex-shrink-0">
+                    <img
+                      src="/quick-portfolio/assets/iot-automation-integration/workflow.png"
+                      alt="RFID IoT Membership Scanner - n8n Workflow"
+                      class="w-full h-full object-cover"
+                      loading="lazy"
+                      decoding="async"
+                    />
+                  </div>
+                  <div class="w-full h-full flex-shrink-0">
+                    <img
+                      src="/quick-portfolio/assets/iot-automation-integration/IMG_20260605_154927.jpg"
+                      alt="RFID IoT Membership Scanner - Physical Hardware Setup"
+                      class="w-full h-full object-cover"
+                      loading="lazy"
+                      decoding="async"
+                    />
+                  </div>
+                </div>
+
+                <!-- Navigation buttons (above hover overlay) -->
+                <button
+                  id="card-carousel-prev"
+                  aria-label="Previous image"
+                  class="absolute left-3 top-1/2 -translate-y-1/2 w-8 h-8 rounded-full bg-black/50 hover:bg-black/80 text-white flex items-center justify-center transition-all select-none z-20 opacity-0 group-hover:opacity-100 cursor-pointer pointer-events-auto border border-white/10"
+                >
+                  &larr;
+                </button>
+                <button
+                  id="card-carousel-next"
+                  aria-label="Next image"
+                  class="absolute right-3 top-1/2 -translate-y-1/2 w-8 h-8 rounded-full bg-black/50 hover:bg-black/80 text-white flex items-center justify-center transition-all select-none z-20 opacity-0 group-hover:opacity-100 cursor-pointer pointer-events-auto border border-white/10"
+                >
+                  &rarr;
+                </button>
+
+                <!-- Indicator dots -->
+                <div class="absolute bottom-3 left-1/2 -translate-x-1/2 flex gap-2 z-20 opacity-0 group-hover:opacity-100 transition-opacity">
+                  <span class="card-carousel-dot w-2 h-2 rounded-full bg-white opacity-100 transition-opacity cursor-pointer" data-idx="0"></span>
+                  <span class="card-carousel-dot w-2 h-2 rounded-full bg-white opacity-50 transition-opacity cursor-pointer" data-idx="1"></span>
+                  <span class="card-carousel-dot w-2 h-2 rounded-full bg-white opacity-50 transition-opacity cursor-pointer" data-idx="2"></span>
+                  <span class="card-carousel-dot w-2 h-2 rounded-full bg-white opacity-50 transition-opacity cursor-pointer" data-idx="3"></span>
+                </div>
+
+                <!-- Hover Overlay -->
+                <div
+                  class="absolute inset-0 bg-black/60 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col items-center justify-center p-8 gap-4 z-10 text-center pointer-events-none"
+                >
+                  <div class="flex flex-wrap justify-center gap-4 pointer-events-auto">
+                    <a
+                      href="/quick-portfolio/portfolio/iot-automation-integration/"
+                      class="text-white border px-4 py-2 rounded-full text-sm font-medium tracking-wide hover:bg-white hover:text-black transition-colors"
+                      >View Details</a
+                    >
+                  </div>
+                </div>
+              </div>
+              <a href="/quick-portfolio/portfolio/iot-automation-integration/" class="block mt-4">
+                <h4
+                  class="text-xl font-bold text-gray-900 dark:text-white group-hover:text-wood-accent transition-colors"
+                >
+                  RFID IoT Membership Scanner & Automation Integration
+                </h4>
+                <p class="text-xs font-semibold text-wood-accent mt-1 italic">
+                  Pain Fixed: Slow check-in queues, lost paper logs, and manual membership database tracking.
+                </p>
+                <p class="text-gray-600 dark:text-gray-400 text-sm mt-2 leading-relaxed">
+                  Engineered a complete RFID check-in validation system combining an ESP32 microchip, Supabase backend databases, and real-time n8n cloud Telegram alerts. Features LittleFS offline queue support to prevent scan loss.
+                </p>
+              </a>
+            </div>
+
             <!-- Project: OJT Daily Journal System -->
 
 
@@ -702,3 +803,57 @@ const description = "Explore professional AI automation systems, enterprise-grad
       <!-- ORGANISMS: Footer -->
     </main>
 </Layout>
+
+<!-- CAROUSEL CONTROLLER SCRIPT FOR RFID IoT CARD -->
+<script is:inline>
+  document.addEventListener('DOMContentLoaded', () => {
+    const slides = document.getElementById('card-carousel-slides');
+    const prevBtn = document.getElementById('card-carousel-prev');
+    const nextBtn = document.getElementById('card-carousel-next');
+    const dots = document.querySelectorAll('.card-carousel-dot');
+
+    if (!slides || !prevBtn || !nextBtn || dots.length === 0) return;
+
+    let currentIndex = 0;
+    const totalSlides = dots.length;
+
+    function updateCarousel(index) {
+      if (index < 0) index = totalSlides - 1;
+      if (index >= totalSlides) index = 0;
+      currentIndex = index;
+
+      slides.style.transform = `translateX(-${currentIndex * 100}%)`;
+
+      dots.forEach((dot, idx) => {
+        if (idx === currentIndex) {
+          dot.classList.remove('opacity-50');
+          dot.classList.add('opacity-100');
+        } else {
+          dot.classList.remove('opacity-100');
+          dot.classList.add('opacity-50');
+        }
+      });
+    }
+
+    prevBtn.addEventListener('click', (e) => {
+      e.stopPropagation();
+      e.preventDefault();
+      updateCarousel(currentIndex - 1);
+    });
+
+    nextBtn.addEventListener('click', (e) => {
+      e.stopPropagation();
+      e.preventDefault();
+      updateCarousel(currentIndex + 1);
+    });
+
+    dots.forEach((dot) => {
+      dot.addEventListener('click', (e) => {
+        e.stopPropagation();
+        e.preventDefault();
+        const targetIndex = parseInt(dot.getAttribute('data-idx') || '0', 10);
+        updateCarousel(targetIndex);
+      });
+    });
+  });
+</script>
