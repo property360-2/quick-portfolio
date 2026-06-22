@@ -73,6 +73,7 @@ const adminEmailLabel = FIREBASE_ADMIN_EMAILS.join(", ");
   </main>
 
   <script>
+    // @ts-nocheck
     import { initializeApp } from "https://www.gstatic.com/firebasejs/12.10.0/firebase-app.js";
     import { getAuth, onAuthStateChanged, signInWithEmailAndPassword, signOut } from "https://www.gstatic.com/firebasejs/12.10.0/firebase-auth.js";
     import { collection, deleteDoc, doc, getFirestore, onSnapshot, orderBy, query, serverTimestamp, updateDoc } from "https://www.gstatic.com/firebasejs/12.10.0/firebase-firestore.js";
@@ -81,13 +82,13 @@ const adminEmailLabel = FIREBASE_ADMIN_EMAILS.join(", ");
     const firebaseApp = initializeApp(FIREBASE_CONFIG);
     const auth = getAuth(firebaseApp);
     const database = getFirestore(firebaseApp);
-    let unsubscribeFromNotes = null;
+    let unsubscribeFromNotes: any = null;
 
     /**
      * Shows a clean status message for authentication or Firestore operations.
      * It accepts an element id, message, and variant string, then renders safe user-facing text.
      */
-    function showFeedback(elementId, message, variant) {
+    function showFeedback(elementId: string, message: string, variant: string) {
       const feedback = document.getElementById(elementId);
       if (!feedback) return;
 
@@ -100,7 +101,7 @@ const adminEmailLabel = FIREBASE_ADMIN_EMAILS.join(", ");
      * Checks whether a Firebase user can access the notes workspace.
      * It accepts a Firebase user object and returns true when the user's email is configured as an admin.
      */
-    function isAllowedAdmin(user) {
+    function isAllowedAdmin(user: any) {
       return Boolean(user?.email && FIREBASE_ADMIN_EMAILS.includes(user.email.toLowerCase()));
     }
 
@@ -108,7 +109,7 @@ const adminEmailLabel = FIREBASE_ADMIN_EMAILS.join(", ");
      * Creates a text node wrapper with the requested classes for safe note rendering.
      * It accepts an HTML tag name, class names, and text, then returns a DOM element using textContent.
      */
-    function createTextElement(tagName, className, text) {
+    function createTextElement(tagName: string, className: string, text: string) {
       const element = document.createElement(tagName);
       element.className = className;
       element.textContent = text;
@@ -119,7 +120,7 @@ const adminEmailLabel = FIREBASE_ADMIN_EMAILS.join(", ");
      * Creates the editable status selector for a Firestore note card.
      * It accepts a note object and returns a select element wired by data attributes.
      */
-    function createStatusSelect(note) {
+    function createStatusSelect(note: any) {
       const select = document.createElement("select");
       select.className = "note-status bg-gray-50 dark:bg-[#1a1a1a] border border-gray-200 dark:border-gray-700 text-gray-900 dark:text-white text-sm rounded-lg p-2 outline-none";
       select.dataset.noteId = note.id;
@@ -139,7 +140,7 @@ const adminEmailLabel = FIREBASE_ADMIN_EMAILS.join(", ");
      * Creates the editable next-action field for a Firestore note card.
      * It accepts a note object and returns an input element wired by data attributes.
      */
-    function createNextActionInput(note) {
+    function createNextActionInput(note: any) {
       const input = document.createElement("input");
       input.type = "text";
       input.value = note.nextAction ?? "";
@@ -153,7 +154,7 @@ const adminEmailLabel = FIREBASE_ADMIN_EMAILS.join(", ");
      * Creates a complete note card with safe text rendering and editable controls.
      * It accepts a Firestore note object and returns an article element for the notes list.
      */
-    function createLeadNoteCard(note) {
+    function createLeadNoteCard(note: any) {
       const card = document.createElement("article");
       card.className = "bg-white dark:bg-[#252528] rounded-2xl p-5 border border-gray-200 dark:border-gray-800 shadow-sm space-y-4";
 
@@ -195,7 +196,7 @@ const adminEmailLabel = FIREBASE_ADMIN_EMAILS.join(", ");
      * Renders the current Firestore note collection into the board.
      * It accepts an array of note objects and updates list, empty state, and count elements.
      */
-    function renderLeadNotes(notes) {
+    function renderLeadNotes(notes: any[]) {
       const list = document.getElementById("lead-notes-list");
       const emptyState = document.getElementById("empty-lead-state");
       const leadCount = document.getElementById("lead-count");
@@ -212,7 +213,7 @@ const adminEmailLabel = FIREBASE_ADMIN_EMAILS.join(", ");
      * Converts a Firestore document snapshot into a renderable note object.
      * It accepts a document snapshot and returns normalized data for the note board.
      */
-    function mapLeadNoteDocument(documentSnapshot) {
+    function mapLeadNoteDocument(documentSnapshot: any) {
       const data = documentSnapshot.data();
       const createdAtDate = data.createdAt?.toDate?.();
 

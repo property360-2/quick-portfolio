@@ -33,10 +33,10 @@ const description = 'Ditch the spreadsheet and manual workflow chaos. Scale your
         ></div>
 
         <div
-          class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full py-20 lg:py-16 relative z-10"
+          class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 w-full py-20 lg:py-24 relative z-10"
         >
-          <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-24 items-center">
-            <div class="hero-content space-y-8 text-center lg:text-left">
+          <div class="flex flex-col items-center justify-center text-center">
+            <div class="hero-content space-y-8 max-w-3xl">
               <div class="space-y-4">
                 <h2
                   class="text-wood-accent font-bold tracking-wider uppercase text-xs sm:text-sm gs-reveal"
@@ -44,12 +44,12 @@ const description = 'Ditch the spreadsheet and manual workflow chaos. Scale your
                   Full Stack Software Engineer & Automation Architect
                 </h2>
                 <h1
-                  class="text-4xl lg:text-5xl font-extrabold text-gray-900 dark:text-white leading-tight gs-reveal"
+                  class="text-4xl lg:text-6xl font-extrabold text-gray-900 dark:text-white leading-tight gs-reveal"
                 >
                   Ditch the spreadsheet and manual workflow chaos. Scale your operations with <span class="text-wood-accent">custom software</span>.
                 </h1>
                 <p
-                  class="text-lg md:text-xl text-gray-600 dark:text-gray-400 max-w-xl mx-auto lg:mx-0 leading-relaxed gs-reveal"
+                  class="text-lg md:text-xl text-gray-600 dark:text-gray-400 leading-relaxed gs-reveal"
                 >
                   I build high-velocity frontends, robust backends, and smart AI automations. Get production-ready engineering designed to eliminate your operational bottlenecks—fast.
                 </p>
@@ -57,7 +57,7 @@ const description = 'Ditch the spreadsheet and manual workflow chaos. Scale your
 
               <!-- ATOMS: Primary CTA Button -->
               <div
-                class="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start gs-reveal"
+                class="flex flex-col sm:flex-row gap-4 justify-center gs-reveal"
               >
                 <a
                   href="/quick-portfolio/rate/"
@@ -68,144 +68,8 @@ const description = 'Ditch the spreadsheet and manual workflow chaos. Scale your
                 </a>
               </div>
             </div>
-
-            <!-- Operations Control Center (GUI B2B Dashboard Demo) -->
-            <div class="hero-visual relative hidden md:block gs-reveal-img h-[480px]">
-              <!-- Ambient Glowing Aura -->
-              <div class="absolute -inset-4 bg-wood-accent/15 dark:bg-wood-accent/15 rounded-3xl blur-2xl opacity-80 animate-pulse"></div>
-              
-              <!-- Premium Dashboard Window Container -->
-              <div class="relative w-full h-full bg-white dark:bg-[#1e1e21] border border-gray-200 dark:border-gray-800 rounded-2xl shadow-2xl flex flex-col overflow-hidden font-sans text-sm leading-relaxed transition-colors duration-300">
-                <!-- Window Top Header Bar -->
-                <div class="flex items-center justify-between px-5 py-3.5 bg-gray-50 dark:bg-[#252528] border-b border-gray-200 dark:border-gray-800">
-                  <!-- macOS Window Control Dot Buttons -->
-                  <div class="flex items-center gap-2">
-                    <span class="w-3 h-3 rounded-full bg-[#ff5f56] block shadow shadow-red-500/20"></span>
-                    <span class="w-3 h-3 rounded-full bg-[#ffbd2e] block shadow shadow-amber-500/20"></span>
-                    <span class="w-3 h-3 rounded-full bg-[#27c93f] block shadow shadow-emerald-500/20"></span>
-                  </div>
-                  
-                  <!-- Dashboard Header Title -->
-                  <div class="flex items-center gap-2 text-xs font-semibold uppercase tracking-widest text-gray-700 dark:text-gray-300 font-mono">
-                    <svg class="w-3.5 h-3.5 text-wood-accent animate-spin-slow" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z" />
-                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
-                    </svg>
-                    <span>Operations Control Center</span>
-                  </div>
-                  
-                  <!-- Pulsing Status Led -->
-                  <div id="system-status-pill" class="flex items-center gap-1.5 bg-amber-500/10 border border-amber-500/20 text-[10px] font-bold text-amber-600 dark:text-amber-500 px-2 py-0.5 rounded-full select-none font-mono tracking-wide">
-                    <span id="system-status-led" class="w-1.5 h-1.5 rounded-full bg-amber-500 block animate-pulse"></span>
-                    <span id="system-status-txt">SYSTEM: IDLE</span>
-                  </div>
-                </div>
-                
-                <!-- Main Dashboard Panel Content -->
-                <div class="flex-grow p-5 flex flex-col justify-between space-y-4">
-                  <!-- 3 Column Metrics Cards Grid -->
-                  <div class="grid grid-cols-3 gap-3.5">
-                    <!-- Metric Card 1: Admin Tasks -->
-                    <div class="relative p-3.5 bg-gray-50 dark:!bg-[#151518] border border-gray-200 dark:!border-zinc-800/80 rounded-xl flex flex-col justify-between overflow-hidden shadow-inner group">
-                      <div class="absolute -right-6 -bottom-6 w-16 h-16 bg-amber-500/5 rounded-full filter blur-xl transition-all duration-500 group-hover:scale-150"></div>
-                      <div class="text-[10px] uppercase font-bold text-gray-500 dark:text-zinc-400 tracking-wider">Pending Admin Tasks</div>
-                      <div class="my-3 text-3xl font-extrabold text-amber-600 dark:text-amber-500 tracking-tight font-mono">
-                        <span id="metric-tasks-val">42</span>
-                      </div>
-                      <div class="flex items-center gap-1.5 mt-0.5">
-                        <span id="metric-tasks-badge" class="px-1.5 py-0.5 text-[9px] font-bold rounded bg-amber-500/10 border border-amber-500/20 text-amber-600 dark:text-amber-500 font-mono">Spreadsheet Chaos</span>
-                      </div>
-                    </div>
-
-                    <!-- Metric Card 2: Operating Cost -->
-                    <div class="relative p-3.5 bg-gray-50 dark:!bg-[#151518] border border-gray-200 dark:!border-zinc-800/80 rounded-xl flex flex-col justify-between overflow-hidden shadow-inner group">
-                      <div class="absolute -right-6 -bottom-6 w-16 h-16 bg-rose-500/5 rounded-full filter blur-xl transition-all duration-500 group-hover:scale-150"></div>
-                      <div class="text-[10px] uppercase font-bold text-gray-500 dark:text-zinc-400 tracking-wider">Operating Cost</div>
-                      <div id="cost-value-container" class="my-3 text-3xl font-extrabold text-rose-600 dark:text-rose-500 tracking-tight font-mono transition-all duration-300">
-                        $<span id="metric-cost-val">120</span><span id="metric-cost-suffix" class="text-xs text-rose-500 dark:text-rose-400/80 font-normal transition-colors duration-300">/hr</span>
-                      </div>
-                      <div class="flex items-center gap-1.5 mt-0.5">
-                        <span id="metric-cost-badge" class="px-1.5 py-0.5 text-[9px] font-bold rounded bg-rose-500/10 border border-rose-500/20 text-rose-600 dark:text-rose-400 font-mono">Unoptimized Flow</span>
-                      </div>
-                    </div>
-
-                    <!-- Metric Card 3: Saved Overhead -->
-                    <div class="relative p-3.5 bg-gray-50 dark:!bg-[#151518] border border-gray-200 dark:!border-zinc-800/80 rounded-xl flex flex-col justify-between overflow-hidden shadow-inner group">
-                      <div class="absolute -right-6 -bottom-6 w-16 h-16 bg-emerald-500/5 rounded-full filter blur-xl transition-all duration-500 group-hover:scale-150"></div>
-                      <div class="text-[10px] uppercase font-bold text-gray-500 dark:text-zinc-400 tracking-wider">Saved Overhead</div>
-                      <div class="my-3 text-3xl font-extrabold text-gray-400 dark:text-zinc-400 tracking-tight font-mono transition-all duration-300" id="saved-value-container">
-                        $<span id="metric-saved-val">0</span><span class="text-xs text-gray-500 dark:text-zinc-500 font-normal">/hr</span>
-                      </div>
-                      <div class="flex items-center gap-1.5 mt-0.5" id="saved-badge-container">
-                        <span id="metric-saved-badge" class="px-1.5 py-0.5 text-[9px] font-bold rounded bg-gray-200 dark:bg-gray-700 text-gray-500 dark:text-gray-400 border border-gray-300 dark:border-gray-800 font-mono font-bold">Direct ROI Demo</span>
-                      </div>
-                    </div>
-                  </div>
-
-                  <!-- Central Automation Trigger Interface -->
-                  <div class="p-4 bg-gray-50 dark:!bg-[#121214] border border-gray-200 dark:!border-zinc-800/80 rounded-xl text-center space-y-3">
-                    <p class="text-xs text-gray-600 dark:text-zinc-300">
-                      Click the trigger below to simulate a real B2B custom database & workflow automation setup:
-                    </p>
-                    
-                    <div class="flex justify-center items-center">
-                      <!-- GLOWING OPTIMIZATION TRIGGER BUTTON -->
-                      <button 
-                        id="dashboard-trigger-btn" 
-                        class="relative flex items-center justify-center gap-2.5 px-8 py-3.5 bg-wood-accent hover:bg-wood-700 text-white font-bold rounded-xl shadow-lg hover:shadow-wood-accent/30 hover:shadow-2xl border border-wood-400/20 cursor-pointer select-none transition-all duration-300 transform hover:-translate-y-0.5 focus:outline-none w-full max-w-sm group"
-                      >
-                        <span class="absolute -inset-0.5 bg-wood-accent/20 rounded-xl blur opacity-30 group-hover:opacity-60 transition-opacity duration-300"></span>
-                        <svg class="w-4 h-4 text-white relative z-10 animate-pulse" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M13 10V3L4 14h7v7l9-11h-7z" />
-                        </svg>
-                        <span class="relative z-10 tracking-wide">Optimize & Scale System</span>
-                      </button>
-
-                      <!-- GLOWING SUCCESS BANNER (INITIALLY HIDDEN) -->
-                      <div 
-                        id="dashboard-success-banner" 
-                        class="hidden w-full max-w-sm p-3 bg-emerald-500/10 border border-emerald-500/30 text-emerald-600 dark:text-emerald-400 font-bold rounded-xl shadow-lg shadow-emerald-500/5 items-center justify-center gap-2 select-none animate-bounce"
-                      >
-                        <svg class="w-5 h-5 text-emerald-600 dark:text-emerald-400 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
-                        </svg>
-                        <span class="tracking-wide">System Fully Optimized!</span>
-                      </div>
-                    </div>
-                  </div>
-
-                  <!-- Collapsible Log Console Screen -->
-                  <div id="ide-terminal" class="h-0 opacity-0 border border-gray-200 dark:border-gray-800 bg-slate-950 rounded-xl transition-all duration-500 ease-in-out overflow-hidden flex flex-col font-mono">
-                    <div class="flex items-center justify-between px-4 py-2 bg-slate-900 border-b border-slate-800 text-[10px] text-slate-400 select-none">
-                      <div class="flex items-center gap-2">
-                        <span class="text-emerald-400 w-2.5 h-2.5 rounded-full animate-pulse bg-emerald-400"></span>
-                        <span class="font-bold text-slate-200">Live Agent Console (python_optimizer_daemon)</span>
-                      </div>
-                      <div class="flex items-center gap-2">
-                        <button id="terminal-reset" class="hover:text-emerald-400 text-slate-400 transition-colors hidden text-[9px] uppercase tracking-wider font-bold cursor-pointer select-none">Reset Demo</button>
-                        <span class="text-slate-700" id="reset-sep">|</span>
-                        <span class="text-[9px] uppercase tracking-wider text-emerald-400 font-bold">Active</span>
-                      </div>
-                    </div>
-                    <div id="terminal-body" class="flex-grow p-4 text-[10px] sm:text-xs text-slate-300 overflow-y-auto space-y-1.5 scrollbar-thin select-all">
-                      <!-- Dynamically Staggered Console Logs Output -->
-                    </div>
-                  </div>
-                </div>
-
-                <!-- Bottom Status Details Bar -->
-                <div class="h-7 bg-gray-50 dark:bg-[#252528] flex items-center justify-between px-4 text-[10px] text-gray-500 dark:text-gray-400 font-medium select-none border-t border-gray-200 dark:border-gray-800">
-                  <div class="flex items-center gap-3">
-                    <span class="flex items-center gap-1">
-                      <span class="w-1.5 h-1.5 rounded-full bg-emerald-500 dark:bg-emerald-400 block animate-pulse"></span>
-                      Postgres DB Status: Active
-                    </span>
-                    <span>API Response: 12ms</span>
-                  </div>
-                  <div>ROI Demo Framework v1.0</div>
-                </div>
-              </div>
-            </div>
+          </div>
+        </div>
           </div>
         </div>
       </section>
@@ -405,273 +269,4 @@ const description = 'Ditch the spreadsheet and manual workflow chaos. Scale your
         </div>
       </section>
 
-      <!-- Dynamic Micro-Interaction Script for the Hero GUI Dashboard Optimizer Simulation -->
-      <script is:inline>
-        /**
-         * Orchestrates the dynamic client-side dashboard ROI simulation.
-         * Triggered when the user clicks 'Optimize & Scale System'.
-         * Updates status indicators, count downs pending tasks, counts down operating costs,
-         * counts up savings, expands the live log terminal, and writes sequential B2B operations logs.
-         */
-        document.addEventListener('DOMContentLoaded', () => {
-          const triggerBtn = document.getElementById('dashboard-trigger-btn');
-          const successBanner = document.getElementById('dashboard-success-banner');
-          const terminal = document.getElementById('ide-terminal');
-          const terminalBody = document.getElementById('terminal-body');
-          const resetBtn = document.getElementById('terminal-reset');
-          
-          // Status elements
-          const statusPill = document.getElementById('system-status-pill');
-          const statusLed = document.getElementById('system-status-led');
-          const statusTxt = document.getElementById('system-status-txt');
-          
-          // Metric display targets
-          const tasksVal = document.getElementById('metric-tasks-val');
-          const tasksBadge = document.getElementById('metric-tasks-badge');
-          
-          const costValContainer = document.getElementById('cost-value-container');
-          const costVal = document.getElementById('metric-cost-val');
-          const costSuffix = document.getElementById('metric-cost-suffix');
-          const costBadge = document.getElementById('metric-cost-badge');
-          
-          const savedVal = document.getElementById('metric-saved-val');
-          const savedBadge = document.getElementById('metric-saved-badge');
-          const savedValContainer = document.getElementById('saved-value-container');
-          
-          if (!triggerBtn || !successBanner || !terminal || !terminalBody || !resetBtn) return;
-
-          let isRunning = false;
-
-          // Sequential automation system steps
-          const logs = [
-            { text: '&gt; python automation_daemon.py --target=business_operations --verbose', color: 'text-slate-400' },
-            { text: '[SYSTEM] Initializing strategic operations pipeline...', color: 'text-amber-500 font-bold' },
-            { text: '[SYSTEM] POST /api/v1/optimize/demo-client/ -&gt; Django Backend [CONNECTED]', color: 'text-blue-400' },
-            { text: '[CRM] Connecting to HubSpot CRM and Gmail API triggers...', color: 'text-slate-300' },
-            { text: '[CRM] - Scanning outdated manual entry database rows...', color: 'text-slate-400' },
-            { text: '[CRM] - Success. 42 manual spreadsheets converted into relational models.', color: 'text-emerald-400 font-medium' },
-            { text: '[INTEGRATION] Staging AI Document Parser Agent for automated invoice reads...', color: 'text-slate-300' },
-            { text: '[INTEGRATION] - AI agent connected. Queue response speed -&gt; 0.8s.', color: 'text-emerald-400 font-medium' },
-            { text: '[DATABASE] Triggering PostgreSQL vacuum & strategic indexing optimization...', color: 'text-slate-300' },
-            { text: '[DATABASE] - Query speed improved from 320ms to 12ms under full load.', color: 'text-emerald-400 font-medium' },
-            { text: '[SYSTEM] INITIATING REAL-TIME FINANCIAL ROI REPORT...', color: 'text-amber-500 font-bold animate-pulse' },
-            { text: '[ROI] - Active admin bottlenecks fully resolved: 42 -&gt; 0.', color: 'text-emerald-400 font-medium' },
-            { text: '[ROI] - Hourly cost reduction calculated: $120/hr -&gt; $75/hr.', color: 'text-emerald-400 font-medium' },
-            { text: '[SYSTEM] METRIC RESULT: Saved $45/hr in human labor overhead.', color: 'text-emerald-400 font-extrabold underline decoration-emerald-500' }
-          ];
-
-          /**
-           * Animates counters smoothly over a duration using high-performance requestAnimationFrame.
-           * @param {HTMLElement} element - The target element to update.
-           * @param {number} start - The starting numerical value.
-           * @param {number} end - The ending numerical value.
-           * @param {number} duration - Animation duration in milliseconds.
-           * @param {string} prefix - Optional string prefix (e.g. '$').
-           * @param {string} suffix - Optional string suffix (e.g. '/hr').
-           * @returns {Promise<void>}
-           */
-          function animateValue(element, start, end, duration, prefix = '', suffix = '') {
-            return new Promise((resolve) => {
-              try {
-                const startTime = performance.now();
-                
-                function update(currentTime) {
-                  try {
-                    const elapsed = currentTime - startTime;
-                    const progress = Math.min(elapsed / duration, 1);
-                    
-                    // EaseOutQuad smoothing
-                    const ease = progress * (2 - progress);
-                    const current = Math.floor(start + (end - start) * ease);
-                    
-                    element.innerHTML = `${prefix}${current}${suffix}`;
-                    
-                    if (progress < 1) {
-                      requestAnimationFrame(update);
-                    } else {
-                      element.innerHTML = `${prefix}${end}${suffix}`;
-                      resolve();
-                    }
-                  } catch (err) {
-                    console.error("Frame update failed", err);
-                    element.innerHTML = `${prefix}${end}${suffix}`;
-                    resolve();
-                  }
-                }
-                
-                requestAnimationFrame(update);
-              } catch (err) {
-                console.error("Animate value error", err);
-                element.innerHTML = `${prefix}${end}${suffix}`;
-                resolve();
-              }
-            });
-          }
-
-          async function startSimulation() {
-            try {
-              if (isRunning) return;
-              isRunning = true;
-
-              // 1. Update button to loading state
-              triggerBtn.innerHTML = `
-                <svg class="animate-spin -ml-1 mr-3 h-5 w-5 text-white inline" fill="none" viewBox="0 0 24 24">
-                  <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
-                  <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
-                </svg>
-                Processing Optimization...
-              `;
-              triggerBtn.disabled = true;
-              triggerBtn.classList.remove('hover:shadow-wood-accent/30', 'hover:-translate-y-0.5');
-              triggerBtn.classList.add('cursor-wait', 'opacity-90');
-
-              // Update top bar system pill to running
-              statusPill.className = "flex items-center gap-1.5 bg-blue-500/10 border border-blue-500/20 text-[10px] font-bold text-blue-400 px-2 py-0.5 rounded-full select-none font-mono tracking-wide";
-              statusLed.className = "w-1.5 h-1.5 rounded-full bg-blue-400 block animate-ping";
-              statusTxt.innerText = "SYSTEM: OPTIMIZING";
-
-              // 2. Open Console terminal sliding panel
-              terminal.classList.remove('h-0', 'opacity-0');
-              terminal.classList.add('h-44', 'opacity-100');
-              terminalBody.innerHTML = '';
-              resetBtn.classList.add('hidden');
-
-              // 3. Staggered sequential execution of logs
-              for (let i = 0; i < logs.length; i++) {
-                // If it is the pending tasks count down point
-                if (i === 5) {
-                  // Begin count down for Pending Admin Tasks card (42 -> 0)
-                  animateValue(tasksVal, 42, 0, 1500).then(() => {
-                    try {
-                      tasksVal.className = "text-emerald-400 font-extrabold";
-                      tasksBadge.className = "px-1.5 py-0.5 text-[9px] font-bold rounded bg-emerald-500/15 text-emerald-400 font-mono";
-                      tasksBadge.innerText = "0 Active Bottlenecks";
-                    } catch (e) {
-                      console.error("Card 1 success transition error", e);
-                    }
-                  });
-                }
-
-                // If it is the cost & saved count transition point
-                if (i === 10) {
-                  // Animate Card 2 and Card 3 synchronously
-                  animateValue(costVal, 120, 75, 1200).then(() => {
-                    try {
-                      // Transition entire text and suffix to premium emerald-green on target cost achievement
-                      if (costValContainer) {
-                        costValContainer.className = "my-3 text-3xl font-extrabold text-emerald-500 dark:text-emerald-400 tracking-tight font-mono transition-all duration-300";
-                      }
-                      if (costSuffix) {
-                        costSuffix.className = "text-xs text-emerald-400 dark:text-emerald-400/80 font-normal transition-colors duration-300";
-                      }
-                      costBadge.className = "px-1.5 py-0.5 text-[9px] font-bold rounded bg-emerald-500/15 text-emerald-400 font-mono";
-                      costBadge.innerText = "Target Cost Achieved";
-                    } catch (e) {
-                      console.error("Card 2 success transition error", e);
-                    }
-                  });
-                  animateValue(savedVal, 0, 45, 1200).then(() => {
-                    try {
-                      savedValContainer.className = "my-3 text-3xl font-extrabold text-emerald-400 tracking-tight font-mono shadow-sm";
-                      savedBadge.className = "px-1.5 py-0.5 text-[9px] font-bold rounded bg-emerald-500/15 text-emerald-400 font-mono animate-pulse";
-                      savedBadge.innerText = "Saved $45/hr";
-                    } catch (e) {
-                      console.error("Card 3 success transition error", e);
-                    }
-                  });
-                }
-
-                await new Promise((resolve) => {
-                  try {
-                    setTimeout(resolve, i === 0 ? 250 : i < 3 ? 400 : i < 7 ? 600 : 800);
-                  } catch (e) {
-                    console.error("Simulated timeout error", e);
-                    resolve();
-                  }
-                });
-
-                const line = document.createElement('div');
-                line.className = `leading-5 ${logs[i].color} font-mono`;
-                line.innerHTML = logs[i].text;
-                terminalBody.appendChild(line);
-                terminalBody.scrollTop = terminalBody.scrollHeight;
-              }
-
-              // 4. Update elements to completed optimized success state
-              triggerBtn.classList.add('hidden');
-              successBanner.classList.remove('hidden');
-              successBanner.classList.add('flex');
-
-              statusPill.className = "flex items-center gap-1.5 bg-emerald-500/10 border border-emerald-500/20 text-[10px] font-bold text-emerald-400 px-2 py-0.5 rounded-full select-none font-mono tracking-wide";
-              statusLed.className = "w-1.5 h-1.5 rounded-full bg-emerald-400 block animate-pulse";
-              statusTxt.innerText = "SYSTEM: OPTIMIZED";
-
-              resetBtn.classList.remove('hidden');
-            } catch (err) {
-              console.error("Dashboard optimization simulation failed", err);
-            } finally {
-              isRunning = false;
-            }
-          }
-
-          function resetSimulation() {
-            try {
-              if (isRunning) return;
-
-              // Hide success states
-              successBanner.classList.add('hidden');
-              successBanner.classList.remove('flex', 'animate-bounce');
-
-              // Restore trigger button
-              triggerBtn.innerHTML = `
-                <svg class="w-4 h-4 text-white relative z-10 animate-pulse inline" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M13 10V3L4 14h7v7l9-11h-7z" />
-                </svg>
-                <span class="relative z-10 tracking-wide">Optimize & Scale System</span>
-              `;
-              triggerBtn.disabled = false;
-              triggerBtn.className = "relative flex items-center justify-center gap-2.5 px-8 py-3.5 bg-wood-accent hover:bg-wood-700 text-white font-bold rounded-xl shadow-lg hover:shadow-wood-accent/30 hover:shadow-2xl border border-wood-400/20 cursor-pointer select-none transition-all duration-300 transform hover:-translate-y-0.5 focus:outline-none w-full max-w-sm group";
-              triggerBtn.classList.remove('hidden');
-
-              // Reset System Status Pill
-              statusPill.className = "flex items-center gap-1.5 bg-amber-500/10 border border-amber-500/20 text-[10px] font-bold text-amber-500 px-2 py-0.5 rounded-full select-none font-mono tracking-wide";
-              statusLed.className = "w-1.5 h-1.5 rounded-full bg-amber-500 block animate-pulse";
-              statusTxt.innerText = "SYSTEM: IDLE";
-
-              // Reset Metric Cards to defaults
-              tasksVal.innerText = "42";
-              tasksVal.className = "text-amber-500";
-              tasksBadge.className = "px-1.5 py-0.5 text-[9px] font-bold rounded bg-amber-500/15 text-amber-500 font-mono";
-              tasksBadge.innerText = "Spreadsheet Chaos";
-
-              costVal.innerText = "120";
-              // Reset cost value text and suffix styles back to unoptimized rose-red
-              if (costValContainer) {
-                costValContainer.className = "my-3 text-3xl font-extrabold text-rose-600 dark:text-rose-500 tracking-tight font-mono transition-all duration-300";
-              }
-              if (costSuffix) {
-                costSuffix.className = "text-xs text-rose-500 dark:text-rose-400/80 font-normal transition-colors duration-300";
-              }
-              costBadge.className = "px-1.5 py-0.5 text-[9px] font-bold rounded bg-rose-500/15 text-rose-400 font-mono";
-              costBadge.innerText = "Unoptimized Flow";
-
-              savedVal.innerText = "0";
-              savedValContainer.className = "my-3 text-3xl font-extrabold text-slate-500 dark:text-zinc-400 tracking-tight font-mono transition-all duration-300";
-              savedBadge.className = "px-1.5 py-0.5 text-[9px] font-bold rounded bg-slate-700/30 text-slate-500 dark:text-zinc-400 font-mono";
-              savedBadge.innerText = "Direct ROI Demo";
-
-              // Collapse terminal logs panel
-              terminal.classList.remove('h-44', 'opacity-100');
-              terminal.classList.add('h-0', 'opacity-0');
-              terminalBody.innerHTML = '';
-              resetBtn.classList.add('hidden');
-            } catch (err) {
-              console.error("Dashboard reset operation failed", err);
-            }
-          }
-
-          triggerBtn.addEventListener('click', startSimulation);
-          resetBtn.addEventListener('click', resetSimulation);
-        });
-      </script>
 </Layout>

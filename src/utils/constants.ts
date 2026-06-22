@@ -5,8 +5,6 @@
  * System Role: Ensures consistency and reduces duplication throughout the Astro pages and components.
  */
 
-export const RENDER_COLD_START_NOTE = "Hosted on Render free tier. First load may take a short while because the app can sleep when inactive.";
-
 /**
  * NOTE: The live Vercel production deployment URL for the portfolio chatbot backend.
  */

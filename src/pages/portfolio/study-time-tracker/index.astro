@@ -6,7 +6,6 @@
  * System Role: Showcases a specific operational tool built to track billable hours and team productivity.
  */
 import Layout from '../../../layouts/Layout.astro';
-import { RENDER_COLD_START_NOTE } from '../../../utils/constants';
 const title = 'Time-Tracking & Resource Allocation Tool Case Study | Jun Alvior';
 const description = 'Track billable hours, monitor project timelines, and optimize team productivity with this secure, database-driven time-tracking and resource allocation system.';
 ---
@@ -21,7 +20,7 @@ const description = 'Track billable hours, monitor project timelines, and optimi
             <a
               href="../../portfolio/"
               class="hover:text-wood-accent transition-colors"
-              ><- Back to Portfolio</a
+              >&lt;- Back to Portfolio</a
             >
           </div>
 
@@ -93,11 +92,6 @@ const description = 'Track billable hours, monitor project timelines, and optimi
               </svg>
               View Code
             </a>
-          </div>
-          <p class="text-sm text-gray-500 dark:text-gray-400 italic mb-12" data-aos="fade-up" data-aos-delay="60">
-            {RENDER_COLD_START_NOTE}
-          </p>
-
           <!-- Content -->
           <div
             class="prose dark:prose-invert prose-lg prose-wood max-w-none"
