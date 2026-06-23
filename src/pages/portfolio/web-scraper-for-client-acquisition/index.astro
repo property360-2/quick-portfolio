@@ -35,16 +35,31 @@ const description = 'An autonomous multi-source lead acquisition system that swe
 
         <!-- Header -->
         <header class="mb-12" data-aos="fade-up">
-          <div class="mb-8 rounded-2xl overflow-hidden shadow-2xl border border-gray-200/50 dark:border-gray-800/50">
-            <img
-              src="/quick-portfolio/assets/web-scraper.webp"
-              alt="Client Acquisition Scraper Control Center Mockup"
-              class="w-full h-auto object-cover max-h-[500px] hover:scale-101 transition-transform duration-700"
-              loading="lazy"
-              decoding="async"
-              width="800"
-              height="450"
-            />
+          <div class="mb-8 rounded-2xl overflow-hidden shadow-2xl border border-gray-200/50 dark:border-gray-800/50 relative group cursor-pointer" id="video-wrapper">
+            <video
+              id="case-study-video"
+              class="w-full h-auto object-cover max-h-[500px] block"
+              poster="/quick-portfolio/assets/web-scraper.webp"
+              preload="none"
+              playsinline
+              controls
+            >
+              <source src="/quick-portfolio/assets/web-scraper-demo.mp4" type="video/mp4" />
+              Your browser does not support the HTML5 video element.
+            </video>
+
+            <!-- Play button overlay -->
+            <div
+              id="play-overlay"
+              class="absolute inset-0 flex items-center justify-center bg-black/30 group-hover:bg-black/40 transition-colors"
+              aria-hidden="true"
+            >
+              <div class="w-16 h-16 rounded-full bg-wood-accent/90 flex items-center justify-center shadow-xl group-hover:scale-110 transition-transform duration-200">
+                <svg class="w-6 h-6 text-white ml-1" viewBox="0 0 24 24" fill="currentColor">
+                  <path d="M8 5v14l11-7z" />
+                </svg>
+              </div>
+            </div>
           </div>
           <div class="flex items-center gap-2 mb-4">
             <span class="inline-flex items-center px-3 py-1 rounded-full text-xs font-semibold bg-green-100 dark:bg-green-950/50 text-green-700 dark:text-green-400">
@@ -85,16 +100,12 @@ const description = 'An autonomous multi-source lead acquisition system that swe
 
         <!-- Project Links (Top CTA) -->
         <div class="flex flex-wrap gap-4 mb-16" data-aos="fade-up" data-aos-delay="50">
-          <button
-            id="btn-scroll-video"
+          <a
+            href="/quick-portfolio/contact/"
             class="px-6 py-3.5 bg-wood-accent hover:bg-wood-700 text-white font-semibold rounded-xl shadow-md hover:shadow-lg transition-all transform hover:-translate-y-0.5 flex items-center gap-2 cursor-pointer"
           >
-            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14.752 11.168l-3.197-2.132A1 1 0 0010 9.87v4.263a1 1 0 001.555.832l3.197-2.132a1 1 0 000-1.664z" />
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
-            </svg>
-            Watch Demo Video
-          </button>
+            Get in Touch / View Resume
+          </a>
           <a
             href="https://github.com/property360-2/web-scraper-for-client-acquisition"
             target="_blank"
@@ -285,39 +296,6 @@ const description = 'An autonomous multi-source lead acquisition system that swe
               <span><strong>Unified Local Funnel:</strong> Headless Playwright sweeps Google Maps &rarr; SQLModel stores Lead entries &rarr; Groq synthesizes outreach drafts &rarr; Interactive Badges launch Pitch Editor directly in new browser tabs.</span>
             </div>
 
-            <!-- Video Demonstration Container -->
-            <div class="mt-8 border-t border-gray-150 dark:border-gray-800 pt-6" id="video-section">
-              <h4 class="text-sm font-bold tracking-widest text-wood-accent uppercase text-center mb-4">
-                Operational Video Walkthrough
-              </h4>
-              <!-- Click-to-Play Video Banner -->
-              <div class="rounded-xl overflow-hidden shadow-2xl relative group cursor-pointer border border-gray-100 dark:border-gray-800/80" id="video-wrapper">
-                <video
-                  id="case-study-video"
-                  class="w-full h-auto object-cover max-h-[460px] block"
-                  poster="/quick-portfolio/assets/web-scraper.webp"
-                  preload="none"
-                  playsinline
-                  controls
-                >
-                  <source src="/quick-portfolio/assets/web-scraper-demo.mp4" type="video/mp4" />
-                  Your browser does not support the HTML5 video element.
-                </video>
-
-                <!-- Play button overlay -->
-                <div
-                  id="play-overlay"
-                  class="absolute inset-0 flex items-center justify-center bg-black/30 group-hover:bg-black/40 transition-colors"
-                  aria-hidden="true"
-                >
-                  <div class="w-16 h-16 rounded-full bg-wood-accent/90 flex items-center justify-center shadow-xl group-hover:scale-110 transition-transform duration-200">
-                    <svg class="w-6 h-6 text-white ml-1" viewBox="0 0 24 24" fill="currentColor">
-                      <path d="M8 5v14l11-7z" />
-                    </svg>
-                  </div>
-                </div>
-              </div>
-            </div>
           </section>
 
           <!-- SECTION 4: Architecture Pillars -->
@@ -626,10 +604,10 @@ const description = 'An autonomous multi-source lead acquisition system that swe
 
           <!-- Conversion CTA Block -->
           <section class="py-12 bg-gray-50 dark:bg-[#252528] rounded-2xl border border-gray-200 dark:border-gray-800 p-8 text-center my-12">
-            <h3 class="text-2xl font-bold text-gray-900 dark:text-white mb-4">Need to automate a similar bottleneck in your business?</h3>
-            <p class="text-gray-600 dark:text-gray-400 mb-6 max-w-xl mx-auto">Let's scour the inefficiencies and design a high-performance system customized for your exact operations.</p>
-            <a href="/quick-portfolio/rate/" class="inline-flex items-center px-6 py-3 bg-wood-accent hover:bg-wood-700 text-white font-bold rounded-xl transition-all shadow-md">
-              Book a Free 15-Minute Strategy Call &rarr;
+            <h3 class="text-2xl font-bold text-gray-900 dark:text-white mb-4">Looking for a full-stack developer to build custom software?</h3>
+            <p class="text-gray-600 dark:text-gray-400 mb-6 max-w-xl mx-auto">Let's discuss how we can scale your operations and build high-performance systems for your business.</p>
+            <a href="/quick-portfolio/contact/" class="inline-flex items-center px-6 py-3 bg-wood-accent hover:bg-wood-700 text-white font-bold rounded-xl transition-all shadow-md">
+              Get in Touch / View Resume &rarr;
             </a>
           </section>
 

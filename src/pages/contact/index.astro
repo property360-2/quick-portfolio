@@ -1,0 +1,367 @@
+---
+/**
+ * Contact and Resume Download Page Component
+ * File: src/pages/contact/index.astro
+ * Purpose: Provides a highly polished, single-column recruiter portal.
+ * Contains: 
+ *   - Quick contact details (Phone, Email, Location).
+ *   - Official resume download linking to the actual PDF (Jun-Alvior.pdf).
+ *   - A collapsible contact form revealed dynamically on clicking "Send a Message".
+ * Fits into: Part of the primary pages navigation, allowing hiring managers and recruiters to get in touch.
+ */
+import Layout from "../../layouts/Layout.astro";
+
+const title = "Contact & Resume | Dionisio Alvior | Full Stack Software Developer";
+const description = "Get in touch with Dionisio Alvior, Full Stack Software Developer. Download the latest resume and send direct inquiries.";
+---
+
+<Layout title={title} description={description}>
+  <main id="main-content" class="flex-grow flex flex-col justify-center items-center">
+    <!-- ORGANISM: Contact Container Section -->
+    <section id="contact-hub" class="py-24 bg-grey-light dark:bg-[#1a1a1a] w-full transition-colors duration-300">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        
+        <!-- Header Section -->
+        <div class="text-center mb-16 relative">
+          <span class="text-sm font-bold tracking-widest text-wood-accent uppercase mb-2 block">Connect With Me</span>
+          <h1 class="text-4xl sm:text-5xl font-extrabold tracking-tight text-gray-900 dark:text-white">
+            Let's Build Something Great
+          </h1>
+          <p class="max-w-xl mx-auto mt-3 text-base sm:text-lg text-gray-600 dark:text-gray-300">
+            Hiring managers, recruiters, and engineering team leads are welcome to reach out directly.
+          </p>
+          <div class="w-24 h-1 bg-wood-accent mx-auto rounded-full mt-6"></div>
+        </div>
+
+        <!-- Single Centered Column Layout to resolve width/height imbalances -->
+        <div class="max-w-2xl mx-auto w-full space-y-8">
+          
+          <!-- Card 1: Quick Contact Channels -->
+          <div class="p-8 bg-white dark:bg-[#252528] border border-gray-200 dark:border-gray-800 rounded-2xl shadow-sm">
+            <h2 class="text-lg font-bold text-gray-900 dark:text-white mb-6">Contact Channels</h2>
+            
+            <div class="space-y-6 text-sm">
+              <!-- Phone -->
+              <div class="flex items-start gap-4">
+                <div class="text-wood-accent mt-1">
+                  <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.94.725l.548 2.2a1 1 0 01-.321.988l-1.305.98a10.582 10.582 0 004.872 4.872l.98-1.305a1 1 0 01.988-.321l2.2.548a1 1 0 01.725.94V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
+                  </svg>
+                </div>
+                <div>
+                  <h3 class="font-bold text-gray-800 dark:text-gray-200">Phone Numbers</h3>
+                  <p class="text-gray-600 dark:text-gray-400 mt-1">0991 470 7733</p>
+                  <p class="text-gray-600 dark:text-gray-400">0916 754 5563</p>
+                </div>
+              </div>
+
+              <!-- Email -->
+              <div class="flex items-start gap-4">
+                <div class="text-wood-accent mt-1">
+                  <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+                  </svg>
+                </div>
+                <div>
+                  <h3 class="font-bold text-gray-800 dark:text-gray-200">Email Address</h3>
+                  <p class="text-gray-600 dark:text-gray-400 mt-1">
+                    <a href="mailto:junalvior21@gmail.com" class="hover:text-wood-accent transition-colors">junalvior21@gmail.com</a>
+                  </p>
+                </div>
+              </div>
+
+              <!-- Location -->
+              <div class="flex items-start gap-4">
+                <div class="text-wood-accent mt-1">
+                  <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
+                  </svg>
+                </div>
+                <div>
+                  <h3 class="font-bold text-gray-800 dark:text-gray-200">Location</h3>
+                  <p class="text-gray-600 dark:text-gray-400 mt-1">Ligas, Malolos, Bulacan, PH</p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Card 2: Resume Download -->
+          <div class="p-8 bg-white dark:bg-[#252528] border border-gray-200 dark:border-gray-800 rounded-2xl shadow-sm">
+            <h2 class="text-lg font-bold text-gray-900 dark:text-white mb-4">Official Resume</h2>
+            <p class="text-xs text-gray-500 dark:text-gray-400 mb-6 leading-relaxed">
+              Download the complete printable PDF resume containing detailed credentials, education records, technical certifications, and references.
+            </p>
+            
+            <!-- Updated PDF download target to actual resume location -->
+            <a
+              href="/quick-portfolio/assets/Jun-Alvior.pdf"
+              download="Jun-Alvior.pdf"
+              class="flex items-center justify-center w-full px-5 py-3 bg-wood-accent hover:bg-wood-accent/90 text-white font-bold rounded-xl transition-all shadow-md text-center text-sm gap-2"
+              id="download-resume-btn"
+            >
+              <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" />
+              </svg>
+              Download PDF Resume
+            </a>
+          </div>
+
+          <!-- Trigger: Send a Message Toggle Button -->
+          <div id="form-trigger-container" class="text-center">
+            <button
+              id="toggle-contact-form"
+              class="w-full px-5 py-4 bg-transparent border-2 border-wood-accent text-wood-accent hover:bg-wood-accent hover:text-white font-bold rounded-xl transition-all shadow-sm text-sm flex items-center justify-center gap-2"
+            >
+              <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z" />
+              </svg>
+              <span>Send a Message</span>
+            </button>
+          </div>
+
+          <!-- Card 3: Interactive Contact Form (Initially Hidden) -->
+          <div id="contact-form-card" class="hidden opacity-0 transform translate-y-4 transition-all duration-500 ease-out">
+            <div class="p-8 bg-white dark:bg-[#252528] border border-gray-200 dark:border-gray-800 rounded-2xl shadow-sm">
+              <h2 class="text-lg font-bold text-gray-900 dark:text-white mb-6">Send a Message</h2>
+              
+              <form id="contact-form" class="space-y-6">
+                <!-- Name Input -->
+                <div>
+                  <label for="contact-name" class="block text-xs font-bold text-gray-700 dark:text-gray-300 uppercase tracking-widest mb-2">Full Name</label>
+                  <input
+                    type="text"
+                    id="contact-name"
+                    name="name"
+                    required
+                    maxlength="100"
+                    placeholder="John Doe"
+                    class="w-full px-4 py-3 bg-gray-50 dark:bg-[#1a1a1a] border border-gray-200 dark:border-gray-800 rounded-xl text-sm text-gray-900 dark:text-white placeholder-gray-400 focus:outline-none focus:border-wood-accent focus:ring-1 focus:ring-wood-accent transition-all"
+                  />
+                  <p id="name-error" class="hidden text-xs text-red-500 mt-1"></p>
+                </div>
+
+                <!-- Email Input -->
+                <div>
+                  <label for="contact-email" class="block text-xs font-bold text-gray-700 dark:text-gray-300 uppercase tracking-widest mb-2">Email Address</label>
+                  <input
+                    type="email"
+                    id="contact-email"
+                    name="email"
+                    required
+                    placeholder="john.doe@example.com"
+                    class="w-full px-4 py-3 bg-gray-50 dark:bg-[#1a1a1a] border border-gray-200 dark:border-gray-800 rounded-xl text-sm text-gray-900 dark:text-white placeholder-gray-400 focus:outline-none focus:border-wood-accent focus:ring-1 focus:ring-wood-accent transition-all"
+                  />
+                  <p id="email-error" class="hidden text-xs text-red-500 mt-1"></p>
+                </div>
+
+                <!-- Subject Input -->
+                <div>
+                  <label for="contact-subject" class="block text-xs font-bold text-gray-700 dark:text-gray-300 uppercase tracking-widest mb-2">Subject</label>
+                  <input
+                    type="text"
+                    id="contact-subject"
+                    name="subject"
+                    required
+                    maxlength="200"
+                    placeholder="Job Inquiry / Project Opportunity"
+                    class="w-full px-4 py-3 bg-gray-50 dark:bg-[#1a1a1a] border border-gray-200 dark:border-gray-800 rounded-xl text-sm text-gray-900 dark:text-white placeholder-gray-400 focus:outline-none focus:border-wood-accent focus:ring-1 focus:ring-wood-accent transition-all"
+                  />
+                  <p id="subject-error" class="hidden text-xs text-red-500 mt-1"></p>
+                </div>
+
+                <!-- Message Textarea -->
+                <div>
+                  <label for="contact-message" class="block text-xs font-bold text-gray-700 dark:text-gray-300 uppercase tracking-widest mb-2">Message</label>
+                  <textarea
+                    id="contact-message"
+                    name="message"
+                    required
+                    rows="5"
+                    maxlength="2000"
+                    placeholder="Tell me about your role or project..."
+                    class="w-full px-4 py-3 bg-gray-50 dark:bg-[#1a1a1a] border border-gray-200 dark:border-gray-800 rounded-xl text-sm text-gray-900 dark:text-white placeholder-gray-400 focus:outline-none focus:border-wood-accent focus:ring-1 focus:ring-wood-accent transition-all resize-none"
+                  ></textarea>
+                  <p id="message-error" class="hidden text-xs text-red-500 mt-1"></p>
+                </div>
+
+                <!-- Submit Button & Feedback -->
+                <div class="pt-2">
+                  <button
+                    type="submit"
+                    id="submit-contact"
+                    class="w-full px-5 py-3 bg-wood-accent hover:bg-wood-accent/90 text-white font-bold rounded-xl transition-all shadow-md text-sm flex items-center justify-center gap-2"
+                  >
+                    <span>Send Message via Email</span>
+                    <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3" />
+                    </svg>
+                  </button>
+                </div>
+              </form>
+
+              <!-- Success Notification Alert -->
+              <div id="contact-success-toast" class="hidden mt-6 p-4 bg-green-50 dark:bg-green-950/30 border border-green-200 dark:border-green-800/50 rounded-xl text-sm text-green-800 dark:text-green-300 flex items-start gap-3">
+                <svg class="w-5 h-5 text-green-500 mt-0.5 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                </svg>
+                <div>
+                  <h4 class="font-bold">Form validated successfully!</h4>
+                  <p class="mt-1 text-xs text-green-700 dark:text-green-400">
+                    Preparing your email client with the message details. If it doesn't open automatically, you can email <a href="mailto:junalvior21@gmail.com" class="underline">junalvior21@gmail.com</a> directly.
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+  </main>
+</Layout>
+
+<script is:inline>
+  /**
+   * Sanitizes user inputs to prevent HTML injection and scripting vulnerability risks.
+   * Accepts a raw string and returns the escaped/sanitized string.
+   */
+  function sanitizeInput(str) {
+    if (typeof str !== 'string') return '';
+    return str
+      .replace(/&/g, '&amp;')
+      .replace(/</g, '&lt;')
+      .replace(/>/g, '&gt;')
+      .replace(/"/g, '&quot;')
+      .replace(/'/g, '&#x27;')
+      .replace(/\//g, '&#x2F;');
+  }
+
+  /**
+   * Initializes page event listeners for form submission, validation, sanitization,
+   * and toggling the collapsible contact form card.
+   */
+  document.addEventListener("DOMContentLoaded", () => {
+    // 1. Toggling the collapsible contact form
+    const triggerBtn = document.getElementById("toggle-contact-form");
+    const formCard = document.getElementById("contact-form-card");
+
+    if (triggerBtn && formCard) {
+      triggerBtn.addEventListener("click", () => {
+        // Show container in DOM
+        formCard.classList.remove("hidden");
+        
+        // Trigger visual transition
+        setTimeout(() => {
+          formCard.classList.remove("opacity-0", "translate-y-4");
+        }, 50);
+
+        // Smooth scroll to the form card
+        setTimeout(() => {
+          formCard.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }, 300);
+
+        // Optional: hide the trigger button container since the form is now open
+        const triggerContainer = document.getElementById("form-trigger-container");
+        if (triggerContainer) {
+          triggerContainer.classList.add("hidden");
+        }
+      });
+    }
+
+    // 2. Handling Form Submit, Validation, and Sanitization
+    const form = document.getElementById("contact-form");
+    if (!form) return;
+
+    form.addEventListener("submit", (event) => {
+      event.preventDefault();
+
+      // Get values
+      const nameInput = document.getElementById("contact-name");
+      const emailInput = document.getElementById("contact-email");
+      const subjectInput = document.getElementById("contact-subject");
+      const messageInput = document.getElementById("contact-message");
+
+      const nameVal = nameInput.value.trim();
+      const emailVal = emailInput.value.trim();
+      const subjectVal = subjectInput.value.trim();
+      const messageVal = messageInput.value.trim();
+
+      // Reset errors
+      const errorIds = ["name-error", "email-error", "subject-error", "message-error"];
+      errorIds.forEach(id => {
+        const el = document.getElementById(id);
+        if (el) el.classList.add("hidden");
+      });
+
+      let hasErrors = false;
+
+      // Validate Name
+      if (nameVal.length < 2) {
+        const err = document.getElementById("name-error");
+        if (err) {
+          err.textContent = "Please enter your full name (minimum 2 characters).";
+          err.classList.remove("hidden");
+        }
+        hasErrors = true;
+      }
+
+      // Validate Email
+      const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+      if (!emailRegex.test(emailVal)) {
+        const err = document.getElementById("email-error");
+        if (err) {
+          err.textContent = "Please enter a valid email address.";
+          err.classList.remove("hidden");
+        }
+        hasErrors = true;
+      }
+
+      // Validate Subject
+      if (subjectVal.length < 3) {
+        const err = document.getElementById("subject-error");
+        if (err) {
+          err.textContent = "Please enter a subject (minimum 3 characters).";
+          err.classList.remove("hidden");
+        }
+        hasErrors = true;
+      }
+
+      // Validate Message
+      if (messageVal.length < 10) {
+        const err = document.getElementById("message-error");
+        if (err) {
+          err.textContent = "Please write a brief description or message (minimum 10 characters).";
+          err.classList.remove("hidden");
+        }
+        hasErrors = true;
+      }
+
+      if (hasErrors) return;
+
+      // Sanitize inputs
+      const safeName = sanitizeInput(nameVal);
+      const safeEmail = sanitizeInput(emailVal);
+      const safeSubject = sanitizeInput(subjectVal);
+      const safeMessage = sanitizeInput(messageVal);
+
+      // Trigger mailto client flow
+      const mailtoSubject = encodeURIComponent(`[Portfolio Inquiry] ${safeSubject}`);
+      const mailtoBody = encodeURIComponent(`Name: ${safeName}\nEmail: ${safeEmail}\n\nMessage:\n${safeMessage}`);
+      
+      // Target email
+      const targetEmail = "junalvior21@gmail.com";
+      const mailtoUrl = `mailto:${targetEmail}?subject=${mailtoSubject}&body=${mailtoBody}`;
+
+      // Display success card
+      const toast = document.getElementById("contact-success-toast");
+      if (toast) toast.classList.remove("hidden");
+
+      // Open mail client safely
+      setTimeout(() => {
+        window.location.href = mailtoUrl;
+      }, 500);
+    });
+  });
+</script>
