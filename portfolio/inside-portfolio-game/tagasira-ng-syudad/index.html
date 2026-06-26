@@ -1,0 +1,103 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"
+    />
+    <title>Tagasira ng Syudad - 3D Mini Game</title>
+
+    <!-- Google Fonts for UI -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- Stylesheet -->
+    <link rel="stylesheet" href="style.css" />
+
+    <!-- Three.js CDN -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/controls/OrbitControls.js"></script>
+  </head>
+  <body>
+    <!-- Crosshair Target -->
+    <div id="crosshair"></div>
+
+    <!-- Game UI Overlay -->
+    <div id="ui-container">
+      <h1 id="title">Tagasira ng Syudad</h1>
+      <p id="instructions">Click on the buildings to destroy them!</p>
+      <p id="score-display">
+        Buildings Left: <span id="buildings-left">0</span>
+      </p>
+    </div>
+
+    <!-- Combo Display -->
+    <div id="combo-display"></div>
+
+    <!-- Win Screen Overlay -->
+    <div id="win-screen" class="hidden">
+      <h2>City Destroyed!</h2>
+      <div id="win-stats">
+        <div class="stat-card">
+          <span class="stat-value" id="stat-bombs">0</span>
+          <span class="stat-label">💥 Bombs</span>
+        </div>
+        <div class="stat-card">
+          <span class="stat-value" id="stat-asteroids">0</span>
+          <span class="stat-label">☄️ Asteroids</span>
+        </div>
+        <div class="stat-card">
+          <span class="stat-value" id="stat-fires">0</span>
+          <span class="stat-label">🔥 Fires</span>
+        </div>
+        <div class="stat-card">
+          <span class="stat-value" id="stat-kaiju">0</span>
+          <span class="stat-label">🦖 Kaiju</span>
+        </div>
+        <div class="stat-card">
+          <span class="stat-value" id="stat-lasers">0</span>
+          <span class="stat-label">⚡ Lasers</span>
+        </div>
+        <div class="stat-card">
+          <span class="stat-value" id="stat-nukes">0</span>
+          <span class="stat-label">☢️ Nukes</span>
+        </div>
+        <div class="stat-card">
+          <span class="stat-value" id="stat-time">0s</span>
+          <span class="stat-label">⏱️ Time</span>
+        </div>
+      </div>
+      <button id="retry-btn">Play Again</button>
+    </div>
+
+    <!-- Weapon Selection Toolbar -->
+    <div id="weapon-toolbar">
+      <button class="weapon-btn active" data-weapon="bomb" title="C4 / Bomb">
+        💥<span class="weapon-label">Bomb</span>
+      </button>
+      <button class="weapon-btn" data-weapon="asteroid" title="Asteroid Strike">
+        ☄️<span class="weapon-label">Asteroid</span>
+      </button>
+      <button class="weapon-btn" data-weapon="fire" title="Burn / Fire">
+        🔥<span class="weapon-label">Fire</span>
+      </button>
+      <button class="weapon-btn" data-weapon="monster" title="Kaiju Monster">
+        🦖<span class="weapon-label">Kaiju</span>
+      </button>
+      <button class="weapon-btn" data-weapon="laser" title="Laser Beam">
+        ⚡<span class="weapon-label">Laser</span>
+      </button>
+      <button class="weapon-btn" data-weapon="nuke" title="Atomic Bomb">
+        ☢️<span class="weapon-label">Nuke</span>
+      </button>
+    </div>
+
+    <!-- Main Game Script -->
+    <script src="main.js"></script>
+  </body>
+</html>
