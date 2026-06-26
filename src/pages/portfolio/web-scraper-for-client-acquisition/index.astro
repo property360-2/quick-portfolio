@@ -613,7 +613,7 @@ const description = 'An autonomous multi-source lead acquisition system that swe
 
           <!-- Next Case Study Footer -->
           <div class="flex justify-between items-center border-t border-gray-200 dark:border-gray-800 pt-8 mt-8">
-            <a href="/quick-portfolio/portfolio/" class="text-sm text-gray-500 hover:text-wood-accent transition-colors">&lt;- Back to Portfolio</a>
+            <a href="/quick-portfolio/portfolio/" class="text-sm text-gray-500 hover:text-wood-accent transition-colors">&larr; Back to Portfolio</a>
             <a href="/quick-portfolio/portfolio/scrollytelling-gallery/" class="text-sm font-bold text-wood-accent hover:text-wood-700 transition-colors">Next Case Study &rarr;</a>
           </div>
 
@@ -644,41 +644,5 @@ const description = 'An autonomous multi-source lead acquisition system that swe
 </style>
 
 <script>
-  /**
-   * Playback management and interactivity controllers for the video showcase banner.
-   */
-  (function initCaseStudyInteractions() {
-    // 1. Scroll-to-video CTA logic
-    const scrollBtn = document.getElementById('btn-scroll-video');
-    const videoSec  = document.getElementById('video-section');
-    if (scrollBtn && videoSec) {
-      scrollBtn.addEventListener('click', () => {
-        videoSec.scrollIntoView({ behavior: 'smooth', block: 'center' });
-      });
-    }
-
-    // 2. Click-to-play video overlay logic
-    const wrapper = document.getElementById('video-wrapper');
-    const video   = document.getElementById('case-study-video') as HTMLVideoElement | null;
-    const overlay = document.getElementById('play-overlay');
-
-    if (!video || !overlay || !wrapper) return;
-
-    function hideOverlay() {
-      if (overlay) overlay.style.display = 'none';
-    }
-
-    wrapper.addEventListener('click', (e) => {
-      // Don't trigger if they specifically clicked native browser control overlay areas
-      const target = e.target as HTMLElement;
-      if (target === video) return;
-
-      video.play().catch(() => {
-        // Playback blocked, fall back gracefully to native controls
-      });
-      hideOverlay();
-    });
-
-    video.addEventListener('play', hideOverlay);
-  })();
+  import '../../../scripts/case-study-video.js';
 </script>

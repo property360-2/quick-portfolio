@@ -1,0 +1,234 @@
+---
+/**
+ * Filipino Heirloom Recipes & Meal Planner PWA Case Study Page
+ * File: src/pages/portfolio/ano-po-ulam/index.astro
+ * Purpose: Detailed case study highlighting Next.js 15, Tailwind v4, Prisma, PostgreSQL (Supabase), NextAuth.js v5, and custom service worker offline architecture.
+ * Contains: Project summary, architectural pillars, UI/UX screenshots, database integration details, and interactive capabilities.
+ * System Role: Showcases advanced full-stack capabilities, performance optimization, offline resiliency, and clean UI design in the portfolio.
+ */
+import Layout from '../../../layouts/Layout.astro';
+const title = "Ano Pong Ulam? | Heirloom Recipes & Meal Planner PWA | Jun Alvior";
+const description = "A full-featured Progressive Web App (PWA) for sharing Filipino heirloom recipes, featuring custom offline service workers, localStorage draft auto-save, social feed grouping, and weekly meal planning.";
+---
+
+<Layout title={title} description={description}>
+  <main id="main-content" class="flex-grow flex flex-col">
+    <!-- ORGANISMS: Project Case Study -->
+    <article class="py-24 bg-grey-light dark:bg-[#1a1a1a] flex-grow transition-colors duration-300">
+      <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+        <!-- Breadcrumb -->
+        <div class="mb-8 text-sm text-gray-700 dark:text-gray-300">
+          <a
+            href="/quick-portfolio/portfolio/"
+            class="hover:text-wood-accent transition-colors flex items-center gap-1 font-medium"
+          >
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" />
+            </svg>
+            Back to Portfolio
+          </a>
+        </div>
+
+        <!-- Header -->
+        <header class="mb-12" data-aos="fade-up">
+          <div class="mb-8 rounded-2xl border border-gray-200 dark:border-gray-800 shadow-xl overflow-hidden aspect-video relative group">
+            <img 
+              src="/quick-portfolio/assets/ano-po-ulam/desktop-ano-po-ulam.png" 
+              alt="Ano Pong Ulam? Recipe & Meal Planning Portal Desktop Interface" 
+              class="w-full h-full object-cover transform group-hover:scale-102 transition-transform duration-700" 
+              loading="eager"
+            />
+            <div class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/30 to-transparent flex flex-col justify-end p-6 md:p-8">
+              <h3 class="text-lg md:text-xl font-extrabold text-white mb-1">
+                Ano Pong Ulam? Desktop Interface
+              </h3>
+              <p class="text-xs md:text-sm text-gray-300">
+                Weekly meal planner grid, recipe collections, and social feed aggregating community interactions.
+              </p>
+            </div>
+          </div>
+
+          <div class="flex items-center gap-2 mb-4">
+            <span class="inline-flex items-center px-3 py-1 rounded-full text-xs font-semibold bg-green-100 dark:bg-green-950/50 text-green-700 dark:text-green-400">
+              Active Project
+            </span>
+            <span class="inline-flex items-center px-3 py-1 rounded-full text-xs font-semibold bg-wood-100 dark:bg-wood-950/50 text-wood-900 dark:text-wood-100">
+              Case Study
+            </span>
+            <span class="inline-flex items-center px-3 py-1 rounded-full text-xs font-semibold bg-blue-100 dark:bg-blue-950/50 text-blue-700 dark:text-blue-400">
+              PWA
+            </span>
+          </div>
+          
+          <h1 class="text-3xl md:text-5xl font-extrabold text-gray-900 dark:text-white tracking-tight mb-4">
+            Ano Pong Ulam? Heirloom Recipe Sharing PWA
+          </h1>
+          <p class="text-lg md:text-xl text-gray-700 dark:text-gray-300 leading-relaxed font-normal">
+            Filipino heirloom recipe preservation, weekly meal planner grids, and offline draft synchronization.
+          </p>
+
+          <div class="flex flex-wrap gap-2.5 mt-6">
+            <span class="px-3 py-1 bg-white dark:bg-[#252528] border border-gray-200 dark:border-gray-800 text-wood-900 dark:text-wood-100 rounded-full text-xs font-semibold tracking-wide shadow-sm">
+              Next.js 15 (App Router)
+            </span>
+            <span class="px-3 py-1 bg-white dark:bg-[#252528] border border-gray-200 dark:border-gray-800 text-wood-900 dark:text-wood-100 rounded-full text-xs font-semibold tracking-wide shadow-sm">
+              Tailwind CSS v4
+            </span>
+            <span class="px-3 py-1 bg-white dark:bg-[#252528] border border-gray-200 dark:border-gray-800 text-wood-900 dark:text-wood-100 rounded-full text-xs font-semibold tracking-wide shadow-sm">
+              Prisma / PostgreSQL
+            </span>
+            <span class="px-3 py-1 bg-white dark:bg-[#252528] border border-gray-200 dark:border-gray-800 text-wood-900 dark:text-wood-100 rounded-full text-xs font-semibold tracking-wide shadow-sm">
+              NextAuth.js v5
+            </span>
+            <span class="px-3 py-1 bg-white dark:bg-[#252528] border border-gray-200 dark:border-gray-800 text-wood-900 dark:text-wood-100 rounded-full text-xs font-semibold tracking-wide shadow-sm">
+              Service Worker Cache
+            </span>
+          </div>
+        </header>
+
+        <!-- Project Links -->
+        <div class="flex flex-wrap gap-4 mb-16" data-aos="fade-up" data-aos-delay="50">
+          <a
+            href="https://ano-pong-ulam.vercel.app/"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="px-6 py-3.5 bg-wood-accent hover:bg-wood-700 text-white font-semibold rounded-xl shadow-md hover:shadow-lg transition-all transform hover:-translate-y-0.5 flex items-center gap-2"
+          >
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+            </svg>
+            Live Production Link
+          </a>
+          <a
+            href="https://github.com/property360-2/ano-pong-ulam"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="px-6 py-3.5 bg-white dark:bg-[#252528] border border-gray-200 dark:border-gray-800 text-gray-900 dark:text-white font-semibold rounded-xl shadow-md hover:shadow-lg transition-all transform hover:-translate-y-0.5 flex items-center gap-2"
+          >
+            <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+              <path fill-rule="evenodd" d="M12 2C6.477 2 2 6.477 2 12c0 4.42 2.865 8.166 6.839 9.489.5.092.682-.217.682-.482 0-.237-.008-.866-.013-1.7-2.782.603-3.369-1.34-3.369-1.34-.454-1.156-1.11-1.462-1.11-1.462-.908-.62.069-.608.069-.608 1.003.07 1.531 1.03 1.531 1.03.892 1.529 2.341 1.087 2.91.831.092-.646.35-1.086.636-1.336-2.22-.253-4.555-1.11-4.555-4.943 0-1.091.39-1.984 1.029-2.683-.103-.253-.446-1.27.098-2.647 0 0 .84-.269 2.75 1.025A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.294 2.747-1.025 2.747-1.025.546 1.377.203 2.394.1 2.647.64.699 1.028 1.592 1.028 2.683 0 3.842-2.339 4.687-4.566 4.935.359.309.678.919.678 1.852 0 1.336-.012 2.415-.012 2.743 0 .267.18.579.688.481C19.137 20.164 22 16.418 22 12c0-5.523-4.477-10-10-10z" clip-rule="evenodd" />
+            </svg>
+            View Code Repository
+          </a>
+        </div>
+
+        <!-- Content Flow -->
+        <div class="space-y-16">
+          
+          <!-- Executive Summary -->
+          <section id="executive-summary" class="bg-white dark:bg-[#252528] border-l-4 border-wood-accent border-y border-r border-gray-200 dark:border-gray-800 rounded-r-2xl p-6 sm:p-8" data-aos="fade-up">
+            <h2 class="text-xl font-bold text-gray-900 dark:text-white mb-3 flex items-center gap-2">
+              <svg class="w-5 h-5 text-wood-accent shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+              </svg>
+              Executive Summary
+            </h2>
+            <p class="text-gray-700 dark:text-gray-300 leading-relaxed">
+              <strong>Ano Pong Ulam?</strong> is a highly interactive, full-stack Progressive Web App designed as a social recipe-sharing catalog and weekly meal planner focusing on the preservation of <strong>Filipino heirloom recipes</strong>. Built to solve high mobile data dependency and network drops in the Philippines, the system incorporates comprehensive PWA offline-first structures, local storage synchronizations, and resource optimizations.
+            </p>
+            <p class="text-gray-700 dark:text-gray-300 leading-relaxed mt-3">
+              It allows users to construct weekly meal plans, draft rich recipe entries with step-by-step guidance without fearing draft loss, and browse a visual community activity feed optimized to group like/review spam into single clean summaries.
+            </p>
+          </section>
+
+          <!-- System Demonstration & Media -->
+          <section id="system-demo" class="space-y-6" data-aos="fade-up">
+            <h3 class="text-2xl font-bold text-gray-900 dark:text-white border-b border-gray-200 dark:border-gray-800 pb-3">
+              Application Interfaces
+            </h3>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-start">
+              <!-- Mobile Screenshot -->
+              <div class="flex flex-col gap-2">
+                <div class="rounded-xl overflow-hidden shadow-xl border border-gray-200 dark:border-gray-800 bg-white aspect-[9/16] relative max-w-sm mx-auto">
+                  <img 
+                    src="/quick-portfolio/assets/ano-po-ulam/ano po ulam android.PNG" 
+                    alt="Ano Pong Ulam Android Mobile App PWA Interface" 
+                    class="w-full h-full object-cover" 
+                    loading="lazy"
+                  />
+                </div>
+                <span class="text-xs text-gray-500 dark:text-gray-400 font-medium text-center">
+                  Mobile Android Interface: Home feed view presenting regional heritage recipes.
+                </span>
+              </div>
+
+              <!-- Tech Specifications Card -->
+              <div class="space-y-6">
+                <div class="border border-gray-200 dark:border-gray-800 rounded-xl p-6 bg-white dark:bg-[#252528] shadow-sm">
+                  <h4 class="font-bold text-gray-900 dark:text-white text-base mb-3">Technical Stack Breakdown</h4>
+                  <ul class="space-y-2 text-sm text-gray-600 dark:text-gray-400">
+                    <li class="flex justify-between border-b border-gray-100 dark:border-gray-800 pb-1.5">
+                      <span class="font-medium">Framework:</span>
+                      <span class="font-mono text-xs">Next.js 15 (App Router)</span>
+                    </li>
+                    <li class="flex justify-between border-b border-gray-100 dark:border-gray-800 pb-1.5">
+                      <span class="font-medium">Styling Library:</span>
+                      <span class="font-mono text-xs">Tailwind CSS v4</span>
+                    </li>
+                    <li class="flex justify-between border-b border-gray-100 dark:border-gray-800 pb-1.5">
+                      <span class="font-medium">Database Layer:</span>
+                      <span class="font-mono text-xs">Prisma Client & PostgreSQL (Supabase)</span>
+                    </li>
+                    <li class="flex justify-between border-b border-gray-100 dark:border-gray-800 pb-1.5">
+                      <span class="font-medium">Authentication:</span>
+                      <span class="font-mono text-xs">NextAuth.js v5 (Google OAuth & Credentials)</span>
+                    </li>
+                    <li class="flex justify-between border-b border-gray-100 dark:border-gray-800 pb-1.5">
+                      <span class="font-medium">File Storage:</span>
+                      <span class="font-mono text-xs">Supabase Buckets</span>
+                    </li>
+                  </ul>
+                </div>
+
+                <div class="border border-gray-200 dark:border-gray-800 rounded-xl p-6 bg-white dark:bg-[#252528] shadow-sm">
+                  <h4 class="font-bold text-gray-900 dark:text-white text-base mb-2">Key Accomplishments</h4>
+                  <ul class="list-disc pl-5 space-y-1.5 text-xs text-gray-600 dark:text-gray-400">
+                    <li>Custom Service Worker cache logic minimizing layout shifting and static asset payloads by 85%.</li>
+                    <li>Synchronous <code>localStorage</code> cache sync in Multi-Step Wizard guaranteeing zero loss of draft recipes on accidental page closings.</li>
+                    <li>NextAuth session bindings with integrated authorization rules ensuring secure user collections and profile modification rights.</li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </section>
+
+          <!-- Core Architecture & Design Patterns -->
+          <section id="engineering-patterns" class="space-y-6" data-aos="fade-up">
+            <h3 class="text-2xl font-bold text-gray-900 dark:text-white border-b border-gray-200 dark:border-gray-800 pb-3">
+              Engineering Architecture Pillars
+            </h3>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+              <!-- Pillar 1 -->
+              <div class="border border-gray-200 dark:border-gray-800 rounded-xl p-6 bg-white dark:bg-[#252528] shadow-sm">
+                <h4 class="font-bold text-gray-900 dark:text-white text-base mb-2">1. Offline Caching & Service Workers</h4>
+                <p class="text-sm text-gray-600 dark:text-gray-400 leading-relaxed">
+                  Implements custom caching strategies within a progressive service worker shell. Core styling libraries, Google Fonts, and static site assets are pre-cached, while recipe details are loaded from background network-first queries. If the user loses network entirely, they are redirected to a friendly, custom offline fallback page while still retaining access to previously loaded recipe cards.
+                </p>
+              </div>
+
+              <!-- Pillar 2 -->
+              <div class="border border-gray-200 dark:border-gray-800 rounded-xl p-6 bg-white dark:bg-[#252528] shadow-sm">
+                <h4 class="font-bold text-gray-900 dark:text-white text-base mb-2">2. Visual Feed Grouping Algorithm</h4>
+                <p class="text-sm text-gray-600 dark:text-gray-400 leading-relaxed">
+                  Rather than spamming the social feed with dozens of individual cards representing likes and reviews, the system utilizes a custom server-side aggregator. It groups social signals on the same recipe within a rolling 24-hour window, displaying stacked profile avatars and concise descriptors (e.g. <em>"Ate Marie and 3 others liked this"</em>) for a cleaner, premium community interface.
+                </p>
+              </div>
+            </div>
+          </section>
+
+          <!-- Conversion CTA Block -->
+          <section class="py-12 bg-gray-50 dark:bg-[#252528] rounded-2xl border border-gray-200 dark:border-gray-800 p-8 text-center my-12" data-aos="fade-up">
+            <h3 class="text-2xl font-bold text-gray-900 dark:text-white mb-4">Want to build high-performance PWAs or full-stack platforms?</h3>
+            <p class="text-gray-600 dark:text-gray-400 mb-6 max-w-xl mx-auto">Let's coordinate to build custom software, offline-first mobile webapps, or high-throughput databases.</p>
+            <a href="/quick-portfolio/contact/" class="inline-flex items-center px-6 py-3 bg-wood-accent hover:bg-wood-700 text-white font-bold rounded-xl transition-all shadow-md">
+              Get in Touch &rarr;
+            </a>
+          </section>
+
+        </div>
+      </div>
+    </article>
+  </main>
+</Layout>

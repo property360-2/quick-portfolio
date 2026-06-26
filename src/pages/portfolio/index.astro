@@ -6,6 +6,7 @@
  * System Role: The main hub for exploring the developer's work, including direct links to live demos and case studies.
  */
 import Layout from '../../layouts/Layout.astro';
+import Carousel from '../../components/Carousel.astro';
 const title = 'Strategic Portfolio | AI Automation & Full Stack Solutions | Jun Alvior';
 const description = "Explore professional AI automation systems, enterprise-grade software portals, and high-performance digital solutions designed to scale business operations.";
 ---
@@ -49,19 +50,19 @@ const description = "Explore professional AI automation systems, enterprise-grad
               class="filter-btn px-6 py-2 rounded-full bg-gray-200 dark:bg-gray-800 text-gray-700 dark:text-gray-300 hover:bg-wood-accent hover:text-white transition-colors"
               data-filter="fullstack"
             >
-              Fullstack
+              Full-Stack
             </button>
             <button
               class="filter-btn px-6 py-2 rounded-full bg-gray-200 dark:bg-gray-800 text-gray-700 dark:text-gray-300 hover:bg-wood-accent hover:text-white transition-colors"
-              data-filter="frontend"
+              data-filter="iot"
             >
-              Frontend
+              IoT & Systems
             </button>
             <button
               class="filter-btn px-6 py-2 rounded-full bg-gray-200 dark:bg-gray-800 text-gray-700 dark:text-gray-300 hover:bg-wood-accent hover:text-white transition-colors"
-              data-filter="tools"
+              data-filter="automation"
             >
-              Tools
+              Automation & Tools
             </button>
             <button
               class="filter-btn px-6 py-2 rounded-full bg-gray-200 dark:bg-gray-800 text-gray-700 dark:text-gray-300 hover:bg-wood-accent hover:text-white transition-colors"
@@ -75,6 +76,70 @@ const description = "Explore professional AI automation systems, enterprise-grad
             class="grid grid-cols-1 md:grid-cols-2 gap-8"
             id="portfolio-grid"
           >
+            <!-- Project: Ano Pong Ulam? Heirloom Recipe Sharing PWA -->
+            <div
+              class="project-card group"
+              data-aos="fade-up"
+              data-category="fullstack"
+            >
+              <div
+                class="relative overflow-hidden rounded-xl shadow-lg aspect-video bg-gray-200 flex flex-col justify-end"
+              >
+                <img
+                  src="../assets/ano-po-ulam/desktop-ano-po-ulam.png"
+                  alt="Ano Pong Ulam? Heirloom Recipe Sharing & Meal Planning PWA"
+                  class="absolute inset-0 object-cover w-full h-full transform group-hover:scale-105 transition-transform duration-500"
+                  loading="lazy"
+                  decoding="async"
+                  width="800"
+                  height="450"
+                />
+                <div
+                  class="absolute inset-0 bg-black/60 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col items-center justify-center p-8 gap-4 z-10 text-center"
+                >
+                  <div class="flex flex-wrap justify-center gap-4">
+                    <a
+                      href="/quick-portfolio/portfolio/ano-po-ulam/"
+                      class="text-white border px-4 py-2 rounded-full text-sm font-medium tracking-wide hover:bg-white hover:text-black transition-colors"
+                      >View Details</a
+                    >
+                    <a
+                      href="https://ano-pong-ulam.vercel.app/"
+                      target="_blank"
+                      class="text-white bg-wood-accent px-4 py-2 rounded-full text-sm font-medium tracking-wide hover:bg-wood-700 transition-colors"
+                      >Live Demo</a
+                    >
+                    <a
+                      href="https://github.com/property360-2/ano-pong-ulam"
+                      target="_blank"
+                      class="text-white bg-gray-800 px-4 py-2 rounded-full text-sm font-medium tracking-wide hover:bg-gray-900 transition-colors"
+                      >GitHub</a
+                    >
+                  </div>
+                </div>
+              </div>
+              <a href="/quick-portfolio/portfolio/ano-po-ulam/" class="block mt-4">
+                <h4
+                  class="text-xl font-bold text-gray-900 dark:text-white group-hover:text-wood-accent transition-colors"
+                >
+                  Ano Pong Ulam? Heirloom Recipe Sharing PWA
+                </h4>
+                <div class="flex flex-wrap gap-1.5 mt-2 mb-3">
+                  <span class="px-2 py-0.5 bg-gray-150 dark:bg-gray-800 text-gray-800 dark:text-gray-300 rounded text-[10px] font-bold tracking-wide">Next.js 15 (App Router)</span>
+                  <span class="px-2 py-0.5 bg-gray-150 dark:bg-gray-800 text-gray-800 dark:text-gray-300 rounded text-[10px] font-bold tracking-wide">Tailwind CSS v4</span>
+                  <span class="px-2 py-0.5 bg-gray-150 dark:bg-gray-800 text-gray-800 dark:text-gray-300 rounded text-[10px] font-bold tracking-wide">Prisma</span>
+                  <span class="px-2 py-0.5 bg-gray-150 dark:bg-gray-800 text-gray-800 dark:text-gray-300 rounded text-[10px] font-bold tracking-wide">PostgreSQL</span>
+                  <span class="px-2 py-0.5 bg-gray-150 dark:bg-gray-800 text-gray-800 dark:text-gray-300 rounded text-[10px] font-bold tracking-wide">PWA (Offline SW)</span>
+                </div>
+                <p class="text-xs font-semibold text-wood-accent mt-1 italic">
+                  Pain Fixed: Loss of offline recipe drafts, slow load times, and fragmented community review feeds.
+                </p>
+                <p class="text-gray-600 dark:text-gray-400 text-sm mt-2 leading-relaxed">
+                  Engineered a feature-rich Progressive Web App for preserving Filipino heirloom recipes. Features a multi-step recipe draft wizard with localStorage auto-save, a visual-first consolidated social feed, drag-and-drop meal planning calendar, and offline-first capabilities using custom service workers.
+                </p>
+              </a>
+            </div>
+
             <!-- Project: Automation Pick-up Service -->
             <div
               class="project-card group"
@@ -123,6 +188,12 @@ const description = "Explore professional AI automation systems, enterprise-grad
                 >
                   Automation Pick-up Service
                 </h4>
+                <div class="flex flex-wrap gap-1.5 mt-2 mb-3">
+                  <span class="px-2 py-0.5 bg-gray-150 dark:bg-gray-800 text-gray-800 dark:text-gray-300 rounded text-[10px] font-bold tracking-wide">Node.js</span>
+                  <span class="px-2 py-0.5 bg-gray-150 dark:bg-gray-800 text-gray-800 dark:text-gray-300 rounded text-[10px] font-bold tracking-wide">Express.js</span>
+                  <span class="px-2 py-0.5 bg-gray-150 dark:bg-gray-800 text-gray-800 dark:text-gray-300 rounded text-[10px] font-bold tracking-wide">Google Sheets API</span>
+                  <span class="px-2 py-0.5 bg-gray-150 dark:bg-gray-800 text-gray-800 dark:text-gray-300 rounded text-[10px] font-bold tracking-wide">Nodemailer</span>
+                </div>
                 <p class="text-xs font-semibold text-wood-accent mt-1 italic">
                   Pain Fixed: Manual spreadsheet tracking, stock sync delays & operational drag.
                 </p>
@@ -136,13 +207,12 @@ const description = "Explore professional AI automation systems, enterprise-grad
             <div
               class="project-card group"
               data-aos="fade-up"
-              data-category="fullstack tools"
+              data-category="fullstack iot"
             >
               <div
                 class="relative overflow-hidden rounded-xl shadow-lg aspect-video bg-gray-200 flex flex-col justify-end"
               >
-                <!-- Carousel Container -->
-                <div id="card-carousel-slides" class="absolute inset-0 flex transition-transform duration-500 ease-out" style="transform: translateX(0%);">
+                <Carousel prefix="card-carousel" slideCount={4} variant="card">
                   <div class="w-full h-full flex-shrink-0">
                     <img
                       src="/quick-portfolio/assets/iot-automation-integration/localhost.png"
@@ -179,31 +249,7 @@ const description = "Explore professional AI automation systems, enterprise-grad
                       decoding="async"
                     />
                   </div>
-                </div>
-
-                <!-- Navigation buttons (above hover overlay) -->
-                <button
-                  id="card-carousel-prev"
-                  aria-label="Previous image"
-                  class="absolute left-3 top-1/2 -translate-y-1/2 w-8 h-8 rounded-full bg-black/50 hover:bg-black/80 text-white flex items-center justify-center transition-all select-none z-20 opacity-0 group-hover:opacity-100 cursor-pointer pointer-events-auto border border-white/10"
-                >
-                  &larr;
-                </button>
-                <button
-                  id="card-carousel-next"
-                  aria-label="Next image"
-                  class="absolute right-3 top-1/2 -translate-y-1/2 w-8 h-8 rounded-full bg-black/50 hover:bg-black/80 text-white flex items-center justify-center transition-all select-none z-20 opacity-0 group-hover:opacity-100 cursor-pointer pointer-events-auto border border-white/10"
-                >
-                  &rarr;
-                </button>
-
-                <!-- Indicator dots -->
-                <div class="absolute bottom-3 left-1/2 -translate-x-1/2 flex gap-2 z-20 opacity-0 group-hover:opacity-100 transition-opacity">
-                  <span class="card-carousel-dot w-2 h-2 rounded-full bg-white opacity-100 transition-opacity cursor-pointer" data-idx="0"></span>
-                  <span class="card-carousel-dot w-2 h-2 rounded-full bg-white opacity-50 transition-opacity cursor-pointer" data-idx="1"></span>
-                  <span class="card-carousel-dot w-2 h-2 rounded-full bg-white opacity-50 transition-opacity cursor-pointer" data-idx="2"></span>
-                  <span class="card-carousel-dot w-2 h-2 rounded-full bg-white opacity-50 transition-opacity cursor-pointer" data-idx="3"></span>
-                </div>
+                </Carousel>
 
                 <!-- Hover Overlay -->
                 <div
@@ -230,11 +276,78 @@ const description = "Explore professional AI automation systems, enterprise-grad
                 >
                   RFID IoT Membership Scanner & Automation Integration
                 </h4>
+                <div class="flex flex-wrap gap-1.5 mt-2 mb-3">
+                  <span class="px-2 py-0.5 bg-gray-150 dark:bg-gray-800 text-gray-800 dark:text-gray-300 rounded text-[10px] font-bold tracking-wide">ESP32 (C++)</span>
+                  <span class="px-2 py-0.5 bg-gray-150 dark:bg-gray-800 text-gray-800 dark:text-gray-300 rounded text-[10px] font-bold tracking-wide">n8n</span>
+                  <span class="px-2 py-0.5 bg-gray-150 dark:bg-gray-800 text-gray-800 dark:text-gray-300 rounded text-[10px] font-bold tracking-wide">Supabase</span>
+                  <span class="px-2 py-0.5 bg-gray-150 dark:bg-gray-800 text-gray-800 dark:text-gray-300 rounded text-[10px] font-bold tracking-wide">Telegram API</span>
+                  <span class="px-2 py-0.5 bg-gray-150 dark:bg-gray-800 text-gray-800 dark:text-gray-300 rounded text-[10px] font-bold tracking-wide">LittleFS</span>
+                </div>
                 <p class="text-xs font-semibold text-wood-accent mt-1 italic">
                   Pain Fixed: Slow check-in queues, lost paper logs, and manual membership database tracking.
                 </p>
                 <p class="text-gray-600 dark:text-gray-400 text-sm mt-2 leading-relaxed">
                   Engineered a complete RFID check-in validation system combining an ESP32 microchip, Supabase backend databases, and real-time n8n cloud Telegram alerts. Features LittleFS offline queue support to prevent scan loss.
+                </p>
+              </a>
+            </div>
+
+            <!-- Project: Local-First School Attendance Management System -->
+            <div
+              class="project-card group"
+              data-aos="fade-up"
+              data-category="fullstack iot"
+            >
+              <div
+                class="relative overflow-hidden rounded-xl shadow-lg aspect-video bg-gray-200 flex flex-col justify-end"
+              >
+                <!-- Hardware Prototype Image -->
+                <img
+                  src="../assets/school-attendance-system/prototype.jpg"
+                  alt="Local-First School Attendance Management System Prototype"
+                  class="absolute inset-0 object-cover w-full h-full transform group-hover:scale-105 transition-transform duration-500"
+                  loading="lazy"
+                  decoding="async"
+                  width="800"
+                  height="450"
+                />
+                <!-- Hover Overlay -->
+                <div
+                  class="absolute inset-0 bg-black/60 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col items-center justify-center p-8 gap-4 z-10 text-center"
+                >
+                  <div class="flex flex-wrap justify-center gap-4">
+                    <a
+                      href="/quick-portfolio/portfolio/attendance-management-system-school/"
+                      class="text-white border px-4 py-2 rounded-full text-sm font-medium tracking-wide hover:bg-white hover:text-black transition-colors"
+                      >View Details</a
+                    >
+                    <a
+                      href="https://github.com/property360-2/attendance-management-system-school"
+                      target="_blank"
+                      class="text-white bg-gray-800 px-4 py-2 rounded-full text-sm font-medium tracking-wide hover:bg-gray-900 transition-colors"
+                      >GitHub</a
+                    >
+                  </div>
+                </div>
+              </div>
+              <a href="/quick-portfolio/portfolio/attendance-management-system-school/" class="block mt-4">
+                <h4
+                  class="text-xl font-bold text-gray-900 dark:text-white group-hover:text-wood-accent transition-colors"
+                >
+                  Local-First School Attendance Management System
+                </h4>
+                <div class="flex flex-wrap gap-1.5 mt-2 mb-3">
+                  <span class="px-2 py-0.5 bg-gray-150 dark:bg-gray-800 text-gray-800 dark:text-gray-300 rounded text-[10px] font-bold tracking-wide">ESP32 (C++)</span>
+                  <span class="px-2 py-0.5 bg-gray-150 dark:bg-gray-800 text-gray-800 dark:text-gray-300 rounded text-[10px] font-bold tracking-wide">Express.js</span>
+                  <span class="px-2 py-0.5 bg-gray-150 dark:bg-gray-800 text-gray-800 dark:text-gray-300 rounded text-[10px] font-bold tracking-wide">Better-SQLite3</span>
+                  <span class="px-2 py-0.5 bg-gray-150 dark:bg-gray-800 text-gray-800 dark:text-gray-300 rounded text-[10px] font-bold tracking-wide">JWT Auth</span>
+                  <span class="px-2 py-0.5 bg-gray-150 dark:bg-gray-800 text-gray-800 dark:text-gray-300 rounded text-[10px] font-bold tracking-wide">OLED & Buzzer</span>
+                </div>
+                <p class="text-xs font-semibold text-wood-accent mt-1 italic">
+                  Pain Fixed: Hardware scanner failure during cloud outages and high API sync latencies.
+                </p>
+                <p class="text-gray-600 dark:text-gray-400 text-sm mt-2 leading-relaxed">
+                  Engineered an offline-first student checking console. Connects an ESP32 chip directly to local SQLite databases via Express.js REST APIs. Integrates active SSD1306 OLED screen indicators and JWT-secure admin endpoints.
                 </p>
               </a>
             </div>
@@ -245,7 +358,7 @@ const description = "Explore professional AI automation systems, enterprise-grad
             <div
               class="project-card group"
               data-aos="fade-up"
-              data-category="tools"
+              data-category="fullstack"
             >
               <div
                 class="relative overflow-hidden rounded-xl shadow-lg aspect-video bg-gray-200 flex flex-col justify-end"
@@ -289,11 +402,70 @@ const description = "Explore professional AI automation systems, enterprise-grad
                 >
                   Academic Compliance & Audit Portal (OJT Daily Journal)
                 </h4>
+                <div class="flex flex-wrap gap-1.5 mt-2 mb-3">
+                  <span class="px-2 py-0.5 bg-gray-150 dark:bg-gray-800 text-gray-800 dark:text-gray-300 rounded text-[10px] font-bold tracking-wide">Django (Python)</span>
+                  <span class="px-2 py-0.5 bg-gray-150 dark:bg-gray-800 text-gray-800 dark:text-gray-300 rounded text-[10px] font-bold tracking-wide">SQLite</span>
+                  <span class="px-2 py-0.5 bg-gray-150 dark:bg-gray-800 text-gray-800 dark:text-gray-300 rounded text-[10px] font-bold tracking-wide">Bootstrap</span>
+                  <span class="px-2 py-0.5 bg-gray-150 dark:bg-gray-800 text-gray-800 dark:text-gray-300 rounded text-[10px] font-bold tracking-wide">PostgreSQL</span>
+                </div>
                 <p class="text-xs font-semibold text-wood-accent mt-1 italic">
                   Pain Fixed: Messy paper log sheets, lost documents & slow manual auditing processes.
                 </p>
                 <p class="text-gray-600 dark:text-gray-400 text-sm mt-2 leading-relaxed">
                   Streamlined student log tracking and coordinator audits. Replaced physical log sheets with a secure, tamper-proof digital system, saving advisors 80% of their manual auditing hours.
+                </p>
+              </a>
+            </div>
+
+            <!-- Project: Tagawasak ng Syudad -->
+            <div
+              class="project-card group"
+              data-aos="fade-up"
+              data-aos-delay="300"
+              data-category="gamedev"
+            >
+              <div
+                class="relative overflow-hidden rounded-xl shadow-lg aspect-video bg-gray-200 flex flex-col justify-end"
+              >
+                <img
+                  src="../assets/tagawasak-ng-syudad.webp"
+                  alt="Tagawasak ng Syudad"
+                  class="absolute inset-0 object-cover w-full h-full transform group-hover:scale-105 transition-transform duration-500"
+                  loading="lazy"
+                  decoding="async"
+                  width="800"
+                  height="450"
+                />
+                <div
+                  class="absolute inset-0 bg-black/60 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col items-center justify-center p-8 gap-4 z-10 text-center"
+                >
+                  <div class="flex flex-wrap justify-center gap-4">
+                    <a
+                      href="/quick-portfolio/portfolio/tagawasak-ng-syudad/"
+                      class="text-white border px-4 py-2 rounded-full text-sm font-medium tracking-wide hover:bg-white hover:text-black transition-colors"
+                      >View Details</a
+                    >
+                    <a
+                      href="/quick-portfolio/portfolio/inside-portfolio-game/tagasira-ng-syudad/index.html"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      class="text-white bg-wood-accent px-4 py-2 rounded-full text-sm font-medium tracking-wide hover:bg-wood-700 transition-colors"
+                      >Live Demo</a
+                    >
+                  </div>
+                </div>
+              </div>
+              <a href="/quick-portfolio/portfolio/tagawasak-ng-syudad/" class="block mt-4">
+                <h4
+                  class="text-xl font-bold text-gray-900 dark:text-white group-hover:text-wood-accent transition-colors"
+                >
+                  Tagawasak ng Syudad
+                </h4>
+                <p class="text-xs font-semibold text-wood-accent mt-1 italic">
+                  Pain Fixed: Heavy, sluggish visual code & unoptimized audio engines in web games.
+                </p>
+                <p class="text-gray-600 dark:text-gray-400 text-sm mt-2 leading-relaxed">
+                  An interactive 3D city-destroyer sandbox running at a locked, buttery-smooth 60FPS. Uses procedural Web Audio and custom canvas graphics, demonstrating extreme rendering optimization without heavy library overhead.
                 </p>
               </a>
             </div>
@@ -357,6 +529,13 @@ const description = "Explore professional AI automation systems, enterprise-grad
                 >
                   tagForge: Enterprise AI SEO & Metadata Suite
                 </h4>
+                <div class="flex flex-wrap gap-1.5 mt-2 mb-3">
+                  <span class="px-2 py-0.5 bg-gray-150 dark:bg-gray-800 text-gray-800 dark:text-gray-300 rounded text-[10px] font-bold tracking-wide">Next.js (TS)</span>
+                  <span class="px-2 py-0.5 bg-gray-150 dark:bg-gray-800 text-gray-800 dark:text-gray-300 rounded text-[10px] font-bold tracking-wide">Express.js</span>
+                  <span class="px-2 py-0.5 bg-gray-150 dark:bg-gray-800 text-gray-800 dark:text-gray-300 rounded text-[10px] font-bold tracking-wide">Groq Llama-3</span>
+                  <span class="px-2 py-0.5 bg-gray-150 dark:bg-gray-800 text-gray-800 dark:text-gray-300 rounded text-[10px] font-bold tracking-wide">Stripe</span>
+                  <span class="px-2 py-0.5 bg-gray-150 dark:bg-gray-800 text-gray-800 dark:text-gray-300 rounded text-[10px] font-bold tracking-wide">Tailwind CSS</span>
+                </div>
                 <p class="text-xs font-semibold text-wood-accent mt-1 italic">
                   Pain Fixed: High hosting costs, manual metadata synthesis & complex OAuth configurations.
                 </p>
@@ -370,7 +549,7 @@ const description = "Explore professional AI automation systems, enterprise-grad
             <div
               class="project-card group"
               data-aos="fade-up"
-              data-category="fullstack"
+              data-category="automation"
             >
               <div
                 class="relative overflow-hidden rounded-xl shadow-lg aspect-video bg-gray-200 flex flex-col justify-end"
@@ -408,6 +587,12 @@ const description = "Explore professional AI automation systems, enterprise-grad
                 >
                   Autonomous Client Acquisition Scraper & Operations Control Center
                 </h4>
+                <div class="flex flex-wrap gap-1.5 mt-2 mb-3">
+                  <span class="px-2 py-0.5 bg-gray-150 dark:bg-gray-800 text-gray-800 dark:text-gray-300 rounded text-[10px] font-bold tracking-wide">Python</span>
+                  <span class="px-2 py-0.5 bg-gray-150 dark:bg-gray-800 text-gray-800 dark:text-gray-300 rounded text-[10px] font-bold tracking-wide">Streamlit</span>
+                  <span class="px-2 py-0.5 bg-gray-150 dark:bg-gray-800 text-gray-800 dark:text-gray-300 rounded text-[10px] font-bold tracking-wide">BeautifulSoup</span>
+                  <span class="px-2 py-0.5 bg-gray-150 dark:bg-gray-800 text-gray-800 dark:text-gray-300 rounded text-[10px] font-bold tracking-wide">Groq API</span>
+                </div>
                 <p class="text-xs font-semibold text-wood-accent mt-1 italic">
                   Pain Fixed: Sifting thousands of listings, manual gig ranking & writing outreach email fatigue.
                 </p>
@@ -466,6 +651,12 @@ const description = "Explore professional AI automation systems, enterprise-grad
                 >
                   Intelligent Knowledge Base & Document Automation (DocuMind AI)
                 </h4>
+                <div class="flex flex-wrap gap-1.5 mt-2 mb-3">
+                  <span class="px-2 py-0.5 bg-gray-150 dark:bg-gray-800 text-gray-800 dark:text-gray-300 rounded text-[10px] font-bold tracking-wide">React</span>
+                  <span class="px-2 py-0.5 bg-gray-150 dark:bg-gray-800 text-gray-800 dark:text-gray-300 rounded text-[10px] font-bold tracking-wide">Node.js</span>
+                  <span class="px-2 py-0.5 bg-gray-150 dark:bg-gray-800 text-gray-800 dark:text-gray-300 rounded text-[10px] font-bold tracking-wide">Gemini API</span>
+                  <span class="px-2 py-0.5 bg-gray-150 dark:bg-gray-800 text-gray-800 dark:text-gray-300 rounded text-[10px] font-bold tracking-wide">Tailwind CSS</span>
+                </div>
                 <p class="text-xs font-semibold text-wood-accent mt-1 italic">
                   Pain Fixed: Wasting hours reading long, dense PDFs & technical documents.
                 </p>
@@ -524,6 +715,12 @@ const description = "Explore professional AI automation systems, enterprise-grad
                 >
                   Fitness CRM & Progress Tracking Dashboard (Gym Project)
                 </h4>
+                <div class="flex flex-wrap gap-1.5 mt-2 mb-3">
+                  <span class="px-2 py-0.5 bg-gray-150 dark:bg-gray-800 text-gray-800 dark:text-gray-300 rounded text-[10px] font-bold tracking-wide">Django (Python)</span>
+                  <span class="px-2 py-0.5 bg-gray-150 dark:bg-gray-800 text-gray-800 dark:text-gray-300 rounded text-[10px] font-bold tracking-wide">PostgreSQL</span>
+                  <span class="px-2 py-0.5 bg-gray-150 dark:bg-gray-800 text-gray-800 dark:text-gray-300 rounded text-[10px] font-bold tracking-wide">Bootstrap</span>
+                  <span class="px-2 py-0.5 bg-gray-150 dark:bg-gray-800 text-gray-800 dark:text-gray-300 rounded text-[10px] font-bold tracking-wide">Chart.js</span>
+                </div>
                 <p class="text-xs font-semibold text-wood-accent mt-1 italic">
                   Pain Fixed: Leaked subscription revenue, slow check-ins & untracked customer logs.
                 </p>
@@ -565,56 +762,4 @@ const description = "Explore professional AI automation systems, enterprise-grad
     </main>
 </Layout>
 
-<!-- CAROUSEL CONTROLLER SCRIPT FOR RFID IoT CARD -->
-<script is:inline>
-  document.addEventListener('DOMContentLoaded', () => {
-    const slides = document.getElementById('card-carousel-slides');
-    const prevBtn = document.getElementById('card-carousel-prev');
-    const nextBtn = document.getElementById('card-carousel-next');
-    const dots = document.querySelectorAll('.card-carousel-dot');
 
-    if (!slides || !prevBtn || !nextBtn || dots.length === 0) return;
-
-    let currentIndex = 0;
-    const totalSlides = dots.length;
-
-    function updateCarousel(index) {
-      if (index < 0) index = totalSlides - 1;
-      if (index >= totalSlides) index = 0;
-      currentIndex = index;
-
-      slides.style.transform = `translateX(-${currentIndex * 100}%)`;
-
-      dots.forEach((dot, idx) => {
-        if (idx === currentIndex) {
-          dot.classList.remove('opacity-50');
-          dot.classList.add('opacity-100');
-        } else {
-          dot.classList.remove('opacity-100');
-          dot.classList.add('opacity-50');
-        }
-      });
-    }
-
-    prevBtn.addEventListener('click', (e) => {
-      e.stopPropagation();
-      e.preventDefault();
-      updateCarousel(currentIndex - 1);
-    });
-
-    nextBtn.addEventListener('click', (e) => {
-      e.stopPropagation();
-      e.preventDefault();
-      updateCarousel(currentIndex + 1);
-    });
-
-    dots.forEach((dot) => {
-      dot.addEventListener('click', (e) => {
-        e.stopPropagation();
-        e.preventDefault();
-        const targetIndex = parseInt(dot.getAttribute('data-idx') || '0', 10);
-        updateCarousel(targetIndex);
-      });
-    });
-  });
-</script>

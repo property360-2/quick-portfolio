@@ -1,0 +1,161 @@
+---
+export interface Props {
+  prefix?: string;
+  slideCount: number;
+  autoplayInterval?: number | false;
+  variant?: 'hero' | 'card';
+}
+
+const { prefix = 'carousel', slideCount, autoplayInterval = false, variant = 'hero' } = Astro.props;
+const slidesId = `${prefix}-slides`;
+const prevId = `${prefix}-prev`;
+const nextId = `${prefix}-next`;
+const dotClass = `${prefix}-dot`;
+const isHero = variant === 'hero';
+const navClass = isHero
+  ? 'left-4 w-10 h-10 bg-black/40 hover:bg-black/70 group-hover:scale-105'
+  : 'left-3 w-8 h-8 bg-black/50 hover:bg-black/80 opacity-0 group-hover:opacity-100 border border-white/10';
+const navClassRight = isHero
+  ? 'right-4 w-10 h-10 bg-black/40 hover:bg-black/70 group-hover:scale-105'
+  : 'right-3 w-8 h-8 bg-black/50 hover:bg-black/80 opacity-0 group-hover:opacity-100 border border-white/10';
+const dotWrapperClass = isHero
+  ? 'bottom-4'
+  : 'bottom-3 opacity-0 group-hover:opacity-100 transition-opacity';
+const dotSizeClass = isHero ? 'w-2.5 h-2.5' : 'w-2 h-2';
+const wrapperClass = isHero
+  ? 'relative overflow-hidden rounded-xl shadow-2xl bg-black aspect-video group'
+  : '';
+---
+
+{isHero ? (
+  <div class={wrapperClass}>
+    <div id={slidesId} class="relative w-full h-full flex transition-transform duration-500 ease-out" style="transform: translateX(0%);">
+      <slot />
+    </div>
+
+    <button
+      id={prevId}
+      aria-label="Previous Slide"
+      class={`absolute top-1/2 -translate-y-1/2 rounded-full text-white flex items-center justify-center transition-all select-none z-20 cursor-pointer ${navClass}`}
+    >
+      &larr;
+    </button>
+
+    <button
+      id={nextId}
+      aria-label="Next Slide"
+      class={`absolute top-1/2 -translate-y-1/2 rounded-full text-white flex items-center justify-center transition-all select-none z-20 cursor-pointer ${navClassRight}`}
+    >
+      &rarr;
+    </button>
+
+    <div class={`absolute left-1/2 -translate-x-1/2 flex gap-2 z-20 ${dotWrapperClass}`}>
+      {Array.from({ length: slideCount }, (_, i) => (
+        <button
+          class={`${dotClass} ${dotSizeClass} rounded-full bg-white transition-opacity cursor-pointer ${i === 0 ? 'opacity-100' : 'opacity-50'}`}
+          data-index={i}
+          aria-label={`Slide ${i + 1}`}
+        ></button>
+      ))}
+    </div>
+  </div>
+) : (
+  <>
+    <div id={slidesId} class="relative w-full h-full flex transition-transform duration-500 ease-out" style="transform: translateX(0%);">
+      <slot />
+    </div>
+
+    <button
+      id={prevId}
+      aria-label="Previous Slide"
+      class={`absolute top-1/2 -translate-y-1/2 rounded-full text-white flex items-center justify-center transition-all select-none z-20 cursor-pointer ${navClass}`}
+    >
+      &larr;
+    </button>
+
+    <button
+      id={nextId}
+      aria-label="Next Slide"
+      class={`absolute top-1/2 -translate-y-1/2 rounded-full text-white flex items-center justify-center transition-all select-none z-20 cursor-pointer ${navClassRight}`}
+    >
+      &rarr;
+    </button>
+
+    <div class={`absolute left-1/2 -translate-x-1/2 flex gap-2 z-20 ${dotWrapperClass}`}>
+      {Array.from({ length: slideCount }, (_, i) => (
+        <button
+          class={`${dotClass} ${dotSizeClass} rounded-full bg-white transition-opacity cursor-pointer ${i === 0 ? 'opacity-100' : 'opacity-50'}`}
+          data-index={i}
+          aria-label={`Slide ${i + 1}`}
+        ></button>
+      ))}
+    </div>
+  </>
+)}
+
+<script define:vars={{ slidesId, prevId, nextId, dotClass, autoplayInterval, isHero }}>
+  document.addEventListener('DOMContentLoaded', () => {
+    const slides = document.getElementById(slidesId);
+    const prevBtn = document.getElementById(prevId);
+    const nextBtn = document.getElementById(nextId);
+    const dots = document.querySelectorAll('.' + dotClass);
+
+    if (!slides || !prevBtn || !nextBtn || dots.length === 0) return;
+
+    let currentIndex = 0;
+    const totalSlides = dots.length;
+
+    function updateCarousel(index) {
+      if (index < 0) index = totalSlides - 1;
+      if (index >= totalSlides) index = 0;
+      currentIndex = index;
+
+      slides.style.transform = `translateX(-${currentIndex * 100}%)`;
+
+      dots.forEach((dot) => {
+        const idx = parseInt(dot.getAttribute('data-index') || '0', 10);
+        if (idx === currentIndex) {
+          dot.classList.remove('opacity-50');
+          dot.classList.add('opacity-100');
+        } else {
+          dot.classList.remove('opacity-100');
+          dot.classList.add('opacity-50');
+        }
+      });
+    }
+
+    prevBtn.addEventListener('click', (e) => {
+      if (!isHero) { e.stopPropagation(); e.preventDefault(); }
+      updateCarousel(currentIndex - 1);
+    });
+    nextBtn.addEventListener('click', (e) => {
+      if (!isHero) { e.stopPropagation(); e.preventDefault(); }
+      updateCarousel(currentIndex + 1);
+    });
+
+    dots.forEach((dot) => {
+      dot.addEventListener('click', (e) => {
+        if (!isHero) { e.stopPropagation(); e.preventDefault(); }
+        const targetIndex = parseInt(dot.getAttribute('data-index') || '0', 10);
+        updateCarousel(targetIndex);
+      });
+    });
+
+    if (autoplayInterval) {
+      let autoPlayInterval = setInterval(() => {
+        updateCarousel(currentIndex + 1);
+      }, autoplayInterval);
+
+      const stopAutoPlay = () => {
+        if (autoPlayInterval) {
+          clearInterval(autoPlayInterval);
+          autoPlayInterval = null;
+        }
+      };
+
+      prevBtn.addEventListener('click', stopAutoPlay);
+      nextBtn.addEventListener('click', stopAutoPlay);
+      dots.forEach(dot => dot.addEventListener('click', stopAutoPlay));
+    }
+  });
+</script>
