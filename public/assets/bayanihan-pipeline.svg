@@ -1,0 +1,58 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 680" width="100%" height="100%" style="background-color: #121214; font-family: 'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, Courier, monospace;">
+  <!-- Definitions for Markers (Arrowheads) -->
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="5" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#d4a373" />
+    </marker>
+  </defs>
+
+  <!-- Title -->
+  <text x="400" y="40" font-size="18" font-weight="bold" fill="#ffffff" font-family="system-ui, -apple-system, sans-serif" text-anchor="middle">Bayanihan: Sequential AI Validation &amp; Blind Review Pipeline</text>
+
+  <!-- Box 1: Solution Submission Intake -->
+  <g transform="translate(150, 70)">
+    <rect width="500" height="70" rx="8" fill="#1a1a1e" stroke="#2d2d34" stroke-width="2" />
+    <rect width="500" height="35" rx="8" fill="#d4a373" fill-opacity="0.1" stroke="none" />
+    <text x="250" y="24" font-size="14" font-weight="bold" fill="#d4a373" text-anchor="middle">Solution Submission Intake</text>
+    <text x="250" y="54" font-size="12" fill="#e4e4e7" text-anchor="middle">Structured 6-Part Technical Submission Template</text>
+  </g>
+
+  <!-- Arrow 1 -->
+  <line x1="400" y1="140" x2="400" y2="200" stroke="#d4a373" stroke-width="2" marker-end="url(#arrow)" />
+  <text x="415" y="175" font-size="11" fill="#a1a1aa">(6-Part Structured Form)</text>
+
+  <!-- Box 2: AI Tier 1 Screening -->
+  <g transform="translate(150, 200)">
+    <rect width="500" height="110" rx="8" fill="#1a1a1e" stroke="#2d2d34" stroke-width="2" />
+    <rect width="500" height="35" rx="8" fill="#d4a373" fill-opacity="0.1" stroke="none" />
+    <text x="250" y="24" font-size="14" font-weight="bold" fill="#d4a373" text-anchor="middle">AI Tier 1 Screening</text>
+    <text x="30" y="60" font-size="12" fill="#e4e4e7">• Low-Cost Model (Haiku / Gemini Flash)</text>
+    <text x="30" y="85" font-size="12" fill="#e4e4e7">• Checks for Coherence, Category Fit, &amp; Copied Text</text>
+  </g>
+
+  <!-- Arrow 2 -->
+  <line x1="400" y1="310" x2="400" y2="370" stroke="#d4a373" stroke-width="2" marker-end="url(#arrow)" />
+  <text x="415" y="345" font-size="11" fill="#a1a1aa">(Passes Substance Check)</text>
+
+  <!-- Box 3: Dynamic MCQ Quiz Generation -->
+  <g transform="translate(150, 370)">
+    <rect width="500" height="110" rx="8" fill="#1a1a1e" stroke="#2d2d34" stroke-width="2" />
+    <rect width="500" height="35" rx="8" fill="#d4a373" fill-opacity="0.1" stroke="none" />
+    <text x="250" y="24" font-size="14" font-weight="bold" fill="#d4a373" text-anchor="middle">Dynamic MCQ Quiz Generation</text>
+    <text x="30" y="60" font-size="12" fill="#e4e4e7">• Generates 5-8 MCQs Derived from Submission</text>
+    <text x="30" y="85" font-size="12" fill="#e4e4e7">• Verifies Understanding of Submitted Concepts</text>
+  </g>
+
+  <!-- Arrow 3 -->
+  <line x1="400" y1="480" x2="400" y2="540" stroke="#d4a373" stroke-width="2" marker-end="url(#arrow)" />
+  <text x="415" y="515" font-size="11" fill="#a1a1aa">(Researcher Passes MCQ)</text>
+
+  <!-- Box 4: Blind Human Expert Review -->
+  <g transform="translate(150, 540)">
+    <rect width="500" height="110" rx="8" fill="#1a1a1e" stroke="#2d2d34" stroke-width="2" />
+    <rect width="500" height="35" rx="8" fill="#d4a373" fill-opacity="0.1" stroke="none" />
+    <text x="250" y="24" font-size="14" font-weight="bold" fill="#d4a373" text-anchor="middle">Blind Human Expert Review</text>
+    <text x="30" y="60" font-size="12" fill="#e4e4e7">• Randomly Assigned SME Reviewer</text>
+    <text x="30" y="85" font-size="12" fill="#e4e4e7">• Researcher PII is Completely Masked</text>
+  </g>
+</svg>

@@ -1,0 +1,135 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1100 780" width="100%" height="100%" style="background-color: #121214; font-family: 'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, Courier, monospace;">
+  <!-- Definitions for Markers (Arrowheads) -->
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="5" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#d4a373" />
+    </marker>
+    <marker id="dot" viewBox="0 0 10 10" refX="5" refY="5" markerWidth="4" markerHeight="4">
+      <circle cx="5" cy="5" r="3" fill="#a1a1aa" />
+    </marker>
+  </defs>
+
+  <text x="50" y="40" font-size="20" font-weight="bold" fill="#ffffff" font-family="system-ui, -apple-system, sans-serif">Bayanihan: Database Entity-Relationship Diagram (ERD)</text>
+  <text x="50" y="60" font-size="12" fill="#a1a1aa" font-family="system-ui, -apple-system, sans-serif">PostgreSQL 14+ Relational Schema and Key Constraints</text>
+
+  <!-- ================= TABLE: users ================= -->
+  <g transform="translate(50, 100)">
+    <rect width="280" height="260" rx="12" fill="#1a1a1e" stroke="#2d2d34" stroke-width="2" />
+    <rect width="280" height="40" rx="12" fill="#d4a373" fill-opacity="0.1" stroke="#d4a373" stroke-width="0" />
+    <path d="M 0 40 L 280 40" stroke="#2d2d34" stroke-width="2" />
+    <text x="15" y="26" font-size="14" font-weight="bold" fill="#d4a373">users</text>
+    
+    <!-- Table Columns -->
+    <text x="15" y="65" font-size="12" font-weight="bold" fill="#e4e4e7">user_id <tspan fill="#a1a1aa" font-weight="normal">UUID [PK]</tspan></text>
+    <text x="15" y="85" font-size="12" fill="#e4e4e7">current_rank <tspan fill="#a1a1aa">VARCHAR</tspan></text>
+    <text x="15" y="105" font-size="12" fill="#e4e4e7">knowledge_xp <tspan fill="#a1a1aa">INT</tspan></text>
+    <text x="15" y="125" font-size="12" fill="#e4e4e7">solution_xp <tspan fill="#a1a1aa">INT</tspan></text>
+    <text x="15" y="145" font-size="12" fill="#e4e4e7">discovery_xp <tspan fill="#a1a1aa">INT</tspan></text>
+    <text x="15" y="165" font-size="12" fill="#e4e4e7">impact_xp <tspan fill="#a1a1aa">INT</tspan></text>
+    <text x="15" y="185" font-size="12" fill="#e4e4e7">mentor_xp <tspan fill="#a1a1aa">INT</tspan></text>
+    <text x="15" y="205" font-size="12" fill="#e4e4e7">acceptance_rate <tspan fill="#a1a1aa">DECIMAL</tspan></text>
+    <text x="15" y="225" font-size="12" fill="#e4e4e7">created_at <tspan fill="#a1a1aa">TIMESTAMPTZ</tspan></text>
+  </g>
+
+  <!-- ================= TABLE: cases ================= -->
+  <g transform="translate(410, 100)">
+    <rect width="280" height="260" rx="12" fill="#1a1a1e" stroke="#2d2d34" stroke-width="2" />
+    <rect width="280" height="40" rx="12" fill="#d4a373" fill-opacity="0.1" stroke="#d4a373" stroke-width="0" />
+    <path d="M 0 40 L 280 40" stroke="#2d2d34" stroke-width="2" />
+    <text x="15" y="26" font-size="14" font-weight="bold" fill="#d4a373">cases</text>
+
+    <!-- Table Columns -->
+    <text x="15" y="65" font-size="12" font-weight="bold" fill="#e4e4e7">case_id <tspan fill="#a1a1aa" font-weight="normal">UUID [PK]</tspan></text>
+    <text x="15" y="85" font-size="12" font-weight="bold" fill="#e4e4e7">poster_id <tspan fill="#a1a1aa" font-weight="normal">UUID [FK]</tspan></text>
+    <text x="15" y="105" font-size="12" fill="#e4e4e7">category <tspan fill="#a1a1aa">VARCHAR</tspan></text>
+    <text x="15" y="125" font-size="12" fill="#e4e4e7">case_type <tspan fill="#a1a1aa">VARCHAR</tspan></text>
+    <text x="15" y="145" font-size="12" fill="#e4e4e7">title <tspan fill="#a1a1aa">VARCHAR</tspan></text>
+    <text x="15" y="165" font-size="12" fill="#e4e4e7">problem_statement <tspan fill="#a1a1aa">TEXT</tspan></text>
+    <text x="15" y="185" font-size="12" fill="#e4e4e7">location_hub <tspan fill="#a1a1aa">VARCHAR</tspan></text>
+    <text x="15" y="205" font-size="12" fill="#e4e4e7">escrow_amount <tspan fill="#a1a1aa">DECIMAL</tspan></text>
+    <text x="15" y="225" font-size="12" fill="#e4e4e7">implementation_status <tspan fill="#a1a1aa">VARCHAR</tspan></text>
+    <text x="15" y="245" font-size="12" fill="#e4e4e7">created_at <tspan fill="#a1a1aa">TIMESTAMPTZ</tspan></text>
+  </g>
+
+  <!-- ================= TABLE: solutions ================= -->
+  <g transform="translate(770, 100)">
+    <rect width="280" height="320" rx="12" fill="#1a1a1e" stroke="#2d2d34" stroke-width="2" />
+    <rect width="280" height="40" rx="12" fill="#d4a373" fill-opacity="0.1" stroke="#d4a373" stroke-width="0" />
+    <path d="M 0 40 L 280 40" stroke="#2d2d34" stroke-width="2" />
+    <text x="15" y="26" font-size="14" font-weight="bold" fill="#d4a373">solutions</text>
+
+    <!-- Table Columns -->
+    <text x="15" y="65" font-size="12" font-weight="bold" fill="#e4e4e7">solution_id <tspan fill="#a1a1aa" font-weight="normal">UUID [PK]</tspan></text>
+    <text x="15" y="85" font-size="12" font-weight="bold" fill="#e4e4e7">case_id <tspan fill="#a1a1aa" font-weight="normal">UUID [FK]</tspan></text>
+    <text x="15" y="105" font-size="12" font-weight="bold" fill="#e4e4e7">researcher_id <tspan fill="#a1a1aa" font-weight="normal">UUID [FK]</tspan></text>
+    <text x="15" y="125" font-size="12" fill="#e4e4e7">root_cause_analysis <tspan fill="#a1a1aa">TEXT</tspan></text>
+    <text x="15" y="145" font-size="12" fill="#e4e4e7">methodology <tspan fill="#a1a1aa">TEXT</tspan></text>
+    <text x="15" y="165" font-size="12" fill="#e4e4e7">proposed_fix <tspan fill="#a1a1aa">TEXT</tspan></text>
+    <text x="15" y="185" font-size="12" fill="#e4e4e7">cost_estimate <tspan fill="#a1a1aa">DECIMAL</tspan></text>
+    <text x="15" y="205" font-size="12" fill="#e4e4e7">risks_limitations <tspan fill="#a1a1aa">TEXT</tspan></text>
+    <text x="15" y="225" font-size="12" fill="#e4e4e7">references_data <tspan fill="#a1a1aa">TEXT</tspan></text>
+    <text x="15" y="245" font-size="12" fill="#e4e4e7">ai_flag_score <tspan fill="#a1a1aa">DECIMAL</tspan></text>
+    <text x="15" y="265" font-size="12" fill="#e4e4e7">quiz_passed <tspan fill="#a1a1aa">BOOLEAN</tspan></text>
+    <text x="15" y="285" font-size="12" fill="#e4e4e7">is_winner <tspan fill="#a1a1aa">BOOLEAN</tspan></text>
+    <text x="15" y="305" font-size="12" fill="#e4e4e7">created_at <tspan fill="#a1a1aa">TIMESTAMPTZ</tspan></text>
+  </g>
+
+  <!-- ================= TABLE: expert_reviews ================= -->
+  <g transform="translate(770, 480)">
+    <rect width="280" height="200" rx="12" fill="#1a1a1e" stroke="#2d2d34" stroke-width="2" />
+    <rect width="280" height="40" rx="12" fill="#d4a373" fill-opacity="0.1" stroke="#d4a373" stroke-width="0" />
+    <path d="M 0 40 L 280 40" stroke="#2d2d34" stroke-width="2" />
+    <text x="15" y="26" font-size="14" font-weight="bold" fill="#d4a373">expert_reviews</text>
+
+    <!-- Table Columns -->
+    <text x="15" y="65" font-size="12" font-weight="bold" fill="#e4e4e7">review_id <tspan fill="#a1a1aa" font-weight="normal">UUID [PK]</tspan></text>
+    <text x="15" y="85" font-size="12" font-weight="bold" fill="#e4e4e7">solution_id <tspan fill="#a1a1aa" font-weight="normal">UUID [FK]</tspan></text>
+    <text x="15" y="105" font-size="12" font-weight="bold" fill="#e4e4e7">reviewer_id <tspan fill="#a1a1aa" font-weight="normal">UUID [FK]</tspan></text>
+    <text x="15" y="125" font-size="12" fill="#e4e4e7">audit_status <tspan fill="#a1a1aa">VARCHAR</tspan></text>
+    <text x="15" y="145" font-size="12" fill="#e4e4e7">justification_log <tspan fill="#a1a1aa">TEXT</tspan></text>
+    <text x="15" y="165" font-size="12" fill="#e4e4e7">assigned_at <tspan fill="#a1a1aa">TIMESTAMPTZ</tspan></text>
+    <text x="15" y="185" font-size="12" fill="#e4e4e7">completed_at <tspan fill="#a1a1aa">TIMESTAMPTZ</tspan></text>
+  </g>
+
+  <!-- ================= TABLE: account_links ================= -->
+  <g transform="translate(50, 480)">
+    <rect width="280" height="200" rx="12" fill="#1a1a1e" stroke="#2d2d34" stroke-width="2" />
+    <rect width="280" height="40" rx="12" fill="#d4a373" fill-opacity="0.1" stroke="#d4a373" stroke-width="0" />
+    <path d="M 0 40 L 280 40" stroke="#2d2d34" stroke-width="2" />
+    <text x="15" y="26" font-size="14" font-weight="bold" fill="#d4a373">account_links</text>
+
+    <!-- Table Columns -->
+    <text x="15" y="65" font-size="12" font-weight="bold" fill="#e4e4e7">link_id <tspan fill="#a1a1aa" font-weight="normal">UUID [PK]</tspan></text>
+    <text x="15" y="85" font-size="12" font-weight="bold" fill="#e4e4e7">user_a <tspan fill="#a1a1aa" font-weight="normal">UUID [FK]</tspan></text>
+    <text x="15" y="105" font-size="12" font-weight="bold" fill="#e4e4e7">user_b <tspan fill="#a1a1aa" font-weight="normal">UUID [FK]</tspan></text>
+    <text x="15" y="125" font-size="12" fill="#e4e4e7">shared_ip <tspan fill="#a1a1aa">VARCHAR</tspan></text>
+    <text x="15" y="145" font-size="12" fill="#e4e4e7">payment_overlap_count <tspan fill="#a1a1aa">INT</tspan></text>
+    <text x="15" y="165" font-size="12" fill="#e4e4e7">telemetry_flag_status <tspan fill="#a1a1aa">VARCHAR</tspan></text>
+    <text x="15" y="185" font-size="12" fill="#e4e4e7">last_detected_at <tspan fill="#a1a1aa">TIMESTAMPTZ</tspan></text>
+  </g>
+
+  <!-- ================= RELATIONSHIPS (CONNECTIONS) ================= -->
+  
+  <!-- users.user_id -> cases.poster_id -->
+  <path d="M 330 165 C 370 165, 370 185, 410 185" fill="none" stroke="#d4a373" stroke-width="1.5" marker-start="url(#dot)" marker-end="url(#arrow)" />
+
+  <!-- users.user_id -> solutions.researcher_id -->
+  <!-- Path curves down and across under the cases table -->
+  <path d="M 330 205 C 550 205, 550 205, 770 205" fill="none" stroke="#d4a373" stroke-width="1.5" stroke-dasharray="4" marker-start="url(#dot)" marker-end="url(#arrow)" />
+
+  <!-- cases.case_id -> solutions.case_id -->
+  <path d="M 690 165 C 730 165, 730 185, 770 185" fill="none" stroke="#d4a373" stroke-width="1.5" marker-start="url(#dot)" marker-end="url(#arrow)" />
+
+  <!-- solutions.solution_id -> expert_reviews.solution_id -->
+  <path d="M 910 420 L 910 480" fill="none" stroke="#d4a373" stroke-width="1.5" marker-start="url(#dot)" marker-end="url(#arrow)" />
+
+  <!-- users.user_id -> expert_reviews.reviewer_id -->
+  <path d="M 190 360 C 190 440, 720 440, 770 585" fill="none" stroke="#d4a373" stroke-width="1.5" stroke-dasharray="4" marker-start="url(#dot)" marker-end="url(#arrow)" />
+
+  <!-- users.user_id -> account_links.user_a -->
+  <path d="M 90 360 L 90 480" fill="none" stroke="#d4a373" stroke-width="1.5" marker-start="url(#dot)" marker-end="url(#arrow)" />
+
+  <!-- users.user_id -> account_links.user_b -->
+  <path d="M 120 360 C 120 410, 190 410, 190 480" fill="none" stroke="#d4a373" stroke-width="1.5" marker-start="url(#dot)" marker-end="url(#arrow)" />
+
+</svg>

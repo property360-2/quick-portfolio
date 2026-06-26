@@ -1,0 +1,61 @@
+---
+import Layout from '../../../../layouts/Layout.astro';
+import { Content } from '../../../../../raw-writings/Bayanihan Bulacan-Focused Private Collective Intelligence Scaffolding Plan.md';
+
+const title = 'Bayanihan: Bulacan Pre-Development Research & Scaffolding | Jun Alvior';
+const description = 'Technical, structural, and legal scaffolding for Bayanihan, an autonomous, decentralized collective intelligence platform for the Bulacan region.';
+---
+
+<Layout title={title} description={description}>
+<main id="main-content" class="flex-grow flex flex-col">
+      <article class="py-24 bg-white dark:bg-[#1f1f1f] flex-grow">
+        <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
+          <!-- Breadcrumb -->
+          <div class="mb-8 text-sm text-gray-500 dark:text-gray-400">
+            <a
+              href="/quick-portfolio/writings/"
+              class="hover:text-wood-accent transition-colors"
+            >
+              &larr; Back to Writings
+            </a>
+          </div>
+
+          <!-- Header -->
+          <header class="mb-12" data-aos="fade-up">
+            <div class="mb-8 rounded-xl overflow-hidden shadow-lg">
+              <img
+                src="../../../assets/bayanihan.png"
+                alt="Bayanihan Scaffolding Plan"
+                class="w-full h-auto object-cover max-h-[550px]"
+                loading="lazy"
+                decoding="async"
+                width="800"
+                height="450"
+              />
+            </div>
+            <h1
+              class="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white mb-4"
+            >
+              Bayanihan: Bulacan Pre-Development Research and Scaffolding Document
+            </h1>
+            <div
+              class="flex items-center text-sm text-gray-500 dark:text-gray-400 space-x-4"
+            >
+              <span>Jun 26, 2026</span>
+              <span>•</span>
+              <span>By Jun Alvior</span>
+              <span>•</span>
+              <span>Research & Systems</span>
+            </div>
+          </header>
+
+          <div
+            class="prose dark:prose-invert prose-lg prose-wood max-w-none text-gray-700 dark:text-gray-300 leading-relaxed markdown-content"
+            data-aos="fade-up"
+          >
+            <Content />
+          </div>
+        </div>
+      </article>
+    </main>
+</Layout>
