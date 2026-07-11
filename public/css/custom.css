@@ -51,6 +51,32 @@ body.loaded {
   transition: none !important;
 }
 
+/* Writings Tabs */
+.tab-btn {
+  min-width: 0;
+  white-space: nowrap;
+}
+
+.tab-btn.active {
+  color: #6d4c41;
+  border-color: rgba(141, 110, 99, 0.28);
+  background: rgba(141, 110, 99, 0.12);
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.04);
+}
+
+.dark .tab-btn.active {
+  color: #d7ccc8;
+  border-color: rgba(188, 170, 164, 0.24);
+  background: rgba(255, 255, 255, 0.05);
+}
+
+@media (min-width: 768px) {
+  .tab-btn.active {
+    background: transparent;
+    box-shadow: none;
+  }
+}
+
 /* Selection Color */
 ::selection {
   background-color: #8d6e63;

@@ -10,10 +10,10 @@ const description = 'Read articles on web development, accessibility, and tech a
 <Layout title={title} description={description}>
 <main id="main-content" class="flex-grow flex flex-col">
       <!-- ORGANISMS: Writings -->
-      <section id="writings" class="py-16 sm:py-20 lg:py-24 bg-white dark:bg-[#1f1f1f] flex-grow overflow-x-hidden">
+      <section id="writings" class="writings-page py-14 sm:py-20 lg:py-24 bg-white dark:bg-[#1f1f1f] flex-grow overflow-x-hidden">
         <div class="max-w-5xl xl:max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
           <div
-            class="flex flex-col gap-6 md:flex-row md:justify-between md:items-end mb-10 sm:mb-12 border-b border-gray-200 dark:border-gray-700 pb-5"
+            class="writings-header flex flex-col gap-5 md:flex-row md:justify-between md:items-end mb-8 sm:mb-12 border-b border-gray-200 dark:border-gray-700 pb-5"
           >
             <div data-aos="fade-up">
               <h2
@@ -22,29 +22,38 @@ const description = 'Read articles on web development, accessibility, and tech a
                 Writings
               </h2>
               <h3
-                class="mt-2 text-2xl leading-tight font-extrabold tracking-tight text-gray-900 dark:text-white sm:text-3xl lg:text-4xl max-w-xl"
+                class="mt-2 text-[1.75rem] leading-tight font-extrabold tracking-tight text-gray-900 dark:text-white sm:text-3xl lg:text-4xl max-w-md sm:max-w-xl"
               >
                 Thoughts & Tutorials
               </h3>
             </div>
 
             <!-- MOLECULES: Tabs -->
-            <div class="grid grid-cols-3 gap-2 w-full md:ml-auto md:w-auto md:flex md:items-center md:justify-end md:gap-1.5" data-aos="fade-up">
+            <div class="writings-tabs" data-aos="fade-up">
               <button
-                class="tab-btn active px-3 sm:px-5 py-2.5 rounded-lg md:rounded-t-lg text-sm font-medium transition-colors border-b-2 border-wood-accent text-wood-700 dark:text-wood-300 bg-wood-50/70 dark:bg-white/[0.03] md:bg-transparent"
+                type="button"
+                class="tab-btn writings-tab active"
                 data-target="pinned"
+                aria-controls="pinned"
+                aria-pressed="true"
               >
                 Pinned
               </button>
               <button
-                class="tab-btn px-3 sm:px-5 py-2.5 rounded-lg md:rounded-t-lg text-sm font-medium text-gray-500 dark:text-gray-400 hover:text-gray-700 dark:hover:text-gray-200 transition-colors border-b-2 border-transparent bg-gray-50/70 dark:bg-white/[0.02] md:bg-transparent"
+                type="button"
+                class="tab-btn writings-tab"
                 data-target="articles"
+                aria-controls="articles"
+                aria-pressed="false"
               >
                 Articles
               </button>
               <button
-                class="tab-btn px-3 sm:px-5 py-2.5 rounded-lg md:rounded-t-lg text-sm font-medium text-gray-500 dark:text-gray-400 hover:text-gray-700 dark:hover:text-gray-200 transition-colors border-b-2 border-transparent bg-gray-50/70 dark:bg-white/[0.02] md:bg-transparent"
+                type="button"
+                class="tab-btn writings-tab"
                 data-target="blogs"
+                aria-controls="blogs"
+                aria-pressed="false"
               >
                 Blogs
               </button>
@@ -56,7 +65,16 @@ const description = 'Read articles on web development, accessibility, and tech a
             id="pinned"
             class="tab-content block animate-fade-in space-y-4 sm:space-y-5"
           >
-            {PINNED.map((article, i) => <ArticleRow article={article} index={i} />)}
+            {
+              PINNED[0] && (
+                <ArticleRow article={PINNED[0]} index={0} featured={true} />
+              )
+            }
+            {
+              PINNED.slice(1).map((article, i) => (
+                <ArticleRow article={article} index={i + 1} />
+              ))
+            }
           </div>
 
           <!-- Articles Content Block -->
@@ -80,3 +98,93 @@ const description = 'Read articles on web development, accessibility, and tech a
       <!-- ORGANISMS: Footer -->
     </main>
 </Layout>
+
+<style>
+  .writings-header {
+    display: flex;
+    flex-direction: column;
+    gap: 1.25rem;
+  }
+
+  .writings-tabs {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    width: 100%;
+    gap: 0.5rem;
+  }
+
+  .writings-tab {
+    min-width: 0;
+    padding: 0.625rem 0.5rem;
+    border: 1px solid rgb(229 231 235 / 0.85);
+    border-radius: 0.75rem;
+    background: rgb(249 250 251 / 0.85);
+    color: #6b7280;
+    font-size: 0.875rem;
+    font-weight: 500;
+    line-height: 1.25;
+    transition: color 200ms ease-out, background-color 200ms ease-out,
+      border-color 200ms ease-out;
+  }
+
+  .writings-tab:hover {
+    color: #374151;
+    border-color: rgb(141 110 99 / 0.36);
+  }
+
+  .writings-tab:focus-visible {
+    outline: 3px solid #8d6e63;
+    outline-offset: 2px;
+  }
+
+  .writings-tab.active {
+    border-color: rgb(141 110 99 / 0.45);
+    background: rgb(141 110 99 / 0.12);
+    color: #6d4c41;
+  }
+
+  :global(.dark) .writings-tab {
+    border-color: #303030;
+    background: rgb(255 255 255 / 0.025);
+    color: #9ca3af;
+  }
+
+  :global(.dark) .writings-tab:hover {
+    color: #f3f4f6;
+    border-color: rgb(188 170 164 / 0.34);
+  }
+
+  :global(.dark) .writings-tab.active {
+    border-color: rgb(188 170 164 / 0.45);
+    background: rgb(255 255 255 / 0.07);
+    color: #e7d8d2;
+  }
+
+  @media (min-width: 768px) {
+    .writings-header {
+      flex-direction: row;
+      align-items: end;
+      justify-content: space-between;
+    }
+
+    .writings-tabs {
+      display: flex;
+      width: auto;
+      margin-left: auto;
+      gap: 0.25rem;
+    }
+
+    .writings-tab {
+      padding: 0.625rem 0.9rem;
+      border: 0;
+      border-bottom: 2px solid transparent;
+      border-radius: 0.5rem 0.5rem 0 0;
+      background: transparent;
+    }
+
+    .writings-tab.active {
+      border-bottom-color: #8d6e63;
+      background: transparent;
+    }
+  }
+</style>

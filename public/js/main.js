@@ -112,6 +112,8 @@ document.addEventListener("DOMContentLoaded", () => {
       btn.addEventListener("click", () => {
         // Remove active class from all buttons
         tabBtns.forEach((b) => {
+          b.classList.remove("active");
+          b.setAttribute("aria-pressed", "false");
           b.classList.remove(
             "border-wood-accent",
             "text-wood-700",
@@ -130,6 +132,8 @@ document.addEventListener("DOMContentLoaded", () => {
           "text-gray-500",
           "dark:text-gray-400",
         );
+        btn.classList.add("active");
+        btn.setAttribute("aria-pressed", "true");
         btn.classList.add(
           "border-wood-accent",
           "text-wood-700",

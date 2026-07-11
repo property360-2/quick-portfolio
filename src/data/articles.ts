@@ -35,6 +35,17 @@ export const ARTICLES: Article[] = [
     category: "pinned",
   },
   {
+    slug: "chinas-claims-on-palawan-and-batanes",
+    title: "China's Claims on Palawan and Batanes: Bakit Mas Malakas ang Philippine Position Base sa International Law",
+    description:
+      "Isang legal at historical analysis ng territorial claims ng China sa Palawan at Batanes, at kung bakit mas malakas ang Philippine position sa ilalim ng international law.",
+    date: "Jul 10, 2026",
+    tags: ["Geopolitics", "International Law", "West Philippine Sea", "Sovereignty"],
+    image: `${BASE}/China%27s%20Claims%20on%20Palawan%20and%20Batanes.png`,
+    href: "articles/chinas-claims-on-palawan-and-batanes/",
+    category: "articles",
+  },
+  {
     slug: "bayanihan-scaffolding",
     title: "Bayanihan: Bulacan Pre-Development Research and Scaffolding Document",
     description:
