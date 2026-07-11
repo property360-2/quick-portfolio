@@ -13,22 +13,16 @@ const eager = index < 3;
 
 <a
   href={article.href}
-  class="group flex items-start gap-6 p-4 -mx-4 rounded-xl transition-all duration-200 ease-out hover:bg-gray-50/50 dark:hover:bg-white/[0.04] focus-visible:outline-2 focus-visible:outline-wood-accent"
+  class="group flex flex-col sm:flex-row sm:items-start gap-3 sm:gap-5 p-4 sm:p-4 mx-0 sm:-mx-4 rounded-xl transition-all duration-200 ease-out hover:bg-gray-50/50 dark:hover:bg-white/[0.04] focus-visible:outline-2 focus-visible:outline-wood-accent overflow-hidden min-w-0"
   data-aos="fade-up"
   data-aos-delay={delay}
 >
-  <time
-    class="w-16 shrink-0 font-mono text-sm leading-snug text-gray-400 pt-0.5"
-    datetime={article.date}
-  >
-    {article.date}
-  </time>
-  <div class="flex gap-4 sm:gap-6 flex-1 min-w-0">
+  <div class="flex gap-3 sm:gap-4 flex-1 min-w-0 w-full">
     <img
       src={article.image}
       alt=""
       aria-hidden="true"
-      class="w-[72px] h-[72px] sm:w-24 sm:h-24 lg:w-[104px] lg:h-[104px] rounded-xl object-cover flex-shrink-0 transition-transform duration-200 ease-out group-hover:scale-[1.03]"
+      class="w-[76px] h-[76px] sm:w-[72px] sm:h-[72px] md:w-24 md:h-24 lg:w-[104px] lg:h-[104px] rounded-xl object-cover flex-shrink-0 transition-transform duration-200 ease-out group-hover:scale-[1.03]"
       loading={eager ? "eager" : "lazy"}
       decoding="async"
       width={104}
@@ -36,19 +30,19 @@ const eager = index < 3;
     />
     <div class="flex-1 min-w-0">
       <h4
-        class="text-base sm:text-lg font-bold text-gray-900 dark:text-white leading-snug transition-colors duration-180 ease-out group-hover:text-wood-accent"
+        class="text-base sm:text-base font-bold text-gray-900 dark:text-white leading-snug transition-colors duration-180 ease-out group-hover:text-wood-accent"
       >
         {article.title}
       </h4>
       <p
-        class="mt-1.5 text-sm text-gray-600 dark:text-gray-400 leading-relaxed line-clamp-2"
+        class="mt-1 text-sm sm:text-sm text-gray-600 dark:text-gray-400 leading-relaxed line-clamp-3 sm:line-clamp-2"
       >
         {article.description}
       </p>
       <div class="mt-3 flex flex-wrap gap-1.5">
         {
           article.tags.map((tag) => (
-            <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-gray-100 dark:bg-gray-800 text-gray-800 dark:text-gray-200">
+            <span class="inline-flex items-center px-2 py-0.5 rounded-full text-[11px] font-medium bg-gray-100 dark:bg-gray-800 text-gray-800 dark:text-gray-200">
               {tag}
             </span>
           ))
@@ -56,4 +50,10 @@ const eager = index < 3;
       </div>
     </div>
   </div>
+  <time
+    class="w-full sm:w-14 sm:shrink-0 font-mono text-xs leading-snug text-gray-400 whitespace-nowrap sm:text-left text-left sm:hidden order-first"
+    datetime={article.date}
+  >
+    {article.date}
+  </time>
 </a>

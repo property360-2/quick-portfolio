@@ -10,40 +10,40 @@ const description = 'Read articles on web development, accessibility, and tech a
 <Layout title={title} description={description}>
 <main id="main-content" class="flex-grow flex flex-col">
       <!-- ORGANISMS: Writings -->
-      <section id="writings" class="py-24 bg-white dark:bg-[#1f1f1f] flex-grow">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <section id="writings" class="py-16 sm:py-20 lg:py-24 bg-white dark:bg-[#1f1f1f] flex-grow overflow-x-hidden">
+        <div class="max-w-5xl xl:max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
           <div
-            class="flex flex-col md:flex-row justify-between items-end mb-12 border-b border-gray-200 dark:border-gray-700 pb-4"
+            class="flex flex-col gap-6 md:flex-row md:justify-between md:items-end mb-10 sm:mb-12 border-b border-gray-200 dark:border-gray-700 pb-5"
           >
-            <div data-aos="fade-right">
+            <div data-aos="fade-up">
               <h2
                 class="text-sm font-bold tracking-widest text-wood-accent uppercase"
               >
                 Writings
               </h2>
               <h3
-                class="mt-2 text-3xl leading-8 font-extrabold tracking-tight text-gray-900 dark:text-white sm:text-4xl"
+                class="mt-2 text-2xl leading-tight font-extrabold tracking-tight text-gray-900 dark:text-white sm:text-3xl lg:text-4xl max-w-xl"
               >
                 Thoughts & Tutorials
               </h3>
             </div>
 
             <!-- MOLECULES: Tabs -->
-            <div class="flex space-x-1 mt-6 md:mt-0" data-aos="fade-left">
+            <div class="grid grid-cols-3 gap-2 w-full md:ml-auto md:w-auto md:flex md:items-center md:justify-end md:gap-1.5" data-aos="fade-up">
               <button
-                class="tab-btn active px-6 py-2 rounded-t-lg text-sm font-medium transition-colors border-b-2 border-wood-accent text-wood-700 dark:text-wood-300"
+                class="tab-btn active px-3 sm:px-5 py-2.5 rounded-lg md:rounded-t-lg text-sm font-medium transition-colors border-b-2 border-wood-accent text-wood-700 dark:text-wood-300 bg-wood-50/70 dark:bg-white/[0.03] md:bg-transparent"
                 data-target="pinned"
               >
                 Pinned
               </button>
               <button
-                class="tab-btn px-6 py-2 rounded-t-lg text-sm font-medium text-gray-500 dark:text-gray-400 hover:text-gray-700 dark:hover:text-gray-200 transition-colors border-b-2 border-transparent"
+                class="tab-btn px-3 sm:px-5 py-2.5 rounded-lg md:rounded-t-lg text-sm font-medium text-gray-500 dark:text-gray-400 hover:text-gray-700 dark:hover:text-gray-200 transition-colors border-b-2 border-transparent bg-gray-50/70 dark:bg-white/[0.02] md:bg-transparent"
                 data-target="articles"
               >
                 Articles
               </button>
               <button
-                class="tab-btn px-6 py-2 rounded-t-lg text-sm font-medium text-gray-500 dark:text-gray-400 hover:text-gray-700 dark:hover:text-gray-200 transition-colors border-b-2 border-transparent"
+                class="tab-btn px-3 sm:px-5 py-2.5 rounded-lg md:rounded-t-lg text-sm font-medium text-gray-500 dark:text-gray-400 hover:text-gray-700 dark:hover:text-gray-200 transition-colors border-b-2 border-transparent bg-gray-50/70 dark:bg-white/[0.02] md:bg-transparent"
                 data-target="blogs"
               >
                 Blogs
@@ -54,7 +54,7 @@ const description = 'Read articles on web development, accessibility, and tech a
           <!-- Pinned Content Block -->
           <div
             id="pinned"
-            class="tab-content block animate-fade-in space-y-6"
+            class="tab-content block animate-fade-in space-y-4 sm:space-y-5"
           >
             {PINNED.map((article, i) => <ArticleRow article={article} index={i} />)}
           </div>
@@ -62,7 +62,7 @@ const description = 'Read articles on web development, accessibility, and tech a
           <!-- Articles Content Block -->
           <div
             id="articles"
-            class="tab-content hidden animate-fade-in space-y-6"
+            class="tab-content hidden animate-fade-in space-y-4 sm:space-y-5"
           >
             {ARTICLE_ITEMS.map((article, i) => <ArticleRow article={article} index={i} />)}
           </div>
@@ -70,7 +70,7 @@ const description = 'Read articles on web development, accessibility, and tech a
           <!-- Blogs Content Block -->
           <div
             id="blogs"
-            class="tab-content hidden animate-fade-in space-y-6"
+            class="tab-content hidden animate-fade-in space-y-4 sm:space-y-5"
           >
             {BLOG_ITEMS.map((article, i) => <ArticleRow article={article} index={i} />)}
           </div>

@@ -7,7 +7,7 @@ import '../styles/global.css';
 const { title, description } = Astro.props;
 ---
 <!doctype html>
-<html lang="en" class="scroll-smooth">
+<html lang="en" class="scroll-smooth overflow-x-hidden">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -66,6 +66,7 @@ const { title, description } = Astro.props;
         min-height: 100vh;
         display: flex;
         flex-direction: column;
+        overflow-x: hidden;
       }
     </style>
     
