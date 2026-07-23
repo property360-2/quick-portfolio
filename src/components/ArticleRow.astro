@@ -24,8 +24,7 @@ const eager = index < 3;
   <div class="article-row__media">
     <img
       src={article.image}
-      alt=""
-      aria-hidden="true"
+      alt={article.title}
       class="article-row__image"
       loading={eager ? "eager" : "lazy"}
       decoding="async"

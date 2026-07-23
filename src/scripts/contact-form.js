@@ -53,6 +53,9 @@ document.addEventListener("DOMContentLoaded", () => {
       const el = document.getElementById(id);
       if (el) el.classList.add("hidden");
     });
+    [nameInput, emailInput, subjectInput, messageInput].forEach(input => {
+      if (input) input.removeAttribute("aria-invalid");
+    });
 
     let hasErrors = false;
 
@@ -61,7 +64,9 @@ document.addEventListener("DOMContentLoaded", () => {
       if (err) {
         err.textContent = "Please enter your full name (minimum 2 characters).";
         err.classList.remove("hidden");
+        err.setAttribute("role", "alert");
       }
+      if (nameInput) nameInput.setAttribute("aria-invalid", "true");
       hasErrors = true;
     }
 
@@ -71,7 +76,9 @@ document.addEventListener("DOMContentLoaded", () => {
       if (err) {
         err.textContent = "Please enter a valid email address.";
         err.classList.remove("hidden");
+        err.setAttribute("role", "alert");
       }
+      if (emailInput) emailInput.setAttribute("aria-invalid", "true");
       hasErrors = true;
     }
 
@@ -80,7 +87,9 @@ document.addEventListener("DOMContentLoaded", () => {
       if (err) {
         err.textContent = "Please enter a subject (minimum 3 characters).";
         err.classList.remove("hidden");
+        err.setAttribute("role", "alert");
       }
+      if (subjectInput) subjectInput.setAttribute("aria-invalid", "true");
       hasErrors = true;
     }
 
@@ -89,7 +98,9 @@ document.addEventListener("DOMContentLoaded", () => {
       if (err) {
         err.textContent = "Please write a brief description or message (minimum 10 characters).";
         err.classList.remove("hidden");
+        err.setAttribute("role", "alert");
       }
+      if (messageInput) messageInput.setAttribute("aria-invalid", "true");
       hasErrors = true;
     }
 
@@ -103,7 +114,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const mailtoSubject = encodeURIComponent(`[Portfolio Inquiry] ${safeSubject}`);
     const mailtoBody = encodeURIComponent(`Name: ${safeName}\nEmail: ${safeEmail}\n\nMessage:\n${safeMessage}`);
 
-    const targetEmail = "junalvior21@gmail.com";
+    const targetEmail = "junalvior.dev@gmail.com";
     const mailtoUrl = `mailto:${targetEmail}?subject=${mailtoSubject}&body=${mailtoBody}`;
 
     const toast = document.getElementById("contact-success-toast");

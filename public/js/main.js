@@ -192,11 +192,16 @@ document.addEventListener("DOMContentLoaded", () => {
 document.addEventListener("DOMContentLoaded", () => {
   const filterBtns = document.querySelectorAll(".filter-btn");
   const projectCards = document.querySelectorAll(".project-card");
+  let filterTimeout = null;
 
   if (filterBtns.length > 0 && projectCards.length > 0) {
     filterBtns.forEach((btn) => {
       btn.addEventListener("click", () => {
-        // Remove active class from all buttons
+        if (filterTimeout) {
+          clearTimeout(filterTimeout);
+          filterTimeout = null;
+        }
+
         filterBtns.forEach((b) => {
           b.classList.remove("active", "bg-wood-accent", "text-white");
           b.classList.add(
@@ -207,7 +212,6 @@ document.addEventListener("DOMContentLoaded", () => {
           );
         });
 
-        // Add active class to clicked button
         btn.classList.remove(
           "bg-gray-200",
           "dark:bg-gray-800",
@@ -219,30 +223,35 @@ document.addEventListener("DOMContentLoaded", () => {
         const filterValue = btn.getAttribute("data-filter");
 
         projectCards.forEach((card) => {
-          if (filterValue === "all") {
+          card.style.opacity = "";
+          card.style.display = "";
+          card.classList.remove("aos-animate");
+        });
+
+        if (filterValue === "all") {
+          projectCards.forEach((card) => {
             card.style.display = "block";
-            setTimeout(() => {
+            requestAnimationFrame(() => {
               card.style.opacity = "1";
               card.classList.add("aos-animate");
-            }, 50);
-          } else {
+            });
+          });
+        } else {
+          projectCards.forEach((card) => {
             const categories = card.getAttribute("data-category");
             if (categories && categories.includes(filterValue)) {
               card.style.display = "block";
-              setTimeout(() => {
+              requestAnimationFrame(() => {
                 card.style.opacity = "1";
                 card.classList.add("aos-animate");
-              }, 50);
-            } else {
-              card.style.opacity = "0";
-              card.classList.remove("aos-animate");
-              setTimeout(() => (card.style.display = "none"), 300);
+              });
             }
-          }
-        });
+          });
+        }
 
-        setTimeout(() => {
+        filterTimeout = setTimeout(() => {
           if (typeof AOS !== "undefined") AOS.refresh();
+          filterTimeout = null;
         }, 350);
       });
     });
