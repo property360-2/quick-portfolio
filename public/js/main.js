@@ -91,12 +91,15 @@ document.addEventListener("DOMContentLoaded", () => {
   if (mobileMenuBtn && mobileMenu) {
     mobileMenuBtn.addEventListener("click", () => {
       mobileMenu.classList.toggle("hidden");
+      const isOpen = !mobileMenu.classList.contains("hidden");
+      mobileMenuBtn.setAttribute("aria-expanded", String(isOpen));
     });
 
     // Close menu when clicking a link
     mobileMenu.querySelectorAll("a").forEach((link) => {
       link.addEventListener("click", () => {
         mobileMenu.classList.add("hidden");
+        mobileMenuBtn.setAttribute("aria-expanded", "false");
       });
     });
   }
