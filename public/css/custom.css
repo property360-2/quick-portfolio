@@ -125,6 +125,20 @@ body.loaded {
   width: 100%;
 }
 
+/* Portfolio Filter Buttons - Mobile Responsive */
+@media (max-width: 380px) {
+  #portfolio-filters {
+    gap: 0.375rem;
+    justify-content: center;
+  }
+
+  #portfolio-filters .filter-btn {
+    padding: 0.25rem 0.625rem;
+    font-size: 0.7rem;
+    line-height: 1.25;
+  }
+}
+
 /* Card Hover Effects */
 .project-card,
 .service-card {
