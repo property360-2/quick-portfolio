@@ -1,0 +1,61 @@
+---
+import Layout from '../../../../layouts/Layout.astro';
+import { Content } from '../../../../../raw-writings/my-journey-to-tech.md';
+
+const title = 'My Journey to Tech | Jun Alvior';
+const description = 'From wanting to be a civil engineer to finding my place in software development — a personal story of rejection, resilience, scholarships, and falling in love with solving difficult problems.';
+---
+
+<Layout title={title} description={description}>
+<main id="main-content" class="flex-grow flex flex-col">
+      <article class="py-24 bg-white dark:bg-[#1f1f1f] flex-grow">
+        <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
+          <!-- Breadcrumb -->
+          <div class="mb-8 text-sm text-gray-500 dark:text-gray-400">
+            <a
+              href="/quick-portfolio/writings/"
+              class="hover:text-wood-accent transition-colors"
+            >
+              &larr; Back to Writings
+            </a>
+          </div>
+
+          <!-- Header -->
+          <header class="mb-12" data-aos="fade-up">
+            <div class="mb-8 rounded-xl overflow-hidden shadow-lg">
+              <img
+                src="/quick-portfolio/assets/my-journey-to-tech.png"
+                alt="My Journey to Tech"
+                class="w-full h-auto object-cover max-h-[400px]"
+                loading="lazy"
+                decoding="async"
+                width="800"
+                height="450"
+              />
+            </div>
+            <h1
+              class="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white mb-4"
+            >
+              My Journey to Tech
+            </h1>
+            <div
+              class="flex items-center text-sm text-gray-500 dark:text-gray-400 space-x-4"
+            >
+              <span>Aug 05, 2026</span>
+              <span>&bull;</span>
+              <span>By Jun Alvior</span>
+              <span>&bull;</span>
+              <span>Personal Journey</span>
+            </div>
+          </header>
+
+          <div
+            class="prose dark:prose-invert prose-lg prose-wood max-w-none text-gray-700 dark:text-gray-300 leading-relaxed markdown-content"
+            data-aos="fade-up"
+          >
+            <Content />
+          </div>
+        </div>
+      </article>
+    </main>
+</Layout>

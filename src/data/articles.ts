@@ -145,6 +145,17 @@ export const ARTICLES: Article[] = [
     category: "articles",
   },
   {
+    slug: "my-journey-to-tech",
+    title: "My Journey to Tech",
+    description:
+      "From wanting to be a civil engineer to finding my place in software development — a personal story of rejection, resilience, scholarships, and falling in love with solving difficult problems.",
+    date: "Aug 05, 2026",
+    tags: ["Personal Journey", "Life Lessons", "Career"],
+    image: `${BASE}/my-journey-to-tech.png`,
+    href: "blogs/my-journey-to-tech/",
+    category: "blogs",
+  },
+  {
     slug: "ikigai-book-report",
     title: "Book Report: Ikigai: The Japanese Secret to a Long and Happy Life",
     description:
