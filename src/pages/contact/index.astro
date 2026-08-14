@@ -5,7 +5,7 @@
  * Purpose: Single-column recruiter portal for contacting Jun Alvior.
  * Contains:
  *   - Contact information (Email, LinkedIn, Phone, Location).
- *   - Official resume with two actions: View Resume (in-browser) and Download PDF.
+ *   - Official resume with two actions: View Resume (in-browser, new tab) and Download PDF.
  *   - A collapsible contact form revealed on clicking "Send a Message".
  *   - Social links (GitHub, LinkedIn).
  */
@@ -97,7 +97,7 @@ const description = "Get in touch with Dionisio Alvior, Full Stack Software Deve
             </div>
           </div>
 
-          <div class="p-8 bg-white dark:bg-[#252528] border border-gray-200 dark:border-gray-800 rounded-2xl shadow-sm">
+          <div id="resume" class="p-8 bg-white dark:bg-[#252528] border border-gray-200 dark:border-gray-800 rounded-2xl shadow-sm">
             <h2 class="text-lg font-bold text-gray-900 dark:text-white mb-4">Official Resume</h2>
             <p class="text-sm text-gray-500 dark:text-gray-400 mb-6 leading-relaxed">
               View my latest resume online or download a PDF copy for your records.
