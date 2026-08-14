@@ -1,60 +1,42 @@
 ---
 /**
- * Contact and Resume Download Page Component
+ * Contact and Resume Page Component
  * File: src/pages/contact/index.astro
- * Purpose: Provides a highly polished, single-column recruiter portal.
- * Contains: 
- *   - Quick contact details (Phone, Email, Location).
- *   - Official resume download linking to the actual PDF (Jun-Alvior.pdf).
- *   - A collapsible contact form revealed dynamically on clicking "Send a Message".
- * Fits into: Part of the primary pages navigation, allowing hiring managers and recruiters to get in touch.
+ * Purpose: Single-column recruiter portal for contacting Jun Alvior.
+ * Contains:
+ *   - Contact information (Email, LinkedIn, Phone, Location).
+ *   - Official resume with two actions: View Resume (in-browser) and Download PDF.
+ *   - A collapsible contact form revealed on clicking "Send a Message".
+ *   - Social links (GitHub, LinkedIn).
  */
 import Layout from "../../layouts/Layout.astro";
 
 const title = "Contact & Resume | Dionisio Alvior | Full Stack Software Developer";
-const description = "Get in touch with Dionisio Alvior, Full Stack Software Developer. Download the latest resume and send direct inquiries.";
+const description = "Get in touch with Dionisio Alvior, Full Stack Software Developer. View the latest resume online or download a PDF, and send direct inquiries.";
 ---
 
 <Layout title={title} description={description}>
   <main id="main-content" class="flex-grow flex flex-col justify-center items-center">
-    <!-- ORGANISM: Contact Container Section -->
     <section id="contact-hub" class="py-24 bg-grey-light dark:bg-[#1a1a1a] w-full transition-colors duration-300">
       <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        
-        <!-- Header Section -->
+
         <div class="text-center mb-16 relative">
-          <span class="text-sm font-bold tracking-widest text-wood-accent uppercase mb-2 block">Connect With Me</span>
+          <span class="text-sm font-bold tracking-widest text-wood-accent uppercase mb-2 block">Get In Touch</span>
           <h1 class="text-4xl sm:text-5xl font-extrabold tracking-tight text-gray-900 dark:text-white">
-            Let's Build Something Great
+            Let's Work Together
           </h1>
           <p class="max-w-xl mx-auto mt-3 text-base sm:text-lg text-gray-600 dark:text-gray-300">
-            Hiring managers, recruiters, and engineering team leads are welcome to reach out directly.
+            Open to software development opportunities, freelance projects, and collaborations.
           </p>
           <div class="w-24 h-1 bg-wood-accent mx-auto rounded-full mt-6"></div>
         </div>
 
-        <!-- Single Centered Column Layout to resolve width/height imbalances -->
         <div class="max-w-2xl mx-auto w-full space-y-8">
-          
-          <!-- Card 1: Quick Contact Channels -->
-          <div class="p-8 bg-white dark:bg-[#252528] border border-gray-200 dark:border-gray-800 rounded-2xl shadow-sm">
-            <h2 class="text-lg font-bold text-gray-900 dark:text-white mb-6">Contact Channels</h2>
-            
-            <div class="space-y-6 text-sm">
-              <!-- Phone -->
-              <div class="flex items-start gap-4">
-                <div class="text-wood-accent mt-1">
-                  <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.94.725l.548 2.2a1 1 0 01-.321.988l-1.305.98a10.582 10.582 0 004.872 4.872l.98-1.305a1 1 0 01.988-.321l2.2.548a1 1 0 01.725.94V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
-                  </svg>
-                </div>
-                <div>
-                  <h3 class="font-bold text-gray-800 dark:text-gray-200">Phone Numbers</h3>
-                  <p class="text-gray-600 dark:text-gray-400 mt-1">0991 470 7733</p>
-                  <p class="text-gray-600 dark:text-gray-400">0916 754 5563</p>
-                </div>
-              </div>
 
+          <div class="p-8 bg-white dark:bg-[#252528] border border-gray-200 dark:border-gray-800 rounded-2xl shadow-sm">
+            <h2 class="text-lg font-bold text-gray-900 dark:text-white mb-6">Contact Information</h2>
+
+            <div class="space-y-6 text-sm">
               <!-- Email -->
               <div class="flex items-start gap-4">
                 <div class="text-wood-accent mt-1">
@@ -63,10 +45,39 @@ const description = "Get in touch with Dionisio Alvior, Full Stack Software Deve
                   </svg>
                 </div>
                 <div>
-                  <h3 class="font-bold text-gray-800 dark:text-gray-200">Email Address</h3>
+                  <h3 class="font-bold text-gray-800 dark:text-gray-200">Email</h3>
                   <p class="text-gray-600 dark:text-gray-400 mt-1">
                     <a href="mailto:junalvior.dev@gmail.com" class="hover:text-wood-accent transition-colors">junalvior.dev@gmail.com</a>
                   </p>
+                </div>
+              </div>
+
+              <!-- LinkedIn -->
+              <div class="flex items-start gap-4">
+                <div class="text-wood-accent mt-1">
+                  <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                    <path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z" />
+                  </svg>
+                </div>
+                <div>
+                  <h3 class="font-bold text-gray-800 dark:text-gray-200">LinkedIn</h3>
+                  <p class="text-gray-600 dark:text-gray-400 mt-1">
+                    <a href="https://www.linkedin.com/in/jun-alvior-732987364/" target="_blank" rel="noopener noreferrer" class="hover:text-wood-accent transition-colors">Jun Alvior</a>
+                  </p>
+                </div>
+              </div>
+
+              <!-- Phone -->
+              <div class="flex items-start gap-4">
+                <div class="text-wood-accent mt-1">
+                  <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.94.725l.548 2.2a1 1 0 01-.321.988l-1.305.98a10.582 10.582 0 004.872 4.872l.98-1.305a1 1 0 01.988-.321l2.2.548a1 1 0 01.725.94V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
+                  </svg>
+                </div>
+                <div>
+                  <h3 class="font-bold text-gray-800 dark:text-gray-200">Phone</h3>
+                  <p class="text-gray-600 dark:text-gray-400 mt-1">0991 470 7733</p>
+                  <p class="text-gray-600 dark:text-gray-400">0916 754 5563</p>
                 </div>
               </div>
 
@@ -86,25 +97,37 @@ const description = "Get in touch with Dionisio Alvior, Full Stack Software Deve
             </div>
           </div>
 
-          <!-- Card 2: Resume Download -->
           <div class="p-8 bg-white dark:bg-[#252528] border border-gray-200 dark:border-gray-800 rounded-2xl shadow-sm">
             <h2 class="text-lg font-bold text-gray-900 dark:text-white mb-4">Official Resume</h2>
-            <p class="text-xs text-gray-500 dark:text-gray-400 mb-6 leading-relaxed">
-              Download the complete printable PDF resume containing detailed credentials, education records, technical certifications, and references.
+            <p class="text-sm text-gray-500 dark:text-gray-400 mb-6 leading-relaxed">
+              View my latest resume online or download a PDF copy for your records.
             </p>
-            
-            <!-- Updated PDF download target to actual resume location -->
-            <a
-              href="/quick-portfolio/assets/Jun-Alvior.pdf"
-              download="Jun-Alvior.pdf"
-              class="flex items-center justify-center w-full px-5 py-3 bg-wood-accent hover:bg-wood-accent/90 text-white font-bold rounded-xl transition-all shadow-md text-center text-sm gap-2"
-              id="download-resume-btn"
-            >
-              <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" />
-              </svg>
-              Download PDF Resume
-            </a>
+
+            <div class="flex flex-col sm:flex-row gap-3">
+              <a
+                href="/quick-portfolio/assets/Jun-Alvior.pdf"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="flex items-center justify-center px-5 py-3 bg-wood-accent hover:bg-wood-accent/90 text-white font-bold rounded-xl transition-all shadow-md text-sm gap-2 flex-1"
+              >
+                <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z" />
+                </svg>
+                View Resume
+              </a>
+              <a
+                href="/quick-portfolio/assets/Jun-Alvior.pdf"
+                download="Jun-Alvior.pdf"
+                id="download-resume-btn"
+                class="flex items-center justify-center px-5 py-3 bg-transparent border-2 border-wood-accent text-wood-accent dark:text-wood-300 hover:bg-wood-50 dark:hover:bg-[#1a1a1a] font-bold rounded-xl transition-all shadow-sm text-sm gap-2 flex-1"
+              >
+                <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" />
+                </svg>
+                Download PDF
+              </a>
+            </div>
           </div>
 
           <!-- Trigger: Send a Message Toggle Button -->
@@ -120,15 +143,14 @@ const description = "Get in touch with Dionisio Alvior, Full Stack Software Deve
             </button>
           </div>
 
-          <!-- Card 3: Interactive Contact Form (Initially Hidden) -->
+          <!-- Interactive Contact Form (Initially Hidden) -->
           <div id="contact-form-card" class="hidden opacity-0 transform translate-y-4 transition-all duration-500 ease-out">
             <div class="p-8 bg-white dark:bg-[#252528] border border-gray-200 dark:border-gray-800 rounded-2xl shadow-sm">
               <h2 class="text-lg font-bold text-gray-900 dark:text-white mb-6">Send a Message</h2>
-              
+
               <form id="contact-form" class="space-y-6">
-                <!-- Name Input -->
                 <div>
-                  <label for="contact-name" class="block text-xs font-bold text-gray-700 dark:text-gray-300 uppercase tracking-widest mb-2">Full Name</label>
+                  <label for="contact-name" class="block text-xs font-bold text-gray-700 dark:text-gray-300 uppercase tracking-widest mb-2">Name</label>
                   <input
                     type="text"
                     id="contact-name"
@@ -141,9 +163,8 @@ const description = "Get in touch with Dionisio Alvior, Full Stack Software Deve
                   <p id="name-error" class="hidden text-xs text-red-500 mt-1"></p>
                 </div>
 
-                <!-- Email Input -->
                 <div>
-                  <label for="contact-email" class="block text-xs font-bold text-gray-700 dark:text-gray-300 uppercase tracking-widest mb-2">Email Address</label>
+                  <label for="contact-email" class="block text-xs font-bold text-gray-700 dark:text-gray-300 uppercase tracking-widest mb-2">Email</label>
                   <input
                     type="email"
                     id="contact-email"
@@ -155,7 +176,6 @@ const description = "Get in touch with Dionisio Alvior, Full Stack Software Deve
                   <p id="email-error" class="hidden text-xs text-red-500 mt-1"></p>
                 </div>
 
-                <!-- Subject Input -->
                 <div>
                   <label for="contact-subject" class="block text-xs font-bold text-gray-700 dark:text-gray-300 uppercase tracking-widest mb-2">Subject</label>
                   <input
@@ -170,7 +190,6 @@ const description = "Get in touch with Dionisio Alvior, Full Stack Software Deve
                   <p id="subject-error" class="hidden text-xs text-red-500 mt-1"></p>
                 </div>
 
-                <!-- Message Textarea -->
                 <div>
                   <label for="contact-message" class="block text-xs font-bold text-gray-700 dark:text-gray-300 uppercase tracking-widest mb-2">Message</label>
                   <textarea
@@ -185,14 +204,13 @@ const description = "Get in touch with Dionisio Alvior, Full Stack Software Deve
                   <p id="message-error" class="hidden text-xs text-red-500 mt-1"></p>
                 </div>
 
-                <!-- Submit Button & Feedback -->
                 <div class="pt-2">
                   <button
                     type="submit"
                     id="submit-contact"
                     class="w-full px-5 py-3 bg-wood-accent hover:bg-wood-accent/90 text-white font-bold rounded-xl transition-all shadow-md text-sm flex items-center justify-center gap-2"
                   >
-                    <span>Send Message via Email</span>
+                    <span>Send Message</span>
                     <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                       <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3" />
                     </svg>
@@ -200,7 +218,6 @@ const description = "Get in touch with Dionisio Alvior, Full Stack Software Deve
                 </div>
               </form>
 
-              <!-- Success Notification Alert -->
               <div id="contact-success-toast" class="hidden mt-6 p-4 bg-green-50 dark:bg-green-950/30 border border-green-200 dark:border-green-800/50 rounded-xl text-sm text-green-800 dark:text-green-300 flex items-start gap-3">
                 <svg class="w-5 h-5 text-green-500 mt-0.5 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                   <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
@@ -212,6 +229,35 @@ const description = "Get in touch with Dionisio Alvior, Full Stack Software Deve
                   </p>
                 </div>
               </div>
+            </div>
+          </div>
+
+          <!-- Social Links -->
+          <div class="text-center pt-2">
+            <h2 class="text-sm font-bold tracking-widest text-wood-accent uppercase mb-6">Elsewhere</h2>
+            <div class="flex justify-center gap-4">
+              <a
+                href="https://github.com/property360-2"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="inline-flex items-center gap-2 px-5 py-3 bg-white dark:bg-[#252528] border border-gray-200 dark:border-gray-800 rounded-xl text-sm font-bold text-gray-700 dark:text-gray-300 hover:border-wood-accent/40 hover:text-wood-accent transition-colors shadow-sm"
+              >
+                <svg class="h-5 w-5" fill="currentColor" viewBox="0 0 24 24">
+                  <path fill-rule="evenodd" d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z" clip-rule="evenodd" />
+                </svg>
+                GitHub
+              </a>
+              <a
+                href="https://www.linkedin.com/in/jun-alvior-732987364/"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="inline-flex items-center gap-2 px-5 py-3 bg-white dark:bg-[#252528] border border-gray-200 dark:border-gray-800 rounded-xl text-sm font-bold text-gray-700 dark:text-gray-300 hover:border-wood-accent/40 hover:text-wood-accent transition-colors shadow-sm"
+              >
+                <svg class="h-5 w-5" fill="currentColor" viewBox="0 0 24 24">
+                  <path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z" />
+                </svg>
+                LinkedIn
+              </a>
             </div>
           </div>
 

@@ -2,18 +2,16 @@
 /**
  * Portfolio Index Page
  * Purpose: Showcases a gallery of selected projects with filtering capabilities.
- * Contains: Filterable project cards for Fullstack, Frontend, Tools, and GameDev projects.
- * System Role: The main hub for exploring the developer's work, including direct links to live demos and case studies.
+ * Structure: Problem → Outcome → Technology, with featured projects prioritized.
+ * Contains: Filterable project cards for Fullstack, IoT, Automation, and GameDev projects.
  */
 import Layout from '../../layouts/Layout.astro';
-import Carousel from '../../components/Carousel.astro';
-const title = 'Strategic Portfolio | AI Automation & Full Stack Solutions | Jun Alvior';
-const description = "Explore professional AI automation systems, enterprise-grade software portals, and high-performance digital solutions designed to scale business operations.";
+const title = 'Selected Projects | Jun Alvior | Full Stack Developer';
+const description = 'Selected full-stack applications, automation systems, AI tools, and IoT projects built by Jun Alvior to solve practical problems.';
 ---
 
 <Layout title={title} description={description}>
 <main id="main-content" class="flex-grow flex flex-col">
-      <!-- ORGANISMS: Portfolio -->
       <section
         id="portfolio"
         class="py-24 bg-grey-light dark:bg-[#1a1a1a] flex-grow"
@@ -23,19 +21,18 @@ const description = "Explore professional AI automation systems, enterprise-grad
             <h2
               class="text-sm font-bold tracking-widest text-wood-accent uppercase gs-reveal"
             >
-              Problems Solved & Results Delivered
+              Selected Projects
             </h2>
             <h3
               class="mt-2 text-3xl leading-8 font-extrabold tracking-tight text-gray-900 dark:text-white sm:text-4xl gs-reveal"
             >
-              Case Studies: Real Proof of Pain Fixed
+              Work That Solves Practical Problems
             </h3>
             <p class="mt-4 text-base text-gray-600 dark:text-gray-400 gs-reveal leading-relaxed">
-              I don’t just write code; I design systems that eliminate business friction. Whether you're an agency needing a high-velocity developer to ship an MVP or a business losing hours to manual spreadsheets, here is direct proof of custom software built to save time, reduce costs, and scale operations.
+              A collection of full-stack applications, automation systems, AI tools, and IoT projects built to solve practical problems.
             </p>
           </div>
 
-          <!-- Project Filters -->
           <div
             class="flex flex-wrap justify-center gap-2 sm:gap-3 md:gap-4 mb-12 gs-reveal"
             id="portfolio-filters"
@@ -76,415 +73,136 @@ const description = "Explore professional AI automation systems, enterprise-grad
             class="grid grid-cols-1 md:grid-cols-2 gap-8"
             id="portfolio-grid"
           >
-            <!-- Project: Ano Pong Ulam? Heirloom Recipe Sharing PWA -->
+            <!-- ============================================================
+                 FEATURED PROJECTS (Tier 1)
+                 ============================================================ -->
+
+            <!-- Featured: Automation Pick-up Service -->
             <div
-              class="project-card group"
+              class="project-card group md:col-span-2"
               data-aos="fade-up"
               data-category="fullstack"
             >
-              <div
-                class="relative overflow-hidden rounded-xl shadow-lg aspect-video bg-gray-200 flex flex-col justify-end"
-              >
-                <img
-                  src="/quick-portfolio/assets/ano-po-ulam/desktop-ano-po-ulam.png"
-                  alt="Ano Pong Ulam? Heirloom Recipe Sharing & Meal Planning PWA"
-                  class="absolute inset-0 object-cover w-full h-full transform group-hover:scale-105 transition-transform duration-500"
-                  loading="lazy"
-                  decoding="async"
-                  width="800"
-                  height="450"
-                />
-                <div
-                  class="absolute inset-0 bg-black/60 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col items-center justify-center p-8 gap-4 z-10 text-center"
-                >
-                  <div class="flex flex-wrap justify-center gap-4">
-                    <a
-                      href="/quick-portfolio/portfolio/ano-po-ulam/"
-                      class="text-white border px-4 py-2 rounded-full text-sm font-medium tracking-wide hover:bg-white hover:text-black transition-colors"
-                      >View Details</a
-                    >
-                    <a
-                      href="https://ano-pong-ulam.vercel.app/"
-                      target="_blank"
-                      class="text-white bg-wood-accent px-4 py-2 rounded-full text-sm font-medium tracking-wide hover:bg-wood-700 transition-colors"
-                      >Live Demo</a
-                    >
-                    <a
-                      href="https://github.com/property360-2/ano-pong-ulam"
-                      target="_blank"
-                      class="text-white bg-gray-800 px-4 py-2 rounded-full text-sm font-medium tracking-wide hover:bg-gray-900 transition-colors"
-                      >GitHub</a
-                    >
+              <div class="grid grid-cols-1 md:grid-cols-2 bg-white dark:bg-[#252528] border border-gray-200 dark:border-gray-800 rounded-2xl shadow-sm overflow-hidden hover:border-wood-accent/40 hover:shadow-2xl transition-all duration-300">
+                <div class="relative overflow-hidden aspect-video md:aspect-auto md:min-h-[260px] bg-gray-200">
+                  <img
+                    src="/quick-portfolio/assets/automation-showcase.png"
+                    alt="Automation Pick-up Service"
+                    class="absolute inset-0 object-cover w-full h-full transform group-hover:scale-105 transition-transform duration-500"
+                    loading="lazy"
+                    decoding="async"
+                    width="800"
+                    height="450"
+                  />
+                  <span class="absolute top-4 left-4 inline-flex items-center px-3 py-1 rounded-full text-xs font-bold bg-wood-accent text-white shadow-lg">Featured</span>
+                </div>
+                <div class="p-6 md:p-8 flex flex-col justify-center">
+                  <h4 class="text-2xl font-bold text-gray-900 dark:text-white group-hover:text-wood-accent transition-colors">
+                    Automation Pick-up Service
+                  </h4>
+                  <p class="text-gray-600 dark:text-gray-400 text-base mt-3 leading-relaxed">
+                    Replaced manual inventory tracking with an automated workflow that synchronizes data and notifications across business operations.
+                  </p>
+                  <p class="text-xs text-gray-500 dark:text-gray-400 mt-4">
+                    <span class="font-semibold text-gray-600 dark:text-gray-300">Built with:</span>
+                    Node.js · Express.js · Google Sheets API · Nodemailer
+                  </p>
+                  <div class="flex flex-wrap gap-2 mt-5">
+                    <a href="/quick-portfolio/portfolio/automation-pick-up-service/" class="inline-flex items-center px-4 py-2 bg-wood-accent hover:bg-wood-700 text-white text-xs font-semibold rounded-full transition-colors shadow-sm">View Details &rarr;</a>
+                    <a href="http://automation-pick-up-service.vercel.app/" target="_blank" rel="noopener noreferrer" class="inline-flex items-center px-4 py-2 border border-wood-accent text-wood-accent dark:text-wood-300 hover:bg-wood-50 dark:hover:bg-[#1a1a1a] text-xs font-semibold rounded-full transition-colors">Live Demo</a>
+                    <a href="https://github.com/property360-2/automation-pick-up-service" target="_blank" rel="noopener noreferrer" class="inline-flex items-center px-4 py-2 border border-gray-300 dark:border-gray-700 text-gray-700 dark:text-gray-300 hover:border-gray-400 dark:hover:border-gray-500 hover:bg-gray-50 dark:hover:bg-gray-800 text-xs font-semibold rounded-full transition-colors">GitHub</a>
                   </div>
                 </div>
               </div>
-              <a href="/quick-portfolio/portfolio/ano-po-ulam/" class="block mt-4">
-                <h4
-                  class="text-xl font-bold text-gray-900 dark:text-white group-hover:text-wood-accent transition-colors"
-                >
-                  Ano Pong Ulam? Heirloom Recipe Sharing PWA
-                </h4>
-                <div class="flex flex-wrap gap-1.5 mt-2 mb-3">
-                  <span class="px-2 py-0.5 bg-gray-150 dark:bg-gray-800 text-gray-800 dark:text-gray-300 rounded text-[10px] font-bold tracking-wide">Next.js 15 (App Router)</span>
-                  <span class="px-2 py-0.5 bg-gray-150 dark:bg-gray-800 text-gray-800 dark:text-gray-300 rounded text-[10px] font-bold tracking-wide">Tailwind CSS v4</span>
-                  <span class="px-2 py-0.5 bg-gray-150 dark:bg-gray-800 text-gray-800 dark:text-gray-300 rounded text-[10px] font-bold tracking-wide">Prisma</span>
-                  <span class="px-2 py-0.5 bg-gray-150 dark:bg-gray-800 text-gray-800 dark:text-gray-300 rounded text-[10px] font-bold tracking-wide">PostgreSQL</span>
-                  <span class="px-2 py-0.5 bg-gray-150 dark:bg-gray-800 text-gray-800 dark:text-gray-300 rounded text-[10px] font-bold tracking-wide">PWA (Offline SW)</span>
-                </div>
-                <p class="text-xs font-semibold text-wood-accent mt-1 italic">
-                  Pain Fixed: Loss of offline recipe drafts, slow load times, and fragmented community review feeds.
-                </p>
-                <p class="text-gray-600 dark:text-gray-400 text-sm mt-2 leading-relaxed">
-                  Engineered a feature-rich Progressive Web App for preserving Filipino heirloom recipes. Features a multi-step recipe draft wizard with localStorage auto-save, a visual-first consolidated social feed, drag-and-drop meal planning calendar, and offline-first capabilities using custom service workers.
-                </p>
-              </a>
             </div>
 
-            <!-- Project: Automation Pick-up Service -->
+            <!-- Featured: RFID IoT Membership Scanner -->
             <div
-              class="project-card group"
-              data-aos="fade-up"
-              data-category="fullstack"
-            >
-              <div
-                class="relative overflow-hidden rounded-xl shadow-lg aspect-video bg-gray-200 flex flex-col justify-end"
-              >
-                <img
-                  src="/quick-portfolio/assets/automation-showcase.png"
-                  alt="Automation Pick-up Service"
-                  class="absolute inset-0 object-cover w-full h-full transform group-hover:scale-105 transition-transform duration-500"
-                  loading="lazy"
-                  decoding="async"
-                  width="800"
-                  height="450"
-                />
-                <div
-                  class="absolute inset-0 bg-black/60 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col items-center justify-center p-8 gap-4 z-10 text-center"
-                >
-                  <div class="flex flex-wrap justify-center gap-4">
-                    <a
-                      href="/quick-portfolio/portfolio/automation-pick-up-service/"
-                      class="text-white border px-4 py-2 rounded-full text-sm font-medium tracking-wide hover:bg-white hover:text-black transition-colors"
-                      >View Details</a
-                    >
-                    <a
-                      href="http://automation-pick-up-service.vercel.app/"
-                      target="_blank"
-                      class="text-white bg-wood-accent px-4 py-2 rounded-full text-sm font-medium tracking-wide hover:bg-wood-700 transition-colors"
-                      >Live Demo</a
-                    >
-                    <a
-                      href="https://github.com/property360-2/automation-pick-up-service"
-                      target="_blank"
-                      class="text-white bg-gray-800 px-4 py-2 rounded-full text-sm font-medium tracking-wide hover:bg-gray-900 transition-colors"
-                      >GitHub</a
-                    >
-                  </div>
-                </div>
-              </div>
-              <a href="/quick-portfolio/portfolio/automation-pick-up-service/" class="block mt-4">
-                <h4
-                  class="text-xl font-bold text-gray-900 dark:text-white group-hover:text-wood-accent transition-colors"
-                >
-                  Automation Pick-up Service
-                </h4>
-                <div class="flex flex-wrap gap-1.5 mt-2 mb-3">
-                  <span class="px-2 py-0.5 bg-gray-150 dark:bg-gray-800 text-gray-800 dark:text-gray-300 rounded text-[10px] font-bold tracking-wide">Node.js</span>
-                  <span class="px-2 py-0.5 bg-gray-150 dark:bg-gray-800 text-gray-800 dark:text-gray-300 rounded text-[10px] font-bold tracking-wide">Express.js</span>
-                  <span class="px-2 py-0.5 bg-gray-150 dark:bg-gray-800 text-gray-800 dark:text-gray-300 rounded text-[10px] font-bold tracking-wide">Google Sheets API</span>
-                  <span class="px-2 py-0.5 bg-gray-150 dark:bg-gray-800 text-gray-800 dark:text-gray-300 rounded text-[10px] font-bold tracking-wide">Nodemailer</span>
-                </div>
-                <p class="text-xs font-semibold text-wood-accent mt-1 italic">
-                  Pain Fixed: Manual spreadsheet tracking, stock sync delays & operational drag.
-                </p>
-                <p class="text-gray-600 dark:text-gray-400 text-sm mt-2 leading-relaxed">
-                  Replaced slow, error-prone manual spreadsheets with a high-performance inventory system. Reduced administrative overhead by 90% via automated Google Sheets synchronization and real-time email notifications.
-                </p>
-              </a>
-            </div>
-
-            <!-- Project: RFID IoT Membership Scanner & Automation Integration -->
-            <div
-              class="project-card group"
+              class="project-card group md:col-span-2"
               data-aos="fade-up"
               data-category="fullstack iot"
             >
-              <div
-                class="relative overflow-hidden rounded-xl shadow-lg aspect-video bg-gray-200 flex flex-col justify-end"
-              >
-                <Carousel prefix="card-carousel" slideCount={4} variant="card">
-                  <div class="w-full h-full flex-shrink-0">
-                    <img
-                      src="/quick-portfolio/assets/iot-automation-integration/localhost.png"
-                      alt="RFID IoT Membership Scanner - Staff Scan Dashboard"
-                      class="w-full h-full object-cover"
-                      loading="lazy"
-                      decoding="async"
-                    />
-                  </div>
-                  <div class="w-full h-full flex-shrink-0">
-                    <img
-                      src="/quick-portfolio/assets/iot-automation-integration/online.png"
-                      alt="RFID IoT Membership Scanner - Public Status Portal"
-                      class="w-full h-full object-cover"
-                      loading="lazy"
-                      decoding="async"
-                    />
-                  </div>
-                  <div class="w-full h-full flex-shrink-0">
-                    <img
-                      src="/quick-portfolio/assets/iot-automation-integration/workflow.png"
-                      alt="RFID IoT Membership Scanner - n8n Workflow"
-                      class="w-full h-full object-cover"
-                      loading="lazy"
-                      decoding="async"
-                    />
-                  </div>
-                  <div class="w-full h-full flex-shrink-0">
-                    <img
-                      src="/quick-portfolio/assets/iot-automation-integration/IMG_20260605_154927.jpg"
-                      alt="RFID IoT Membership Scanner - Physical Hardware Setup"
-                      class="w-full h-full object-cover"
-                      loading="lazy"
-                      decoding="async"
-                    />
-                  </div>
-                </Carousel>
-
-                <!-- Hover Overlay -->
-                <div
-                  class="absolute inset-0 bg-black/60 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col items-center justify-center p-8 gap-4 z-10 text-center pointer-events-none"
-                >
-                  <div class="flex flex-wrap justify-center gap-4 pointer-events-auto">
-                    <a
-                      href="/quick-portfolio/portfolio/iot-automation-integration/"
-                      class="text-white border px-4 py-2 rounded-full text-sm font-medium tracking-wide hover:bg-white hover:text-black transition-colors"
-                      >View Details</a
-                    >
-                    <a
-                      href="https://github.com/property360-2/quick-portfolio"
-                      target="_blank"
-                      class="text-white bg-gray-800 px-4 py-2 rounded-full text-sm font-medium tracking-wide hover:bg-gray-900 transition-colors"
-                      >GitHub</a
-                    >
+              <div class="grid grid-cols-1 md:grid-cols-2 bg-white dark:bg-[#252528] border border-gray-200 dark:border-gray-800 rounded-2xl shadow-sm overflow-hidden hover:border-wood-accent/40 hover:shadow-2xl transition-all duration-300">
+                <div class="relative overflow-hidden aspect-video md:aspect-auto md:min-h-[260px] bg-gray-200">
+                  <img
+                    src="/quick-portfolio/assets/iot-automation-integration/localhost.png"
+                    alt="RFID IoT Membership Scanner - Staff Scan Dashboard"
+                    class="absolute inset-0 object-cover w-full h-full transform group-hover:scale-105 transition-transform duration-500"
+                    loading="lazy"
+                    decoding="async"
+                    width="800"
+                    height="450"
+                  />
+                  <span class="absolute top-4 left-4 inline-flex items-center px-3 py-1 rounded-full text-xs font-bold bg-wood-accent text-white shadow-lg">Featured</span>
+                </div>
+                <div class="p-6 md:p-8 flex flex-col justify-center">
+                  <h4 class="text-2xl font-bold text-gray-900 dark:text-white group-hover:text-wood-accent transition-colors">
+                    RFID IoT Membership Scanner
+                  </h4>
+                  <p class="text-gray-600 dark:text-gray-400 text-base mt-3 leading-relaxed">
+                    Automated membership check-ins and attendance tracking using an offline-capable RFID system.
+                  </p>
+                  <p class="text-xs text-gray-500 dark:text-gray-400 mt-4">
+                    <span class="font-semibold text-gray-600 dark:text-gray-300">Built with:</span>
+                    ESP32 · C++ · RFID · Supabase · n8n · Telegram API
+                  </p>
+                  <div class="flex flex-wrap gap-2 mt-5">
+                    <a href="/quick-portfolio/portfolio/iot-automation-integration/" class="inline-flex items-center px-4 py-2 bg-wood-accent hover:bg-wood-700 text-white text-xs font-semibold rounded-full transition-colors shadow-sm">View Details &rarr;</a>
+                    <a href="https://github.com/property360-2/quick-portfolio" target="_blank" rel="noopener noreferrer" class="inline-flex items-center px-4 py-2 border border-gray-300 dark:border-gray-700 text-gray-700 dark:text-gray-300 hover:border-gray-400 dark:hover:border-gray-500 hover:bg-gray-50 dark:hover:bg-gray-800 text-xs font-semibold rounded-full transition-colors">GitHub</a>
                   </div>
                 </div>
               </div>
-              <a href="/quick-portfolio/portfolio/iot-automation-integration/" class="block mt-4">
-                <h4
-                  class="text-xl font-bold text-gray-900 dark:text-white group-hover:text-wood-accent transition-colors"
-                >
-                  RFID IoT Membership Scanner & Automation Integration
-                </h4>
-                <div class="flex flex-wrap gap-1.5 mt-2 mb-3">
-                  <span class="px-2 py-0.5 bg-gray-150 dark:bg-gray-800 text-gray-800 dark:text-gray-300 rounded text-[10px] font-bold tracking-wide">ESP32 (C++)</span>
-                  <span class="px-2 py-0.5 bg-gray-150 dark:bg-gray-800 text-gray-800 dark:text-gray-300 rounded text-[10px] font-bold tracking-wide">n8n</span>
-                  <span class="px-2 py-0.5 bg-gray-150 dark:bg-gray-800 text-gray-800 dark:text-gray-300 rounded text-[10px] font-bold tracking-wide">Supabase</span>
-                  <span class="px-2 py-0.5 bg-gray-150 dark:bg-gray-800 text-gray-800 dark:text-gray-300 rounded text-[10px] font-bold tracking-wide">Telegram API</span>
-                  <span class="px-2 py-0.5 bg-gray-150 dark:bg-gray-800 text-gray-800 dark:text-gray-300 rounded text-[10px] font-bold tracking-wide">LittleFS</span>
-                </div>
-                <p class="text-xs font-semibold text-wood-accent mt-1 italic">
-                  Pain Fixed: Slow check-in queues, lost paper logs, and manual membership database tracking.
-                </p>
-                <p class="text-gray-600 dark:text-gray-400 text-sm mt-2 leading-relaxed">
-                  Engineered a complete RFID check-in validation system combining an ESP32 microchip, Supabase backend databases, and real-time n8n cloud Telegram alerts. Features LittleFS offline queue support to prevent scan loss.
-                </p>
-              </a>
             </div>
 
-            <!-- Project: Local-First School Attendance Management System -->
+            <!-- Featured: Academic Compliance & Audit Portal -->
             <div
-              class="project-card group"
+              class="project-card group md:col-span-2"
               data-aos="fade-up"
-              data-category="fullstack iot"
+              data-category="fullstack"
             >
-              <div
-                class="relative overflow-hidden rounded-xl shadow-lg aspect-video bg-gray-200 flex flex-col justify-end"
-              >
-                <!-- Hardware Prototype Image -->
-                <img
-                  src="/quick-portfolio/assets/school-attendance-system/prototype.jpg"
-                  alt="Local-First School Attendance Management System Prototype"
-                  class="absolute inset-0 object-cover w-full h-full transform group-hover:scale-105 transition-transform duration-500"
-                  loading="lazy"
-                  decoding="async"
-                  width="800"
-                  height="450"
-                />
-                <!-- Hover Overlay -->
-                <div
-                  class="absolute inset-0 bg-black/60 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col items-center justify-center p-8 gap-4 z-10 text-center"
-                >
-                  <div class="flex flex-wrap justify-center gap-4">
-                    <a
-                      href="/quick-portfolio/portfolio/attendance-management-system-school/"
-                      class="text-white border px-4 py-2 rounded-full text-sm font-medium tracking-wide hover:bg-white hover:text-black transition-colors"
-                      >View Details</a
-                    >
-                    <a
-                      href="https://github.com/property360-2/attendance-management-system-school"
-                      target="_blank"
-                      class="text-white bg-gray-800 px-4 py-2 rounded-full text-sm font-medium tracking-wide hover:bg-gray-900 transition-colors"
-                      >GitHub</a
-                    >
+              <div class="grid grid-cols-1 md:grid-cols-2 bg-white dark:bg-[#252528] border border-gray-200 dark:border-gray-800 rounded-2xl shadow-sm overflow-hidden hover:border-wood-accent/40 hover:shadow-2xl transition-all duration-300">
+                <div class="relative overflow-hidden aspect-video md:aspect-auto md:min-h-[260px] bg-gray-200">
+                  <img
+                    src="/quick-portfolio/assets/ojt-journals.png"
+                    alt="OJT Daily Journal System"
+                    class="absolute inset-0 object-cover w-full h-full transform group-hover:scale-105 transition-transform duration-500"
+                    loading="lazy"
+                    decoding="async"
+                    width="800"
+                    height="450"
+                  />
+                  <span class="absolute top-4 left-4 inline-flex items-center px-3 py-1 rounded-full text-xs font-bold bg-wood-accent text-white shadow-lg">Featured</span>
+                </div>
+                <div class="p-6 md:p-8 flex flex-col justify-center">
+                  <h4 class="text-2xl font-bold text-gray-900 dark:text-white group-hover:text-wood-accent transition-colors">
+                    Academic Compliance &amp; Audit Portal
+                  </h4>
+                  <p class="text-gray-600 dark:text-gray-400 text-base mt-3 leading-relaxed">
+                    Replaced paper-based OJT documentation with a centralized digital workflow for managing compliance and audit records.
+                  </p>
+                  <p class="text-xs text-gray-500 dark:text-gray-400 mt-4">
+                    <span class="font-semibold text-gray-600 dark:text-gray-300">Built with:</span>
+                    JavaScript · Firebase Auth · Cloud Firestore · Tailwind CSS
+                  </p>
+                  <div class="flex flex-wrap gap-2 mt-5">
+                    <a href="/quick-portfolio/portfolio/ojt-journals/" class="inline-flex items-center px-4 py-2 bg-wood-accent hover:bg-wood-700 text-white text-xs font-semibold rounded-full transition-colors shadow-sm">View Details &rarr;</a>
+                    <a href="https://github.com/property360-2/ojt-journals" target="_blank" rel="noopener noreferrer" class="inline-flex items-center px-4 py-2 border border-gray-300 dark:border-gray-700 text-gray-700 dark:text-gray-300 hover:border-gray-400 dark:hover:border-gray-500 hover:bg-gray-50 dark:hover:bg-gray-800 text-xs font-semibold rounded-full transition-colors">GitHub</a>
                   </div>
                 </div>
               </div>
-              <a href="/quick-portfolio/portfolio/attendance-management-system-school/" class="block mt-4">
-                <h4
-                  class="text-xl font-bold text-gray-900 dark:text-white group-hover:text-wood-accent transition-colors"
-                >
-                  Local-First School Attendance Management System
-                </h4>
-                <div class="flex flex-wrap gap-1.5 mt-2 mb-3">
-                  <span class="px-2 py-0.5 bg-gray-150 dark:bg-gray-800 text-gray-800 dark:text-gray-300 rounded text-[10px] font-bold tracking-wide">ESP32 (C++)</span>
-                  <span class="px-2 py-0.5 bg-gray-150 dark:bg-gray-800 text-gray-800 dark:text-gray-300 rounded text-[10px] font-bold tracking-wide">Express.js</span>
-                  <span class="px-2 py-0.5 bg-gray-150 dark:bg-gray-800 text-gray-800 dark:text-gray-300 rounded text-[10px] font-bold tracking-wide">Better-SQLite3</span>
-                  <span class="px-2 py-0.5 bg-gray-150 dark:bg-gray-800 text-gray-800 dark:text-gray-300 rounded text-[10px] font-bold tracking-wide">JWT Auth</span>
-                  <span class="px-2 py-0.5 bg-gray-150 dark:bg-gray-800 text-gray-800 dark:text-gray-300 rounded text-[10px] font-bold tracking-wide">OLED & Buzzer</span>
-                </div>
-                <p class="text-xs font-semibold text-wood-accent mt-1 italic">
-                  Pain Fixed: Hardware scanner failure during cloud outages and high API sync latencies.
-                </p>
-                <p class="text-gray-600 dark:text-gray-400 text-sm mt-2 leading-relaxed">
-                  Engineered an offline-first student checking console. Connects an ESP32 chip directly to local SQLite databases via Express.js REST APIs. Integrates active SSD1306 OLED screen indicators and JWT-secure admin endpoints.
-                </p>
-              </a>
             </div>
 
-            <!-- Project: OJT Daily Journal System -->
+            <!-- ============================================================
+                 SECONDARY FEATURED PROJECTS
+                 ============================================================ -->
 
-
+            <!-- tagForge -->
             <div
               class="project-card group"
               data-aos="fade-up"
               data-category="fullstack"
             >
-              <div
-                class="relative overflow-hidden rounded-xl shadow-lg aspect-video bg-gray-200 flex flex-col justify-end"
-              >
-                <img
-                  src="/quick-portfolio/assets/ojt-journals.png"
-                  alt="OJT Daily Journal System"
-                  class="absolute inset-0 object-cover w-full h-full transform group-hover:scale-105 transition-transform duration-500"
-                  loading="lazy"
-                  decoding="async"
-                  width="800"
-                  height="450"
-                />
-                <div
-                  class="absolute inset-0 bg-black/60 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col items-center justify-center p-8 gap-4 z-10 text-center"
-                >
-                  <div class="flex flex-wrap justify-center gap-4">
-                    <a
-                      href="/quick-portfolio/portfolio/ojt-journals/"
-                      class="text-white border px-4 py-2 rounded-full text-sm font-medium tracking-wide hover:bg-white hover:text-black transition-colors"
-                      >View Details</a
-                    >
-                    <a
-                      href="https://github.com/property360-2/ojt-journals"
-                      target="_blank"
-                      class="text-white bg-gray-800 px-4 py-2 rounded-full text-sm font-medium tracking-wide hover:bg-gray-900 transition-colors"
-                      >GitHub</a
-                    >
-                  </div>
-                </div>
-              </div>
-              <a href="/quick-portfolio/portfolio/ojt-journals/" class="block mt-4">
-                <h4
-                  class="text-xl font-bold text-gray-900 dark:text-white group-hover:text-wood-accent transition-colors"
-                >
-                  Academic Compliance & Audit Portal (OJT Daily Journal)
-                </h4>
-                <div class="flex flex-wrap gap-1.5 mt-2 mb-3">
-                  <span class="px-2 py-0.5 bg-gray-150 dark:bg-gray-800 text-gray-800 dark:text-gray-300 rounded text-[10px] font-bold tracking-wide">JavaScript (ES6+)</span>
-                  <span class="px-2 py-0.5 bg-gray-150 dark:bg-gray-800 text-gray-800 dark:text-gray-300 rounded text-[10px] font-bold tracking-wide">Firebase Auth</span>
-                  <span class="px-2 py-0.5 bg-gray-150 dark:bg-gray-800 text-gray-800 dark:text-gray-300 rounded text-[10px] font-bold tracking-wide">Cloud Firestore</span>
-                  <span class="px-2 py-0.5 bg-gray-150 dark:bg-gray-800 text-gray-800 dark:text-gray-300 rounded text-[10px] font-bold tracking-wide">GitHub Pages</span>
-                  <span class="px-2 py-0.5 bg-gray-150 dark:bg-gray-800 text-gray-800 dark:text-gray-300 rounded text-[10px] font-bold tracking-wide">Tailwind CSS</span>
-                </div>
-                <p class="text-xs font-semibold text-wood-accent mt-1 italic">
-                  Pain Fixed: Messy paper log sheets, lost documents & slow manual auditing processes.
-                </p>
-                <p class="text-gray-600 dark:text-gray-400 text-sm mt-2 leading-relaxed">
-                  Streamlined student log tracking and coordinator audits. Replaced physical log sheets with a secure, tamper-proof digital system, saving advisors 80% of their manual auditing hours.
-                </p>
-              </a>
-            </div>
-
-            <!-- Project: Tagawasak ng Syudad -->
-            <div
-              class="project-card group"
-              data-aos="fade-up"
-              data-aos-delay="300"
-              data-category="gamedev"
-            >
-              <div
-                class="relative overflow-hidden rounded-xl shadow-lg aspect-video bg-gray-200 flex flex-col justify-end"
-              >
-                <img
-                  src="/quick-portfolio/assets/tagawasak-ng-syudad.webp"
-                  alt="Tagawasak ng Syudad"
-                  class="absolute inset-0 object-cover w-full h-full transform group-hover:scale-105 transition-transform duration-500"
-                  loading="lazy"
-                  decoding="async"
-                  width="800"
-                  height="450"
-                />
-                <div
-                  class="absolute inset-0 bg-black/60 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col items-center justify-center p-8 gap-4 z-10 text-center"
-                >
-                  <div class="flex flex-wrap justify-center gap-4">
-                    <a
-                      href="/quick-portfolio/portfolio/tagawasak-ng-syudad/"
-                      class="text-white border px-4 py-2 rounded-full text-sm font-medium tracking-wide hover:bg-white hover:text-black transition-colors"
-                      >View Details</a
-                    >
-                    <a
-                      href="/quick-portfolio/portfolio/inside-portfolio-game/tagasira-ng-syudad/index.html"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      class="text-white bg-wood-accent px-4 py-2 rounded-full text-sm font-medium tracking-wide hover:bg-wood-700 transition-colors"
-                      >Live Demo</a
-                    >
-                  </div>
-                </div>
-              </div>
-              <a href="/quick-portfolio/portfolio/tagawasak-ng-syudad/" class="block mt-4">
-                <h4
-                  class="text-xl font-bold text-gray-900 dark:text-white group-hover:text-wood-accent transition-colors"
-                >
-                  Tagawasak ng Syudad
-                </h4>
-                <p class="text-xs font-semibold text-wood-accent mt-1 italic">
-                  Pain Fixed: Heavy, sluggish visual code & unoptimized audio engines in web games.
-                </p>
-                <p class="text-gray-600 dark:text-gray-400 text-sm mt-2 leading-relaxed">
-                  An interactive 3D city-destroyer sandbox running at a locked, buttery-smooth 60FPS. Uses procedural Web Audio and custom canvas graphics, demonstrating extreme rendering optimization without heavy library overhead.
-                </p>
-              </a>
-            </div>
-
-            <!-- 
-              Project: tagForge (AI SEO & Metadata Generator)
-              Description: Renders the summary preview card for the tagForge project in the portfolio gallery grid.
-              Interaction / Filtering:
-                - Filter Category: 'fullstack' (displays when 'All' or 'Fullstack' is selected).
-                - View Details CTA: Links to the Astro details case study page: `/quick-portfolio/portfolio/tagforge/`.
-                - Live Demo CTA: Links to the external production deployed application: `https://seo-project-21.vercel.app/`.
-              Aesthetics & Design: 
-                - Uses standard responsive grid grouping styles.
-                - Features a vibrant thumbnail hover effect scaling the `../assets/tagForge.webp` asset.
-                - Dynamic dark-mode compatible text headers and sleek high-contrast layout matching existing project cards.
-            -->
-            <div
-              class="project-card group"
-              data-aos="fade-up"
-              data-category="fullstack"
-            >
-              <div
-                class="relative overflow-hidden rounded-xl shadow-lg aspect-video bg-gray-200 flex flex-col justify-end"
-              >
+              <div class="relative overflow-hidden rounded-xl shadow-lg aspect-video bg-gray-200 flex flex-col justify-end">
                 <img
                   src="/quick-portfolio/assets/tagForge.webp"
                   alt="tagForge AI SEO Suite"
@@ -494,119 +212,33 @@ const description = "Explore professional AI automation systems, enterprise-grad
                   width="800"
                   height="450"
                 />
-                <div
-                  class="absolute inset-0 bg-black/60 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col items-center justify-center p-8 gap-4 z-10 text-center"
-                >
-                  <div class="flex flex-wrap justify-center gap-4">
-                    <a
-                      href="/quick-portfolio/portfolio/tagforge/"
-                      class="text-white border px-4 py-2 rounded-full text-sm font-medium tracking-wide hover:bg-white hover:text-black transition-colors"
-                      >View Details</a
-                    >
-                    <a
-                      href="https://seo-project-21.vercel.app/"
-                      target="_blank"
-                      class="text-white bg-wood-accent px-4 py-2 rounded-full text-sm font-medium tracking-wide hover:bg-wood-700 transition-colors"
-                      >Live Demo</a
-                    >
-                    <a
-                      href="https://github.com/property360-2/seo-project"
-                      target="_blank"
-                      class="text-white bg-gray-800 px-4 py-2 rounded-full text-sm font-medium tracking-wide hover:bg-gray-900 transition-colors"
-                      >GitHub</a
-                    >
-                  </div>
+              </div>
+              <div class="mt-4">
+                <h4 class="text-xl font-bold text-gray-900 dark:text-white group-hover:text-wood-accent transition-colors">
+                  tagForge
+                </h4>
+                <p class="text-gray-600 dark:text-gray-400 text-sm mt-2 leading-relaxed">
+                  Automated SEO metadata generation and content optimization through an AI-powered platform.
+                </p>
+                <p class="text-xs text-gray-500 dark:text-gray-400 mt-3">
+                  <span class="font-semibold text-gray-600 dark:text-gray-300">Built with:</span>
+                  Next.js · React · Express.js · AI APIs · Stripe
+                </p>
+                <div class="flex flex-wrap gap-2 mt-4">
+                  <a href="/quick-portfolio/portfolio/tagforge/" class="inline-flex items-center px-4 py-2 bg-wood-accent hover:bg-wood-700 text-white text-xs font-semibold rounded-full transition-colors shadow-sm">View Details &rarr;</a>
+                  <a href="https://seo-project-21.vercel.app/" target="_blank" rel="noopener noreferrer" class="inline-flex items-center px-4 py-2 border border-wood-accent text-wood-accent dark:text-wood-300 hover:bg-wood-50 dark:hover:bg-[#1a1a1a] text-xs font-semibold rounded-full transition-colors">Live Demo</a>
+                  <a href="https://github.com/property360-2/seo-project" target="_blank" rel="noopener noreferrer" class="inline-flex items-center px-4 py-2 border border-gray-300 dark:border-gray-700 text-gray-700 dark:text-gray-300 hover:border-gray-400 dark:hover:border-gray-500 hover:bg-gray-50 dark:hover:bg-gray-800 text-xs font-semibold rounded-full transition-colors">GitHub</a>
                 </div>
               </div>
-              <a href="/quick-portfolio/portfolio/tagforge/" class="block mt-4">
-                <h4
-                  class="text-xl font-bold text-gray-900 dark:text-white group-hover:text-wood-accent transition-colors"
-                >
-                  tagForge: Enterprise AI SEO & Metadata Suite
-                </h4>
-                <div class="flex flex-wrap gap-1.5 mt-2 mb-3">
-                  <span class="px-2 py-0.5 bg-gray-150 dark:bg-gray-800 text-gray-800 dark:text-gray-300 rounded text-[10px] font-bold tracking-wide">Next.js (TS)</span>
-                  <span class="px-2 py-0.5 bg-gray-150 dark:bg-gray-800 text-gray-800 dark:text-gray-300 rounded text-[10px] font-bold tracking-wide">Express.js</span>
-                  <span class="px-2 py-0.5 bg-gray-150 dark:bg-gray-800 text-gray-800 dark:text-gray-300 rounded text-[10px] font-bold tracking-wide">Groq Llama-3</span>
-                  <span class="px-2 py-0.5 bg-gray-150 dark:bg-gray-800 text-gray-800 dark:text-gray-300 rounded text-[10px] font-bold tracking-wide">Stripe</span>
-                  <span class="px-2 py-0.5 bg-gray-150 dark:bg-gray-800 text-gray-800 dark:text-gray-300 rounded text-[10px] font-bold tracking-wide">Tailwind CSS</span>
-                </div>
-                <p class="text-xs font-semibold text-wood-accent mt-1 italic">
-                  Pain Fixed: High hosting costs, manual metadata synthesis & complex OAuth configurations.
-                </p>
-                <p class="text-gray-600 dark:text-gray-400 text-sm mt-2 leading-relaxed">
-                  Consolidated a full-stack Next.js and Express.js system under a single domain rewrite to bypass CORS and eliminate server costs. Integrated high-throughput Groq Llama-3 endpoints to deliver sub-second metadata syntheses under a secure Stripe subscription tier.
-                </p>
-              </a>
             </div>
 
-            <!-- Project: Client Acquisition Scraper -->
+            <!-- Tropang AI -->
             <div
               class="project-card group"
               data-aos="fade-up"
-              data-category="automation"
-            >
-              <div
-                class="relative overflow-hidden rounded-xl shadow-lg aspect-video bg-gray-200 flex flex-col justify-end"
-              >
-                <img
-                  src="/quick-portfolio/assets/web-scraper.webp"
-                  alt="Client Acquisition Scraper"
-                  class="absolute inset-0 object-cover w-full h-full transform group-hover:scale-105 transition-transform duration-500"
-                  loading="lazy"
-                  decoding="async"
-                  width="800"
-                  height="450"
-                />
-                <div
-                  class="absolute inset-0 bg-black/60 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col items-center justify-center p-8 gap-4 z-10 text-center"
-                >
-                  <div class="flex flex-wrap justify-center gap-4">
-                    <a
-                      href="/quick-portfolio/portfolio/web-scraper-for-client-acquisition/"
-                      class="text-white border px-4 py-2 rounded-full text-sm font-medium tracking-wide hover:bg-white hover:text-black transition-colors"
-                      >View Details</a
-                    >
-                    <a
-                      href="https://github.com/property360-2/web-scraper-for-client-acquisition"
-                      target="_blank"
-                      class="text-white bg-gray-800 px-4 py-2 rounded-full text-sm font-medium tracking-wide hover:bg-gray-900 transition-colors"
-                      >GitHub</a
-                    >
-                  </div>
-                </div>
-              </div>
-              <a href="/quick-portfolio/portfolio/web-scraper-for-client-acquisition/" class="block mt-4">
-                <h4
-                  class="text-xl font-bold text-gray-900 dark:text-white group-hover:text-wood-accent transition-colors"
-                >
-                  Autonomous Client Acquisition Scraper & Operations Control Center
-                </h4>
-                <div class="flex flex-wrap gap-1.5 mt-2 mb-3">
-                  <span class="px-2 py-0.5 bg-gray-150 dark:bg-gray-800 text-gray-800 dark:text-gray-300 rounded text-[10px] font-bold tracking-wide">Python</span>
-                  <span class="px-2 py-0.5 bg-gray-150 dark:bg-gray-800 text-gray-800 dark:text-gray-300 rounded text-[10px] font-bold tracking-wide">Streamlit</span>
-                  <span class="px-2 py-0.5 bg-gray-150 dark:bg-gray-800 text-gray-800 dark:text-gray-300 rounded text-[10px] font-bold tracking-wide">BeautifulSoup</span>
-                  <span class="px-2 py-0.5 bg-gray-150 dark:bg-gray-800 text-gray-800 dark:text-gray-300 rounded text-[10px] font-bold tracking-wide">Groq API</span>
-                </div>
-                <p class="text-xs font-semibold text-wood-accent mt-1 italic">
-                  Pain Fixed: Sifting thousands of listings, manual gig ranking & writing outreach email fatigue.
-                </p>
-                <p class="text-gray-600 dark:text-gray-400 text-sm mt-2 leading-relaxed">
-                  Engineered an autonomous lead harvester combining HackerNews REST pulls, Craigslist RSS sweeps, and Google Maps scraper scripts. Integrates Groq AI model synthesis to automatically construct custom high-value pitch drafts inside a multi-tab Streamlit dashboard.
-                </p>
-              </a>
-            </div>
-
-            <!-- Project: Tropang AI -->
-            <div
-              class="project-card group"
-              data-aos="fade-up"
-              data-aos-delay="100"
               data-category="fullstack"
             >
-              <div
-                class="relative overflow-hidden rounded-xl shadow-lg aspect-video bg-gray-200 flex flex-col justify-end"
-              >
+              <div class="relative overflow-hidden rounded-xl shadow-lg aspect-video bg-gray-200 flex flex-col justify-end">
                 <img
                   src="/quick-portfolio/assets/tropang-ai.png"
                   alt="Tropang AI"
@@ -616,61 +248,33 @@ const description = "Explore professional AI automation systems, enterprise-grad
                   width="800"
                   height="450"
                 />
-                <div
-                  class="absolute inset-0 bg-black/60 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col items-center justify-center p-8 gap-4 z-10 text-center"
-                >
-                  <div class="flex flex-wrap justify-center gap-4">
-                     <a
-                      href="/quick-portfolio/portfolio/tropang-ai/"
-                      class="text-white border px-4 py-2 rounded-full text-sm font-medium tracking-wide hover:bg-white hover:text-black transition-colors"
-                      >View Details</a
-                    >
-                    <a
-                      href="https://tropangai.vercel.app/"
-                      target="_blank"
-                      class="text-white bg-wood-accent px-4 py-2 rounded-full text-sm font-medium tracking-wide hover:bg-wood-700 transition-colors"
-                      >Live Demo</a
-                    >
-                    <a
-                      href="https://github.com/property360-2/quick-portfolio"
-                      target="_blank"
-                      class="text-white bg-gray-800 px-4 py-2 rounded-full text-sm font-medium tracking-wide hover:bg-gray-900 transition-colors"
-                      >GitHub</a
-                    >
-                  </div>
+              </div>
+              <div class="mt-4">
+                <h4 class="text-xl font-bold text-gray-900 dark:text-white group-hover:text-wood-accent transition-colors">
+                  Tropang AI
+                </h4>
+                <p class="text-gray-600 dark:text-gray-400 text-sm mt-2 leading-relaxed">
+                  Turned large collections of company documents into a searchable AI knowledge base.
+                </p>
+                <p class="text-xs text-gray-500 dark:text-gray-400 mt-3">
+                  <span class="font-semibold text-gray-600 dark:text-gray-300">Built with:</span>
+                  Next.js · React · RAG · AI APIs · Firebase
+                </p>
+                <div class="flex flex-wrap gap-2 mt-4">
+                  <a href="/quick-portfolio/portfolio/tropang-ai/" class="inline-flex items-center px-4 py-2 bg-wood-accent hover:bg-wood-700 text-white text-xs font-semibold rounded-full transition-colors shadow-sm">View Details &rarr;</a>
+                  <a href="https://tropangai.vercel.app/" target="_blank" rel="noopener noreferrer" class="inline-flex items-center px-4 py-2 border border-wood-accent text-wood-accent dark:text-wood-300 hover:bg-wood-50 dark:hover:bg-[#1a1a1a] text-xs font-semibold rounded-full transition-colors">Live Demo</a>
+                  <a href="https://github.com/property360-2/quick-portfolio" target="_blank" rel="noopener noreferrer" class="inline-flex items-center px-4 py-2 border border-gray-300 dark:border-gray-700 text-gray-700 dark:text-gray-300 hover:border-gray-400 dark:hover:border-gray-500 hover:bg-gray-50 dark:hover:bg-gray-800 text-xs font-semibold rounded-full transition-colors">GitHub</a>
                 </div>
               </div>
-              <a href="/quick-portfolio/portfolio/tropang-ai/" class="block mt-4">
-                <h4
-                  class="text-xl font-bold text-gray-900 dark:text-white group-hover:text-wood-accent transition-colors"
-                >
-                  Tropang AI: Intelligent Knowledge Base & Document Automation
-                </h4>
-                <div class="flex flex-wrap gap-1.5 mt-2 mb-3">
-                  <span class="px-2 py-0.5 bg-gray-150 dark:bg-gray-800 text-gray-800 dark:text-gray-300 rounded text-[10px] font-bold tracking-wide">React</span>
-                  <span class="px-2 py-0.5 bg-gray-150 dark:bg-gray-800 text-gray-800 dark:text-gray-300 rounded text-[10px] font-bold tracking-wide">Node.js</span>
-                  <span class="px-2 py-0.5 bg-gray-150 dark:bg-gray-800 text-gray-800 dark:text-gray-300 rounded text-[10px] font-bold tracking-wide">Gemini API</span>
-                  <span class="px-2 py-0.5 bg-gray-150 dark:bg-gray-800 text-gray-800 dark:text-gray-300 rounded text-[10px] font-bold tracking-wide">Tailwind CSS</span>
-                </div>
-                <p class="text-xs font-semibold text-wood-accent mt-1 italic">
-                  Pain Fixed: Wasting hours reading long, dense PDFs & technical documents.
-                </p>
-                <p class="text-gray-600 dark:text-gray-400 text-sm mt-2 leading-relaxed">
-                  Integrated Artificial Intelligence to turn dense company PDFs, manuals, and documents into a searchable "Internal Brain." Perfect for legal, real estate, or customer service teams who need accurate answers from their archives in seconds.
-                </p>
-              </a>
             </div>
 
-            <!-- Project: Gym Project -->
+            <!-- Fitness CRM -->
             <div
               class="project-card group"
               data-aos="fade-up"
-              data-aos-delay="200"
               data-category="fullstack"
             >
-              <div
-                class="relative overflow-hidden rounded-xl shadow-lg aspect-video bg-gray-200 flex flex-col justify-end"
-              >
+              <div class="relative overflow-hidden rounded-xl shadow-lg aspect-video bg-gray-200 flex flex-col justify-end">
                 <img
                   src="/quick-portfolio/assets/gym-ng-mga-supersaiyan.webp"
                   alt="Gym Project"
@@ -680,81 +284,169 @@ const description = "Explore professional AI automation systems, enterprise-grad
                   width="800"
                   height="450"
                 />
-                <div
-                  class="absolute inset-0 bg-black/60 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col items-center justify-center p-8 gap-4 z-10 text-center"
-                >
-                  <div class="flex flex-wrap justify-center gap-4">
-                    <a
-                      href="/quick-portfolio/portfolio/gym-project/"
-                      class="text-white border px-4 py-2 rounded-full text-sm font-medium tracking-wide hover:bg-white hover:text-black transition-colors"
-                      >View Details</a
-                    >
-                    <a
-                      href="https://vibe-kbvc.onrender.com/login/?next=/"
-                      target="_blank"
-                      class="text-white bg-wood-accent px-4 py-2 rounded-full text-sm font-medium tracking-wide hover:bg-wood-700 transition-colors"
-                      >Live Demo</a
-                    >
-                    <a
-                      href="https://github.com/property360-2/vibe"
-                      target="_blank"
-                      class="text-white bg-gray-800 px-4 py-2 rounded-full text-sm font-medium tracking-wide hover:bg-gray-900 transition-colors"
-                      >GitHub</a
-                    >
-                  </div>
+              </div>
+              <div class="mt-4">
+                <h4 class="text-xl font-bold text-gray-900 dark:text-white group-hover:text-wood-accent transition-colors">
+                  Fitness CRM
+                </h4>
+                <p class="text-gray-600 dark:text-gray-400 text-sm mt-2 leading-relaxed">
+                  Centralized gym membership, customer, and operational workflows into a single management system.
+                </p>
+                <p class="text-xs text-gray-500 dark:text-gray-400 mt-3">
+                  <span class="font-semibold text-gray-600 dark:text-gray-300">Built with:</span>
+                  Django · PostgreSQL · Bootstrap · Chart.js
+                </p>
+                <div class="flex flex-wrap gap-2 mt-4">
+                  <a href="/quick-portfolio/portfolio/gym-project/" class="inline-flex items-center px-4 py-2 bg-wood-accent hover:bg-wood-700 text-white text-xs font-semibold rounded-full transition-colors shadow-sm">View Details &rarr;</a>
+                  <a href="https://vibe-kbvc.onrender.com/login/?next=/" target="_blank" rel="noopener noreferrer" class="inline-flex items-center px-4 py-2 border border-wood-accent text-wood-accent dark:text-wood-300 hover:bg-wood-50 dark:hover:bg-[#1a1a1a] text-xs font-semibold rounded-full transition-colors">Live Demo</a>
+                  <a href="https://github.com/property360-2/vibe" target="_blank" rel="noopener noreferrer" class="inline-flex items-center px-4 py-2 border border-gray-300 dark:border-gray-700 text-gray-700 dark:text-gray-300 hover:border-gray-400 dark:hover:border-gray-500 hover:bg-gray-50 dark:hover:bg-gray-800 text-xs font-semibold rounded-full transition-colors">GitHub</a>
                 </div>
               </div>
-              <a href="/quick-portfolio/portfolio/gym-project/" class="block mt-4">
-                <h4
-                  class="text-xl font-bold text-gray-900 dark:text-white group-hover:text-wood-accent transition-colors"
-                >
-                  Fitness CRM & Progress Tracking Dashboard (Gym Project)
-                </h4>
-                <div class="flex flex-wrap gap-1.5 mt-2 mb-3">
-                  <span class="px-2 py-0.5 bg-gray-150 dark:bg-gray-800 text-gray-800 dark:text-gray-300 rounded text-[10px] font-bold tracking-wide">Django (Python)</span>
-                  <span class="px-2 py-0.5 bg-gray-150 dark:bg-gray-800 text-gray-800 dark:text-gray-300 rounded text-[10px] font-bold tracking-wide">PostgreSQL</span>
-                  <span class="px-2 py-0.5 bg-gray-150 dark:bg-gray-800 text-gray-800 dark:text-gray-300 rounded text-[10px] font-bold tracking-wide">Bootstrap</span>
-                  <span class="px-2 py-0.5 bg-gray-150 dark:bg-gray-800 text-gray-800 dark:text-gray-300 rounded text-[10px] font-bold tracking-wide">Chart.js</span>
-                </div>
-                <p class="text-xs font-semibold text-wood-accent mt-1 italic">
-                  Pain Fixed: Leaked subscription revenue, slow check-ins & untracked customer logs.
-                </p>
-                <p class="text-gray-600 dark:text-gray-400 text-sm mt-2 leading-relaxed">
-                  Built a secure, database-driven portal that tracks user metrics and performance. Applicable for fitness businesses, personal trainers, or rehab clinics looking to digitize client progress and eliminate paperwork.
-                </p>
-              </a>
             </div>
 
-
-
-
-
-
-
-          </div>
-
-          <!-- More Projects Coming Soon -->
-          <div
-            class="mt-16 text-center"
-            data-aos="fade-up"
-            data-aos-delay="300"
-          >
-            <p
-              class="text-lg text-gray-600 dark:text-gray-400 font-medium italic"
+            <!-- Local-First Attendance System -->
+            <div
+              class="project-card group"
+              data-aos="fade-up"
+              data-category="fullstack iot"
             >
-              "More exciting projects are coming soon. Stay tuned!"
-            </p>
-            <div class="mt-4 flex justify-center">
-              <span
-                class="inline-block w-16 h-1 bg-wood-accent rounded-full opacity-50"
-              ></span>
+              <div class="relative overflow-hidden rounded-xl shadow-lg aspect-video bg-gray-200 flex flex-col justify-end">
+                <img
+                  src="/quick-portfolio/assets/school-attendance-system/prototype.jpg"
+                  alt="Local-First School Attendance Management System Prototype"
+                  class="absolute inset-0 object-cover w-full h-full transform group-hover:scale-105 transition-transform duration-500"
+                  loading="lazy"
+                  decoding="async"
+                  width="800"
+                  height="450"
+                />
+              </div>
+              <div class="mt-4">
+                <h4 class="text-xl font-bold text-gray-900 dark:text-white group-hover:text-wood-accent transition-colors">
+                  Local-First Attendance System
+                </h4>
+                <p class="text-gray-600 dark:text-gray-400 text-sm mt-2 leading-relaxed">
+                  Offline-first student check-in console that logs attendance locally and keeps working during cloud outages.
+                </p>
+                <p class="text-xs text-gray-500 dark:text-gray-400 mt-3">
+                  <span class="font-semibold text-gray-600 dark:text-gray-300">Built with:</span>
+                  ESP32 · C++ · Express.js · SQLite · JWT Auth
+                </p>
+                <div class="flex flex-wrap gap-2 mt-4">
+                  <a href="/quick-portfolio/portfolio/attendance-management-system-school/" class="inline-flex items-center px-4 py-2 bg-wood-accent hover:bg-wood-700 text-white text-xs font-semibold rounded-full transition-colors shadow-sm">View Details &rarr;</a>
+                  <a href="https://github.com/property360-2/attendance-management-system-school" target="_blank" rel="noopener noreferrer" class="inline-flex items-center px-4 py-2 border border-gray-300 dark:border-gray-700 text-gray-700 dark:text-gray-300 hover:border-gray-400 dark:hover:border-gray-500 hover:bg-gray-50 dark:hover:bg-gray-800 text-xs font-semibold rounded-full transition-colors">GitHub</a>
+                </div>
+              </div>
             </div>
+
+            <!-- Client Acquisition Scraper -->
+            <div
+              class="project-card group"
+              data-aos="fade-up"
+              data-category="automation"
+            >
+              <div class="relative overflow-hidden rounded-xl shadow-lg aspect-video bg-gray-200 flex flex-col justify-end">
+                <img
+                  src="/quick-portfolio/assets/web-scraper.webp"
+                  alt="Client Acquisition Scraper"
+                  class="absolute inset-0 object-cover w-full h-full transform group-hover:scale-105 transition-transform duration-500"
+                  loading="lazy"
+                  decoding="async"
+                  width="800"
+                  height="450"
+                />
+              </div>
+              <div class="mt-4">
+                <h4 class="text-xl font-bold text-gray-900 dark:text-white group-hover:text-wood-accent transition-colors">
+                  Client Acquisition Scraper
+                </h4>
+                <p class="text-gray-600 dark:text-gray-400 text-sm mt-2 leading-relaxed">
+                  Automated lead discovery and outreach drafting by aggregating listings and generating email pitches.
+                </p>
+                <p class="text-xs text-gray-500 dark:text-gray-400 mt-3">
+                  <span class="font-semibold text-gray-600 dark:text-gray-300">Built with:</span>
+                  Python · Streamlit · BeautifulSoup · Groq API
+                </p>
+                <div class="flex flex-wrap gap-2 mt-4">
+                  <a href="/quick-portfolio/portfolio/web-scraper-for-client-acquisition/" class="inline-flex items-center px-4 py-2 bg-wood-accent hover:bg-wood-700 text-white text-xs font-semibold rounded-full transition-colors shadow-sm">View Details &rarr;</a>
+                  <a href="https://github.com/property360-2/web-scraper-for-client-acquisition" target="_blank" rel="noopener noreferrer" class="inline-flex items-center px-4 py-2 border border-gray-300 dark:border-gray-700 text-gray-700 dark:text-gray-300 hover:border-gray-400 dark:hover:border-gray-500 hover:bg-gray-50 dark:hover:bg-gray-800 text-xs font-semibold rounded-full transition-colors">GitHub</a>
+                </div>
+              </div>
+            </div>
+
+            <!-- Ano Pong Ulam? -->
+            <div
+              class="project-card group"
+              data-aos="fade-up"
+              data-category="fullstack"
+            >
+              <div class="relative overflow-hidden rounded-xl shadow-lg aspect-video bg-gray-200 flex flex-col justify-end">
+                <img
+                  src="/quick-portfolio/assets/ano-po-ulam/desktop-ano-po-ulam.png"
+                  alt="Ano Pong Ulam? Heirloom Recipe Sharing & Meal Planning PWA"
+                  class="absolute inset-0 object-cover w-full h-full transform group-hover:scale-105 transition-transform duration-500"
+                  loading="lazy"
+                  decoding="async"
+                  width="800"
+                  height="450"
+                />
+              </div>
+              <div class="mt-4">
+                <h4 class="text-xl font-bold text-gray-900 dark:text-white group-hover:text-wood-accent transition-colors">
+                  Ano Pong Ulam?
+                </h4>
+                <p class="text-gray-600 dark:text-gray-400 text-sm mt-2 leading-relaxed">
+                  Offline-first recipe-sharing PWA for preserving and organizing Filipino heirloom recipes.
+                </p>
+                <p class="text-xs text-gray-500 dark:text-gray-400 mt-3">
+                  <span class="font-semibold text-gray-600 dark:text-gray-300">Built with:</span>
+                  Next.js · Tailwind CSS · Prisma · PostgreSQL · PWA
+                </p>
+                <div class="flex flex-wrap gap-2 mt-4">
+                  <a href="/quick-portfolio/portfolio/ano-po-ulam/" class="inline-flex items-center px-4 py-2 bg-wood-accent hover:bg-wood-700 text-white text-xs font-semibold rounded-full transition-colors shadow-sm">View Details &rarr;</a>
+                  <a href="https://ano-pong-ulam.vercel.app/" target="_blank" rel="noopener noreferrer" class="inline-flex items-center px-4 py-2 border border-wood-accent text-wood-accent dark:text-wood-300 hover:bg-wood-50 dark:hover:bg-[#1a1a1a] text-xs font-semibold rounded-full transition-colors">Live Demo</a>
+                  <a href="https://github.com/property360-2/ano-pong-ulam" target="_blank" rel="noopener noreferrer" class="inline-flex items-center px-4 py-2 border border-gray-300 dark:border-gray-700 text-gray-700 dark:text-gray-300 hover:border-gray-400 dark:hover:border-gray-500 hover:bg-gray-50 dark:hover:bg-gray-800 text-xs font-semibold rounded-full transition-colors">GitHub</a>
+                </div>
+              </div>
+            </div>
+
+            <!-- Tagawasak ng Syudad -->
+            <div
+              class="project-card group"
+              data-aos="fade-up"
+              data-category="gamedev"
+            >
+              <div class="relative overflow-hidden rounded-xl shadow-lg aspect-video bg-gray-200 flex flex-col justify-end">
+                <img
+                  src="/quick-portfolio/assets/tagawasak-ng-syudad.webp"
+                  alt="Tagawasak ng Syudad"
+                  class="absolute inset-0 object-cover w-full h-full transform group-hover:scale-105 transition-transform duration-500"
+                  loading="lazy"
+                  decoding="async"
+                  width="800"
+                  height="450"
+                />
+              </div>
+              <div class="mt-4">
+                <h4 class="text-xl font-bold text-gray-900 dark:text-white group-hover:text-wood-accent transition-colors">
+                  Tagawasak ng Syudad
+                </h4>
+                <p class="text-gray-600 dark:text-gray-400 text-sm mt-2 leading-relaxed">
+                  A browser-based 3D destruction sandbox optimized for real-time rendering.
+                </p>
+                <p class="text-xs text-gray-500 dark:text-gray-400 mt-3">
+                  <span class="font-semibold text-gray-600 dark:text-gray-300">Built with:</span>
+                  JavaScript · Canvas · Web Audio
+                </p>
+                <div class="flex flex-wrap gap-2 mt-4">
+                  <a href="/quick-portfolio/portfolio/tagawasak-ng-syudad/" class="inline-flex items-center px-4 py-2 bg-wood-accent hover:bg-wood-700 text-white text-xs font-semibold rounded-full transition-colors shadow-sm">View Details &rarr;</a>
+                  <a href="/quick-portfolio/portfolio/inside-portfolio-game/tagasira-ng-syudad/index.html" target="_blank" rel="noopener noreferrer" class="inline-flex items-center px-4 py-2 border border-wood-accent text-wood-accent dark:text-wood-300 hover:bg-wood-50 dark:hover:bg-[#1a1a1a] text-xs font-semibold rounded-full transition-colors">Live Demo</a>
+                </div>
+              </div>
+            </div>
+
           </div>
         </div>
       </section>
-
-      <!-- ORGANISMS: Footer -->
-    </main>
+</main>
 </Layout>
-
-
