@@ -1,331 +1,409 @@
 ---
-/**
- * Home Page / Hero Section Component
- * Purpose: Serves as the high-impact landing page showcasing Jun Alvior's core value proposition,
- * premium interactive aesthetics, and primary navigation calls-to-action.
- * Contains: Catchy headline messaging, customizable CTA buttons, dynamic ambient glowing lighting effects,
- * and a highly sophisticated interactive premium SVG cybernetic/anime cat visualization responsive to user input.
- * System Role: The root entry point of the application designed to wow visitors with performance, beauty, and smooth client-side interactions.
- */
 import Layout from '../layouts/Layout.astro';
 const title = 'Dionisio "Jun" Alvior | Full Stack Software Developer';
-const description = 'Full Stack Software Developer specializing in robust web applications, database architecture, and automation systems.';
+const description = 'Full Stack Software Developer building web applications, automation systems, and AI-powered tools that solve real operational problems.';
 ---
 
 <Layout title={title} description={description}>
-      <main id="main-content" class="flex-grow flex flex-col">
-      <!-- SECTION 1: The Premium Hero Section -->
-      <section
-        id="home"
-        class="flex-grow flex items-center relative overflow-hidden pt-20"
+  <main id="main-content" class="flex-grow flex flex-col">
+    <section
+      id="home"
+      class="flex-grow flex items-center relative overflow-hidden pt-20"
+    >
+      <div
+        class="absolute top-0 left-1/4 w-96 h-96 bg-wood-300/20 dark:bg-wood-400/10 rounded-full mix-blend-multiply dark:mix-blend-lighten filter blur-[100px] opacity-70 animate-pulse hidden md:block"
+      ></div>
+      <div
+        class="absolute bottom-0 right-1/4 w-96 h-96 bg-wood-accent/20 dark:bg-wood-accent/10 rounded-full mix-blend-multiply dark:mix-blend-lighten filter blur-[100px] opacity-70 animate-pulse hidden md:block"
+        style="animation-delay: 2s"
+      ></div>
+
+      <div
+        class="absolute top-0 right-0 w-1/3 h-full bg-wood-50 dark:bg-gray-800/20 -z-10 skew-x-12 transform origin-top-right hidden lg:block"
+      ></div>
+
+      <div
+        class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 w-full py-20 lg:py-24 relative z-10"
       >
-        <!-- Ambient Glows -->
-        <div
-          class="absolute top-0 left-1/4 w-96 h-96 bg-wood-300/20 dark:bg-wood-400/10 rounded-full mix-blend-multiply dark:mix-blend-lighten filter blur-[100px] opacity-70 animate-pulse hidden md:block"
-        ></div>
-        <div
-          class="absolute bottom-0 right-1/4 w-96 h-96 bg-wood-accent/20 dark:bg-wood-accent/10 rounded-full mix-blend-multiply dark:mix-blend-lighten filter blur-[100px] opacity-70 animate-pulse hidden md:block"
-          style="animation-delay: 2s"
-        ></div>
-
-        <!-- Background Elements -->
-        <div
-          class="absolute top-0 right-0 w-1/3 h-full bg-wood-50 dark:bg-gray-800/20 -z-10 skew-x-12 transform origin-top-right hidden lg:block"
-        ></div>
-
-        <div
-          class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 w-full py-20 lg:py-24 relative z-10"
-        >
-          <div class="flex flex-col items-center justify-center text-center">
-            <div class="hero-content space-y-8 max-w-3xl">
-              <div class="space-y-4">
-                <h2
-                  class="text-wood-accent font-bold tracking-wider uppercase text-xs sm:text-sm gs-reveal"
-                >
-                  Full Stack Software Developer
-                </h2>
-                <h1
-                  class="text-4xl lg:text-6xl font-extrabold text-gray-900 dark:text-white leading-tight gs-reveal"
-                >
-                  Building robust, scale-ready <span class="text-wood-accent">full-stack applications</span> and automation systems.
-                </h1>
-                <p
-                  class="text-lg md:text-xl text-gray-600 dark:text-gray-400 leading-relaxed gs-reveal"
-                >
-                  I build high-velocity frontends, robust backends, and smart automation pipelines. Let's build production-ready engineering designed to solve real-world operational bottlenecks.
-                </p>
-              </div>
-
-              <!-- ATOMS: Primary CTA Button -->
-              <div
-                class="flex flex-col sm:flex-row gap-4 justify-center gs-reveal"
+        <div class="flex flex-col items-center justify-center text-center">
+          <div class="hero-content space-y-8 max-w-3xl">
+            <div class="space-y-4">
+              <h2
+                class="text-wood-accent font-bold tracking-wider uppercase text-xs sm:text-sm gs-reveal"
               >
-                <a
-                  href="/quick-portfolio/contact/"
-                  aria-label="Get in touch with Dionisio Alvior"
-                  class="inline-flex items-center justify-center px-8 py-4 bg-wood-accent hover:bg-wood-700 text-white font-bold rounded-xl shadow-lg hover:shadow-wood-accent/40 hover:shadow-2xl transition-all transform hover:-translate-y-1 focus:ring-2 focus:ring-wood-accent focus:ring-offset-2 dark:focus:ring-offset-[#1a1a1a] focus:outline-none w-full sm:w-auto"
-                >
-                  Get in Touch / View Resume
-                </a>
-              </div>
+                Full Stack Software Developer
+              </h2>
+              <h1
+                class="text-4xl lg:text-6xl font-extrabold text-gray-900 dark:text-white leading-tight gs-reveal"
+              >
+                Building software that <span class="text-wood-accent">solves real problems</span>.
+              </h1>
+              <p
+                class="text-lg md:text-xl text-gray-600 dark:text-gray-400 leading-relaxed gs-reveal"
+              >
+                I build web applications, automation systems, and AI-powered tools that streamline workflows, reduce manual work, and turn business requirements into practical software.
+              </p>
             </div>
-          </div>
-        </div>
-      </section>
 
-      <!-- SECTION 2: Proof & Authority Grid -->
-      <section class="py-10 bg-grey-light dark:bg-[#1a1a1a] border-y border-gray-200 dark:border-gray-800">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <p class="text-center text-xs font-semibold tracking-wider text-gray-400 dark:text-gray-500 uppercase mb-6">
-            Trusted Tech Stack & Engineering Foundations
-          </p>
-          <div class="flex flex-wrap justify-center items-center gap-8 md:gap-16 opacity-60 dark:opacity-40 grayscale hover:grayscale-0 transition-all duration-500">
-            <!-- React Badge -->
-            <div class="flex items-center gap-2 hover:opacity-100 transition-opacity">
-              <svg class="w-5 h-5 text-[#61DAFB]" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                <ellipse rx="10" ry="4.5" transform="rotate(0)"></ellipse>
-                <ellipse rx="10" ry="4.5" transform="rotate(60)"></ellipse>
-                <ellipse rx="10" ry="4.5" transform="rotate(120)"></ellipse>
-                <circle r="2" fill="currentColor"></circle>
-              </svg>
-              <span class="font-bold text-sm text-gray-800 dark:text-gray-200 tracking-wide">React</span>
-            </div>
-            <!-- Python Badge -->
-            <div class="flex items-center gap-2 hover:opacity-100 transition-opacity">
-              <svg class="w-5 h-5 text-[#3776AB]" viewBox="0 0 24 24" fill="currentColor">
-                <path d="M14.25.18a3.54 3.54 0 0 0-2.28.65l-.94.66a2.1 2.1 0 0 0-.8 1.62v1.65h5V6.3h-7a4.13 4.13 0 0 0-4.13 4.13v3a4.13 4.13 0 0 0 4.13 4.13h1.38v-2.07a2.07 2.07 0 0 1 2.07-2.07h5.52a2.07 2.07 0 0 0 2.07-2.07V6a5.79 5.79 0 0 0-5.79-5.79zm-7 24a3.54 3.54 0 0 0 2.28-.65l.94-.66a2.1 2.1 0 0 0 .8-1.62v-1.65h-5v-1.53h7A4.13 4.13 0 0 0 17.4 13.6v-3a4.13 4.13 0 0 0-4.13-4.13h-1.38v2.07a2.07 2.07 0 0 1 2.07 2.07H4.3a2.07 2.07 0 0 0-2.07 2.07V18A5.79 5.79 0 0 0 8 23.82z"/>
-              </svg>
-              <span class="font-bold text-sm text-gray-800 dark:text-gray-200 tracking-wide">Python</span>
-            </div>
-            <!-- Django Badge -->
-            <div class="flex items-center gap-2 hover:opacity-100 transition-opacity">
-              <svg class="w-5 h-5 text-[#092E20] dark:text-[#3ECF8E]" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                <path d="M9.4 16.6L4.8 12l4.6-4.6L8 6l-6 6 6 6 1.4-1.4zm5.2 0l4.6-4.6-4.6-4.6L16 6l6 6-6 6-1.4-1.4z"></path>
-              </svg>
-              <span class="font-bold text-sm text-gray-800 dark:text-gray-200 tracking-wide">Django</span>
-            </div>
-            <!-- Supabase Badge -->
-            <div class="flex items-center gap-2 hover:opacity-100 transition-opacity">
-              <svg class="w-5 h-5 text-[#3ECF8E]" viewBox="0 0 24 24" fill="currentColor">
-                <path d="M21.4 11.6l-8.3-9.5C12.7 1.6 12 2 12 2.7v7.3H3.6c-.9 0-1.3.9-.7 1.5l8.3 9.5c.4.5 1.1.1 1.1-.6v-7.3h8.4c.9 0 1.3-.9.7-1.5z"/>
-              </svg>
-              <span class="font-bold text-sm text-gray-800 dark:text-gray-200 tracking-wide">Supabase</span>
-            </div>
-            <!-- PostgreSQL Badge -->
-            <div class="flex items-center gap-2 hover:opacity-100 transition-opacity">
-              <svg class="w-5 h-5 text-[#336791] dark:text-[#6ba4d9]" viewBox="0 0 24 24" fill="currentColor">
-                <path d="M12 2C6.48 2 2 4.02 2 6.5v11c0 2.48 4.48 4.5 10 4.5s10-2.02 10-4.5v-11C22 4.02 17.52 2 12 2zm0 3c4.97 0 8 1.54 8 2s-3.03 2-8 2-8-1.54-8-2 3.03-2 8-2zm0 14c-4.97 0-8-1.54-8-2v-2.5c1.86 1.05 4.79 1.5 8 1.5s6.14-.45 8-1.5V17c0 .46-3.03 2-8 2zm0-5c-4.97 0-8-1.54-8-2v-2.5c1.86 1.05 4.79 1.5 8 1.5s6.14-.45 8-1.5V12c0 .46-3.03 2-8 2z"></path>
-              </svg>
-              <span class="font-bold text-sm text-gray-800 dark:text-gray-200 tracking-wide">PostgreSQL</span>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <!-- SECTION 3: Selected Works -->
-      <section id="works" class="py-24 bg-white dark:bg-[#1f1f1f]">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div class="text-center mb-16">
-            <span class="text-sm font-bold tracking-widest text-wood-accent uppercase">Selected Works</span>
-            <h2 class="mt-2 text-3xl leading-8 font-extrabold tracking-tight text-gray-900 dark:text-white sm:text-4xl">
-              Projects That Made an Impact
-            </h2>
-          </div>
-          <div class="grid grid-cols-1 md:grid-cols-3 gap-10">
-            <div class="group flex flex-col bg-white dark:bg-[#252528] rounded-2xl border border-gray-200 dark:border-gray-800 shadow-sm overflow-hidden hover:border-wood-accent/40 hover:shadow-2xl transition-all duration-300">
-              <div class="aspect-video bg-gray-200 overflow-hidden">
-                <img src="/quick-portfolio/assets/tagForge.webp" alt="tagForge AI SEO & Metadata Suite" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" loading="lazy" decoding="async" onerror="this.style.display='none'">
-              </div>
-              <div class="p-6 flex flex-col flex-grow">
-                <div class="flex flex-wrap gap-1.5 mb-3">
-                  <span class="px-2 py-0.5 bg-wood-100 dark:bg-wood-900 text-wood-accent rounded text-[10px] font-bold tracking-wide">Next.js (TS)</span>
-                  <span class="px-2 py-0.5 bg-gray-100 dark:bg-gray-800 text-gray-700 dark:text-gray-300 rounded text-[10px] font-bold tracking-wide">Groq Llama-3</span>
-                  <span class="px-2 py-0.5 bg-gray-100 dark:bg-gray-800 text-gray-700 dark:text-gray-300 rounded text-[10px] font-bold tracking-wide">Stripe</span>
-                </div>
-                <h3 class="text-lg font-bold text-gray-900 dark:text-white mb-2">tagForge</h3>
-                <p class="text-sm text-gray-600 dark:text-gray-400 leading-relaxed mb-4 flex-grow">Enterprise AI SEO suite consolidating APIs under single custom domain rewrites to eliminate server costs. Generates meta copy in sub-seconds.</p>
-                <a href="/quick-portfolio/portfolio/tagforge/" class="text-sm font-bold text-wood-accent group-hover:text-wood-500 transition-colors">View Case Study &rarr;</a>
-              </div>
-            </div>
-            <div class="group flex flex-col bg-white dark:bg-[#252528] rounded-2xl border border-gray-200 dark:border-gray-800 shadow-sm overflow-hidden hover:border-wood-accent/40 hover:shadow-2xl transition-all duration-300">
-              <div class="aspect-video bg-gray-200 overflow-hidden">
-                <img src="/quick-portfolio/assets/iot-automation-integration/localhost.png" alt="RFID IoT Membership Scanner" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" loading="lazy" decoding="async" onerror="this.style.display='none'">
-              </div>
-              <div class="p-6 flex flex-col flex-grow">
-                <div class="flex flex-wrap gap-1.5 mb-3">
-                  <span class="px-2 py-0.5 bg-wood-100 dark:bg-wood-900 text-wood-accent rounded text-[10px] font-bold tracking-wide">ESP32 (C++)</span>
-                  <span class="px-2 py-0.5 bg-gray-100 dark:bg-gray-800 text-gray-700 dark:text-gray-300 rounded text-[10px] font-bold tracking-wide">Supabase</span>
-                  <span class="px-2 py-0.5 bg-gray-100 dark:bg-gray-800 text-gray-700 dark:text-gray-300 rounded text-[10px] font-bold tracking-wide">n8n</span>
-                </div>
-                <h3 class="text-lg font-bold text-gray-900 dark:text-white mb-2">RFID IoT Membership Scanner</h3>
-                <p class="text-sm text-gray-600 dark:text-gray-400 leading-relaxed mb-4 flex-grow">Offline-resilient RFID scanner running ESP32 firmware with Supabase database integrations and real-time cloud n8n webhook notifications.</p>
-                <a href="/quick-portfolio/portfolio/iot-automation-integration/" class="text-sm font-bold text-wood-accent group-hover:text-wood-500 transition-colors">View Case Study &rarr;</a>
-              </div>
-            </div>
-            <div class="group flex flex-col bg-white dark:bg-[#252528] rounded-2xl border border-gray-200 dark:border-gray-800 shadow-sm overflow-hidden hover:border-wood-accent/40 hover:shadow-2xl transition-all duration-300">
-              <div class="aspect-video bg-gray-200 overflow-hidden">
-                <img src="/quick-portfolio/assets/tropang-ai.png" alt="Tropang AI" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" loading="lazy" decoding="async" onerror="this.style.display='none'">
-              </div>
-              <div class="p-6 flex flex-col flex-grow">
-                <div class="flex flex-wrap gap-1.5 mb-3">
-                  <span class="px-2 py-0.5 bg-wood-100 dark:bg-wood-900 text-wood-accent rounded text-[10px] font-bold tracking-wide">Next.js 15</span>
-                  <span class="px-2 py-0.5 bg-gray-100 dark:bg-gray-800 text-gray-700 dark:text-gray-300 rounded text-[10px] font-bold tracking-wide">Firebase</span>
-                  <span class="px-2 py-0.5 bg-gray-100 dark:bg-gray-800 text-gray-700 dark:text-gray-300 rounded text-[10px] font-bold tracking-wide">Groq RAG</span>
-                </div>
-                <h3 class="text-lg font-bold text-gray-900 dark:text-white mb-2">Tropang AI</h3>
-                <p class="text-sm text-gray-600 dark:text-gray-400 leading-relaxed mb-4 flex-grow">Retrieval-Augmented Generation (RAG) platform transforming dense company PDFs, manuals, and archives into searchable AI assistants.</p>
-                <a href="/quick-portfolio/portfolio/tropang-ai/" class="text-sm font-bold text-wood-accent group-hover:text-wood-500 transition-colors">View Case Study &rarr;</a>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <!-- SECTION 4: Engineering Competencies & Focus Areas -->
-      <section
-        id="services"
-        class="py-24 bg-white dark:bg-[#1f1f1f] border-t border-gray-100 dark:border-gray-800"
-      >
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div class="text-center mb-16">
-            <h2
-              class="text-sm font-bold tracking-widest text-wood-accent uppercase"
-            >
-              Expertise & Focus Areas
-            </h2>
-            <h3
-              class="mt-2 text-3xl leading-8 font-extrabold tracking-tight text-gray-900 dark:text-white sm:text-4xl"
-            >
-              Engineering High-Value Technical Solutions
-            </h3>
-          </div>
-
-          <!--
-            COMPONENT: Services Solutions Grid
-            PURPOSE: Renders a three-column grid highlighting Jun Alvior's key engineering competencies.
-            REBRANDED CONTEXT: Focuses on core development capabilities, team alignment, and robust architectures.
-            PROPS/INPUTS: None (Static Astro/HTML block).
-            RETURNS/RENDERS: A responsive grid layout featuring service descriptions, exact pain points resolved, and outbound case study links.
-          -->
-          <div class="grid grid-cols-1 md:grid-cols-3 gap-10">
-            <!-- Custom Software & Internal Tools -->
             <div
-              class="flex flex-col p-8 bg-white dark:bg-[#252528] rounded-2xl border border-gray-200 dark:border-gray-800 shadow-sm hover:border-wood-accent/40 hover:shadow-2xl hover:shadow-wood-accent/5 transition-all duration-300 transform hover:-translate-y-1 group"
+              class="flex flex-col sm:flex-row gap-4 justify-center gs-reveal"
             >
-              <div
-                class="w-12 h-12 bg-wood-accent/10 rounded-xl flex items-center justify-center text-wood-accent group-hover:bg-wood-accent group-hover:text-white transition-colors duration-300 mb-6"
-              >
-                <svg class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z" />
-                </svg>
-              </div>
-              <h4 class="text-xl font-bold text-gray-900 dark:text-white mb-1">
-                Full-Stack & Internal Tools
-              </h4>
-              <p class="text-xs font-semibold text-wood-accent mb-3 italic">
-                Focus: Eliminating manual spreadsheets and tracking inefficiencies.
-              </p>
-              <p class="text-gray-600 dark:text-gray-300 text-sm leading-relaxed mb-4">
-                Designing custom dashboards, client portals, and web utilities that streamline organizational workflows. Built with relational databases, robust backends, and intuitive, accessible user interfaces.
-              </p>
-              <div class="mt-auto pt-2">
-                <a href="/quick-portfolio/portfolio/tropang-ai/" class="text-xs font-bold text-wood-accent group-hover:text-wood-500 transition-colors flex items-center gap-1">
-                  View Case Study: Tropang AI &rarr;
-                </a>
-              </div>
-            </div>
-
-            <!-- Workflow Automation & AI Integration -->
-            <div
-              class="flex flex-col p-8 bg-white dark:bg-[#252528] rounded-2xl border border-gray-200 dark:border-gray-800 shadow-sm hover:border-wood-accent/40 hover:shadow-2xl hover:shadow-wood-accent/5 transition-all duration-300 transform hover:-translate-y-1 group"
-            >
-              <div
-                class="w-12 h-12 bg-wood-accent/10 rounded-xl flex items-center justify-center text-wood-accent group-hover:bg-wood-accent group-hover:text-white transition-colors duration-300 mb-6"
-              >
-                <svg class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10" />
-                </svg>
-              </div>
-              <h4 class="text-xl font-bold text-gray-900 dark:text-white mb-1">
-                Workflow Automation & Integrations
-              </h4>
-              <p class="text-xs font-semibold text-wood-accent mb-3 italic">
-                Focus: Automating operational flows and high-overhead workflows.
-              </p>
-              <p class="text-gray-600 dark:text-gray-300 text-sm leading-relaxed mb-4">
-                Connecting APIs, automating messaging flows, and building microservices or scripts to handle document parser systems and data sync pipelines. Keeps application stacks connected with minimal latency.
-              </p>
-              <div class="mt-auto pt-2">
-                <a href="/quick-portfolio/portfolio/automation-pick-up-service/" class="text-xs font-bold text-wood-accent group-hover:text-wood-500 transition-colors flex items-center gap-1">
-                  View Case Study: Automation Pick-up &rarr;
-                </a>
-              </div>
-            </div>
-
-            <!-- System Architecture & Strategy -->
-            <div
-              class="flex flex-col p-8 bg-white dark:bg-[#252528] rounded-2xl border border-gray-200 dark:border-gray-800 shadow-sm hover:border-wood-accent/40 hover:shadow-2xl hover:shadow-wood-accent/5 transition-all duration-300 transform hover:-translate-y-1 group"
-            >
-              <div
-                class="w-12 h-12 bg-wood-accent/10 rounded-xl flex items-center justify-center text-wood-accent group-hover:bg-wood-accent group-hover:text-white transition-colors duration-300 mb-6"
-              >
-                <svg class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 7v10c0 2.21 3.58 4 8 4s8-1.79 8-4V7M4 7c0 2.21 3.58 4 8 4s8-1.79 8-4M4 7c0-2.21 3.58-4 8-4s8 1.79 8 4m0 5c0 2.21-3.58 4-8 4s-8-1.79-8-4" />
-                </svg>
-              </div>
-              <h4 class="text-xl font-bold text-gray-900 dark:text-white mb-1">
-                System Architecture & Tech Design
-              </h4>
-              <p class="text-xs font-semibold text-wood-accent mb-3 italic">
-                Focus: Mitigating technical debt and building scale-ready applications.
-              </p>
-              <p class="text-gray-600 dark:text-gray-300 text-sm leading-relaxed mb-4">
-                Designing highly optimized backend systems, secure schemas, and modular codebases. Mapping out secure, decoupled system components that allow development teams to collaborate and ship updates efficiently.
-              </p>
-              <div class="mt-auto pt-2">
-                <a href="/quick-portfolio/portfolio/gym-project/" class="text-xs font-bold text-wood-accent group-hover:text-wood-500 transition-colors flex items-center gap-1">
-                  View Case Study: Fitness CRM Portal &rarr;
-                </a>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <!-- SECTION 5: The Ultimate Call-To-Action (CTA) Footer -->
-      <section
-        id="cta"
-        class="py-24 bg-white dark:bg-[#1f1f1f] relative overflow-hidden"
-      >
-        <!-- Subtle Background Glows -->
-        <div class="absolute -top-24 -left-24 w-96 h-96 bg-wood-accent/10 dark:bg-wood-accent/5 rounded-full filter blur-3xl pointer-events-none"></div>
-        <div class="absolute -bottom-24 -right-24 w-96 h-96 bg-wood-accent/10 dark:bg-wood-accent/5 rounded-full filter blur-3xl pointer-events-none"></div>
-
-        <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-          <div class="bg-white dark:bg-[#252528] border border-gray-200 dark:border-gray-800 rounded-3xl p-12 md:p-16 text-center shadow-2xl relative overflow-hidden group">
-            <!-- Pulsing soft glow inside card -->
-            <div class="absolute inset-0 bg-gradient-to-r from-wood-accent/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-700 pointer-events-none"></div>
-            
-            <h2 class="text-3xl md:text-5xl font-extrabold text-gray-900 dark:text-white mb-6 leading-tight max-w-3xl mx-auto relative z-10">
-              Looking for a reliable full-stack developer? Let’s talk.
-            </h2>
-            <p class="text-lg text-gray-600 dark:text-gray-300 mb-10 max-w-2xl mx-auto leading-relaxed relative z-10">
-              Let's discuss how I can integrate with your engineering team, build high-performance web applications, scale database infrastructure, or automate your business operations.
-            </p>
-            <div class="flex justify-center relative z-10">
               <a
-                href="/quick-portfolio/contact/"
-                class="inline-flex items-center px-10 py-5 bg-wood-accent hover:bg-wood-500 text-white text-lg font-bold rounded-2xl shadow-xl hover:shadow-wood-accent/40 shadow-wood-accent/10 transition-all transform hover:-translate-y-1 focus:ring-2 focus:ring-wood-accent focus:ring-offset-2 focus:ring-offset-white dark:focus:ring-offset-gray-800 focus:outline-none"
+                href="/quick-portfolio/portfolio/"
+                aria-label="View Jun Alvior's projects"
+                class="inline-flex items-center justify-center px-8 py-4 bg-wood-accent hover:bg-wood-700 text-white font-bold rounded-xl shadow-lg hover:shadow-wood-accent/40 hover:shadow-2xl transition-all transform hover:-translate-y-1 focus:ring-2 focus:ring-wood-accent focus:ring-offset-2 dark:focus:ring-offset-[#1a1a1a] focus:outline-none w-full sm:w-auto"
               >
-                <svg class="w-6 h-6 mr-3 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2-2v12a2 2 0 002 2z" />
-                </svg>
-                Get in Touch / View Resume
+                View My Work
+              </a>
+              <a
+                href="/quick-portfolio/assets/Jun-Alvior.pdf"
+                download="Jun-Alvior.pdf"
+                aria-label="Download Jun Alvior's resume"
+                class="inline-flex items-center justify-center px-8 py-4 bg-white dark:bg-[#252528] border-2 border-wood-accent text-wood-accent dark:text-wood-300 font-bold rounded-xl shadow-sm hover:bg-wood-50 dark:hover:bg-[#1a1a1a] hover:shadow-lg transition-all transform hover:-translate-y-1 focus:ring-2 focus:ring-wood-accent focus:ring-offset-2 dark:focus:ring-offset-[#1a1a1a] focus:outline-none w-full sm:w-auto"
+              >
+                View Resume
               </a>
             </div>
           </div>
         </div>
-      </section>
-      </main>
+      </div>
+    </section>
 
+    <section class="py-10 bg-grey-light dark:bg-[#1a1a1a] border-y border-gray-200 dark:border-gray-800">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="grid grid-cols-2 md:grid-cols-4 gap-6 md:gap-10 text-center">
+          <div class="gs-reveal">
+            <div class="text-3xl md:text-4xl font-extrabold text-gray-900 dark:text-white">7 Months</div>
+            <p class="mt-1 text-xs md:text-sm text-gray-500 dark:text-gray-400">Professional Software Development Experience</p>
+          </div>
+          <div class="gs-reveal">
+            <div class="text-3xl md:text-4xl font-extrabold text-gray-900 dark:text-white">10+</div>
+            <p class="mt-1 text-xs md:text-sm text-gray-500 dark:text-gray-400">Software &amp; Systems Projects</p>
+          </div>
+          <div class="gs-reveal">
+            <div class="text-3xl md:text-4xl font-extrabold text-gray-900 dark:text-white">Full Stack</div>
+            <p class="mt-1 text-xs md:text-sm text-gray-500 dark:text-gray-400">Web · AI · Automation · IoT</p>
+          </div>
+          <div class="gs-reveal">
+            <div class="text-3xl md:text-4xl font-extrabold text-gray-900 dark:text-white">BSIS</div>
+            <p class="mt-1 text-xs md:text-sm text-gray-500 dark:text-gray-400">Information Systems Graduate</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="what-i-build" class="py-24 bg-white dark:bg-[#1f1f1f]">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center mb-16">
+          <span class="text-sm font-bold tracking-widest text-wood-accent uppercase">What I Build</span>
+          <h2 class="mt-2 text-3xl leading-8 font-extrabold tracking-tight text-gray-900 dark:text-white sm:text-4xl">
+            Software That Gets Work Done
+          </h2>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-10">
+          <div
+            class="flex flex-col p-8 bg-white dark:bg-[#252528] rounded-2xl border border-gray-200 dark:border-gray-800 shadow-sm hover:border-wood-accent/40 hover:shadow-2xl hover:shadow-wood-accent/5 transition-all duration-300 transform hover:-translate-y-1 group"
+          >
+            <div class="w-12 h-12 bg-wood-accent/10 rounded-xl flex items-center justify-center text-wood-accent group-hover:bg-wood-accent group-hover:text-white transition-colors duration-300 mb-6">
+              <svg class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z" />
+              </svg>
+            </div>
+            <h3 class="text-xl font-bold text-gray-900 dark:text-white mb-2">Full-Stack Applications</h3>
+            <p class="text-gray-600 dark:text-gray-300 text-sm leading-relaxed">
+              Dashboards, portals, business systems, and web applications that turn operational requirements into practical software.
+            </p>
+          </div>
+
+          <div
+            class="flex flex-col p-8 bg-white dark:bg-[#252528] rounded-2xl border border-gray-200 dark:border-gray-800 shadow-sm hover:border-wood-accent/40 hover:shadow-2xl hover:shadow-wood-accent/5 transition-all duration-300 transform hover:-translate-y-1 group"
+          >
+            <div class="w-12 h-12 bg-wood-accent/10 rounded-xl flex items-center justify-center text-wood-accent group-hover:bg-wood-accent group-hover:text-white transition-colors duration-300 mb-6">
+              <svg class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10" />
+              </svg>
+            </div>
+            <h3 class="text-xl font-bold text-gray-900 dark:text-white mb-2">Automation &amp; Integrations</h3>
+            <p class="text-gray-600 dark:text-gray-300 text-sm leading-relaxed">
+              API integrations, workflow automation, notifications, and data pipelines that reduce repetitive manual work.
+            </p>
+          </div>
+
+          <div
+            class="flex flex-col p-8 bg-white dark:bg-[#252528] rounded-2xl border border-gray-200 dark:border-gray-800 shadow-sm hover:border-wood-accent/40 hover:shadow-2xl hover:shadow-wood-accent/5 transition-all duration-300 transform hover:-translate-y-1 group"
+          >
+            <div class="w-12 h-12 bg-wood-accent/10 rounded-xl flex items-center justify-center text-wood-accent group-hover:bg-wood-accent group-hover:text-white transition-colors duration-300 mb-6">
+              <svg class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z" />
+              </svg>
+            </div>
+            <h3 class="text-xl font-bold text-gray-900 dark:text-white mb-2">AI-Powered Systems</h3>
+            <p class="text-gray-600 dark:text-gray-300 text-sm leading-relaxed">
+              RAG applications, AI assistants, document processing, and intelligent search systems.
+            </p>
+          </div>
+        </div>
+
+        <div class="text-center mt-12">
+          <a
+            href="/quick-portfolio/portfolio/"
+            class="text-sm font-bold text-wood-accent hover:text-wood-500 transition-colors"
+          >
+            Explore My Projects &rarr;
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <section id="selected-projects" class="py-24 bg-grey-light dark:bg-[#1a1a1a] border-t border-gray-100 dark:border-gray-800">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center mb-16">
+          <span class="text-sm font-bold tracking-widest text-wood-accent uppercase">Selected Projects</span>
+          <h2 class="mt-2 text-3xl leading-8 font-extrabold tracking-tight text-gray-900 dark:text-white sm:text-4xl">
+            Recent Work With Results
+          </h2>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-10">
+          <div class="group flex flex-col bg-white dark:bg-[#252528] rounded-2xl border border-gray-200 dark:border-gray-800 shadow-sm overflow-hidden hover:border-wood-accent/40 hover:shadow-2xl transition-all duration-300">
+            <div class="aspect-video bg-gray-200 overflow-hidden">
+              <img src="/quick-portfolio/assets/tagForge.webp" alt="tagForge AI SEO &amp; Metadata Suite" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" loading="lazy" decoding="async" onerror="this.style.display='none'">
+            </div>
+            <div class="p-6 flex flex-col flex-grow">
+              <h3 class="text-lg font-bold text-gray-900 dark:text-white mb-3">tagForge</h3>
+              <p class="text-sm text-gray-600 dark:text-gray-400 leading-relaxed mb-3">
+                <span class="font-semibold text-gray-800 dark:text-gray-200">Outcome:</span> Automated SEO metadata generation and content optimization through an AI-powered platform.
+              </p>
+              <p class="text-sm text-gray-600 dark:text-gray-400 leading-relaxed mb-4 flex-grow">
+                Built a full-stack SEO platform using Next.js, Express.js, and AI APIs to generate metadata and streamline content optimization workflows.
+              </p>
+              <p class="text-xs font-semibold text-wood-accent mb-4">
+                Built with: Next.js · React · Express.js · AI APIs · Stripe
+              </p>
+              <a href="/quick-portfolio/portfolio/tagforge/" class="text-sm font-bold text-wood-accent group-hover:text-wood-500 transition-colors">View Case Study &rarr;</a>
+            </div>
+          </div>
+
+          <div class="group flex flex-col bg-white dark:bg-[#252528] rounded-2xl border border-gray-200 dark:border-gray-800 shadow-sm overflow-hidden hover:border-wood-accent/40 hover:shadow-2xl transition-all duration-300">
+            <div class="aspect-video bg-gray-200 overflow-hidden">
+              <img src="/quick-portfolio/assets/iot-automation-integration/localhost.png" alt="RFID IoT Membership Scanner" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" loading="lazy" decoding="async" onerror="this.style.display='none'">
+            </div>
+            <div class="p-6 flex flex-col flex-grow">
+              <h3 class="text-lg font-bold text-gray-900 dark:text-white mb-3">RFID IoT Membership Scanner</h3>
+              <p class="text-sm text-gray-600 dark:text-gray-400 leading-relaxed mb-3">
+                <span class="font-semibold text-gray-800 dark:text-gray-200">Outcome:</span> Automated membership check-ins and reduced reliance on manual attendance logging.
+              </p>
+              <p class="text-sm text-gray-600 dark:text-gray-400 leading-relaxed mb-4 flex-grow">
+                Built an ESP32-based RFID check-in system connected to Supabase and n8n, with offline queue support so scans can be synchronized after network connectivity is restored.
+              </p>
+              <p class="text-xs font-semibold text-wood-accent mb-4">
+                Built with: ESP32 · C++ · RFID · Supabase · n8n · Telegram API
+              </p>
+              <a href="/quick-portfolio/portfolio/iot-automation-integration/" class="text-sm font-bold text-wood-accent group-hover:text-wood-500 transition-colors">View Case Study &rarr;</a>
+            </div>
+          </div>
+
+          <div class="group flex flex-col bg-white dark:bg-[#252528] rounded-2xl border border-gray-200 dark:border-gray-800 shadow-sm overflow-hidden hover:border-wood-accent/40 hover:shadow-2xl transition-all duration-300">
+            <div class="aspect-video bg-gray-200 overflow-hidden">
+              <img src="/quick-portfolio/assets/tropang-ai.png" alt="Tropang AI" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" loading="lazy" decoding="async" onerror="this.style.display='none'">
+            </div>
+            <div class="p-6 flex flex-col flex-grow">
+              <h3 class="text-lg font-bold text-gray-900 dark:text-white mb-3">Tropang AI</h3>
+              <p class="text-sm text-gray-600 dark:text-gray-400 leading-relaxed mb-3">
+                <span class="font-semibold text-gray-800 dark:text-gray-200">Outcome:</span> Turned large collections of company documents into a searchable AI knowledge base.
+              </p>
+              <p class="text-sm text-gray-600 dark:text-gray-400 leading-relaxed mb-4 flex-grow">
+                Built a RAG-based AI assistant that allows users to retrieve information from PDFs, manuals, and other documents through natural-language queries.
+              </p>
+              <p class="text-xs font-semibold text-wood-accent mb-4">
+                Built with: Next.js · React · RAG · AI APIs · Firebase
+              </p>
+              <a href="/quick-portfolio/portfolio/tropang-ai/" class="text-sm font-bold text-wood-accent group-hover:text-wood-500 transition-colors">View Case Study &rarr;</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="experience" class="py-24 bg-white dark:bg-[#1f1f1f] border-t border-gray-100 dark:border-gray-800">
+      <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center mb-12">
+          <span class="text-sm font-bold tracking-widest text-wood-accent uppercase">Experience</span>
+          <h2 class="mt-2 text-3xl leading-8 font-extrabold tracking-tight text-gray-900 dark:text-white sm:text-4xl">
+            Professional Experience
+          </h2>
+        </div>
+
+        <div class="bg-white dark:bg-[#252528] rounded-2xl border border-gray-200 dark:border-gray-800 shadow-sm p-8 md:p-10">
+          <div class="flex flex-col md:flex-row md:items-center md:justify-between gap-2 mb-6">
+            <h3 class="text-xl md:text-2xl font-bold text-gray-900 dark:text-white">
+              Full Stack Software Developer / Automation Developer
+            </h3>
+            <span class="text-sm font-bold text-wood-accent whitespace-nowrap">7 months</span>
+          </div>
+          <p class="text-sm font-semibold text-gray-700 dark:text-gray-300 mb-6">
+            Richwell Colleges Incorporated
+          </p>
+
+          <ul class="space-y-3 text-gray-600 dark:text-gray-300 text-sm leading-relaxed">
+            <li class="flex gap-2">
+              <span class="text-wood-accent font-bold">•</span>
+              <span>Developed and maintained full-stack applications supporting organizational workflows.</span>
+            </li>
+            <li class="flex gap-2">
+              <span class="text-wood-accent font-bold">•</span>
+              <span>Designed database schemas and contributed to application architecture.</span>
+            </li>
+            <li class="flex gap-2">
+              <span class="text-wood-accent font-bold">•</span>
+              <span>Built and refined automation workflows to reduce repetitive manual processes.</span>
+            </li>
+            <li class="flex gap-2">
+              <span class="text-wood-accent font-bold">•</span>
+              <span>Performed testing, debugging, maintenance, and system improvements.</span>
+            </li>
+            <li class="flex gap-2">
+              <span class="text-wood-accent font-bold">•</span>
+              <span>Collaborated with an 8-person development team and contributed to project planning and technical decisions.</span>
+            </li>
+          </ul>
+
+          <div class="mt-8 pt-6 border-t border-gray-200 dark:border-gray-800">
+            <a
+              href="/quick-portfolio/about/"
+              class="text-sm font-bold text-wood-accent hover:text-wood-500 transition-colors"
+            >
+              View Full Experience &rarr;
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="toolbox" class="py-24 bg-grey-light dark:bg-[#1a1a1a] border-t border-gray-100 dark:border-gray-800">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center mb-16">
+          <span class="text-sm font-bold tracking-widest text-wood-accent uppercase">Technical Toolbox</span>
+          <h2 class="mt-2 text-3xl leading-8 font-extrabold tracking-tight text-gray-900 dark:text-white sm:text-4xl">
+            Technologies I Work With
+          </h2>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          <div class="p-6 bg-white dark:bg-[#252528] border border-gray-200 dark:border-gray-800 rounded-xl shadow-sm hover:shadow-md transition-shadow">
+            <div class="flex items-center gap-3 mb-4">
+              <span class="w-9 h-9 bg-wood-accent/10 rounded-lg flex items-center justify-center text-wood-accent flex-shrink-0">
+                <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4" />
+                </svg>
+              </span>
+              <h3 class="text-sm font-bold text-wood-accent uppercase tracking-widest">Frontend</h3>
+            </div>
+            <p class="text-gray-600 dark:text-gray-300 text-sm leading-relaxed">
+              React · TypeScript · JavaScript · HTML · CSS · Tailwind CSS
+            </p>
+          </div>
+
+          <div class="p-6 bg-white dark:bg-[#252528] border border-gray-200 dark:border-gray-800 rounded-xl shadow-sm hover:shadow-md transition-shadow">
+            <div class="flex items-center gap-3 mb-4">
+              <span class="w-9 h-9 bg-wood-accent/10 rounded-lg flex items-center justify-center text-wood-accent flex-shrink-0">
+                <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M5 12h14M5 12a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v4a2 2 0 01-2 2M5 12a2 2 0 00-2 2v4a2 2 0 002 2h14a2 2 0 002-2v-4a2 2 0 00-2-2m-2-4h.01M17 16h.01" />
+                </svg>
+              </span>
+              <h3 class="text-sm font-bold text-wood-accent uppercase tracking-widest">Backend</h3>
+            </div>
+            <p class="text-gray-600 dark:text-gray-300 text-sm leading-relaxed">
+              Python · Django · PHP · Laravel · Node.js · Express.js
+            </p>
+          </div>
+
+          <div class="p-6 bg-white dark:bg-[#252528] border border-gray-200 dark:border-gray-800 rounded-xl shadow-sm hover:shadow-md transition-shadow">
+            <div class="flex items-center gap-3 mb-4">
+              <span class="w-9 h-9 bg-wood-accent/10 rounded-lg flex items-center justify-center text-wood-accent flex-shrink-0">
+                <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M4 7v10c0 2.21 3.582 4 8 4s8-1.79 8-4V7M4 7c0 2.21 3.582 4 8 4s8-1.79 8-4M4 7c0-2.21 3.582-4 8-4s8 1.79 8 4m0 5c0 2.21-3.582 4-8 4s-8-1.79-8-4" />
+                </svg>
+              </span>
+              <h3 class="text-sm font-bold text-wood-accent uppercase tracking-widest">Databases</h3>
+            </div>
+            <p class="text-gray-600 dark:text-gray-300 text-sm leading-relaxed">
+              PostgreSQL · MySQL · Supabase · Firebase
+            </p>
+          </div>
+
+          <div class="p-6 bg-white dark:bg-[#252528] border border-gray-200 dark:border-gray-800 rounded-xl shadow-sm hover:shadow-md transition-shadow">
+            <div class="flex items-center gap-3 mb-4">
+              <span class="w-9 h-9 bg-wood-accent/10 rounded-lg flex items-center justify-center text-wood-accent flex-shrink-0">
+                <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-5.714 2.143L13 21l-2.286-6.857L5 12l5.714-2.143L13 3z" />
+                </svg>
+              </span>
+              <h3 class="text-sm font-bold text-wood-accent uppercase tracking-widest">AI &amp; Automation</h3>
+            </div>
+            <p class="text-gray-600 dark:text-gray-300 text-sm leading-relaxed">
+              RAG · AI APIs · n8n · Webhooks
+            </p>
+          </div>
+
+          <div class="p-6 bg-white dark:bg-[#252528] border border-gray-200 dark:border-gray-800 rounded-xl shadow-sm hover:shadow-md transition-shadow">
+            <div class="flex items-center gap-3 mb-4">
+              <span class="w-9 h-9 bg-wood-accent/10 rounded-lg flex items-center justify-center text-wood-accent flex-shrink-0">
+                <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M9 3v2m6-2v2M9 19v2m6-2v2M5 9H3m2 6H3m18-6h-2m2 6h-2M7 19h10a2 2 0 002-2V7a2 2 0 00-2-2H7a2 2 0 00-2 2v10a2 2 0 002 2zM9 9h6v6H9V9z" />
+                </svg>
+              </span>
+              <h3 class="text-sm font-bold text-wood-accent uppercase tracking-widest">IoT</h3>
+            </div>
+            <p class="text-gray-600 dark:text-gray-300 text-sm leading-relaxed">
+              ESP32 · C++ · RFID
+            </p>
+          </div>
+        </div>
+
+        <div class="text-center mt-12">
+          <a
+            href="/quick-portfolio/about/"
+            class="text-sm font-bold text-wood-accent hover:text-wood-500 transition-colors"
+          >
+            View Full Technical Toolbox &rarr;
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <section id="cta" class="py-24 bg-white dark:bg-[#1f1f1f] relative overflow-hidden border-t border-gray-100 dark:border-gray-800">
+      <div class="absolute -top-24 -left-24 w-96 h-96 bg-wood-accent/10 dark:bg-wood-accent/5 rounded-full filter blur-3xl pointer-events-none"></div>
+      <div class="absolute -bottom-24 -right-24 w-96 h-96 bg-wood-accent/10 dark:bg-wood-accent/5 rounded-full filter blur-3xl pointer-events-none"></div>
+
+      <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+        <div class="bg-white dark:bg-[#252528] border border-gray-200 dark:border-gray-800 rounded-3xl p-12 md:p-16 text-center shadow-2xl relative overflow-hidden group">
+          <div class="absolute inset-0 bg-gradient-to-r from-wood-accent/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-700 pointer-events-none"></div>
+
+          <h2 class="text-3xl md:text-5xl font-extrabold text-gray-900 dark:text-white mb-6 leading-tight max-w-3xl mx-auto relative z-10">
+            Let's Build Something Useful
+          </h2>
+          <p class="text-lg text-gray-600 dark:text-gray-300 mb-10 max-w-2xl mx-auto leading-relaxed relative z-10">
+            Open to software development opportunities, freelance projects, and collaborations.
+          </p>
+          <div class="flex flex-col sm:flex-row gap-4 justify-center relative z-10">
+            <a
+              href="/quick-portfolio/assets/Jun-Alvior.pdf"
+              download="Jun-Alvior.pdf"
+              class="inline-flex items-center justify-center px-10 py-5 bg-wood-accent hover:bg-wood-500 text-white text-lg font-bold rounded-2xl shadow-xl hover:shadow-wood-accent/40 shadow-wood-accent/10 transition-all transform hover:-translate-y-1 focus:ring-2 focus:ring-wood-accent focus:ring-offset-2 focus:ring-offset-white dark:focus:ring-offset-gray-800 focus:outline-none"
+            >
+              View Resume
+            </a>
+            <a
+              href="/quick-portfolio/contact/"
+              class="inline-flex items-center justify-center px-10 py-5 bg-white dark:bg-[#1a1a1a] border-2 border-wood-accent text-wood-accent dark:text-wood-300 text-lg font-bold rounded-2xl shadow-sm hover:bg-wood-50 dark:hover:bg-[#252528] hover:shadow-lg transition-all transform hover:-translate-y-1 focus:ring-2 focus:ring-wood-accent focus:ring-offset-2 focus:ring-offset-white dark:focus:ring-offset-gray-800 focus:outline-none"
+            >
+              Get in Touch
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
 </Layout>
