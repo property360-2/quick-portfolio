@@ -1,0 +1,665 @@
+---
+/**
+ * StockFlow POS (Laravel) Case Study Page
+ * Purpose: Presents a high-fidelity, comprehensive case study of the StockFlow POS system.
+ * Contents: Includes project overview, executive summary, problem statement, solution details,
+ *           architectural pillars (atomic stock deduction, thermal receipt printing, audit trails),
+ *           database schemas, REST API surface, and key benefits.
+ * Fit: Part of the portfolio subpages under '/portfolio/stockflow-pos', highlighting full-stack
+ *      Laravel engineering, relational schema design, and production-ready POS workflows.
+ */
+
+import Layout from '../../../layouts/Layout.astro';
+import Carousel from '../../../components/Carousel.astro';
+
+const title = 'StockFlow POS Case Study | Jun Alvior';
+const description = 'A full-stack Laravel point-of-sale system with atomic stock deduction, thermal receipt printing, and a complete inventory audit trail.';
+---
+
+<Layout title={title} description={description}>
+  <main id="main-content" class="flex-grow flex flex-col">
+    <!-- ORGANISMS: Project Case Study -->
+    <article class="py-24 bg-grey-light dark:bg-[#1a1a1a] flex-grow transition-colors duration-300">
+      <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+        <!-- Breadcrumb -->
+        <div class="mb-8 text-sm text-gray-700 dark:text-gray-300">
+          <a
+            href="../../portfolio/"
+            class="hover:text-wood-accent transition-colors flex items-center gap-1 font-medium"
+          >
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" />
+            </svg>
+            Back to Portfolio
+          </a>
+        </div>
+
+        <!-- Header -->
+        <header class="mb-12" data-aos="fade-up">
+          <div class="mb-8 rounded-2xl overflow-hidden shadow-2xl border border-gray-200/50 dark:border-gray-800/50">
+            <Carousel prefix="stockflow" slideCount={3} autoplayInterval={6000}>
+              <div class="w-full h-full flex-shrink-0 relative">
+                <img
+                  src="/quick-portfolio/assets/pos/pos.png"
+                  alt="StockFlow POS split-screen point-of-sale checkout interface"
+                  class="w-full h-full object-cover"
+                  loading="eager"
+                  decoding="async"
+                />
+                <div class="absolute bottom-0 inset-x-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent p-6 text-white">
+                  <h4 class="text-lg font-bold">1. Point of Sale</h4>
+                  <p class="text-xs text-gray-300">Reactive Alpine.js split-screen cart with search, categories, discount handling, and quick checkout.</p>
+                </div>
+              </div>
+
+              <div class="w-full h-full flex-shrink-0 relative">
+                <img
+                  src="/quick-portfolio/assets/pos/dashboard.png"
+                  alt="StockFlow POS dashboard with live operational metrics"
+                  class="w-full h-full object-cover"
+                  loading="lazy"
+                  decoding="async"
+                />
+                <div class="absolute bottom-0 inset-x-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent p-6 text-white">
+                  <h4 class="text-lg font-bold">2. Dashboard</h4>
+                  <p class="text-xs text-gray-300">Live KPIs, best-sellers, low-stock warnings, and inventory valuation at a glance.</p>
+                </div>
+              </div>
+
+              <div class="w-full h-full flex-shrink-0 relative">
+                <img
+                  src="/quick-portfolio/assets/pos/reports.png"
+                  alt="StockFlow POS reports and analytics dashboard"
+                  class="w-full h-full object-cover"
+                  loading="lazy"
+                  decoding="async"
+                />
+                <div class="absolute bottom-0 inset-x-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent p-6 text-white">
+                  <h4 class="text-lg font-bold">3. Reports & Analytics</h4>
+                  <p class="text-xs text-gray-300">Sales summaries, best-selling products, low-stock alerts, and stock movement ledgers.</p>
+                </div>
+              </div>
+            </Carousel>
+          </div>
+
+          <div class="flex items-center gap-2 mb-4">
+            <span class="inline-flex items-center px-3 py-1 rounded-full text-xs font-semibold bg-green-100 dark:bg-green-950/50 text-green-700 dark:text-green-400">
+              Active Project
+            </span>
+            <span class="inline-flex items-center px-3 py-1 rounded-full text-xs font-semibold bg-wood-100 dark:bg-wood-950/50 text-wood-900 dark:text-wood-100">
+              Case Study
+            </span>
+          </div>
+          <h1 class="text-3xl md:text-5xl font-extrabold text-gray-900 dark:text-white tracking-tight mb-4">
+            StockFlow POS
+          </h1>
+          <p class="text-lg md:text-xl text-gray-700 dark:text-gray-300 leading-relaxed font-normal">
+            A Full-Stack Laravel Point-of-Sale with Atomic Stock Deduction, Thermal Receipt Printing, and a Complete Inventory Audit Trail
+          </p>
+
+          <div class="flex flex-wrap gap-2.5 mt-6">
+            <span class="px-3 py-1 bg-white dark:bg-[#252528] border border-gray-200 dark:border-gray-800 text-wood-900 dark:text-wood-100 rounded-full text-xs font-semibold tracking-wide shadow-sm transition-colors duration-300">
+              Laravel 12
+            </span>
+            <span class="px-3 py-1 bg-white dark:bg-[#252528] border border-gray-200 dark:border-gray-800 text-wood-900 dark:text-wood-100 rounded-full text-xs font-semibold tracking-wide shadow-sm transition-colors duration-300">
+              PHP 8.2
+            </span>
+            <span class="px-3 py-1 bg-white dark:bg-[#252528] border border-gray-200 dark:border-gray-800 text-wood-900 dark:text-wood-100 rounded-full text-xs font-semibold tracking-wide shadow-sm transition-colors duration-300">
+              Vite 7
+            </span>
+            <span class="px-3 py-1 bg-white dark:bg-[#252528] border border-gray-200 dark:border-gray-800 text-wood-900 dark:text-wood-100 rounded-full text-xs font-semibold tracking-wide shadow-sm transition-colors duration-300">
+              Alpine.js
+            </span>
+            <span class="px-3 py-1 bg-white dark:bg-[#252528] border border-gray-200 dark:border-gray-800 text-wood-900 dark:text-wood-100 rounded-full text-xs font-semibold tracking-wide shadow-sm transition-colors duration-300">
+              Tailwind CSS v4
+            </span>
+            <span class="px-3 py-1 bg-white dark:bg-[#252528] border border-gray-200 dark:border-gray-800 text-wood-900 dark:text-wood-100 rounded-full text-xs font-semibold tracking-wide shadow-sm transition-colors duration-300">
+              Chart.js
+            </span>
+            <span class="px-3 py-1 bg-white dark:bg-[#252528] border border-gray-200 dark:border-gray-800 text-wood-900 dark:text-wood-100 rounded-full text-xs font-semibold tracking-wide shadow-sm transition-colors duration-300">
+              SQLite
+            </span>
+          </div>
+        </header>
+
+        <!-- Project Links (Top CTA) -->
+        <div class="flex flex-wrap gap-4 mb-16" data-aos="fade-up" data-aos-delay="50">
+          <a
+            href="https://laravel-pos-anyb.onrender.com/"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="px-6 py-3.5 bg-wood-accent hover:bg-wood-700 text-white font-semibold rounded-xl shadow-md hover:shadow-lg transition-all transform hover:-translate-y-0.5 flex items-center gap-2"
+          >
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+            </svg>
+            Live Demo
+          </a>
+          <a
+            href="https://github.com/property360-2/laravel-pos"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="px-6 py-3.5 bg-transparent border-2 border-wood-accent hover:bg-wood-50 dark:hover:bg-[#252528] text-wood-accent dark:text-wood-300 font-semibold rounded-xl shadow-sm hover:shadow-md transition-all transform hover:-translate-y-0.5 flex items-center gap-2"
+          >
+            <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+              <path fill-rule="evenodd" d="M12 2C6.477 2 2 6.477 2 12c0 4.42 2.865 8.166 6.839 9.489.5.092.682-.217.682-.482 0-.237-.008-.866-.013-1.7-2.782.603-3.369-1.34-3.369-1.34-.454-1.156-1.11-1.462-1.11-1.462-.908-.62.069-.608.069-.608 1.003.07 1.531 1.03 1.531 1.03.892 1.529 2.341 1.087 2.91.831.092-.646.35-1.086.636-1.336-2.22-.253-4.555-1.11-4.555-4.943 0-1.091.39-1.984 1.029-2.683-.103-.253-.446-1.27.098-2.647 0 0 .84-.269 2.75 1.025A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.294 2.747-1.025 2.747-1.025.546 1.377.203 2.394.1 2.647.64.699 1.028 1.592 1.028 2.683 0 3.842-2.339 4.687-4.566 4.935.359.309.678.919.678 1.852 0 1.336-.012 2.415-.012 2.743 0 .267.18.579.688.481C19.137 20.164 22 16.418 22 12c0-5.523-4.477-10-10-10z" clip-rule="evenodd" />
+            </svg>
+            View Code
+          </a>
+        </div>
+
+        <!-- Render note -->
+        <p class="text-xs text-gray-500 dark:text-gray-400 -mt-10 mb-16 flex items-center gap-1.5" data-aos="fade-up" data-aos-delay="50">
+          <svg class="w-4 h-4 text-amber-500 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
+          </svg>
+          Note: this demo runs on Render&apos;s free tier and may take 30&ndash;60 seconds to spin up if it has been idle.
+        </p>
+
+        <!-- Content Flow -->
+        <div class="space-y-16">
+
+          <!-- SECTION 1: Executive Summary -->
+          <section id="executive-summary" class="bg-white dark:bg-[#252528] border-l-4 border-wood-accent border-y border-r border-gray-200 dark:border-gray-800 rounded-r-2xl p-6 sm:p-8" data-aos="fade-up">
+            <div class="flex gap-4">
+              <div class="hidden sm:block text-wood-accent">
+                <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+                </svg>
+              </div>
+              <div>
+                <h2 class="text-xl font-bold text-gray-900 dark:text-white mb-3 flex items-center gap-2">
+                  <svg class="w-5 h-5 text-wood-accent shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path>
+                  </svg>
+                  Executive Summary
+                </h2>
+                <p class="text-gray-700 dark:text-gray-300 leading-relaxed">
+                  <strong>StockFlow POS</strong> is a production-ready point-of-sale and inventory management system built on <strong>Laravel 12</strong>. It replaces error-prone, spreadsheet-driven store operations with a transactional backend, a reactive <strong>Alpine.js</strong> checkout interface, and a complete audit trail for every stock movement.
+                </p>
+                <p class="text-gray-700 dark:text-gray-300 leading-relaxed mt-3">
+                  Sales are processed inside a single database transaction that atomically deducts stock, records a <code class="text-xs px-1.5 py-0.5 rounded bg-amber-100 dark:bg-amber-950/30 text-wood-900 dark:text-wood-300">stock_movements</code> ledger entry, and returns change computation for cash, GCash, or card payments. A printable 80mm thermal receipt view completes the loop, making the system fully functional for a small retail counter out of the box.
+                </p>
+              </div>
+            </div>
+          </section>
+
+          <!-- SECTION 2: The Problem vs The Solution -->
+          <section id="problem-solution" class="grid grid-cols-1 md:grid-cols-2 gap-8" data-aos="fade-up">
+            <!-- Problem Card -->
+            <div class="bg-white dark:bg-[#252528] border border-gray-200 dark:border-gray-800 shadow-sm rounded-2xl p-6 sm:p-8 flex flex-col">
+              <div class="flex items-center gap-3 mb-6">
+                <span class="p-2 bg-red-100 dark:bg-red-950/50 text-red-600 dark:text-red-400 rounded-lg">
+                  <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z" />
+                  </svg>
+                </span>
+                <h3 class="text-lg font-bold text-gray-900 dark:text-white">The Manual Nightmare</h3>
+              </div>
+              <ul class="space-y-4 text-gray-700 dark:text-gray-300 text-sm leading-relaxed flex-grow">
+                <li class="flex gap-2">
+                  <span class="text-red-500 font-bold">&bull;</span>
+                  <span><strong>Guessing Stock Levels:</strong> Cashiers sell from memory while actual on-hand quantity lives in a disconnected spreadsheet.</span>
+                </li>
+                <li class="flex gap-2">
+                  <span class="text-red-500 font-bold">&bull;</span>
+                  <span><strong>Overselling &amp; Stock-outs:</strong> No low-stock warnings, so fast-moving items sell out before anyone notices.</span>
+                </li>
+                <li class="flex gap-2">
+                  <span class="text-red-500 font-bold">&bull;</span>
+                  <span><strong>No Audit Trail:</strong> Adjustments, deliveries, and sales are undocumented, making shrinkage impossible to trace.</span>
+                </li>
+                <li class="flex gap-2">
+                  <span class="text-red-500 font-bold">&bull;</span>
+                  <span><strong>Manual Receipts:</strong> Handwritten or manually typed receipts leave room for pricing and change errors.</span>
+                </li>
+              </ul>
+            </div>
+
+            <!-- Solution Card -->
+            <div class="bg-white dark:bg-[#252528] border border-gray-200 dark:border-gray-800 shadow-sm rounded-2xl p-6 sm:p-8 flex flex-col">
+              <div class="flex items-center gap-3 mb-6">
+                <span class="p-2 bg-green-100 dark:bg-green-950/50 text-green-600 dark:text-green-400 rounded-lg">
+                  <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                  </svg>
+                </span>
+                <h3 class="text-lg font-bold text-gray-900 dark:text-white">The Digital Solution</h3>
+              </div>
+              <ul class="space-y-4 text-gray-700 dark:text-gray-300 text-sm leading-relaxed flex-grow">
+                <li class="flex gap-2">
+                  <span class="text-green-500 font-bold">&bull;</span>
+                  <span><strong>Atomic Checkout:</strong> Sales deduct stock and write ledger entries inside one <code class="text-xs px-1.5 py-0.5 rounded bg-zinc-200 dark:bg-zinc-800 font-mono">DB::transaction()</code>.</span>
+                </li>
+                <li class="flex gap-2">
+                  <span class="text-green-500 font-bold">&bull;</span>
+                  <span><strong>Live Stock Visibility:</strong> Dashboard surfaces low-stock alerts and inventory valuation in real time.</span>
+                </li>
+                <li class="flex gap-2">
+                  <span class="text-green-500 font-bold">&bull;</span>
+                  <span><strong>Full Audit Trail:</strong> Every <code class="text-xs px-1.5 py-0.5 rounded bg-zinc-200 dark:bg-zinc-800 font-mono">stock_in</code>, <code class="text-xs px-1.5 py-0.5 rounded bg-zinc-200 dark:bg-zinc-800 font-mono">sale</code>, and <code class="text-xs px-1.5 py-0.5 rounded bg-zinc-200 dark:bg-zinc-800 font-mono">adjustment</code> is logged with the responsible user.</span>
+                </li>
+                <li class="flex gap-2">
+                  <span class="text-green-500 font-bold">&bull;</span>
+                  <span><strong>Thermal Receipts:</strong> 80mm print-ready receipt preview with automatic change calculation on every sale.</span>
+                </li>
+              </ul>
+            </div>
+          </section>
+
+          <!-- SECTION 3: Architecture -->
+          <section id="architecture" class="space-y-8" data-aos="fade-up">
+            <h3 class="text-2xl font-bold text-gray-900 dark:text-white border-b border-gray-200 dark:border-gray-800 pb-3 flex items-center gap-2">
+              <svg class="w-6 h-6 text-wood-accent shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z"></path>
+              </svg>
+              Core Architecture
+            </h3>
+
+            <div class="space-y-6">
+              <div>
+                <h4 class="text-lg font-bold text-gray-900 dark:text-white mb-2 flex items-center gap-2">
+                  <span class="w-1.5 h-6 bg-wood-accent rounded-full"></span>
+                  1. Transactional POS Engine
+                </h4>
+                <p class="text-gray-700 dark:text-gray-300 leading-relaxed text-sm">
+                  The <code class="text-xs px-1.5 py-0.5 rounded bg-zinc-200 dark:bg-zinc-800 font-mono">POST /api/transactions</code> endpoint is the heart of the system. Each sale runs inside a database transaction that:
+                </p>
+                <ul class="list-disc pl-5 mt-2 space-y-2 text-gray-700 dark:text-gray-300 text-sm">
+                  <li>Re-verifies current stock for every line item server-side, returning <code class="text-xs px-1.5 py-0.5 rounded bg-zinc-200 dark:bg-zinc-800 font-mono">422</code> if any item is oversold.</li>
+                  <li>Deducts product stock atomically and writes a <code class="text-xs px-1.5 py-0.5 rounded bg-zinc-200 dark:bg-zinc-800 font-mono">sale</code> movement entry per product.</li>
+                  <li>Captures a historical snapshot of product name and unit price on each line item, so old receipts remain accurate even after a product is edited or deleted.</li>
+                  <li>Computes subtotal, discount, total, amount paid, and change, then returns a <code class="text-xs px-1.5 py-0.5 rounded bg-zinc-200 dark:bg-zinc-800 font-mono">201 Created</code> response with the full receipt payload.</li>
+                </ul>
+              </div>
+
+              <div>
+                <h4 class="text-lg font-bold text-gray-900 dark:text-white mb-2 flex items-center gap-2">
+                  <span class="w-1.5 h-6 bg-wood-accent rounded-full"></span>
+                  2. Reactive Alpine.js Frontend
+                </h4>
+                <p class="text-gray-700 dark:text-gray-300 leading-relaxed text-sm">
+                  Built with <strong>Vite 7</strong> and <strong>Tailwind CSS v4</strong>, the POS page uses a lightweight <strong>Alpine.js</strong> cart component for instant, dependency-free reactivity:
+                </p>
+                <ul class="list-disc pl-5 mt-2 space-y-2 text-gray-700 dark:text-gray-300 text-sm">
+                  <li>Product search and category filtering without full page reloads.</li>
+                  <li>Live cart totals, quantity steppers, and discount input (fixed or percentage).</li>
+                  <li>A checkout modal with payment method, quick-cash buttons, and automatic change calculation.</li>
+                  <li>An 80mm thermal receipt preview that triggers the browser's native <code class="text-xs px-1.5 py-0.5 rounded bg-zinc-200 dark:bg-zinc-800 font-mono">@media print</code> window.</li>
+                </ul>
+              </div>
+
+              <div>
+                <h4 class="text-lg font-bold text-gray-900 dark:text-white mb-2 flex items-center gap-2">
+                  <span class="w-1.5 h-6 bg-wood-accent rounded-full"></span>
+                  3. Role-Based Access &amp; Stock Audit
+                </h4>
+                <p class="text-gray-700 dark:text-gray-300 leading-relaxed text-sm">
+                  Users are assigned an <code class="text-xs px-1.5 py-0.5 rounded bg-zinc-200 dark:bg-zinc-800 font-mono">admin</code> or <code class="text-xs px-1.5 py-0.5 rounded bg-zinc-200 dark:bg-zinc-800 font-mono">cashier</code> role. Cashiers can process sales while admins manage products, categories, inventory, and reports. Every stock change — deliveries (<code class="text-xs px-1.5 py-0.5 rounded bg-zinc-200 dark:bg-zinc-800 font-mono">stock_in</code>), sales (<code class="text-xs px-1.5 py-0.5 rounded bg-zinc-200 dark:bg-zinc-800 font-mono">sale</code>), and manual corrections (<code class="text-xs px-1.5 py-0.5 rounded bg-zinc-200 dark:bg-zinc-800 font-mono">adjustment</code>) — is recorded with the responsible user and an optional reason for full traceability.
+                </p>
+              </div>
+            </div>
+          </section>
+
+          <!-- SECTION 4: Database & Schema Design -->
+          <section id="database-design" class="space-y-6" data-aos="fade-up">
+            <h3 class="text-2xl font-bold text-gray-900 dark:text-white border-b border-gray-200 dark:border-gray-800 pb-3 flex items-center gap-2">
+              <svg class="w-6 h-6 text-wood-accent shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 7v10c0 2.21 3.582 4 8 4s8-1.79 8-4V7M4 7c0 2.21 3.582 4 8 4s8-1.79 8-4M4 7c0-2.21 3.582-4 8-4s8 1.79 8 4m0 5c0 2.21-3.582 4-8 4s-8-1.79-8-4"></path>
+              </svg>
+              Database &amp; Schema Design
+            </h3>
+            <p class="text-gray-700 dark:text-gray-300 leading-relaxed text-sm">
+              A normalized relational schema (SQLite by default, MySQL/PostgreSQL-ready) keeps historical sales accurate while enabling fast reporting:
+            </p>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mt-4">
+              <!-- Users -->
+              <div class="border border-gray-200 dark:border-gray-800 bg-white dark:bg-[#252528] rounded-xl p-5">
+                <div class="flex items-center justify-between border-b border-gray-100 dark:border-gray-800 pb-2 mb-4">
+                  <h4 class="font-bold text-gray-900 dark:text-white text-sm flex items-center gap-2">
+                    <span class="w-2 h-2 rounded-full bg-sky-500"></span>
+                    users
+                  </h4>
+                  <span class="text-2xs font-mono text-gray-600 dark:!text-gray-300">Auth + Roles</span>
+                </div>
+                <ul class="space-y-2 font-mono text-xs text-gray-700 dark:!text-zinc-300">
+                  <li class="flex justify-between border-b border-gray-100/50 dark:border-gray-800/60 pb-1">
+                    <span class="text-gray-800 dark:!text-gray-200">name</span>
+                    <span class="text-emerald-600 dark:text-emerald-400">string(255)</span>
+                  </li>
+                  <li class="flex justify-between border-b border-gray-100/50 dark:border-gray-800/60 pb-1">
+                    <span class="text-gray-800 dark:!text-gray-200">email <span class="text-blue-500 font-bold">[UNIQUE]</span></span>
+                    <span class="text-emerald-600 dark:text-emerald-400">string(255)</span>
+                  </li>
+                  <li class="flex justify-between border-b border-gray-100/50 dark:border-gray-800/60 pb-1">
+                    <span class="text-gray-800 dark:!text-gray-200">role</span>
+                    <span class="text-blue-600 dark:text-blue-400">admin | cashier</span>
+                  </li>
+                  <li class="flex justify-between border-b border-gray-100/50 dark:border-gray-800/60 pb-1">
+                    <span class="text-gray-800 dark:!text-gray-200">password</span>
+                    <span class="text-emerald-600 dark:text-emerald-400">string(255)</span>
+                  </li>
+                  <li class="flex justify-between">
+                    <span class="text-gray-800 dark:!text-gray-200">remember_token</span>
+                    <span class="text-emerald-600 dark:text-emerald-400">string nullable</span>
+                  </li>
+                </ul>
+              </div>
+
+              <!-- Categories -->
+              <div class="border border-gray-200 dark:border-gray-800 bg-white dark:bg-[#252528] rounded-xl p-5">
+                <div class="flex items-center justify-between border-b border-gray-100 dark:border-gray-800 pb-2 mb-4">
+                  <h4 class="font-bold text-gray-900 dark:text-white text-sm flex items-center gap-2">
+                    <span class="w-2 h-2 rounded-full bg-teal-500"></span>
+                    categories
+                  </h4>
+                  <span class="text-2xs font-mono text-gray-600 dark:!text-gray-300">Soft Deletes</span>
+                </div>
+                <ul class="space-y-2 font-mono text-xs text-gray-700 dark:!text-zinc-300">
+                  <li class="flex justify-between border-b border-gray-100/50 dark:border-gray-800/60 pb-1">
+                    <span class="text-gray-800 dark:!text-gray-200">name <span class="text-blue-500 font-bold">[UNIQUE]</span></span>
+                    <span class="text-emerald-600 dark:text-emerald-400">string(255)</span>
+                  </li>
+                  <li class="flex justify-between border-b border-gray-100/50 dark:border-gray-800/60 pb-1">
+                    <span class="text-gray-800 dark:!text-gray-200">relationship</span>
+                    <span class="text-blue-600 dark:text-blue-400">hasMany products</span>
+                  </li>
+                  <li class="flex justify-between">
+                    <span class="text-gray-800 dark:!text-gray-200">deleted_at</span>
+                    <span class="text-emerald-600 dark:text-emerald-400">timestamp nullable</span>
+                  </li>
+                </ul>
+              </div>
+
+              <!-- Products -->
+              <div class="border border-gray-200 dark:border-gray-800 bg-white dark:bg-[#252528] rounded-xl p-5">
+                <div class="flex items-center justify-between border-b border-gray-100 dark:border-gray-800 pb-2 mb-4">
+                  <h4 class="font-bold text-gray-900 dark:text-white text-sm flex items-center gap-2">
+                    <span class="w-2 h-2 rounded-full bg-emerald-500"></span>
+                    products
+                  </h4>
+                  <span class="text-2xs font-mono text-gray-600 dark:!text-gray-300">Soft Deletes</span>
+                </div>
+                <ul class="space-y-2 font-mono text-xs text-gray-700 dark:!text-zinc-300">
+                  <li class="flex justify-between border-b border-gray-100/50 dark:border-gray-800/60 pb-1">
+                    <span class="text-gray-800 dark:!text-gray-200">sku <span class="text-blue-500 font-bold">[UNIQUE]</span></span>
+                    <span class="text-emerald-600 dark:text-emerald-400">string(100)</span>
+                  </li>
+                  <li class="flex justify-between border-b border-gray-100/50 dark:border-gray-800/60 pb-1">
+                    <span class="text-gray-800 dark:!text-gray-200">category_id <span class="text-blue-500 font-bold">[FK]</span></span>
+                    <span class="text-emerald-600 dark:text-emerald-400">unsigned bigint</span>
+                  </li>
+                  <li class="flex justify-between border-b border-gray-100/50 dark:border-gray-800/60 pb-1">
+                    <span class="text-gray-800 dark:!text-gray-200">price</span>
+                    <span class="text-emerald-600 dark:text-emerald-400">decimal(12,2)</span>
+                  </li>
+                  <li class="flex justify-between border-b border-gray-100/50 dark:border-gray-800/60 pb-1">
+                    <span class="text-gray-800 dark:!text-gray-200">stock_quantity</span>
+                    <span class="text-emerald-600 dark:text-emerald-400">integer</span>
+                  </li>
+                  <li class="flex justify-between">
+                    <span class="text-gray-800 dark:!text-gray-200">low_stock_threshold</span>
+                    <span class="text-emerald-600 dark:text-emerald-400">integer (default 5)</span>
+                  </li>
+                </ul>
+              </div>
+
+              <!-- Transactions -->
+              <div class="border border-gray-200 dark:border-gray-800 bg-white dark:bg-[#252528] rounded-xl p-5">
+                <div class="flex items-center justify-between border-b border-gray-100 dark:border-gray-800 pb-2 mb-4">
+                  <h4 class="font-bold text-gray-900 dark:text-white text-sm flex items-center gap-2">
+                    <span class="w-2 h-2 rounded-full bg-blue-500"></span>
+                    transactions
+                  </h4>
+                  <span class="text-2xs font-mono text-gray-600 dark:!text-gray-300">1 : * transaction_items</span>
+                </div>
+                <ul class="space-y-2 font-mono text-xs text-gray-700 dark:!text-zinc-300">
+                  <li class="flex justify-between border-b border-gray-100/50 dark:border-gray-800/60 pb-1">
+                    <span class="text-gray-800 dark:!text-gray-200">transaction_number</span>
+                    <span class="text-emerald-600 dark:text-emerald-400">string(100) UNIQUE</span>
+                  </li>
+                  <li class="flex justify-between border-b border-gray-100/50 dark:border-gray-800/60 pb-1">
+                    <span class="text-gray-800 dark:!text-gray-200">user_id <span class="text-blue-500 font-bold">[FK]</span></span>
+                    <span class="text-emerald-600 dark:text-emerald-400">Cashier</span>
+                  </li>
+                  <li class="flex justify-between border-b border-gray-100/50 dark:border-gray-800/60 pb-1">
+                    <span class="text-gray-800 dark:!text-gray-200">subtotal / total</span>
+                    <span class="text-emerald-600 dark:text-emerald-400">decimal(12,2)</span>
+                  </li>
+                  <li class="flex justify-between border-b border-gray-100/50 dark:border-gray-800/60 pb-1">
+                    <span class="text-gray-800 dark:!text-gray-200">payment_method</span>
+                    <span class="text-blue-600 dark:text-blue-400">cash | gcash | card</span>
+                  </li>
+                  <li class="flex justify-between">
+                    <span class="text-gray-800 dark:!text-gray-200">amount_paid / change</span>
+                    <span class="text-emerald-600 dark:text-emerald-400">decimal(12,2)</span>
+                  </li>
+                </ul>
+              </div>
+
+              <!-- Transaction Items -->
+              <div class="border border-gray-200 dark:border-gray-800 bg-white dark:bg-[#252528] rounded-xl p-5">
+                <div class="flex items-center justify-between border-b border-gray-100 dark:border-gray-800 pb-2 mb-4">
+                  <h4 class="font-bold text-gray-900 dark:text-white text-sm flex items-center gap-2">
+                    <span class="w-2 h-2 rounded-full bg-purple-500"></span>
+                    transaction_items
+                  </h4>
+                  <span class="text-2xs font-mono text-gray-600 dark:!text-gray-300">Historical Snapshot</span>
+                </div>
+                <ul class="space-y-2 font-mono text-xs text-gray-700 dark:!text-zinc-300">
+                  <li class="flex justify-between border-b border-gray-100/50 dark:border-gray-800/60 pb-1">
+                    <span class="text-gray-800 dark:!text-gray-200">transaction_id <span class="text-blue-500 font-bold">[FK CASCADE]</span></span>
+                    <span class="text-emerald-600 dark:text-emerald-400">unsigned bigint</span>
+                  </li>
+                  <li class="flex justify-between border-b border-gray-100/50 dark:border-gray-800/60 pb-1">
+                    <span class="text-gray-800 dark:!text-gray-200">product_id <span class="text-blue-500 font-bold">[FK SET NULL]</span></span>
+                    <span class="text-emerald-600 dark:text-emerald-400">nullable</span>
+                  </li>
+                  <li class="flex justify-between border-b border-gray-100/50 dark:border-gray-800/60 pb-1">
+                    <span class="text-gray-800 dark:!text-gray-200">product_name</span>
+                    <span class="text-emerald-600 dark:text-emerald-400">string snapshot</span>
+                  </li>
+                  <li class="flex justify-between border-b border-gray-100/50 dark:border-gray-800/60 pb-1">
+                    <span class="text-gray-800 dark:!text-gray-200">unit_price / subtotal</span>
+                    <span class="text-emerald-600 dark:text-emerald-400">decimal(12,2)</span>
+                  </li>
+                  <li class="flex justify-between">
+                    <span class="text-gray-800 dark:!text-gray-200">quantity</span>
+                    <span class="text-emerald-600 dark:text-emerald-400">integer</span>
+                  </li>
+                </ul>
+              </div>
+
+              <!-- Stock Movements -->
+              <div class="border border-gray-200 dark:border-gray-800 bg-white dark:bg-[#252528] rounded-xl p-5">
+                <div class="flex items-center justify-between border-b border-gray-100 dark:border-gray-800 pb-2 mb-4">
+                  <h4 class="font-bold text-gray-900 dark:text-white text-sm flex items-center gap-2">
+                    <span class="w-2 h-2 rounded-full bg-amber-500"></span>
+                    stock_movements
+                  </h4>
+                  <span class="text-2xs font-mono text-gray-600 dark:!text-gray-300">Audit Ledger</span>
+                </div>
+                <ul class="space-y-2 font-mono text-xs text-gray-700 dark:!text-zinc-300">
+                  <li class="flex justify-between border-b border-gray-100/50 dark:border-gray-800/60 pb-1">
+                    <span class="text-gray-800 dark:!text-gray-200">product_id <span class="text-blue-500 font-bold">[FK CASCADE]</span></span>
+                    <span class="text-emerald-600 dark:text-emerald-400">unsigned bigint</span>
+                  </li>
+                  <li class="flex justify-between border-b border-gray-100/50 dark:border-gray-800/60 pb-1">
+                    <span class="text-gray-800 dark:!text-gray-200">user_id <span class="text-blue-500 font-bold">[FK SET NULL]</span></span>
+                    <span class="text-emerald-600 dark:text-emerald-400">nullable</span>
+                  </li>
+                  <li class="flex justify-between border-b border-gray-100/50 dark:border-gray-800/60 pb-1">
+                    <span class="text-gray-800 dark:!text-gray-200">type</span>
+                    <span class="text-blue-600 dark:text-blue-400">stock_in | sale | adjustment</span>
+                  </li>
+                  <li class="flex justify-between border-b border-gray-100/50 dark:border-gray-800/60 pb-1">
+                    <span class="text-gray-800 dark:!text-gray-200">quantity (+/-)</span>
+                    <span class="text-emerald-600 dark:text-emerald-400">integer</span>
+                  </li>
+                  <li class="flex justify-between">
+                    <span class="text-gray-800 dark:!text-gray-200">reason</span>
+                    <span class="text-emerald-600 dark:text-emerald-400">string nullable</span>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </section>
+
+          <!-- SECTION 5: REST API Surface -->
+          <section id="api-design" class="space-y-6" data-aos="fade-up">
+            <h3 class="text-2xl font-bold text-gray-900 dark:text-white border-b border-gray-200 dark:border-gray-800 pb-3 flex items-center gap-2">
+              <svg class="w-6 h-6 text-wood-accent shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 9l3 3-3 3m5 0h3M5 20h14a2 2 0 002-2V6a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"></path>
+              </svg>
+              REST API Surface
+            </h3>
+            <p class="text-gray-700 dark:text-gray-300 leading-relaxed text-sm">
+              A clean, versioned JSON API powers both the Blade frontend and any future mobile or integration clients:
+            </p>
+
+            <div class="overflow-x-auto rounded-xl border border-gray-200 dark:border-gray-800 shadow-sm mt-4">
+              <table class="w-full text-left border-collapse bg-white dark:bg-[#252528]">
+                <thead>
+                  <tr class="bg-gray-50 dark:bg-[#1a1a1a] border-b border-gray-200 dark:border-gray-800 text-xs font-bold uppercase tracking-wider">
+                    <th class="px-6 py-4 text-gray-700 dark:!text-zinc-200">Domain</th>
+                    <th class="px-6 py-4 text-gray-700 dark:!text-zinc-200">Key Endpoints</th>
+                    <th class="px-6 py-4 text-gray-700 dark:!text-zinc-200">Description</th>
+                  </tr>
+                </thead>
+                <tbody class="divide-y divide-gray-150 dark:divide-gray-800 text-sm">
+                  <tr class="hover:bg-gray-50/50 dark:hover:bg-[#1a1a1a]/40 transition-colors">
+                    <td class="px-6 py-4 font-semibold text-gray-900 dark:text-white whitespace-nowrap">Auth</td>
+                    <td class="px-6 py-4 font-mono text-xs text-wood-accent whitespace-nowrap">POST /api/login · logout · GET /api/user</td>
+                    <td class="px-6 py-4 text-gray-700 dark:text-gray-300">Session-based auth with role-aware profile fetch.</td>
+                  </tr>
+                  <tr class="hover:bg-gray-50/50 dark:hover:bg-[#1a1a1a]/40 transition-colors">
+                    <td class="px-6 py-4 font-semibold text-gray-900 dark:text-white whitespace-nowrap">Products</td>
+                    <td class="px-6 py-4 font-mono text-xs text-wood-accent whitespace-nowrap">GET/POST/PUT/DELETE /api/products</td>
+                    <td class="px-6 py-4 text-gray-700 dark:text-gray-300">Searchable list with category and low-stock filters; soft-delete safe.</td>
+                  </tr>
+                  <tr class="hover:bg-gray-50/50 dark:hover:bg-[#1a1a1a]/40 transition-colors">
+                    <td class="px-6 py-4 font-semibold text-gray-900 dark:text-white whitespace-nowrap">Transactions</td>
+                    <td class="px-6 py-4 font-mono text-xs text-wood-accent whitespace-nowrap">POST /api/transactions</td>
+                    <td class="px-6 py-4 text-gray-700 dark:text-gray-300">Atomic sale: verify stock, deduct, write ledger, compute change.</td>
+                  </tr>
+                  <tr class="hover:bg-gray-50/50 dark:hover:bg-[#1a1a1a]/40 transition-colors">
+                    <td class="px-6 py-4 font-semibold text-gray-900 dark:text-white whitespace-nowrap">Inventory</td>
+                    <td class="px-6 py-4 font-mono text-xs text-wood-accent whitespace-nowrap">POST /api/inventory/stock-in · /adjust</td>
+                    <td class="px-6 py-4 text-gray-700 dark:text-gray-300">Restock and manual adjustments with reasons, plus movement audit log.</td>
+                  </tr>
+                  <tr class="hover:bg-gray-50/50 dark:hover:bg-[#1a1a1a]/40 transition-colors">
+                    <td class="px-6 py-4 font-semibold text-gray-900 dark:text-white whitespace-nowrap">Reports</td>
+                    <td class="px-6 py-4 font-mono text-xs text-wood-accent whitespace-nowrap">GET /api/reports/*</td>
+                    <td class="px-6 py-4 text-gray-700 dark:text-gray-300">Sales summary, best-sellers, low-stock, valuation, and movement totals.</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </section>
+
+          <!-- SECTION 6: Outcomes & Key Benefits -->
+          <section id="outcomes-benefits" class="space-y-6" data-aos="fade-up">
+            <h3 class="text-2xl font-bold text-gray-900 dark:text-white border-b border-gray-200 dark:border-gray-800 pb-3 flex items-center gap-2">
+              <svg class="w-6 h-6 text-wood-accent shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path>
+              </svg>
+              Key Benefits &amp; Tangible Outcomes
+            </h3>
+
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+              <div class="border border-gray-200 dark:border-gray-800 bg-white dark:bg-[#252528] rounded-xl p-5 hover:translate-y-[-4px] hover:shadow-md transition-all duration-300 flex flex-col items-start">
+                <div class="p-2 w-10 h-10 rounded-lg bg-emerald-50 dark:bg-emerald-950/20 text-emerald-500 flex items-center justify-center mb-3">
+                  <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                  </svg>
+                </div>
+                <h4 class="font-bold text-gray-900 dark:text-white text-sm mb-2">Zero Overselling</h4>
+                <p class="text-xs text-gray-700 dark:text-gray-300 leading-relaxed">
+                  Server-side stock verification inside every sale guarantees cashiers can never sell more than what's actually on hand.
+                </p>
+              </div>
+
+              <div class="border border-gray-200 dark:border-gray-800 bg-white dark:bg-[#252528] rounded-xl p-5 hover:translate-y-[-4px] hover:shadow-md transition-all duration-300 flex flex-col items-start">
+                <div class="p-2 w-10 h-10 rounded-lg bg-amber-50 dark:bg-amber-950/20 text-amber-500 flex items-center justify-center mb-3">
+                  <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 17v-2m3 2v-4m3 4v-6m2 10H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path>
+                  </svg>
+                </div>
+                <h4 class="font-bold text-gray-900 dark:text-white text-sm mb-2">Complete Audit Trail</h4>
+                <p class="text-xs text-gray-700 dark:text-gray-300 leading-relaxed">
+                  Every stock-in, sale, and adjustment is attributable to a user with a reason, eliminating shrinkage blind spots.
+                </p>
+              </div>
+
+              <div class="border border-gray-200 dark:border-gray-800 bg-white dark:bg-[#252528] rounded-xl p-5 hover:translate-y-[-4px] hover:shadow-md transition-all duration-300 flex flex-col items-start">
+                <div class="p-2 w-10 h-10 rounded-lg bg-blue-50 dark:bg-blue-950/20 text-blue-500 flex items-center justify-center mb-3">
+                  <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M12 16c1.657 0 3-.895 3-2s-1.343-2-3-2-3-.895-3-2 1.343-2 3-2m0 8V7"></path>
+                  </svg>
+                </div>
+                <h4 class="font-bold text-gray-900 dark:text-white text-sm mb-2">Historical Integrity</h4>
+                <p class="text-xs text-gray-700 dark:text-gray-300 leading-relaxed">
+                  Line items snapshot product name and price at sale time, so past receipts stay correct after edits or deletes.
+                </p>
+              </div>
+
+              <div class="border border-gray-200 dark:border-gray-800 bg-white dark:bg-[#252528] rounded-xl p-5 hover:translate-y-[-4px] hover:shadow-md transition-all duration-300 flex flex-col items-start">
+                <div class="p-2 w-10 h-10 rounded-lg bg-purple-50 dark:bg-purple-950/20 text-purple-500 flex items-center justify-center mb-3">
+                  <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8h2a2 2 0 012 2v6a2 2 0 01-2 2h-2v4l-4-4H9a1.994 1.994 0 01-1.414-.586m0 0L11 14h4a2 2 0 002-2V6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2v4l.586-.586z"></path>
+                  </svg>
+                </div>
+                <h4 class="font-bold text-gray-900 dark:text-white text-sm mb-2">Counter-Ready Workflow</h4>
+                <p class="text-xs text-gray-700 dark:text-gray-300 leading-relaxed">
+                  From scan to printed 80mm thermal receipt in seconds, with change calculated automatically — no calculator required.
+                </p>
+              </div>
+            </div>
+          </section>
+
+          <!-- Footer CTA -->
+          <section class="py-12 bg-gray-50 dark:bg-[#252528] rounded-2xl border border-gray-200 dark:border-gray-800 p-8 text-center" data-aos="fade-up">
+            <h3 class="text-2xl font-bold text-gray-900 dark:text-white mb-4">Need a custom POS or inventory system?</h3>
+            <p class="text-gray-600 dark:text-gray-400 mb-6 max-w-xl mx-auto">Let's coordinate to build scalable Laravel backends, offline-first storefronts, or reporting dashboards tailored to your business.</p>
+            <a href="/quick-portfolio/contact/" class="inline-flex items-center px-6 py-3 bg-wood-accent hover:bg-wood-700 text-white font-bold rounded-xl transition-all shadow-md">
+              Get in Touch &rarr;
+            </a>
+          </section>
+
+          <!-- Next Case Study Footer -->
+          <div class="flex justify-between items-center border-t border-gray-200 dark:border-gray-800 pt-8">
+            <a href="/quick-portfolio/portfolio/" class="text-sm text-gray-500 hover:text-wood-accent transition-colors">&larr; Back to Portfolio</a>
+            <a href="/quick-portfolio/portfolio/attendance-management-system-school/" class="text-sm font-bold text-wood-accent hover:text-wood-700 transition-colors">Next Case Study &rarr;</a>
+          </div>
+
+        </div>
+      </div>
+    </article>
+  </main>
+
+  <!--
+    COMPONENT: Dark Mode Accessibility Contrast Override Block
+    PURPOSE: This scoped CSS block guarantees that all slightly dark texts are perfectly readable
+             in dark mode, conforming to WCAG AA/AAA standards (contrast ratio >= 4.5:1 or 7:1).
+             It overrides the pre-compiled global legacy CSS stylesheet rules that conflict with
+             standard Tailwind classes in class-based dark mode (`html.dark`).
+  -->
+  <style>
+    :global(html.dark) .font-mono.text-xs li span:first-child {
+      color: #e4e4e7 !important; /* zinc-200 */
+    }
+    :global(html.dark) .text-2xs.font-mono.text-gray-600 {
+      color: #a1a1aa !important; /* zinc-400 */
+    }
+    :global(html.dark) table th {
+      color: #f4f4f5 !important; /* zinc-100 */
+    }
+    :global(html.dark) table td.text-gray-700 {
+      color: #e4e4e7 !important; /* zinc-200 */
+    }
+    :global(html.dark) p.italic.text-xs {
+      color: #d4d4d8 !important; /* zinc-300 */
+    }
+  </style>
+</Layout>
