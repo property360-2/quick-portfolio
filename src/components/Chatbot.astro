@@ -248,6 +248,12 @@ How it fits into the broader system: Mounted globally inside Layout.astro to off
     color: #d4a373 !important; /* wood accent */
     text-decoration: underline !important;
   }
+
+  /* Emphasize bold text inside assistant bubbles with the wood accent */
+  :global(#chatbot-messages .self-start strong),
+  :global(.dark #chatbot-messages .self-start strong) {
+    color: #d4a373 !important; /* wood accent */
+  }
 </style>
 
 <!-- Dynamic Client-Side Interactive Script -->
