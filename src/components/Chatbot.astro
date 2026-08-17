@@ -241,6 +241,13 @@ How it fits into the broader system: Mounted globally inside Layout.astro to off
   :global(.dark #chatbot-messages .self-start *) {
     color: #e4e4e7 !important; /* zinc-200 */
   }
+
+  /* Keep links inside assistant bubbles visibly distinct from surrounding text */
+  :global(#chatbot-messages a),
+  :global(.dark #chatbot-messages a) {
+    color: #d4a373 !important; /* wood accent */
+    text-decoration: underline !important;
+  }
 </style>
 
 <!-- Dynamic Client-Side Interactive Script -->
@@ -352,47 +359,93 @@ How it fits into the broader system: Mounted globally inside Layout.astro to off
         .replace(/"/g, "&quot;")
         .replace(/'/g, "&#039;");
 
-      // Step 2: Stateful line-by-line parsing for lists, bolding, paragraphs, and spacing
+      // Renders a markdown link only for safe protocols; rejects javascript: etc.
+      const renderLink = (text: string, rawUrl: string): string => {
+        const href = rawUrl.replace(/&amp;/g, "&");
+        if (/^(https?:\/\/|mailto:|\/)/i.test(href)) {
+          return `<a href="${href}" target="_blank" rel="noopener noreferrer" class="text-wood-accent underline break-all">${text}</a>`;
+        }
+        return text;
+      };
+
+      // Step 2: Stateful line-by-line parsing for code, links, bold, lists, and paragraphs
       const lines = escaped.split("\n");
       const parsedElements: string[] = [];
       let inList = false;
+      let inOrderedList = false;
 
       lines.forEach((line) => {
         let trimmed = line.trim();
         if (!trimmed) {
-          // If we were inside a list, close it first
           if (inList) {
             parsedElements.push("</ul>");
             inList = false;
+          }
+          if (inOrderedList) {
+            parsedElements.push("</ol>");
+            inOrderedList = false;
           }
           parsedElements.push('<div class="h-2"></div>');
           return;
         }
 
-        // Match bold elements (**bold**)
+        // Inline code spans first, shielded with placeholders so later rules don't touch them
+        const codeSpans: string[] = [];
+        trimmed = trimmed.replace(/`([^`]+)`/g, (_m, code: string) => {
+          codeSpans.push(`<code class="px-1.5 py-0.5 rounded bg-gray-200 dark:bg-zinc-800 font-mono text-xs">${code}</code>`);
+          return `\u0000${codeSpans.length - 1}\u0000`;
+        });
+
+        // Markdown links [text](url)
+        trimmed = trimmed.replace(/\[([^\]]+)\]\(([^)]+)\)/g, (_m, text: string, url: string) => renderLink(text, url));
+
+        // Bold **text**
         trimmed = trimmed.replace(/\*\*(.*?)\*\*/g, "<strong>$1</strong>");
 
-        // Match bullet items starting with '* ' or '- '
-        if (trimmed.startsWith("* ") || trimmed.startsWith("- ")) {
-          const innerContent = trimmed.substring(2).trim();
+        // Restore code spans
+        trimmed = trimmed.replace(/\u0000(\d+)\u0000/g, (_m, idx: string) => codeSpans[Number(idx)] ?? "");
+
+        const orderedMatch = trimmed.match(/^(\d+)\.\s+(.*)$/);
+        const bulletMatch = trimmed.match(/^[-*]\s+(.*)$/);
+
+        if (orderedMatch) {
+          if (inList) {
+            parsedElements.push("</ul>");
+            inList = false;
+          }
+          if (!inOrderedList) {
+            parsedElements.push('<ol class="my-2 space-y-1 list-decimal text-gray-800 dark:text-zinc-200">');
+            inOrderedList = true;
+          }
+          parsedElements.push(`<li class="ml-5 pl-1 my-1">${orderedMatch[2]}</li>`);
+        } else if (bulletMatch) {
+          if (inOrderedList) {
+            parsedElements.push("</ol>");
+            inOrderedList = false;
+          }
           if (!inList) {
             parsedElements.push('<ul class="my-2 space-y-1 text-gray-800 dark:text-zinc-200">');
             inList = true;
           }
-          parsedElements.push(`<li class="ml-4 list-disc pl-1 my-1">${innerContent}</li>`);
+          parsedElements.push(`<li class="ml-4 list-disc pl-1 my-1">${bulletMatch[1]}</li>`);
         } else {
-          // Standard text line. If we were inside a list, close it first.
           if (inList) {
             parsedElements.push("</ul>");
             inList = false;
+          }
+          if (inOrderedList) {
+            parsedElements.push("</ol>");
+            inOrderedList = false;
           }
           parsedElements.push(`<p class="mb-2 leading-relaxed text-gray-800 dark:text-zinc-200">${trimmed}</p>`);
         }
       });
 
-      // Close open list at the end of content
       if (inList) {
         parsedElements.push("</ul>");
+      }
+      if (inOrderedList) {
+        parsedElements.push("</ol>");
       }
 
       return parsedElements.join("");
