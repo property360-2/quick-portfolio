@@ -1,0 +1,304 @@
+---
+/**
+ * Lakers Analytics Dashboard Case Study Page
+ * Purpose: Presents a case study of the NBA analytics dashboard built from the
+ *          Lakers' 2024-25 season dataset.
+ * Contents: At-a-glance summary, executive summary, data pipeline, architecture,
+ *           analytics methodology, features, and honest limitations.
+ * Fit: Part of the portfolio subpages under '/portfolio/nba-analytics', highlighting
+ *      data engineering, analytics, and React dashboard work.
+ */
+
+import Layout from '../../../layouts/Layout.astro';
+import Carousel from '../../../components/Carousel.astro';
+const title = 'Lakers Analytics Dashboard Case Study | Jun Alvior';
+const description = 'A client-side NBA analytics dashboard for the Lakers 2024-25 season, built with React, TypeScript, and Recharts, fed by a static dataset ingested from the official NBA data feed.';
+---
+
+<Layout title={title} description={description}>
+  <main id="main-content" class="flex-grow flex flex-col">
+    <article class="py-24 bg-grey-light dark:bg-[#1a1a1a] flex-grow transition-colors duration-300">
+      <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+        <!-- Breadcrumb -->
+        <div class="mb-8 text-sm text-gray-700 dark:text-gray-300">
+          <a
+            href="../../portfolio/"
+            class="hover:text-wood-accent transition-colors flex items-center gap-1 font-medium"
+          >
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" />
+            </svg>
+            Back to Portfolio
+          </a>
+        </div>
+
+        <!-- Header -->
+        <header class="mb-12" data-aos="fade-up">
+          <div class="mb-8 rounded-2xl overflow-hidden shadow-2xl border border-gray-200/50 dark:border-gray-800/50">
+            <Carousel prefix="nba" slideCount={2} autoplayInterval={6000}>
+              <div class="w-full h-full flex-shrink-0 relative">
+                <img
+                  src="/quick-portfolio/assets/nba-analytics/overview.png"
+                  alt="Lakers Analytics Overview page with season record, KPI cards, and scoring trend chart"
+                  class="w-full h-full object-cover"
+                  loading="eager"
+                  decoding="async"
+                />
+                <div class="absolute bottom-0 inset-x-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent p-6 text-white">
+                  <h4 class="text-lg font-bold">1. Overview</h4>
+                  <p class="text-xs text-gray-300">Season record, KPI cards, win/loss timeline, scoring trend, and point-differential chart.</p>
+                </div>
+              </div>
+
+              <div class="w-full h-full flex-shrink-0 relative">
+                <img
+                  src="/quick-portfolio/assets/nba-analytics/players.png"
+                  alt="Lakers Analytics Player Analytics page with player selector, summary card, and season stats table"
+                  class="w-full h-full object-cover"
+                  loading="lazy"
+                  decoding="async"
+                />
+                <div class="absolute bottom-0 inset-x-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent p-6 text-white">
+                  <h4 class="text-lg font-bold">2. Player Analytics</h4>
+                  <p class="text-xs text-gray-300">Player selector, summary card, sortable season table, per-game trends, and two-player comparison.</p>
+                </div>
+              </div>
+            </Carousel>
+          </div>
+          <div class="flex items-center gap-2 mb-4">
+            <span class="inline-flex items-center px-3 py-1 rounded-full text-xs font-semibold bg-green-100 dark:bg-green-950/50 text-green-700 dark:text-green-400">
+              Active Project
+            </span>
+            <span class="inline-flex items-center px-3 py-1 rounded-full text-xs font-semibold bg-wood-100 dark:bg-wood-950/50 text-wood-900 dark:text-wood-100">
+              Case Study
+            </span>
+          </div>
+          <h1 class="text-3xl md:text-5xl font-extrabold text-gray-900 dark:text-white tracking-tight mb-4">
+            Lakers Analytics Dashboard
+          </h1>
+          <p class="text-lg md:text-xl text-gray-700 dark:text-gray-300 leading-relaxed font-normal">
+            A Client-Side NBA Analytics Dashboard for the Lakers' 2024&ndash;25 Season &mdash; Built from a Real Data Pipeline, a Pure-Function Analytics Engine, and an Interactive React UI
+          </p>
+
+          <div class="flex flex-wrap gap-2.5 mt-6">
+            <span class="px-3 py-1 bg-white dark:bg-[#252528] border border-gray-200 dark:border-gray-800 text-wood-900 dark:text-wood-100 rounded-full text-xs font-semibold tracking-wide shadow-sm transition-colors duration-300">
+              React 19
+            </span>
+            <span class="px-3 py-1 bg-white dark:bg-[#252528] border border-gray-200 dark:border-gray-800 text-wood-900 dark:text-wood-100 rounded-full text-xs font-semibold tracking-wide shadow-sm transition-colors duration-300">
+              TypeScript
+            </span>
+            <span class="px-3 py-1 bg-white dark:bg-[#252528] border border-gray-200 dark:border-gray-800 text-wood-900 dark:text-wood-100 rounded-full text-xs font-semibold tracking-wide shadow-sm transition-colors duration-300">
+              Vite
+            </span>
+            <span class="px-3 py-1 bg-white dark:bg-[#252528] border border-gray-200 dark:border-gray-800 text-wood-900 dark:text-wood-100 rounded-full text-xs font-semibold tracking-wide shadow-sm transition-colors duration-300">
+              Tailwind CSS v4
+            </span>
+            <span class="px-3 py-1 bg-white dark:bg-[#252528] border border-gray-200 dark:border-gray-800 text-wood-900 dark:text-wood-100 rounded-full text-xs font-semibold tracking-wide shadow-sm transition-colors duration-300">
+              Recharts v3
+            </span>
+            <span class="px-3 py-1 bg-white dark:bg-[#252528] border border-gray-200 dark:border-gray-800 text-wood-900 dark:text-wood-100 rounded-full text-xs font-semibold tracking-wide shadow-sm transition-colors duration-300">
+              React Router v7
+            </span>
+          </div>
+        </header>
+
+        <!-- Project Links (Top CTA) -->
+        <div class="flex flex-wrap gap-4 mb-16" data-aos="fade-up" data-aos-delay="50">
+          <a
+            href="https://nba-analytics-showcase.vercel.app/"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="px-6 py-3.5 bg-wood-accent hover:bg-wood-700 text-white font-semibold rounded-xl shadow-md hover:shadow-lg transition-all transform hover:-translate-y-0.5 flex items-center gap-2"
+          >
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+            </svg>
+            Live Demo
+          </a>
+          <a
+            href="https://github.com/property360-2/nba-analytics-showcase"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="px-6 py-3.5 bg-transparent border-2 border-wood-accent hover:bg-wood-50 dark:hover:bg-[#252528] text-wood-accent dark:text-wood-300 font-semibold rounded-xl shadow-sm hover:shadow-md transition-all transform hover:-translate-y-0.5 flex items-center gap-2"
+          >
+            <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+              <path fill-rule="evenodd" d="M12 2C6.477 2 2 6.477 2 12c0 4.42 2.865 8.166 6.839 9.489.5.092.682-.217.682-.482 0-.237-.008-.866-.013-1.7-2.782.603-3.369-1.34-3.369-1.34-.454-1.156-1.11-1.462-1.11-1.462-.908-.62.069-.608.069-.608 1.003.07 1.531 1.03 1.531 1.03.892 1.529 2.341 1.087 2.91.831.092-.646.35-1.086.636-1.336-2.22-.253-4.555-1.11-4.555-4.943 0-1.091.39-1.984 1.029-2.683-.103-.253-.446-1.27.098-2.647 0 0 .84-.269 2.75 1.025A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.294 2.747-1.025 2.747-1.025.546 1.377.203 2.394.1 2.647.64.699 1.028 1.592 1.028 2.683 0 3.842-2.339 4.687-4.566 4.935.359.309.678.919.678 1.852 0 1.336-.012 2.415-.012 2.743 0 .267.18.579.688.481C19.137 20.164 22 16.418 22 12c0-5.523-4.477-10-10-10z" clip-rule="evenodd" />
+            </svg>
+            View Code
+          </a>
+        </div>
+
+        <!-- Content Flow -->
+        <div class="space-y-16">
+
+          <!-- SECTION 0: At-a-Glance Summary -->
+          <section id="summary" class="bg-white dark:bg-[#252528] border border-gray-200 dark:border-gray-800 rounded-2xl p-6 sm:p-8" data-aos="fade-up">
+            <h2 class="text-xl font-bold text-gray-900 dark:text-white mb-5 flex items-center gap-2">
+              <svg class="w-5 h-5 text-wood-accent shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path>
+              </svg>
+              At a Glance
+            </h2>
+            <dl class="grid grid-cols-1 md:grid-cols-2 gap-x-8 gap-y-5 text-sm">
+              <div>
+                <dt class="font-bold text-wood-accent uppercase tracking-widest text-xs">Problem</dt>
+                <dd class="mt-1 text-gray-700 dark:text-gray-300 leading-relaxed">A full season of box scores is dense and hard to explore &mdash; no interactive way to see trends, player development, or what stats associate with wins.</dd>
+              </div>
+              <div>
+                <dt class="font-bold text-wood-accent uppercase tracking-widest text-xs">Role</dt>
+                <dd class="mt-1 text-gray-700 dark:text-gray-300 leading-relaxed">Built the full application end-to-end: the data ingest pipeline, the analytics engine, and the React dashboard.</dd>
+              </div>
+              <div>
+                <dt class="font-bold text-wood-accent uppercase tracking-widest text-xs">Solution</dt>
+                <dd class="mt-1 text-gray-700 dark:text-gray-300 leading-relaxed">A client-side dashboard with four routed views, fed by a static dataset ingested from the NBA's official feed, with pure-function analytics.</dd>
+              </div>
+              <div>
+                <dt class="font-bold text-wood-accent uppercase tracking-widest text-xs">Result</dt>
+                <dd class="mt-1 text-gray-700 dark:text-gray-300 leading-relaxed">All 82 games rendered into interactive charts, sortable tables, and data-driven insights &mdash; computed client-side from static files, no backend.</dd>
+              </div>
+              <div class="md:col-span-2">
+                <dt class="font-bold text-wood-accent uppercase tracking-widest text-xs">Proof</dt>
+                <dd class="mt-1 text-gray-700 dark:text-gray-300 leading-relaxed">Live demo, GitHub repository, and the methodology and architecture below.</dd>
+              </div>
+            </dl>
+          </section>
+
+          <!-- SECTION 1: Executive Summary -->
+          <section id="executive-summary" class="bg-white dark:bg-[#252528] border-l-4 border-wood-accent border-y border-r border-gray-200 dark:border-gray-800 rounded-r-2xl p-6 sm:p-8" data-aos="fade-up">
+            <div class="flex gap-4">
+              <div class="hidden sm:block text-wood-accent">
+                <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+                </svg>
+              </div>
+              <div>
+                <h2 class="text-xl font-bold text-gray-900 dark:text-white mb-3">Executive Summary</h2>
+                <p class="text-gray-700 dark:text-gray-300 leading-relaxed">
+                  <strong>Lakers Analytics</strong> is an interactive, data-driven web application that analyzes the Los Angeles Lakers' 2024&ndash;25 regular season. It turns a real-world dataset &mdash; ingested from the NBA's official public data feed &mdash; into structured analytics and an interactive frontend.
+                </p>
+                <p class="text-gray-700 dark:text-gray-300 leading-relaxed mt-3">
+                  The deployed app reads only static JSON files and never hits the network for data at runtime. Every chart and insight is derived from the actual dataset; nothing is hardcoded or fabricated. The project is built with <strong>React</strong>, <strong>TypeScript</strong>, <strong>Vite</strong>, <strong>Tailwind CSS</strong>, and <strong>Recharts</strong>, with no backend, database, or authentication.
+                </p>
+              </div>
+            </div>
+          </section>
+
+          <!-- SECTION 2: Data Pipeline -->
+          <section id="data-pipeline" class="space-y-6" data-aos="fade-up">
+            <h3 class="text-2xl font-bold text-gray-900 dark:text-white border-b border-gray-200 dark:border-gray-800 pb-3 flex items-center gap-2">
+              <svg class="w-6 h-6 text-wood-accent shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 7v10c0 2.21 3.582 4 8 4s8-1.79 8-4V7M4 7c0 2.21 3.582 4 8 4s8-1.79 8-4M4 7c0-2.21 3.582-4 8-4s8 1.79 8 4"></path>
+              </svg>
+              Data Pipeline
+            </h3>
+            <p class="text-gray-700 dark:text-gray-300 leading-relaxed text-sm">
+              Data comes from the NBA's official public data feed (<code class="text-xs px-1.5 py-0.5 rounded bg-zinc-200 dark:bg-zinc-800 font-mono">data.nba.com</code>). A Node ingest script fetches the league schedule and all 82 Lakers regular-season box scores, normalizes them, and writes three static JSON files:
+            </p>
+            <ul class="list-disc pl-5 space-y-2 text-gray-700 dark:text-gray-300 text-sm">
+              <li><code class="text-xs px-1.5 py-0.5 rounded bg-zinc-200 dark:bg-zinc-800 font-mono">games.json</code> &mdash; 82 games with team box scores (Lakers &amp; opponent).</li>
+              <li><code class="text-xs px-1.5 py-0.5 rounded bg-zinc-200 dark:bg-zinc-800 font-mono">players.json</code> &mdash; Lakers roster derived from box scores.</li>
+              <li><code class="text-xs px-1.5 py-0.5 rounded bg-zinc-200 dark:bg-zinc-800 font-mono">playerGameStats.json</code> &mdash; per-game, per-player stat lines.</li>
+            </ul>
+            <p class="text-gray-700 dark:text-gray-300 leading-relaxed text-sm">
+              A development-time validation script verifies the dataset is internally consistent: unique IDs, correct scores and point differentials, valid references, 82 games, and score sums matching player point totals. Player headshots load from the NBA's official image CDN, keyed by the same NBA player IDs, with a graceful initials fallback.
+            </p>
+          </section>
+
+          <!-- SECTION 3: Architecture -->
+          <section id="architecture" class="space-y-6" data-aos="fade-up">
+            <h3 class="text-2xl font-bold text-gray-900 dark:text-white border-b border-gray-200 dark:border-gray-800 pb-3 flex items-center gap-2">
+              <svg class="w-6 h-6 text-wood-accent shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z"></path>
+              </svg>
+              Architecture
+            </h3>
+            <p class="text-gray-700 dark:text-gray-300 leading-relaxed text-sm">
+              The codebase separates data, analytics, and presentation so that business logic never lives inside components:
+            </p>
+            <ul class="list-disc pl-5 space-y-2 text-gray-700 dark:text-gray-300 text-sm">
+              <li><strong>Static JSON</strong> (<code class="text-xs px-1.5 py-0.5 rounded bg-zinc-200 dark:bg-zinc-800 font-mono">src/data/</code>) &mdash; the processed dataset and typed accessors.</li>
+              <li><strong>Analytics layer</strong> (<code class="text-xs px-1.5 py-0.5 rounded bg-zinc-200 dark:bg-zinc-800 font-mono">src/analytics/</code>) &mdash; pure functions for team, game, and player analytics plus generated insights. No analytics logic lives inside components.</li>
+              <li><strong>React UI</strong> (<code class="text-xs px-1.5 py-0.5 rounded bg-zinc-200 dark:bg-zinc-800 font-mono">src/pages/</code>, <code class="text-xs px-1.5 py-0.5 rounded bg-zinc-200 dark:bg-zinc-800 font-mono">src/components/</code>) &mdash; presentation only; pages are lazy-loaded with Suspense.</li>
+              <li><strong>Charts &amp; tables</strong> &mdash; Recharts for visualizations and a reusable sortable DataTable.</li>
+            </ul>
+          </section>
+
+          <!-- SECTION 4: Analytics Methodology -->
+          <section id="methodology" class="space-y-6" data-aos="fade-up">
+            <h3 class="text-2xl font-bold text-gray-900 dark:text-white border-b border-gray-200 dark:border-gray-800 pb-3 flex items-center gap-2">
+              <svg class="w-6 h-6 text-wood-accent shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path>
+              </svg>
+              Analytics Methodology
+            </h3>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+              <div class="bg-white dark:bg-[#252528] border border-gray-200 dark:border-gray-800 rounded-xl p-5">
+                <h4 class="font-bold text-gray-900 dark:text-white text-sm mb-2">Win / Loss Comparison</h4>
+                <p class="text-xs text-gray-700 dark:text-gray-300 leading-relaxed">Each box-score stat is averaged separately for wins and losses, then the difference is reported. Differences are described as <em>associated with</em> winning games &mdash; never as causes.</p>
+              </div>
+              <div class="bg-white dark:bg-[#252528] border border-gray-200 dark:border-gray-800 rounded-xl p-5">
+                <h4 class="font-bold text-gray-900 dark:text-white text-sm mb-2">Home / Away Splits</h4>
+                <p class="text-xs text-gray-700 dark:text-gray-300 leading-relaxed">The season is split by venue to compare records, win percentage, scoring, and average margin at home versus on the road.</p>
+              </div>
+              <div class="bg-white dark:bg-[#252528] border border-gray-200 dark:border-gray-800 rounded-xl p-5">
+                <h4 class="font-bold text-gray-900 dark:text-white text-sm mb-2">Player Efficiency</h4>
+                <p class="text-xs text-gray-700 dark:text-gray-300 leading-relaxed">Per-game lines aggregate into season stats, with derived efficiency metrics &mdash; eFG% <code class="font-mono">(FGM + 0.5&middot;3PM) / FGA</code> and TS% <code class="font-mono">PTS / (2&middot;(FGA + 0.44&middot;FTA))</code> &mdash; using safe division handling.</p>
+              </div>
+              <div class="bg-white dark:bg-[#252528] border border-gray-200 dark:border-gray-800 rounded-xl p-5">
+                <h4 class="font-bold text-gray-900 dark:text-white text-sm mb-2">Correlation</h4>
+                <p class="text-xs text-gray-700 dark:text-gray-300 leading-relaxed">Pearson correlation between each stat and (a) point differential and (b) win/loss outcome, presented with an explicit "correlation does not imply causation" disclaimer.</p>
+              </div>
+            </div>
+          </section>
+
+          <!-- SECTION 5: Features -->
+          <section id="features" class="space-y-6" data-aos="fade-up">
+            <h3 class="text-2xl font-bold text-gray-900 dark:text-white border-b border-gray-200 dark:border-gray-800 pb-3 flex items-center gap-2">
+              <svg class="w-6 h-6 text-wood-accent shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8h2a2 2 0 012 2v6a2 2 0 01-2 2h-2v4l-4-4H9a1.994 1.994 0 01-1.414-.586m0 0L11 14h4a2 2 0 002-2V6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2v4l.586-.586z"></path>
+              </svg>
+              Features
+            </h3>
+            <ul class="list-disc pl-5 space-y-2 text-gray-700 dark:text-gray-300 text-sm">
+              <li><strong>Overview</strong> (<code class="text-xs px-1.5 py-0.5 rounded bg-zinc-200 dark:bg-zinc-800 font-mono">/</code>) &mdash; season record, KPI cards, win/loss timeline, scoring trends, point-differential chart, and monthly performance.</li>
+              <li><strong>Team Analytics</strong> (<code class="text-xs px-1.5 py-0.5 rounded bg-zinc-200 dark:bg-zinc-800 font-mono">/team</code>) &mdash; what changes when the Lakers win, shooting/rebounding/ball-movement stats, home vs. away splits, correlation scatter plots, and data-driven Key Insights.</li>
+              <li><strong>Player Analytics</strong> (<code class="text-xs px-1.5 py-0.5 rounded bg-zinc-200 dark:bg-zinc-800 font-mono">/players</code>) &mdash; player selector, summary card, sortable season table, per-game trends with an adjustable rolling window, efficiency metrics, plus/minus, and a two-player comparison mode.</li>
+              <li><strong>Games &amp; Opponents</strong> (<code class="text-xs px-1.5 py-0.5 rounded bg-zinc-200 dark:bg-zinc-800 font-mono">/games</code>) &mdash; filterable, searchable game log, head-to-head box-score comparison for any game, and a sortable opponent table.</li>
+            </ul>
+          </section>
+
+          <!-- SECTION 6: Limitations -->
+          <section id="limitations" class="space-y-4" data-aos="fade-up">
+            <h3 class="text-2xl font-bold text-gray-900 dark:text-white border-b border-gray-200 dark:border-gray-800 pb-3 flex items-center gap-2">
+              <svg class="w-6 h-6 text-wood-accent shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"></path>
+              </svg>
+              Honest Limitations
+            </h3>
+            <ul class="list-disc pl-5 space-y-2 text-gray-700 dark:text-gray-300 text-sm">
+              <li><strong>Single season, one team:</strong> findings reflect one 82-game regular season for one franchise; they are descriptive, not predictive.</li>
+              <li><strong>Regular season only:</strong> playoffs and pre-season are excluded.</li>
+              <li><strong>Correlation &ne; causation:</strong> observed associations do not imply that a statistic causes wins or losses.</li>
+              <li><strong>Small samples:</strong> head-to-head opponent records and per-player monthly splits can involve very few games and should be read cautiously.</li>
+            </ul>
+          </section>
+
+          <!-- Conversion CTA Block -->
+          <section class="py-12 bg-gray-50 dark:bg-[#252528] rounded-2xl border border-gray-200 dark:border-gray-800 p-8 text-center my-12" data-aos="fade-up">
+            <h3 class="text-2xl font-bold text-gray-900 dark:text-white mb-4">Need a data dashboard or analytics tool?</h3>
+            <p class="text-gray-600 dark:text-gray-400 mb-6 max-w-xl mx-auto">Let's coordinate to build interactive dashboards, data pipelines, or reporting interfaces tailored to your dataset.</p>
+            <a href="/quick-portfolio/contact/" class="inline-flex items-center px-6 py-3 bg-wood-accent hover:bg-wood-700 text-white font-bold rounded-xl transition-all shadow-md">
+              Get in Touch &rarr;
+            </a>
+          </section>
+
+          <!-- Next Case Study Footer -->
+          <div class="flex justify-between items-center border-t border-gray-200 dark:border-gray-800 pt-8 mt-8">
+            <a href="/quick-portfolio/portfolio/" class="text-sm text-gray-500 hover:text-wood-accent transition-colors">&larr; Back to Portfolio</a>
+            <a href="/quick-portfolio/portfolio/tagforge/" class="text-sm font-bold text-wood-accent hover:text-wood-700 transition-colors">Next Case Study &rarr;</a>
+          </div>
+        </div>
+      </div>
+    </article>
+  </main>
+</Layout>
