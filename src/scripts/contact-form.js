@@ -42,11 +42,13 @@ document.addEventListener("DOMContentLoaded", () => {
     const emailInput = document.getElementById("contact-email");
     const subjectInput = document.getElementById("contact-subject");
     const messageInput = document.getElementById("contact-message");
+    const typeInput = document.getElementById("contact-type");
 
     const nameVal = nameInput.value.trim();
     const emailVal = emailInput.value.trim();
     const subjectVal = subjectInput.value.trim();
     const messageVal = messageInput.value.trim();
+    const typeVal = typeInput ? typeInput.value : "";
 
     const errorIds = ["name-error", "email-error", "subject-error", "message-error"];
     errorIds.forEach(id => {
@@ -110,9 +112,10 @@ document.addEventListener("DOMContentLoaded", () => {
     const safeEmail = sanitizeInput(emailVal);
     const safeSubject = sanitizeInput(subjectVal);
     const safeMessage = sanitizeInput(messageVal);
+    const safeType = sanitizeInput(typeVal);
 
     const mailtoSubject = encodeURIComponent(`[Portfolio Inquiry] ${safeSubject}`);
-    const mailtoBody = encodeURIComponent(`Name: ${safeName}\nEmail: ${safeEmail}\n\nMessage:\n${safeMessage}`);
+    const mailtoBody = encodeURIComponent(`Name: ${safeName}\nEmail: ${safeEmail}\nInquiry type: ${safeType}\n\nMessage:\n${safeMessage}`);
 
     const targetEmail = "junalvior.dev@gmail.com";
     const mailtoUrl = `mailto:${targetEmail}?subject=${mailtoSubject}&body=${mailtoBody}`;

@@ -159,6 +159,38 @@ const description = 'A full-stack Laravel point-of-sale system with atomic stock
         <!-- Content Flow -->
         <div class="space-y-16">
 
+          <!-- SECTION 0: At-a-Glance Summary -->
+          <section id="summary" class="bg-white dark:bg-[#252528] border border-gray-200 dark:border-gray-800 rounded-2xl p-6 sm:p-8" data-aos="fade-up">
+            <h2 class="text-xl font-bold text-gray-900 dark:text-white mb-5 flex items-center gap-2">
+              <svg class="w-5 h-5 text-wood-accent shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path>
+              </svg>
+              At a Glance
+            </h2>
+            <dl class="grid grid-cols-1 md:grid-cols-2 gap-x-8 gap-y-5 text-sm">
+              <div>
+                <dt class="font-bold text-wood-accent uppercase tracking-widest text-xs">Problem</dt>
+                <dd class="mt-1 text-gray-700 dark:text-gray-300 leading-relaxed">A retail store tracked stock in disconnected spreadsheets, causing overselling, stock-outs, and no audit trail.</dd>
+              </div>
+              <div>
+                <dt class="font-bold text-wood-accent uppercase tracking-widest text-xs">Role</dt>
+                <dd class="mt-1 text-gray-700 dark:text-gray-300 leading-relaxed">Designed and built the full-stack system: Laravel API, Alpine.js POS, schema, auth, and reporting.</dd>
+              </div>
+              <div>
+                <dt class="font-bold text-wood-accent uppercase tracking-widest text-xs">Solution</dt>
+                <dd class="mt-1 text-gray-700 dark:text-gray-300 leading-relaxed">A point-of-sale with atomic stock deduction, thermal receipt printing, and a stock-movement ledger.</dd>
+              </div>
+              <div>
+                <dt class="font-bold text-wood-accent uppercase tracking-widest text-xs">Result</dt>
+                <dd class="mt-1 text-gray-700 dark:text-gray-300 leading-relaxed">Server-side stock verification prevents overselling, and every movement is attributable to a user with a reason.</dd>
+              </div>
+              <div class="md:col-span-2">
+                <dt class="font-bold text-wood-accent uppercase tracking-widest text-xs">Proof</dt>
+                <dd class="mt-1 text-gray-700 dark:text-gray-300 leading-relaxed">Live demo (Render free tier), GitHub repository, screenshots, and the schema and API documentation below.</dd>
+              </div>
+            </dl>
+          </section>
+
           <!-- SECTION 1: Executive Summary -->
           <section id="executive-summary" class="bg-white dark:bg-[#252528] border-l-4 border-wood-accent border-y border-r border-gray-200 dark:border-gray-800 rounded-r-2xl p-6 sm:p-8" data-aos="fade-up">
             <div class="flex gap-4">

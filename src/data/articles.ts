@@ -32,7 +32,7 @@ export const ARTICLES: Article[] = [
     tags: ["3D Graphics", "Portfolio Showcase"],
     image: `${BASE}/solar-system.webp`,
     href: "/quick-portfolio/portfolio/solar-system-showcase/index.html",
-    category: "pinned",
+    category: "articles",
   },
   {
     slug: "chinas-claims-on-palawan-and-batanes",
@@ -65,7 +65,7 @@ export const ARTICLES: Article[] = [
     tags: ["Business Automation", "ROI Analysis", "Workflow Strategy"],
     image: `${BASE}/automation-pickup.png`,
     href: "articles/manual-data-entry-waste/",
-    category: "articles",
+    category: "pinned",
   },
   {
     slug: "ai-agent-saving-money",
@@ -76,7 +76,7 @@ export const ARTICLES: Article[] = [
     tags: ["AI Agents", "Cost Reduction", "Systems Engineering"],
     image: `${BASE}/tropang-ai.png`,
     href: "articles/ai-agent-saving-money/",
-    category: "articles",
+    category: "pinned",
   },
   {
     slug: "exceptional-human-performance",

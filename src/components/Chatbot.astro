@@ -16,6 +16,7 @@ How it fits into the broader system: Mounted globally inside Layout.astro to off
 <button
   id="chatbot-launcher"
   aria-label="Open portfolio AI assistant chat window"
+  aria-expanded="false"
   class="fixed bottom-6 right-6 z-50 w-14 h-14 bg-[#d4a373] hover:bg-[#c39262] text-white rounded-full flex items-center justify-center shadow-xl hover:shadow-[#d4a373]/30 cursor-pointer select-none transition-all duration-300 transform hover:scale-110 active:scale-95 focus:outline-none focus:ring-2 focus:ring-[#d4a373] focus:ring-offset-2 dark:focus:ring-offset-[#1a1a1a]"
 >
   <!-- Launcher Icon: Custom SVG Chat Bubble -->
@@ -286,7 +287,7 @@ How it fits into the broader system: Mounted globally inside Layout.astro to off
     // Base welcoming text automatically injected on first invocation.
     const WELCOME_GREETING: ChatMessage = {
       role: "assistant",
-      content: "Hello! I am Jun Alvior's AI assistant. Ask me anything about his skills, custom software projects, B2B automations, or how you can get in touch with him!"
+      content: "Hello! I am Jun Alvior's AI assistant. Ask me anything about his skills, custom software projects, B2B automations, or how you can get in touch with him!\n\nPrefer direct contact? Email [junalvior.dev@gmail.com](mailto:junalvior.dev@gmail.com) or view his [resume](/quick-portfolio/assets/Jun-Alvior.pdf)."
     };
 
     /**
@@ -295,6 +296,7 @@ How it fits into the broader system: Mounted globally inside Layout.astro to off
      */
     function toggleChat() {
       isOpen = !isOpen;
+      launcher.setAttribute("aria-expanded", String(isOpen));
       if (isOpen) {
         windowEl.classList.remove("scale-90", "translate-y-4", "opacity-0", "pointer-events-none");
         windowEl.classList.add("scale-100", "translate-y-0", "opacity-100", "pointer-events-auto");
@@ -314,6 +316,8 @@ How it fits into the broader system: Mounted globally inside Layout.astro to off
         iconChat.classList.remove("scale-0", "rotate-90");
         iconClose.classList.add("scale-0", "rotate-90");
         iconClose.classList.remove("scale-100", "rotate-0");
+
+        launcher.focus();
       }
     }
 
@@ -541,6 +545,12 @@ How it fits into the broader system: Mounted globally inside Layout.astro to off
     launcher.addEventListener("click", toggleChat);
     minimizeBtn.addEventListener("click", toggleChat);
     form.addEventListener("submit", handleMessageSubmit);
+
+    document.addEventListener("keydown", (e) => {
+      if (e.key === "Escape" && isOpen) {
+        toggleChat();
+      }
+    });
 
     // Bootstrap conversation history cache on initial component paint
     loadHistory();

@@ -195,16 +195,10 @@ document.addEventListener("DOMContentLoaded", () => {
 document.addEventListener("DOMContentLoaded", () => {
   const filterBtns = document.querySelectorAll(".filter-btn");
   const projectCards = document.querySelectorAll(".project-card");
-  let filterTimeout = null;
 
   if (filterBtns.length > 0 && projectCards.length > 0) {
     filterBtns.forEach((btn) => {
       btn.addEventListener("click", () => {
-        if (filterTimeout) {
-          clearTimeout(filterTimeout);
-          filterTimeout = null;
-        }
-
         filterBtns.forEach((b) => {
           b.classList.remove("active", "bg-wood-accent", "text-white");
           b.classList.add(
@@ -213,6 +207,7 @@ document.addEventListener("DOMContentLoaded", () => {
             "text-gray-700",
             "dark:text-gray-300",
           );
+          b.setAttribute("aria-pressed", "false");
         });
 
         btn.classList.remove(
@@ -222,40 +217,26 @@ document.addEventListener("DOMContentLoaded", () => {
           "dark:text-gray-300",
         );
         btn.classList.add("active", "bg-wood-accent", "text-white");
+        btn.setAttribute("aria-pressed", "true");
 
         const filterValue = btn.getAttribute("data-filter");
 
         projectCards.forEach((card) => {
-          card.style.opacity = "";
-          card.style.display = "";
-          card.classList.remove("aos-animate");
+          const categories = card.getAttribute("data-category");
+          const matches =
+            filterValue === "all" ||
+            (categories && categories.includes(filterValue));
+
+          if (matches) {
+            card.style.display = "";
+            card.style.opacity = "1";
+            card.classList.add("aos-animate");
+          } else {
+            card.style.display = "none";
+          }
         });
 
-        if (filterValue === "all") {
-          projectCards.forEach((card) => {
-            card.style.display = "block";
-            requestAnimationFrame(() => {
-              card.style.opacity = "1";
-              card.classList.add("aos-animate");
-            });
-          });
-        } else {
-          projectCards.forEach((card) => {
-            const categories = card.getAttribute("data-category");
-            if (categories && categories.includes(filterValue)) {
-              card.style.display = "block";
-              requestAnimationFrame(() => {
-                card.style.opacity = "1";
-                card.classList.add("aos-animate");
-              });
-            }
-          });
-        }
-
-        filterTimeout = setTimeout(() => {
-          if (typeof AOS !== "undefined") AOS.refresh();
-          filterTimeout = null;
-        }, 350);
+        if (typeof AOS !== "undefined") AOS.refresh();
       });
     });
   }
