@@ -1,0 +1,124 @@
+---
+/**
+ * TestimonialsSection — Organism component.
+ * Full-width client testimonials section with header, filter tags,
+ * responsive card grid, and social proof counter stats.
+ */
+import TestimonialCard from "./TestimonialCard.astro";
+import { TESTIMONIALS, TESTIMONIAL_FILTERS } from "../data/testimonials";
+
+const stats = [
+  { value: "100%", label: "On-Time Delivery" },
+  { value: "7+", label: "Production & Client Systems" },
+  { value: "Zero", label: "Downtime Architectures" },
+];
+---
+
+<section
+  id="testimonials"
+  class="py-24 bg-grey-light dark:bg-[#1a1a1a] border-t border-gray-100 dark:border-gray-800 scroll-mt-16"
+>
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="text-center mb-12">
+      <span class="text-sm font-bold tracking-widest text-wood-accent uppercase gs-reveal">Client Testimonials</span>
+      <h2 class="mt-2 text-3xl leading-8 font-extrabold tracking-tight text-gray-900 dark:text-white sm:text-4xl gs-reveal">
+        Client Feedback &amp; Engineering Deliverables
+      </h2>
+      <p class="mt-4 max-w-2xl mx-auto text-sm md:text-base text-gray-600 dark:text-gray-400 leading-relaxed gs-reveal">
+        Real feedback from clients whose operations I've automated, streamlined, and shipped to production — with the measurable outcomes that followed.
+      </p>
+    </div>
+
+    <!-- ATOMS: Filter Tags -->
+    <div
+      id="testimonial-filters"
+      class="flex flex-wrap justify-center gap-2 mb-10 gs-reveal"
+      role="group"
+      aria-label="Filter testimonials by project type"
+    >
+      {
+        TESTIMONIAL_FILTERS.map((filter, index) => (
+          <button
+            type="button"
+            data-filter={filter}
+            aria-pressed={index === 0 ? "true" : "false"}
+            class:list={[
+              "testimonial-filter px-4 py-2 rounded-full text-xs font-bold uppercase tracking-wide border transition-all duration-300",
+              index === 0
+                ? "bg-wood-accent text-white border-wood-accent shadow-md shadow-wood-accent/20"
+                : "bg-white dark:bg-[#252528] text-gray-600 dark:text-gray-300 border-gray-200 dark:border-gray-800 hover:border-wood-accent/50 hover:text-wood-accent",
+            ]}
+          >
+            {filter}
+          </button>
+        ))
+      }
+    </div>
+
+    <!-- MOLECULES: Testimonial Cards Grid -->
+    <div
+      id="testimonials-grid"
+      class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"
+    >
+      {TESTIMONIALS.map((testimonial, index) => (
+        <div
+          data-aos="fade-up"
+          data-aos-delay={(index % 3) * 100}
+          class="h-full"
+        >
+          <TestimonialCard testimonial={testimonial} />
+        </div>
+      ))}
+    </div>
+
+    <!-- ATOMS: Social Proof Counter Stats -->
+    <div class="mt-14 flex flex-col sm:flex-row gap-4 justify-center" data-aos="fade-up">
+      {
+        stats.map((stat) => (
+          <div class="flex-1 max-w-xs mx-auto sm:mx-0 w-full text-center px-6 py-6 bg-white dark:bg-[#252528] border-2 border-wood-accent text-gray-900 dark:text-white font-bold rounded-xl shadow-sm hover:bg-wood-50 dark:hover:bg-[#1a1a1a] hover:shadow-lg transition-all transform hover:-translate-y-1">
+            <div class="text-3xl font-extrabold text-wood-accent dark:text-wood-300">{stat.value}</div>
+            <p class="mt-1 text-xs font-semibold uppercase tracking-wider text-gray-600 dark:text-gray-300">
+              {stat.label}
+            </p>
+          </div>
+        ))
+      }
+    </div>
+
+    <p class="mt-8 text-center text-xs italic text-gray-500 dark:text-gray-500">
+      Names are abbreviated for privacy. Full references available upon request.
+    </p>
+  </div>
+</section>
+
+<script>
+  const filters = document.querySelectorAll<HTMLButtonElement>("#testimonial-filters .testimonial-filter");
+  const cards = document.querySelectorAll<HTMLElement>("#testimonials-grid .testimonial-card");
+
+  if (filters.length > 0 && cards.length > 0) {
+    filters.forEach((filterBtn) => {
+      filterBtn.addEventListener("click", () => {
+        const selected = filterBtn.dataset.filter ?? "All";
+
+        filters.forEach((btn) => {
+          const isActive = btn === filterBtn;
+          btn.setAttribute("aria-pressed", String(isActive));
+          btn.classList.toggle("bg-wood-accent", isActive);
+          btn.classList.toggle("text-white", isActive);
+          btn.classList.toggle("border-wood-accent", isActive);
+          btn.classList.toggle("shadow-md", isActive);
+          btn.classList.toggle("shadow-wood-accent/20", isActive);
+          btn.classList.toggle("text-gray-600", !isActive);
+          btn.classList.toggle("dark:text-gray-300", !isActive);
+          btn.classList.toggle("border-gray-200", !isActive);
+          btn.classList.toggle("dark:border-gray-800", !isActive);
+        });
+
+        cards.forEach((card) => {
+          const show = selected === "All" || card.dataset.domain === selected;
+          card.style.display = show ? "" : "none";
+        });
+      });
+    });
+  }
+</script>

@@ -55,6 +55,16 @@
               >My Work</a
             >
             <a
+              href="/quick-portfolio/testimonials/"
+              class:list={[
+                "nav-link transition-colors font-medium",
+                Astro.url.pathname.includes("/testimonials")
+                  ? "text-wood-accent font-semibold"
+                  : "text-gray-600 dark:text-gray-300 hover:text-wood-accent dark:hover:text-wood-accent"
+              ]}
+              >Testimonials</a
+            >
+            <a
               href="/quick-portfolio/writings/"
               class:list={[
                 "nav-link transition-colors font-medium",
@@ -179,6 +189,16 @@
                 : "text-gray-700 dark:text-gray-200 hover:text-wood-accent dark:hover:text-wood-accent hover:bg-gray-50 dark:hover:bg-gray-800"
             ]}
             >My Work</a
+          >
+          <a
+            href="/quick-portfolio/testimonials/"
+            class:list={[
+              "block px-3 py-3 rounded-md text-base font-medium transition-colors",
+              Astro.url.pathname.includes("/testimonials")
+                ? "text-wood-accent bg-gray-50 dark:bg-gray-800"
+                : "text-gray-700 dark:text-gray-200 hover:text-wood-accent dark:hover:text-wood-accent hover:bg-gray-50 dark:hover:bg-gray-800"
+            ]}
+            >Testimonials</a
           >
           <a
             href="/quick-portfolio/writings/"
