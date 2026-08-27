@@ -26,8 +26,8 @@ export const TESTIMONIALS: Testimonial[] = [
     metricOrOutcome: "Days of manual investigation reduced to same-day approvals",
   },
   {
-    id: "van-p",
-    name: "Van P.",
+    id: "van-m",
+    name: "Van M.",
     role: "Property Business Owner",
     projectTitle: "Multi-Tenant Property Management & Billing Platform",
     projectType: "SaaS",
@@ -62,8 +62,8 @@ export const TESTIMONIALS: Testimonial[] = [
     metricOrOutcome: "Double bookings eliminated through intelligent scheduling",
   },
   {
-    id: "jenny-m",
-    name: "Jenny M.",
+    id: "jenny-h",
+    name: "Jenny H.",
     role: "Sales Supervisor",
     projectTitle: "Intelligent Sales & Inventory Management System",
     projectType: "AI / ML",
