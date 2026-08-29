@@ -113,35 +113,15 @@ document.addEventListener("DOMContentLoaded", () => {
   if (tabBtns.length > 0) {
     tabBtns.forEach((btn) => {
       btn.addEventListener("click", () => {
-        // Remove active class from all buttons
+        // Remove active state from all buttons
         tabBtns.forEach((b) => {
           b.classList.remove("active");
           b.setAttribute("aria-pressed", "false");
-          b.classList.remove(
-            "border-wood-accent",
-            "text-wood-700",
-            "dark:text-wood-300",
-          );
-          b.classList.add(
-            "border-transparent",
-            "text-gray-500",
-            "dark:text-gray-400",
-          );
         });
 
-        // Add active class to clicked button
-        btn.classList.remove(
-          "border-transparent",
-          "text-gray-500",
-          "dark:text-gray-400",
-        );
+        // Add active state to clicked button
         btn.classList.add("active");
         btn.setAttribute("aria-pressed", "true");
-        btn.classList.add(
-          "border-wood-accent",
-          "text-wood-700",
-          "dark:text-wood-300",
-        );
 
         // Hide all contents
         tabContents.forEach((content) => content.classList.add("hidden"));

@@ -17,7 +17,7 @@ How it fits into the broader system: Mounted globally inside Layout.astro to off
   id="chatbot-launcher"
   aria-label="Open portfolio AI assistant chat window"
   aria-expanded="false"
-  class="fixed bottom-6 right-6 z-50 w-14 h-14 bg-[#d4a373] hover:bg-[#c39262] text-white rounded-full flex items-center justify-center shadow-xl hover:shadow-[#d4a373]/30 cursor-pointer select-none transition-all duration-300 transform hover:scale-110 active:scale-95 focus:outline-none focus:ring-2 focus:ring-[#d4a373] focus:ring-offset-2 dark:focus:ring-offset-[#1a1a1a]"
+  class="fixed bottom-6 right-6 z-50 w-14 h-14 bg-wood-accent hover:bg-wood-600 text-white rounded-full flex items-center justify-center shadow-xl hover:shadow-wood-accent/30 cursor-pointer select-none transition-all duration-300 transform hover:scale-110 active:scale-95 focus:outline-none focus:ring-2 focus:ring-wood-accent focus:ring-offset-2 dark:focus:ring-offset-[#1a1a1a]"
 >
   <!-- Launcher Icon: Custom SVG Chat Bubble -->
   <svg
@@ -57,7 +57,7 @@ How it fits into the broader system: Mounted globally inside Layout.astro to off
   role="dialog"
   aria-modal="true"
   aria-label="AI assistant chat"
-  class="fixed bottom-24 right-6 w-[90vw] sm:w-[400px] h-[500px] z-50 flex flex-col rounded-2xl border border-gray-200 dark:border-zinc-800 bg-white/95 dark:bg-zinc-950/95 backdrop-blur-md shadow-2xl overflow-hidden transition-all duration-300 transform scale-90 translate-y-4 opacity-0 pointer-events-none"
+  class="fixed bottom-20 sm:bottom-24 right-6 w-[90vw] sm:w-[400px] h-[min(500px,70dvh)] max-h-[80dvh] z-50 flex flex-col rounded-2xl border border-gray-200 dark:border-zinc-800 bg-white/95 dark:bg-zinc-950/95 backdrop-blur-md shadow-2xl overflow-hidden transition-all duration-300 transform scale-90 translate-y-4 opacity-0 pointer-events-none"
 >
   <!-- Chat Header Bar -->
   <div class="px-5 py-4 border-b border-gray-200 dark:border-[#2d2d30] bg-gray-50/50 dark:bg-[#252528] flex items-center justify-between">
@@ -99,11 +99,11 @@ How it fits into the broader system: Mounted globally inside Layout.astro to off
     id="chatbot-typing-indicator"
     class="hidden px-5 py-3.5 bg-gray-50/30 dark:bg-zinc-900/30 border-t border-gray-100 dark:border-zinc-800/50 flex items-center gap-2"
   >
-    <span class="text-[11px] font-medium text-gray-500 dark:text-gray-400 italic select-none">Assistant is typing</span>
+    <span class="text-[11px] font-medium text-gray-500 dark:text-gray-300 italic select-none">Assistant is typing</span>
     <div class="flex items-center gap-1">
-      <span class="w-1.5 h-1.5 rounded-full bg-[#d4a373] block animate-[bounce_1s_infinite_100ms]"></span>
-      <span class="w-1.5 h-1.5 rounded-full bg-[#d4a373] block animate-[bounce_1s_infinite_200ms]"></span>
-      <span class="w-1.5 h-1.5 rounded-full bg-[#d4a373] block animate-[bounce_1s_infinite_300ms]"></span>
+      <span class="w-1.5 h-1.5 rounded-full bg-wood-accent block animate-[bounce_1s_infinite_100ms]"></span>
+      <span class="w-1.5 h-1.5 rounded-full bg-wood-accent block animate-[bounce_1s_infinite_200ms]"></span>
+      <span class="w-1.5 h-1.5 rounded-full bg-wood-accent block animate-[bounce_1s_infinite_300ms]"></span>
     </div>
   </div>
 
@@ -125,7 +125,7 @@ How it fits into the broader system: Mounted globally inside Layout.astro to off
         type="submit"
         id="chatbot-submit"
         aria-label="Send message"
-        class="absolute right-1.5 w-9 h-9 bg-[#d4a373] hover:bg-[#c39262] text-white rounded-xl flex items-center justify-center cursor-pointer select-none transition-all duration-300 active:scale-95 focus:outline-none"
+        class="absolute right-1.5 w-9 h-9 bg-wood-accent hover:bg-wood-600 text-white rounded-xl flex items-center justify-center cursor-pointer select-none transition-all duration-300 active:scale-95 focus:outline-none"
       >
         <svg class="w-4 h-4 transform rotate-45 -translate-x-[1px] translate-y-[0.5px]" fill="currentColor" viewBox="0 0 24 24">
           <path d="M2 21l21-9L2 3v7l15 2-15 2v7z"></path>
@@ -148,11 +148,11 @@ How it fits into the broader system: Mounted globally inside Layout.astro to off
 
   /* Explicit launcher styles to guarantee high visibility in light mode and dark mode */
   :global(#chatbot-launcher) {
-    background-color: #d4a373 !important;
+    background-color: #8d6e63 !important;
     color: #ffffff !important;
   }
   :global(#chatbot-launcher:hover) {
-    background-color: #c39262 !important;
+    background-color: #6d4c41 !important;
   }
   :global(#chatbot-launcher svg) {
     stroke: #ffffff !important;
@@ -169,8 +169,8 @@ How it fits into the broader system: Mounted globally inside Layout.astro to off
     border-color: #2d2d30 !important;
   }
   :global(#chatbot-form .relative:focus-within) {
-    border-color: #d4a373 !important;
-    box-shadow: 0 0 0 1px rgba(212, 163, 115, 0.3) !important;
+    border-color: #8d6e63 !important;
+    box-shadow: 0 0 0 1px rgba(141, 110, 99, 0.3) !important;
   }
   
   :global(#chatbot-input) {
@@ -188,11 +188,11 @@ How it fits into the broader system: Mounted globally inside Layout.astro to off
 
   /* Submit button nested inside input */
   :global(#chatbot-submit) {
-    background-color: #d4a373 !important;
+    background-color: #8d6e63 !important;
     color: #ffffff !important;
   }
   :global(#chatbot-submit:hover) {
-    background-color: #c39262 !important;
+    background-color: #6d4c41 !important;
   }
   :global(#chatbot-submit svg) {
     fill: #ffffff !important;
@@ -246,14 +246,14 @@ How it fits into the broader system: Mounted globally inside Layout.astro to off
   /* Keep links inside assistant bubbles visibly distinct from surrounding text */
   :global(#chatbot-messages a),
   :global(.dark #chatbot-messages a) {
-    color: #d4a373 !important; /* wood accent */
+    color: #8d6e63 !important; /* wood accent */
     text-decoration: underline !important;
   }
 
   /* Emphasize bold text inside assistant bubbles with the wood accent */
   :global(#chatbot-messages .self-start strong),
   :global(.dark #chatbot-messages .self-start strong) {
-    color: #d4a373 !important; /* wood accent */
+    color: #8d6e63 !important; /* wood accent */
   }
 </style>
 
@@ -473,7 +473,7 @@ How it fits into the broader system: Mounted globally inside Layout.astro to off
       const bubble = document.createElement("div");
       
       if (msg.role === "user") {
-        bubble.className = "self-end max-w-[85%] bg-[#d4a373] text-white px-4 py-3 rounded-2xl rounded-tr-none text-sm leading-relaxed shadow-sm break-words";
+        bubble.className = "self-end max-w-[85%] bg-wood-accent text-white px-4 py-3 rounded-2xl rounded-tr-none text-sm leading-relaxed shadow-sm break-words";
         bubble.innerHTML = formatMessageContent(msg.content);
       } else {
         bubble.className = "self-start max-w-[85%] bg-gray-100 dark:bg-[#252528] text-gray-800 dark:text-zinc-200 px-4 py-3 rounded-2xl rounded-tl-none text-sm leading-relaxed shadow-sm border border-gray-200/50 dark:border-[#2d2d30] break-words";

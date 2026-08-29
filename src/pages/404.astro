@@ -7,17 +7,17 @@ const description = 'Oops! The page you were looking for could not be found. Ret
 <Layout title={title} description={description}>
 <main class="flex-grow flex items-center justify-center p-6 text-center">
       <div class="space-y-6 max-w-lg">
-        <h1 class="text-7xl font-bold text-wood-accent">404</h1>
-        <h2 class="text-3xl font-semibold text-gray-900 dark:text-white">
+        <p class="text-7xl font-bold text-wood-600 dark:text-wood-300" aria-hidden="true">404</p>
+        <h1 class="text-3xl font-semibold text-gray-900 dark:text-white">
           Page Not Found
-        </h2>
-        <p class="text-gray-600 dark:text-gray-400 text-lg">
+        </h1>
+        <p class="text-gray-600 dark:text-gray-300 text-lg">
           The page you're looking for doesn't exist or has been moved. Let's get
           you back on track.
         </p>
         <a
           href="/quick-portfolio/"
-          class="inline-flex items-center justify-center px-8 py-4 bg-wood-accent hover:bg-wood-700 text-white font-medium rounded-lg shadow-lg hover:shadow-wood-accent/40 transition-all focus-visible:ring-2 focus-visible:ring-wood-accent focus:outline-none focus:ring-2 focus:ring-wood-accent"
+          class="inline-flex items-center justify-center px-8 py-4 bg-wood-accent hover:bg-wood-700 text-white font-medium rounded-lg shadow-lg hover:shadow-wood-accent/40 transition-all focus-visible:ring-2 focus-visible:ring-wood-accent focus-visible:ring-offset-2 focus:outline-none"
         >
           <svg class="w-6 h-6" viewBox="0 0 24 24" fill="currentColor">
             <path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z" />
