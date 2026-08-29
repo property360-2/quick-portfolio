@@ -76,6 +76,15 @@ const { title, description } = Astro.props;
     
     <script is:inline src="/quick-portfolio/js/theme-check.js"></script>
     <link rel="stylesheet" href="https://unpkg.com/aos@2.3.1/dist/aos.css" />
+    <style>
+      html.lenis, html.lenis body { height: auto; }
+      .lenis.lenis-smooth { scroll-behavior: auto !important; }
+      .lenis.lenis-smooth [data-lenis-prevent] { overscroll-behavior: contain; }
+      .lenis.lenis-stopped { overflow: hidden; }
+      @media (prefers-reduced-motion: reduce) {
+        html.lenis, html.lenis body { scroll-behavior: auto; }
+      }
+    </style>
   </head>
   <body class="bg-grey-light text-grey-dark dark:bg-[#1a1a1a] dark:text-gray-200 transition-colors duration-300 antialiased font-sans flex flex-col min-h-screen">
     <a href="#main-content" class="sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 focus:z-[100] focus:px-4 focus:py-2 focus:bg-wood-accent focus:text-white focus:rounded-lg focus:outline-none focus:ring-2 focus:ring-wood-accent focus:ring-offset-2">
@@ -87,6 +96,56 @@ const { title, description } = Astro.props;
     <Chatbot />
     
     <script is:inline src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script is:inline src="https://unpkg.com/lenis@1.3.1/dist/lenis.min.js"></script>
+    <script is:inline>
+      (function() {
+        if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+        if (typeof Lenis === 'undefined') return;
+        const lenis = new Lenis({
+          duration: 1.1,
+          easing: function(t) { return Math.min(1, 1.001 - Math.pow(2, -10 * t)); },
+          smoothWheel: true,
+          smoothTouch: false,
+          wheelMultiplier: 1,
+          touchMultiplier: 1.2,
+          infinite: false
+        });
+        window.lenis = lenis;
+        // Anchor links: smooth scroll via Lenis instead of instant jump
+        document.addEventListener('click', function(e) {
+          var a = e.target.closest('a[href^="#"], a[href^="/quick-portfolio/#"]');
+          if (!a) return;
+          var href = a.getAttribute('href');
+          var hash = href.indexOf('#') !== -1 ? href.slice(href.indexOf('#')) : null;
+          if (!hash || hash === '#') return;
+          var target = document.querySelector(hash);
+          if (!target) return;
+          e.preventDefault();
+          lenis.scrollTo(target, { offset: -64, duration: 1.1 });
+          history.pushState(null, '', hash);
+        });
+        // Back-to-top compatibility: expose for main.js
+        var origScrollTo = window.scrollTo;
+        window.addEventListener('scrollToTop', function() { lenis.scrollTo(0, { duration: 1.1 }); });
+        function raf(time) {
+          lenis.raf(time);
+          requestAnimationFrame(raf);
+        }
+        requestAnimationFrame(raf);
+        // Keep AOS in sync with Lenis scroll
+        lenis.on('scroll', function() {
+          if (typeof AOS !== 'undefined' && AOS.refresh) AOS.refresh();
+        });
+        // Pause Lenis when mobile menu open is detected (optional)
+        var mo = new MutationObserver(function() {
+          var menu = document.getElementById('mobile-menu');
+          if (menu && !menu.classList.contains('hidden')) lenis.stop();
+          else lenis.start();
+        });
+        var menuEl = document.getElementById('mobile-menu');
+        if (menuEl) mo.observe(menuEl, { attributes: true, attributeFilter: ['class'] });
+      })();
+    </script>
     <script is:inline src="/quick-portfolio/js/main.js"></script>
   </body>
 </html>
