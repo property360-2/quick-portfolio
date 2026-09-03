@@ -8,6 +8,19 @@ export default defineConfig({
   site: 'https://property360-2.github.io', 
   base: '/quick-portfolio',
   vite: {
-    plugins: [tailwindcss()],
+    plugins: [
+      tailwindcss(),
+      {
+        name: 'favicon-base-fix',
+        configureServer(server) {
+          server.middlewares.use((req, res, next) => {
+            if (req.url === '/favicon.ico') {
+              req.url = '/quick-portfolio/favicon.ico';
+            }
+            next();
+          });
+        },
+      },
+    ],
   },
 });

@@ -30,7 +30,7 @@
     <!-- Game UI Overlay -->
     <div id="ui-container">
       <h1 id="title">Tagasira ng Syudad</h1>
-      <p id="instructions">Click on the buildings to destroy them!</p>
+      <p id="instructions">Click buildings to destroy • 1-7 / G switch • R replay</p>
       <p id="score-display">
         Buildings Left: <span id="buildings-left">0</span>
       </p>
@@ -68,6 +68,10 @@
           <span class="stat-label">☢️ Nukes</span>
         </div>
         <div class="stat-card">
+          <span class="stat-value" id="stat-godzilla">0</span>
+          <span class="stat-label">🐲 Godzilla</span>
+        </div>
+        <div class="stat-card">
           <span class="stat-value" id="stat-time">0s</span>
           <span class="stat-label">⏱️ Time</span>
         </div>
@@ -94,6 +98,9 @@
       </button>
       <button class="weapon-btn" data-weapon="nuke" title="Atomic Bomb">
         ☢️<span class="weapon-label">Nuke</span>
+      </button>
+      <button class="weapon-btn" data-weapon="godzilla" title="Godzilla — AI + Atomic Breath">
+        🐲<span class="weapon-label">Godzilla</span>
       </button>
     </div>
 
