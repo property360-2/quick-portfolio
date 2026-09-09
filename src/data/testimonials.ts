@@ -10,6 +10,7 @@ export interface Testimonial {
   quote: string;
   highlight: string;
   metricOrOutcome: string;
+  image?: string;
 }
 
 export const TESTIMONIALS: Testimonial[] = [
@@ -52,7 +53,7 @@ export const TESTIMONIALS: Testimonial[] = [
   {
     id: "alexa-lei-b",
     name: "Alexa Lei B.",
-    role: "Salon Founder",
+    role: "Salon Founder — Dream Salon",
     projectTitle: "AI-Powered Salon Booking & Decision Support System",
     projectType: "AI / ML",
     techStack: ["Machine Learning", "Booking Engine", "Analytics"],
@@ -60,11 +61,12 @@ export const TESTIMONIALS: Testimonial[] = [
       "The system doesn't just take bookings — it helps me decide. Peak hours, staff assignments, service demand — it's all surfaced for me. Clients book faster, and double bookings basically disappeared overnight.",
     highlight: "Data-backed scheduling decisions with conflict-free bookings.",
     metricOrOutcome: "Double bookings eliminated through intelligent scheduling",
+    image: "/quick-portfolio/assets/clients/dream-salon.png",
   },
   {
     id: "jenny-h",
     name: "Jenny H.",
-    role: "Sales Supervisor",
+    role: "Sales Supervisor — Cafe Kantina",
     projectTitle: "Intelligent Sales & Inventory Management System",
     projectType: "AI / ML",
     techStack: ["Demand Forecasting", "Low-Stock Alerts", "Sales Analytics"],
@@ -72,6 +74,7 @@ export const TESTIMONIALS: Testimonial[] = [
       "We were always either overstocked or scrambling. The forecasting alerts changed that completely. I know what's moving and what to reorder before it becomes a problem — purchasing is finally proactive instead of reactive.",
     highlight: "Producible reordering driven by sales trend analysis.",
     metricOrOutcome: "Stockouts and overstock dramatically reduced via forecasting",
+    image: "/quick-portfolio/assets/clients/cafe-kantina.png",
   },
   {
     id: "klois-d",
@@ -96,6 +99,19 @@ export const TESTIMONIALS: Testimonial[] = [
       "Jun rebuilt our web presence from the ground up — faster load times, cleaner design, and deployments that just work. Downtime went from a regular worry to something we simply don't think about anymore.",
     highlight: "Reliable cloud deployment with zero-downtime updates.",
     metricOrOutcome: "Zero-downtime architecture after full infrastructure rebuild",
+  },
+  {
+    id: "justine-r",
+    name: "Justine R",
+    role: "Branch Manager — FCJ Barihan",
+    projectTitle: "Sales & Inventory Management System with ML Forecasting",
+    projectType: "AI / ML",
+    techStack: ["Sales Analytics", "Inventory Sync", "ML Forecasting"],
+    quote:
+      "From sales to inventory, everything now ties together. The ML forecasting shows us what will move next week — we restock smarter, avoid stockouts, and the business analytics finally use our actual data instead of gut feel.",
+    highlight: "Advance business analytics + ML-driven sales forecasting for restocking.",
+    metricOrOutcome: "Forecast accuracy up, stockouts down with ML-driven planning",
+    image: "/quick-portfolio/assets/clients/FCJ-Barihan-Branch.png",
   },
 ];
 

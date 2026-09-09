@@ -1,0 +1,181 @@
+---
+interface Item { src: string; alt: string; label: string; href?: string }
+interface Props { items: Item[]; autoIntervalMs?: number }
+const { items, autoIntervalMs = 2600 } = Astro.props as Props;
+const carouselId = `cf-${Math.random().toString(36).slice(2,7)}`;
+---
+
+<div id={carouselId} class="coverflow-root relative select-none" data-interval={autoIntervalMs}>
+  <div class="coverflow-stage relative mx-auto w-full max-w-[580px] aspect-[16/11] sm:aspect-[16/10.5] perspective-[1400px] preserve-3d overflow-visible py-4">
+    <div class="coverflow-track absolute inset-0 overflow-visible">
+      {items.map((it, idx) => (
+        <article
+          class="coverflow-card group absolute top-1/2 left-1/2 will-change-transform cursor-pointer"
+          data-index={idx}
+          data-href={it.href || ""}
+          aria-label={it.label}
+          role="button"
+          tabindex={idx === 0 ? 0 : -1}
+        >
+          <div class="relative w-[300px] sm:w-[360px] rounded-2xl overflow-hidden border border-white/10 shadow-[0_24px_64px_-16px_rgba(0,0,0,0.65)] bg-white">
+            <div class="relative aspect-[16/10] bg-white overflow-hidden">
+              <img src={it.src} alt={it.alt} loading={idx < 3 ? "eager" : "lazy"} decoding="async" class="w-full h-full object-cover object-top" draggable="false" />
+            </div>
+          </div>
+        </article>
+      ))}
+    </div>
+  </div>
+</div>
+
+<script is:inline define:vars={{ carouselId }}>
+(function(){
+  var root = document.getElementById(carouselId);
+  if (!root) return;
+  var cards = Array.prototype.slice.call(root.querySelectorAll('.coverflow-card'));
+  var n = cards.length;
+  if (!n) return;
+  var interval = parseInt(root.getAttribute('data-interval')||'3800',10);
+  var current = 0;
+  var autoTimer = null;
+  var resumeTimer = null;
+  var isDragging = false;
+  var startX = 0;
+  var deltaX = 0;
+  var prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  function wrap(i){ return (i % n + n) % n; }
+  function shortestDist(i){
+    var d = i - current;
+    if (d > n/2) d -= n;
+    if (d < -n/2) d += n;
+    return d;
+  }
+
+  function render(withTransition){
+    if (prefersReduced) withTransition = false;
+    var isMobile = window.innerWidth < 640;
+    var step = isMobile ? 72 : 98;
+    var tilt = 14; // diagonal tilt like WebTech Buddie
+    cards.forEach(function(card, i){
+      var d = shortestDist(i);
+      var ad = Math.abs(d);
+      var visible = ad <= 3;
+      if (!visible) {
+        card.style.opacity = '0';
+        card.style.pointerEvents = 'none';
+        card.style.transform = 'translate(-50%, -50%) translateX('+(d*step)+'px) translateZ(-120px) scale(0.72) rotateZ('+(d>0?tilt:-tilt)+'deg)';
+        card.style.filter = 'blur(10px)';
+        return;
+      }
+      var scale = d===0 ? 1.1 : ad===1 ? 0.92 : ad===2 ? 0.85 : 0.78;
+      var opacity = d===0 ? 1 : ad===1 ? 0.58 : ad===2 ? 0.38 : 0.22;
+      var blur = d===0 ? 0 : ad===1 ? 5 : ad===2 ? 7 : 9;
+      var rotateY = d===0 ? 0 : d>0 ? -22 : 22;
+      var rotateZ = d===0 ? 0 : d>0 ? -tilt : tilt;
+      var translateZ = d===0 ? 36 : ad===1 ? -12 : -42;
+      var z = 30 - ad;
+
+      card.style.zIndex = String(z);
+      card.style.pointerEvents = 'auto';
+      card.style.opacity = String(opacity);
+      var offsetX = d * step;
+      var tf = 'translate(-50%, -50%) translateX(' + offsetX + 'px) translateZ(' + translateZ + 'px) rotateY(' + rotateY + 'deg) rotateZ(' + rotateZ + 'deg) scale(' + scale + ')';
+      if (withTransition) {
+        card.style.transition = 'transform 620ms cubic-bezier(0.22,1,0.36,1), opacity 420ms ease, filter 420ms ease';
+        requestAnimationFrame(function(){
+          card.style.transform = tf;
+          card.style.filter = 'blur(' + blur + 'px)';
+        });
+      } else {
+        card.style.transition = 'none';
+        card.style.transform = tf;
+        card.style.filter = 'blur(' + blur + 'px)';
+      }
+      card.tabIndex = d===0 ? 0 : -1;
+    });
+  }
+
+  function goTo(i, withTransition){
+    current = wrap(i);
+    render(withTransition !== false);
+    pauseAutoTemporarily();
+  }
+  function next(){ goTo(current+1, true); }
+  function prev(){ goTo(current-1, true); }
+  function autoNext(){ current = wrap(current+1); render(true); }
+
+  function restartAuto(){
+    if (prefersReduced) return;
+    if (autoTimer) clearInterval(autoTimer);
+    if (resumeTimer) clearTimeout(resumeTimer);
+    autoTimer = setInterval(autoNext, interval);
+  }
+  function pauseAutoTemporarily(){
+    if (autoTimer) clearInterval(autoTimer);
+    autoTimer = null;
+    if (resumeTimer) clearTimeout(resumeTimer);
+    resumeTimer = setTimeout(restartAuto, 2200);
+  }
+
+  root.style.perspective = '1400px';
+  var stage = root.querySelector('.coverflow-stage');
+  stage.style.transformStyle = 'preserve-3d';
+  render(false);
+  requestAnimationFrame(function(){ render(true); });
+  restartAuto();
+
+  cards.forEach(function(card){
+    card.addEventListener('click', function(){
+      var idx = parseInt(card.getAttribute('data-index'),10);
+      if (idx === wrap(current)) {
+        var href = card.getAttribute('data-href');
+        if (href) window.location.href = href;
+        return;
+      }
+      goTo(idx, true);
+    });
+    card.addEventListener('keydown', function(e){
+      if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); card.click(); }
+    });
+  });
+
+  function onDown(x){
+    isDragging = true;
+    startX = x;
+    deltaX = 0;
+    pauseAutoTemporarily();
+    stage.style.cursor = 'grabbing';
+    cards.forEach(function(c){ c.style.transition = 'none'; });
+  }
+  function onUp(){
+    if (!isDragging) return;
+    isDragging = false;
+    stage.style.cursor = 'grab';
+    var th = 40;
+    if (deltaX > th) prev();
+    else if (deltaX < -th) next();
+    else render(true);
+    deltaX = 0;
+  }
+
+  stage.style.cursor = 'grab';
+  stage.addEventListener('pointerdown', function(e){ if (e.pointerType==='mouse' && e.button!==0) return; stage.setPointerCapture(e.pointerId); onDown(e.clientX); });
+  stage.addEventListener('pointermove', function(e){ if (!isDragging) return; deltaX = e.clientX - startX; });
+  stage.addEventListener('pointerup', onUp);
+  stage.addEventListener('pointercancel', onUp);
+  stage.addEventListener('pointerleave', function(){ if (isDragging) onUp(); });
+
+  root.addEventListener('keydown', function(e){
+    if (e.key === 'ArrowRight') next();
+    if (e.key === 'ArrowLeft') prev();
+  });
+  root.tabIndex = 0;
+  document.addEventListener('visibilitychange', function(){ if (document.hidden) { if (autoTimer) clearInterval(autoTimer); } else restartAuto(); });
+})();
+</script>
+
+<style>
+  .coverflow-stage { transform-style: preserve-3d; }
+  .coverflow-card { transform-style: preserve-3d; backface-visibility: hidden; }
+</style>
