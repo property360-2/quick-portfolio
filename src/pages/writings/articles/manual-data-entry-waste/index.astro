@@ -12,7 +12,9 @@ const description = 'An in-depth analysis of how manual data entry wastes 10+ ho
 
 <Layout title={title} description={description}>
 <main id="main-content" class="flex-grow flex flex-col">
-      <article class="py-24 bg-white dark:bg-[#1f1f1f] flex-grow">
+      <article class="py-24 bg-grey-light dark:bg-[#1a1a1a] flex-grow relative overflow-hidden">
+        <div class="absolute inset-0 -z-10 bg-grid-wood opacity-[0.32] [mask-image:radial-gradient(ellipse_70%_45%_at_50%_0%,black_60%,transparent_110%)] pointer-events-none"></div>
+        <div class="absolute -top-24 -left-24 w-[520px] h-[520px] bg-wood-300/8 dark:bg-wood-400/5 rounded-full blur-[90px] pointer-events-none hidden md:block"></div>
         <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
           <!-- Breadcrumb -->
           <div class="mb-8 text-sm text-gray-500 dark:text-gray-300">
@@ -26,7 +28,7 @@ const description = 'An in-depth analysis of how manual data entry wastes 10+ ho
 
           <!-- Header -->
           <header class="mb-12" data-aos="fade-up">
-            <div class="mb-8 rounded-xl overflow-hidden shadow-lg border border-gray-100 dark:border-gray-800">
+            <div class="mb-8 rounded-xl overflow-hidden shadow-lg border border-gray-100 dark:border-white/10">
               <img
                 src="/quick-portfolio/assets/automation-pickup.png"
                 alt="The Hidden Cost of Manual Data Entry"
@@ -64,7 +66,7 @@ const description = 'An in-depth analysis of how manual data entry wastes 10+ ho
               By shifting from manual pipelines to automated workflows, organizations can eliminate operational leaks, reclaim thousands of productive hours, and redirect their workforce toward strategic initiatives that actually drive growth.
             </p>
 
-            <hr class="my-12 border-gray-200 dark:border-gray-700" />
+            <hr class="my-12 border-gray-200 dark:border-white/10" />
 
             <h2>1. The Mathematics of Manual Waste</h2>
             <p>
@@ -108,7 +110,7 @@ const description = 'An in-depth analysis of how manual data entry wastes 10+ ho
 
             <table class="w-full border-collapse my-8 text-sm">
               <thead>
-                <tr class="border-b border-gray-200 dark:border-gray-700 bg-gray-50 dark:bg-gray-800 text-left">
+                <tr class="border-b border-gray-200 dark:border-white/10 bg-gray-50 dark:bg-gray-800 text-left">
                   <th class="p-3 font-semibold text-gray-900 dark:text-white">Business Process</th>
                   <th class="p-3 font-semibold text-gray-900 dark:text-white">Manual Pipeline (High Friction)</th>
                   <th class="p-3 font-semibold text-gray-900 dark:text-white">Automated Solution (Zero Friction)</th>
@@ -159,7 +161,7 @@ const description = 'An in-depth analysis of how manual data entry wastes 10+ ho
           </div>
 
           <!-- Conversion CTA Block -->
-          <section class="py-12 bg-gray-50 dark:bg-[#252528] rounded-2xl border border-gray-200 dark:border-gray-800 p-8 text-center my-12" data-aos="fade-up">
+          <section class="py-12 bg-gray-50 dark:bg-[#252528] rounded-2xl border border-gray-200 dark:border-white/10 p-8 text-center my-12" data-aos="fade-up">
             <h3 class="text-2xl font-bold text-gray-900 dark:text-white mb-4">Want to build high-performance PWAs or full-stack platforms?</h3>
             <p class="text-gray-600 dark:text-gray-300 mb-6 max-w-xl mx-auto">Let's coordinate to build custom software, offline-first mobile webapps, or high-throughput databases.</p>
             <a href="/quick-portfolio/contact/" class="inline-flex items-center px-6 py-3 bg-wood-accent hover:bg-wood-700 text-white font-bold rounded-xl transition-all shadow-md">

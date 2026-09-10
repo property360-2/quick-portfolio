@@ -15,7 +15,7 @@ const adminEmailLabel = FIREBASE_ADMIN_EMAILS.join(", ");
 <Layout title={title} description={description}>
   <main id="main-content" class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-24 min-h-screen">
     <section id="auth-panel" class="max-w-md mx-auto">
-      <form id="login-form" class="bg-white dark:bg-[#252528] rounded-2xl p-6 border border-gray-200 dark:border-gray-800 shadow-xl space-y-5" novalidate>
+      <form id="login-form" class="bg-white dark:bg-[#252528] rounded-2xl p-6 border border-gray-200 dark:border-white/10 shadow-xl space-y-5" novalidate>
         <div class="text-center">
           <span class="text-wood-accent font-bold tracking-widest uppercase text-xs mb-2 block">Admin Access</span>
           <h1 class="text-3xl font-extrabold text-gray-900 dark:text-white">Project Inquiries Login</h1>
@@ -26,12 +26,12 @@ const adminEmailLabel = FIREBASE_ADMIN_EMAILS.join(", ");
 
         <div>
           <label for="admin-email" class="block text-sm font-bold text-gray-900 dark:text-white mb-2">Email</label>
-          <input id="admin-email" name="email" type="email" autocomplete="email" class="w-full bg-gray-50 dark:bg-[#1a1a1a] border border-gray-200 dark:border-gray-700 text-gray-900 dark:text-white text-sm rounded-lg focus:ring-2 focus:ring-wood-accent focus:border-transparent p-3 shadow-sm outline-none placeholder-gray-400" placeholder={adminEmailLabel} />
+          <input id="admin-email" name="email" type="email" autocomplete="email" class="w-full bg-gray-50 dark:bg-[#1a1a1a] border border-gray-200 dark:border-white/10 text-gray-900 dark:text-white text-sm rounded-lg focus:ring-2 focus:ring-wood-accent focus:border-transparent p-3 shadow-sm outline-none placeholder-gray-400" placeholder={adminEmailLabel} />
         </div>
 
         <div>
           <label for="admin-password" class="block text-sm font-bold text-gray-900 dark:text-white mb-2">Password</label>
-          <input id="admin-password" name="password" type="password" autocomplete="current-password" class="w-full bg-gray-50 dark:bg-[#1a1a1a] border border-gray-200 dark:border-gray-700 text-gray-900 dark:text-white text-sm rounded-lg focus:ring-2 focus:ring-wood-accent focus:border-transparent p-3 shadow-sm outline-none placeholder-gray-400" placeholder="Firebase password" />
+          <input id="admin-password" name="password" type="password" autocomplete="current-password" class="w-full bg-gray-50 dark:bg-[#1a1a1a] border border-gray-200 dark:border-white/10 text-gray-900 dark:text-white text-sm rounded-lg focus:ring-2 focus:ring-wood-accent focus:border-transparent p-3 shadow-sm outline-none placeholder-gray-400" placeholder="Firebase password" />
         </div>
 
         <button type="submit" class="w-full bg-wood-accent hover:bg-wood-700 text-white font-bold py-4 px-6 rounded-lg transition-colors flex justify-center items-center shadow-md">
@@ -43,14 +43,14 @@ const adminEmailLabel = FIREBASE_ADMIN_EMAILS.join(", ");
     </section>
 
     <section id="notes-panel" class="hidden">
-      <div class="flex flex-col md:flex-row justify-between gap-4 md:items-end border-b border-gray-200 dark:border-gray-800 pb-6 mb-6">
+      <div class="flex flex-col md:flex-row justify-between gap-4 md:items-end border-b border-gray-200 dark:border-white/10 pb-6 mb-6">
         <div>
           <span class="text-wood-accent font-bold tracking-widest uppercase text-xs mb-2 block">Inbox</span>
           <h1 class="text-3xl md:text-4xl font-extrabold text-gray-900 dark:text-white">Project Inquiries</h1>
           <p id="signed-in-label" class="text-sm text-gray-600 dark:text-gray-300 mt-2"></p>
         </div>
         <div class="flex flex-wrap items-center gap-3">
-          <div id="lead-count" class="px-4 py-2.5 bg-white dark:bg-[#252528] border border-gray-200 dark:border-gray-800 rounded-xl text-xs font-bold text-gray-600 dark:text-gray-300 shadow-sm">
+          <div id="lead-count" class="px-4 py-2.5 bg-white dark:bg-[#252528] border border-gray-200 dark:border-white/10 rounded-xl text-xs font-bold text-gray-600 dark:text-gray-300 shadow-sm">
             0 Inquiries
           </div>
           <button id="sign-out-btn" type="button" class="bg-gray-100 hover:bg-gray-200 dark:bg-gray-800 dark:hover:bg-gray-700 text-gray-700 dark:text-gray-200 font-bold py-2.5 px-4 rounded-lg transition-colors">
@@ -122,7 +122,7 @@ const adminEmailLabel = FIREBASE_ADMIN_EMAILS.join(", ");
      */
     function createStatusSelect(note: any) {
       const select = document.createElement("select");
-      select.className = "note-status bg-gray-50 dark:bg-[#1a1a1a] border border-gray-200 dark:border-gray-700 text-gray-900 dark:text-white text-sm rounded-lg p-2 outline-none";
+      select.className = "note-status bg-gray-50 dark:bg-[#1a1a1a] border border-gray-200 dark:border-white/10 text-gray-900 dark:text-white text-sm rounded-lg p-2 outline-none";
       select.dataset.noteId = note.id;
 
       ["New", "Contacted", "Meeting", "Waiting", "Closed"].forEach((status) => {
@@ -146,7 +146,7 @@ const adminEmailLabel = FIREBASE_ADMIN_EMAILS.join(", ");
       input.value = note.nextAction ?? "";
       input.placeholder = "Next action";
       input.dataset.noteId = note.id;
-      input.className = "note-next-action w-full bg-gray-50 dark:bg-[#1a1a1a] border border-gray-200 dark:border-gray-700 text-gray-900 dark:text-white text-sm rounded-lg p-2 outline-none";
+      input.className = "note-next-action w-full bg-gray-50 dark:bg-[#1a1a1a] border border-gray-200 dark:border-white/10 text-gray-900 dark:text-white text-sm rounded-lg p-2 outline-none";
       return input;
     }
 
@@ -156,7 +156,7 @@ const adminEmailLabel = FIREBASE_ADMIN_EMAILS.join(", ");
      */
     function createLeadNoteCard(note: any) {
       const card = document.createElement("article");
-      card.className = "bg-white dark:bg-[#252528] rounded-2xl p-5 border border-gray-200 dark:border-gray-800 shadow-sm space-y-4";
+      card.className = "bg-white dark:bg-[#252528] rounded-2xl p-5 border border-gray-200 dark:border-white/10 shadow-sm space-y-4";
 
       const header = document.createElement("div");
       header.className = "flex flex-col md:flex-row md:items-start md:justify-between gap-3";
@@ -184,7 +184,7 @@ const adminEmailLabel = FIREBASE_ADMIN_EMAILS.join(", ");
       }
 
       const footer = document.createElement("div");
-      footer.className = "grid grid-cols-1 md:grid-cols-[1fr_auto] gap-3 items-center pt-3 border-t border-gray-100 dark:border-gray-800";
+      footer.className = "grid grid-cols-1 md:grid-cols-[1fr_auto] gap-3 items-center pt-3 border-t border-gray-100 dark:border-white/10";
       footer.append(createNextActionInput(note));
       footer.append(createTextElement("span", "text-xs text-gray-400", note.createdAtLabel));
       card.append(footer);

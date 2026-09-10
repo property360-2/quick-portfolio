@@ -10,10 +10,12 @@ const description = 'Read articles on web development, accessibility, and tech a
 <Layout title={title} description={description}>
 <main id="main-content" class="flex-grow flex flex-col">
       <!-- ORGANISMS: Writings -->
-      <section id="writings" class="writings-page section-py bg-white dark:bg-[#1f1f1f] flex-grow overflow-x-hidden">
+      <section id="writings" class="relative writings-page section-py bg-grey-light dark:bg-[#1a1a1a] flex-grow overflow-x-hidden">
+        <div class="absolute inset-0 -z-10 bg-grid-wood opacity-[0.32] [mask-image:radial-gradient(ellipse_70%_45%_at_50%_0%,black_60%,transparent_110%)] pointer-events-none"></div>
+        <div class="absolute -top-24 -left-24 w-[520px] h-[520px] bg-wood-300/8 dark:bg-wood-400/5 rounded-full blur-[90px] pointer-events-none hidden md:block"></div>
         <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
           <div
-            class="writings-header flex flex-col gap-5 md:flex-row md:justify-between md:items-end mb-8 sm:mb-12 border-b border-gray-200 dark:border-gray-700 pb-5"
+            class="writings-header flex flex-col gap-5 md:flex-row md:justify-between md:items-end mb-8 sm:mb-12 border-b border-gray-200 dark:border-white/10 pb-5"
           >
             <div data-aos="fade-up">
               <p

@@ -17,8 +17,8 @@ const carouselId = `cf-${Math.random().toString(36).slice(2,7)}`;
           role="button"
           tabindex={idx === 0 ? 0 : -1}
         >
-          <div class="relative w-[300px] sm:w-[360px] rounded-2xl overflow-hidden border border-white/10 shadow-[0_24px_64px_-16px_rgba(0,0,0,0.65)] bg-white">
-            <div class="relative aspect-[16/10] bg-white overflow-hidden">
+          <div class="relative w-[300px] sm:w-[360px] rounded-2xl overflow-hidden shadow-[0_24px_64px_-16px_rgba(0,0,0,0.65)]">
+            <div class="relative aspect-[16/10] overflow-hidden">
               <img src={it.src} alt={it.alt} loading={idx < 3 ? "eager" : "lazy"} decoding="async" class="w-full h-full object-cover object-top" draggable="false" />
             </div>
           </div>
@@ -52,36 +52,68 @@ const carouselId = `cf-${Math.random().toString(36).slice(2,7)}`;
     return d;
   }
 
-  function render(withTransition){
+  function render(withTransition, dragX){
     if (prefersReduced) withTransition = false;
     var isMobile = window.innerWidth < 640;
     var step = isMobile ? 72 : 98;
-    var tilt = 14; // diagonal tilt like WebTech Buddie
+    var tilt = 14;
+    var dragProgress = 0;
+    if (typeof dragX === 'number' && isDragging) {
+      dragProgress = dragX / step;
+    }
     cards.forEach(function(card, i){
-      var d = shortestDist(i);
-      var ad = Math.abs(d);
-      var visible = ad <= 3;
+      var dRaw = shortestDist(i) + dragProgress;
+      // for visibility use rounded distance
+      var dRounded = Math.round(dRaw);
+      var adRounded = Math.abs(dRounded);
+      var visible = adRounded <= 3;
       if (!visible) {
         card.style.opacity = '0';
         card.style.pointerEvents = 'none';
-        card.style.transform = 'translate(-50%, -50%) translateX('+(d*step)+'px) translateZ(-120px) scale(0.72) rotateZ('+(d>0?tilt:-tilt)+'deg)';
+        card.style.transform = 'translate(-50%, -50%) translateX('+(dRaw*step)+'px) translateZ(-120px) scale(0.72) rotateZ('+(dRaw>0?tilt:-tilt)+'deg)';
         card.style.filter = 'blur(10px)';
         return;
       }
-      var scale = d===0 ? 1.1 : ad===1 ? 0.92 : ad===2 ? 0.85 : 0.78;
-      var opacity = d===0 ? 1 : ad===1 ? 0.58 : ad===2 ? 0.38 : 0.22;
-      var blur = d===0 ? 0 : ad===1 ? 5 : ad===2 ? 7 : 9;
-      var rotateY = d===0 ? 0 : d>0 ? -22 : 22;
-      var rotateZ = d===0 ? 0 : d>0 ? -tilt : tilt;
-      var translateZ = d===0 ? 36 : ad===1 ? -12 : -42;
-      var z = 30 - ad;
-
+      // smooth lerp between integer steps
+      var frac = dRaw - Math.floor(dRaw);
+      if (dRaw < 0) frac = dRaw - Math.ceil(dRaw);
+      // interpolate scale/opacity/blur based on fractional distance
+      var ad = Math.abs(dRaw);
+      var scale, opacity, blur, rotateY, rotateZ, translateZ;
+      // lerp helper
+      function lerp(a,b,t){ return a + (b-a)*Math.abs(t); }
+      if (ad <= 1.2) {
+        // between 0 and 1
+        var t = Math.min(ad, 1);
+        scale = lerp(1.1, 0.92, t);
+        opacity = lerp(1, 0.58, t);
+        blur = lerp(0, 5, t);
+        rotateY = dRaw>0 ? -22*t : 22*t;
+        rotateZ = dRaw>0 ? -tilt*t : tilt*t;
+        translateZ = lerp(36, -12, t);
+      } else if (ad <= 2.2) {
+        var t = Math.min(ad-1, 1);
+        scale = lerp(0.92, 0.85, t);
+        opacity = lerp(0.58, 0.38, t);
+        blur = lerp(5, 7, t);
+        rotateY = dRaw>0 ? lerp(-22, -22, t) : lerp(22, 22, t);
+        rotateZ = dRaw>0 ? -tilt : tilt;
+        translateZ = lerp(-12, -42, t);
+      } else {
+        scale = 0.78;
+        opacity = 0.22;
+        blur = 9;
+        rotateY = dRaw>0 ? -22 : 22;
+        rotateZ = dRaw>0 ? -tilt : tilt;
+        translateZ = -42;
+      }
+      var z = 30 - Math.abs(Math.round(dRaw));
       card.style.zIndex = String(z);
       card.style.pointerEvents = 'auto';
       card.style.opacity = String(opacity);
-      var offsetX = d * step;
+      var offsetX = dRaw * step;
       var tf = 'translate(-50%, -50%) translateX(' + offsetX + 'px) translateZ(' + translateZ + 'px) rotateY(' + rotateY + 'deg) rotateZ(' + rotateZ + 'deg) scale(' + scale + ')';
-      if (withTransition) {
+      if (withTransition && !isDragging) {
         card.style.transition = 'transform 620ms cubic-bezier(0.22,1,0.36,1), opacity 420ms ease, filter 420ms ease';
         requestAnimationFrame(function(){
           card.style.transform = tf;
@@ -92,7 +124,7 @@ const carouselId = `cf-${Math.random().toString(36).slice(2,7)}`;
         card.style.transform = tf;
         card.style.filter = 'blur(' + blur + 'px)';
       }
-      card.tabIndex = d===0 ? 0 : -1;
+      card.tabIndex = Math.abs(dRaw) < 0.5 ? 0 : -1;
     });
   }
 
@@ -148,20 +180,37 @@ const carouselId = `cf-${Math.random().toString(36).slice(2,7)}`;
     stage.style.cursor = 'grabbing';
     cards.forEach(function(c){ c.style.transition = 'none'; });
   }
+  function onMove(x){
+    if (!isDragging) return;
+    deltaX = x - startX;
+    render(false, deltaX);
+  }
   function onUp(){
     if (!isDragging) return;
     isDragging = false;
     stage.style.cursor = 'grab';
-    var th = 40;
-    if (deltaX > th) prev();
-    else if (deltaX < -th) next();
-    else render(true);
+    var th = 36;
+    // snap to nearest based on drag distance
+    var steps = Math.round(deltaX / (window.innerWidth < 640 ? 72 : 98));
+    if (steps !== 0) {
+      // drag right -> prev (positive delta), left -> next
+      if (steps > 0) { for(var k=0;k<steps;k++) current = wrap(current-1); }
+      else { for(var k=0;k<-steps;k++) current = wrap(current+1); }
+      render(true);
+      pauseAutoTemporarily();
+    } else {
+      if (Math.abs(deltaX) > th) {
+        if (deltaX > 0) prev(); else next();
+      } else {
+        render(true);
+      }
+    }
     deltaX = 0;
   }
 
   stage.style.cursor = 'grab';
   stage.addEventListener('pointerdown', function(e){ if (e.pointerType==='mouse' && e.button!==0) return; stage.setPointerCapture(e.pointerId); onDown(e.clientX); });
-  stage.addEventListener('pointermove', function(e){ if (!isDragging) return; deltaX = e.clientX - startX; });
+  stage.addEventListener('pointermove', function(e){ if (!isDragging) return; onMove(e.clientX); });
   stage.addEventListener('pointerup', onUp);
   stage.addEventListener('pointercancel', onUp);
   stage.addEventListener('pointerleave', function(){ if (isDragging) onUp(); });

@@ -8,7 +8,9 @@ const description = 'A legal and historical analysis of China\'s territorial cla
 
 <Layout title={title} description={description}>
 <main id="main-content" class="flex-grow flex flex-col">
-      <article class="py-24 bg-white dark:bg-[#1f1f1f] flex-grow">
+      <article class="py-24 bg-grey-light dark:bg-[#1a1a1a] flex-grow relative overflow-hidden">
+        <div class="absolute inset-0 -z-10 bg-grid-wood opacity-[0.32] [mask-image:radial-gradient(ellipse_70%_45%_at_50%_0%,black_60%,transparent_110%)] pointer-events-none"></div>
+        <div class="absolute -top-24 -left-24 w-[520px] h-[520px] bg-wood-300/8 dark:bg-wood-400/5 rounded-full blur-[90px] pointer-events-none hidden md:block"></div>
         <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
           <!-- Breadcrumb -->
           <div class="mb-8 text-sm text-gray-500 dark:text-gray-300">
@@ -22,7 +24,7 @@ const description = 'A legal and historical analysis of China\'s territorial cla
 
           <!-- Header -->
           <header class="mb-12" data-aos="fade-up">
-            <div class="mb-8 rounded-xl overflow-hidden shadow-lg border border-gray-100 dark:border-gray-800">
+            <div class="mb-8 rounded-xl overflow-hidden shadow-lg border border-gray-100 dark:border-white/10">
               <img
                 src="/quick-portfolio/assets/China%27s%20Claims%20on%20Palawan%20and%20Batanes.png"
                 alt="China's Claims on Palawan and Batanes"
