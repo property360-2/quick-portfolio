@@ -18,8 +18,9 @@ export interface ChatResponse {
 
 import { DEV_BACKEND_URL, PROD_BACKEND_URL } from "./constants";
 
-// Automatically selects localhost during Astro dev, and Vercel in production builds.
-const BACKEND_URL = import.meta.env.DEV ? DEV_BACKEND_URL : PROD_BACKEND_URL;
+// DEV tries localhost:3000 first (vercel dev), but auto-falls back to prod if not running — prevents ERR_CONNECTION_REFUSED in Astro dev.
+const PRIMARY_BACKEND_URL = import.meta.env.DEV ? DEV_BACKEND_URL : PROD_BACKEND_URL;
+const FALLBACK_BACKEND_URL = import.meta.env.DEV ? PROD_BACKEND_URL : "";
 
 
 /**
@@ -32,6 +33,26 @@ const BACKEND_URL = import.meta.env.DEV ? DEV_BACKEND_URL : PROD_BACKEND_URL;
  * @returns {Promise<ChatResponse>} A promise that resolves to the structured reply payload from the model.
  * @throws {Error} Throws an error containing user-friendly details if the network fails or returning HTTP status is invalid.
  */
+async function doFetch(endpoint: string, message: string, history: ChatMessage[]) {
+  const response = await fetch(endpoint, {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({
+      message: message.trim(),
+      history: history.map(m => ({ role: m.role, content: m.content })),
+    }),
+  });
+  if (!response.ok) {
+    const errPayload = await response.json().catch(() => ({}));
+    const msg = errPayload?.error ?? errPayload?.details ?? `Server ${response.status}`;
+    // Friendly mapping for common Vercel cold issues
+    if (response.status === 504) throw new Error("Chat service is warming up — please try again in a few seconds.");
+    throw new Error(msg);
+  }
+  const data: ChatResponse = await response.json();
+  return data;
+}
+
 export async function sendChatMessage(
   message: string,
   history: ChatMessage[] = []
@@ -40,29 +61,22 @@ export async function sendChatMessage(
     throw new Error("Message cannot be empty.");
   }
 
-  const endpoint = `${BACKEND_URL}/api/chat`;
+  const endpoints = [PRIMARY_BACKEND_URL, FALLBACK_BACKEND_URL].filter(Boolean).map(u => `${u}/api/chat`);
 
-  try {
-    const response = await fetch(endpoint, {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({
-        message: message.trim(),
-        history: history.map(m => ({ role: m.role, content: m.content })),
-      }),
-    });
-
-    if (!response.ok) {
-      const errPayload = await response.json().catch(() => ({}));
-      throw new Error(errPayload?.error ?? `Server returned an error status: ${response.status}`);
+  let lastError: any = null;
+  for (const endpoint of endpoints) {
+    try {
+      return await doFetch(endpoint, message, history);
+    } catch (error: any) {
+      lastError = error;
+      const isNetworkError = error instanceof TypeError && /fetch/i.test(error.message);
+      const isConnRefused = /ERR_CONNECTION_REFUSED|Failed to fetch|NetworkError/i.test(error.message);
+      const shouldFallback = endpoints.length > 1 && (isNetworkError || isConnRefused);
+      console.warn(`[Chat] ${endpoint} failed:`, error.message);
+      if (!shouldFallback) throw error;
+      // otherwise try next endpoint (prod fallback)
     }
-
-    const data: ChatResponse = await response.json();
-    return data;
-  } catch (error: any) {
-    console.error("[Chat Utility] sendChatMessage failed:", error);
-    throw new Error(error?.message ?? "Failed to connect to the portfolio chatbot service. Please try again later.");
   }
+  console.error("[Chat Utility] sendChatMessage failed:", lastError);
+  throw new Error(lastError?.message ?? "Failed to connect to the portfolio chatbot service. Please try again later.");
 }
