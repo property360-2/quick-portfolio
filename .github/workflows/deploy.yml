@@ -50,7 +50,9 @@ jobs:
         run: touch ./dist/.nojekyll
 
       - name: Provide sitemap.xml alias for Search Console compatibility
-        run: cp ./dist/sitemap-index.xml ./dist/sitemap.xml
+        run: |
+          cp ./dist/sitemap-0.xml ./dist/sitemap.xml
+          echo "sitemap alias ready: $(wc -l < ./dist/sitemap.xml) bytes, $(grep -o '<loc>' ./dist/sitemap.xml | wc -l) urls"
 
       - name: Upload Artifact
         uses: actions/upload-pages-artifact@v3
