@@ -7,6 +7,7 @@
  */
 
 @import "tailwindcss";
+@plugin "@tailwindcss/typography";
 
 /* NOTE: Configures Tailwind CSS v4 custom variant for class-based dark mode.
  * Whenever the 'dark' class is present on the <html> tag or any ancestor, Tailwind will apply the dark: styles.
@@ -243,4 +244,74 @@ body.loaded {
   background-image:
     linear-gradient(rgba(255,255,255,0.04) 1px, transparent 1px),
     linear-gradient(90deg, rgba(255,255,255,0.04) 1px, transparent 1px);
+}
+
+/* Prose fallback — ensures writings code blocks are readable even if typography plugin is purged */
+.prose pre {
+  background-color: #1f1f1f;
+  color: #e4e4e7;
+  padding: 1.25rem;
+  border-radius: 0.75rem;
+  overflow-x: auto;
+  border: 1px solid rgba(255,255,255,0.08);
+  margin: 1.5rem 0;
+  line-height: 1.6;
+}
+.dark .prose pre {
+  background-color: #111113;
+  border-color: rgba(255,255,255,0.06);
+}
+.prose pre code {
+  background: transparent;
+  padding: 0;
+  border-radius: 0;
+  color: inherit;
+  font-size: 0.875em;
+  white-space: pre;
+  word-break: normal;
+  overflow-wrap: normal;
+}
+.prose code:not(pre code) {
+  background-color: rgba(141,110,99,0.12);
+  color: #5d4037;
+  padding: 0.2em 0.4em;
+  border-radius: 0.25rem;
+  font-size: 0.875em;
+  font-weight: 600;
+}
+.dark .prose code:not(pre code) {
+  background-color: rgba(255,255,255,0.08);
+  color: #d7ccc8;
+}
+.prose table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 1.5rem 0;
+  font-size: 0.875em;
+}
+.prose th {
+  background-color: #f5f5f5;
+  font-weight: 700;
+  text-align: left;
+  padding: 0.75rem 1rem;
+  border: 1px solid #e5e7eb;
+}
+.dark .prose th {
+  background-color: #252528;
+  border-color: rgba(255,255,255,0.1);
+  color: #e4e4e7;
+}
+.prose td {
+  padding: 0.75rem 1rem;
+  border: 1px solid #e5e7eb;
+}
+.dark .prose td {
+  border-color: rgba(255,255,255,0.08);
+}
+.prose hr {
+  border-color: #e5e7eb;
+  margin: 2rem 0;
+}
+.dark .prose hr {
+  border-color: rgba(255,255,255,0.08);
 }
