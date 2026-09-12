@@ -113,6 +113,19 @@ export const TESTIMONIALS: Testimonial[] = [
     metricOrOutcome: "Forecast accuracy up, stockouts down with ML-driven planning",
     image: "/quick-portfolio/assets/clients/FCJ-Barihan-Branch.png",
   },
+  {
+    id: "joel-owen-o",
+    name: "Joel Owen O.",
+    role: "Technical Sales Specialist — B.S. Mechanical Engineer & AI Builder",
+    projectTitle: "Engineer's Portfolio Website & Web Presence Setup",
+    projectType: "Infrastructure",
+    techStack: ["Portfolio Website", "SEO", "Google Indexing", "Responsive Design"],
+    quote:
+      "I had no website portfolio before — Jun built me a complete engineer's portfolio from scratch. Now I have a real web presence, I'm searchable on Google, and I'm just waiting to rise in the rankings. Clients can finally find me online.",
+    highlight: "From zero web presence to Google-indexed portfolio.",
+    metricOrOutcome: "0 → live portfolio, Google-indexed and mobile-ready within one deploy",
+    image: "/quick-portfolio/assets/clients/owen-obiasca.png",
+  },
 ];
 
 export const TESTIMONIAL_FILTERS = [
