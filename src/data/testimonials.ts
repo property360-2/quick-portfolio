@@ -11,6 +11,7 @@ export interface Testimonial {
   highlight: string;
   metricOrOutcome: string;
   image?: string;
+  link?: string;
 }
 
 export const TESTIMONIALS: Testimonial[] = [
@@ -125,6 +126,7 @@ export const TESTIMONIALS: Testimonial[] = [
     highlight: "From zero web presence to Google-indexed portfolio.",
     metricOrOutcome: "0 → live portfolio, Google-indexed and mobile-ready within one deploy",
     image: "/quick-portfolio/assets/clients/owen-obiasca.png",
+    link: "https://owen-six.vercel.app/",
   },
 ];
 
